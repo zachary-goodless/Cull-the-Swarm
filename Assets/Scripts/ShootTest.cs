@@ -17,14 +17,14 @@ public class ShootTest : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        if (timer % 8 == 0) {
+        if (timer % 20 == 0) {
             for (int i = 0; i < 12; i++)
             {
                 GameObject bt = btm.ShootBullet(transform.position, 12, angle + i * 360/12);
-                bt.GetComponent<Bullet>().AddAction(new BulletAction(20, true, -1, 30));
-                bt.GetComponent<Bullet>().AddAction(new BulletAction(20, true, -1, -90));
+                bt.GetComponent<Bullet>().AddAction(new BulletAction(20, true, 0, 30));
+                bt.GetComponent<Bullet>().AddAction(new BulletAction(20, true, -3, -90));
             }
-            angle += 2f;
+            angle += 7f;
         }
 
         timer++;

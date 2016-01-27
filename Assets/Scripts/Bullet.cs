@@ -71,6 +71,7 @@ public class Bullet : MonoBehaviour {
         acceleration = 0;
         maxSpeed = 0;
         angularVelocity = 0;
+        actionQueue = null;
     }
 
     // Add an action to the action queue.
@@ -79,6 +80,7 @@ public class Bullet : MonoBehaviour {
         if(action.timer == 0)
         {
             ExecuteAction(action);
+            return;
         }
 
         if (actionQueue == null)
