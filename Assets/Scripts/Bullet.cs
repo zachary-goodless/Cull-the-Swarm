@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour {
     void Update()
     {
         // Moves the bullet and applies accelerations.
-        transform.Translate(Mathf.Cos(angle)*speed,Mathf.Sin(angle)*speed,0);
+        transform.Translate(Mathf.Cos(Mathf.Deg2Rad*angle)*speed,Mathf.Sin(Mathf.Deg2Rad*angle) *speed,0);
 
         if (transform.position.x < -1000 || transform.position.x > 1000 || transform.position.y < -600 || transform.position.y > 600)
         {

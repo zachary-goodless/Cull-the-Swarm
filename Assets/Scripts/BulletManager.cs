@@ -8,7 +8,7 @@ public class BulletManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        bulletPool = new PoolSystem(500, bulletPrefab);
+        bulletPool = new PoolSystem(1000, bulletPrefab);
 	}
 
     public GameObject ShootBullet(Vector2 position, float speed, float angle)
