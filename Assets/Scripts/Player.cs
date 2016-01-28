@@ -4,6 +4,7 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
     public GameObject model;
+    public float TimeScale = 1f;
 
     // Make these into constants of another class later...
     float stageWidth = 1500f;
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        Time.timeScale = TimeScale;
 
         // Get input from controller.
         float hSpeed = Mathf.Round(Input.GetAxisRaw("Horizontal"));
@@ -57,6 +59,6 @@ public class Player : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("hit!");
+        GetComponent<AudioSource>().Play();
     }
 }

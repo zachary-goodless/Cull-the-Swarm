@@ -3,20 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class PoolSystem : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
     List<GameObject> list;
-    public PoolSystem(int size, GameObject prefab)
+
+    public void Initialize(int size, GameObject prefab)
     {
+        Debug.Log("Init pool!");
         list = new List<GameObject>();
         for (int i = 0; i < size; i++)
         {
@@ -26,7 +17,7 @@ public class PoolSystem : MonoBehaviour {
         }
     }
 
-    // Returns
+    // Returns an object that is ready to use.
     public GameObject GetRecycledObject()
     {
         if (list.Count > 0)
@@ -39,6 +30,7 @@ public class PoolSystem : MonoBehaviour {
         return null;
     }
 
+    // Returns an object to the pool.
     public void Recycle(GameObject obj)
     {
         list.Add(obj);

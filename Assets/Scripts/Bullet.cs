@@ -14,14 +14,6 @@ public class Bullet : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        // Moves the bullet and applies accelerations.
-        transform.Translate(Mathf.Cos(Mathf.Deg2Rad*angle)*speed,Mathf.Sin(Mathf.Deg2Rad*angle) *speed,0);
-
-        if (transform.position.x < -1000 || transform.position.x > 1000 || transform.position.y < -600 || transform.position.y > 600)
-        {
-            GameObject.FindGameObjectWithTag("BulletManager").GetComponent<BulletManager>().DeleteBullet(gameObject);
-        }
-
         // Pull the next action and decrement its timer. If the timer is 0, execute the action.
         if (actionQueue != null)
         {
@@ -41,18 +33,41 @@ public class Bullet : MonoBehaviour {
 
             }
         }
+
+        // Moves the bullet and applies accelerations.
+        if(acceleration > 0){
+            speed = Mathf.Min(speed + acceleration, maxSpeed);
+        } else if (acceleration < 0) {
+            speed = Mathf.Max(speed + acceleration, maxSpeed);
+        }
+        angle += angularVelocity;
+
+        transform.Translate(Mathf.Cos(Mathf.Deg2Rad * angle) * speed, Mathf.Sin(Mathf.Deg2Rad * angle) * speed, 0, Space.World);
+        Vector3 currentEuler = transform.rotation.eulerAngles;
+        transform.rotation = Quaternion.Euler(new Vector3(currentEuler.x, currentEuler.y, angle));
+        if (transform.position.x < -1000 || transform.position.x > 1000 || transform.position.y < -600 || transform.position.y > 600)
+        {
+            BulletManager.DeleteBullet(gameObject);
+        }
+
     }
 
     // Apply the changes as specified in the action. If the action is relative, add the action to the existing values rather than replacing.
-    void ExecuteAction(BulletAction action)
+    public void ExecuteAction(BulletAction action)
     {
         if (action.relative)
         {
             speed += action.speed;
             angle += action.angle;
+            acceleration += action.acceleration;
+            maxSpeed += action.maxSpeed;
+            angularVelocity += action.angularVelocity;
         } else {
             speed = action.speed;
             angle = action.angle;
+            acceleration = action.acceleration;
+            maxSpeed = action.maxSpeed;
+            angularVelocity = action.angularVelocity;
         }
     }
 
@@ -61,6 +76,19 @@ public class Bullet : MonoBehaviour {
         transform.position = position;
         speed = spd;
         angle = ang;
+        acceleration = 0;
+        maxSpeed = 0;
+        angularVelocity = 0;
+    }
+
+    public void Init(Vector2 position, float spd, float ang, float acc, float max, float angv)
+    {
+        transform.position = position;
+        speed = spd;
+        angle = ang;
+        acceleration = acc;
+        maxSpeed = max;
+        angularVelocity = angv;
     }
 
     // Resets all variables so this bullet can be reused.
@@ -77,7 +105,7 @@ public class Bullet : MonoBehaviour {
     // Add an action to the action queue.
     public void AddAction(BulletAction action)
     {
-        if(action.timer == 0)
+        if (action.timer == 0)
         {
             ExecuteAction(action);
             return;
