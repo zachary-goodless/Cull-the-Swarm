@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class BulletManager : MonoBehaviour {
 
     public GameObject bulletPrefab;
+    public int poolSize = 1000;
     public static PoolSystem bulletPool;
     public static GameObject shotID;
 
@@ -13,7 +14,7 @@ public class BulletManager : MonoBehaviour {
     {
         gameObject.AddComponent<PoolSystem>();
         bulletPool = gameObject.GetComponent<PoolSystem>();
-        bulletPool.Initialize(1000, bulletPrefab);
+        bulletPool.Initialize(poolSize, bulletPrefab);
     }
 
     // Shoots a bullet from the specified position, with a certain speed and angle. The bullet is stored for subsequent AddActions.
