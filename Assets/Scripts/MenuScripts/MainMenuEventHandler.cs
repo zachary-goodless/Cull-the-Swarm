@@ -16,6 +16,7 @@ public enum SceneIndex
 	WORLD_MAP = 1,
 	LOADOUTS = 2,
 
+	GAMEPLAY_TEST = 3,	//gameplay scenes
 	//
 }
 
@@ -84,7 +85,5 @@ public class MainMenuEventHandler : MonoBehaviour
 		//load the worldmap scene
 		Debug.Log("LOADING WORLD MAP");
 		SceneManager.LoadScene((int)SceneIndex.WORLD_MAP);
-
-		//TODO -- temp change this to point to the gameplay level for prototype?
 	}
 }

@@ -13,10 +13,10 @@ public class LoadoutsEventHandler : MonoBehaviour
 	public Button mBackButton;		//back to world map
 	public Button mStartButton;		//start game
 
-	//TODO -- array of loadout buttons, dynamic?
-
 	//PRIVATE
 	private SavedGameManager mSavedGameManager;
+
+	//TODO -- map of loadout buttons
 
 	private Loadout mCurrentLoadout;
 
@@ -34,18 +34,18 @@ public class LoadoutsEventHandler : MonoBehaviour
 			//TODO -- spawn error message, return to main menu
 		}
 
+		//TODO -- enable / disable loadout buttons using current game ptr's avaialble loadouts
+
 		//sanity check -- null any current loadout data on the current game ptr
 		mSavedGameManager.getCurrentGame().setCurrentLoadout(null);
 		mCurrentLoadout = new Loadout();
-
-		//TODO -- fill out array of loadout buttons using current game's avaialble loadouts
 	}
 
 //--------------------------------------------------------------------------------------------
 
 	void Update()
 	{
-		//TODO -- cycle thru level buttons, highlight whichever is selected level?
+		//TODO -- cycle thru loadout button map
 
 		//continue button is disabled when there is no currently selected level
 		//mStartButton.interactable = mCurrentLoadout.isComplete();	//TODO -- temp comment out
@@ -64,31 +64,16 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 	public void handleStartButtonClicked()
 	{
-		//set the loadout for the current game (if able)
+		//set the current game ptr's loadout object
 		SavedGame currentGame = mSavedGameManager.getCurrentGame();
-		if(currentGame != null)
-		{
-			currentGame.setCurrentLoadout(mCurrentLoadout);
+		currentGame.setCurrentLoadout(mCurrentLoadout);
 
-			//load the gameplay scene
-			Debug.Log("LOADING GAMEPLAY SCENE: " + currentGame.getSelectedLevel());
-			//SceneManager.LoadScene((int)currentGame.getSelectedLevel());
-			//TODO -- above line temporarily commented out
-		}
-
-		//otherwise, return to the main menu, something is wrong
-		else
-		{
-			Debug.Log("CURRENT GAME PTR NULL: CAN'T ENTER GAMEPLAY, RETURNING TO MAIN MENU");
-
-			//TODO -- spawn error message, return to main menu
-		}
-
-		//TODO -- temporarily enter gameplay for prototype
+		//load the gameplay scene
+		Debug.Log("LOADING GAMEPLAY SCENE: " + currentGame.getSelectedLevel());
+		SceneManager.LoadScene((int)currentGame.getSelectedLevel());
 	}
 		
 //--------------------------------------------------------------------------------------------
 
-	//TODO -- handlers for loadout buttons (sets this object's loadout ptr data)
-	//				loadout buttons as toggles
+	//TODO -- handler for loadout buttons
 }

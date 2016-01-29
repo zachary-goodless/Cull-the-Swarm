@@ -9,12 +9,12 @@ public class SavedGameManager : MonoBehaviour
 	//TODO -- saved game file location (set in inspector, relative to user appdata?)
 
 	//PRIVATE
-	private SavedGameManager mInstance;
+	private static SavedGameManager mInstance;
 
 	private Dictionary<string, SavedGame> mGamesMap = new Dictionary<string, SavedGame>();
 	private SavedGame mCurrentGame;
 
-	//TODO -- 2d array for global high scores
+	//TODO -- array for global high scores
 
 //--------------------------------------------------------------------------------------------
 
@@ -43,8 +43,6 @@ public class SavedGameManager : MonoBehaviour
 
 	public bool createNewGame(string name)
 	{
-		mCurrentGame = null;	//sanity check, zero out current game ptr
-
 		//if our games map contains a game w/ the given name...
 		if(mGamesMap.ContainsKey(name))
 		{
@@ -63,8 +61,6 @@ public class SavedGameManager : MonoBehaviour
 
 	public bool loadSavedGame(string name)
 	{
-		mCurrentGame = null;	//sanity check, zero out current game ptr
-
 		//if our games map doesn't contain a game w/ the given name...
 		if(!mGamesMap.ContainsKey(name))
 		{
@@ -82,8 +78,6 @@ public class SavedGameManager : MonoBehaviour
 
 	public bool deleteSavedGame(string name)
 	{
-		mCurrentGame = null;	//sanity check, zero out current game ptr
-
 		//if the games map doesn't contain a game w/ the given name...
 		if(!mGamesMap.ContainsKey(name))
 		{
@@ -93,6 +87,10 @@ public class SavedGameManager : MonoBehaviour
 
 		//otherwise, delete the saved game object
 		mGamesMap.Remove(name);
+		if(mCurrentGame.getName() == name)
+		{
+			mCurrentGame = null;
+		}
 
 		return true;
 	}

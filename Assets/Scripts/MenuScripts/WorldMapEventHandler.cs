@@ -1,6 +1,7 @@
 ﻿
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -13,10 +14,10 @@ public class WorldMapEventHandler : MonoBehaviour
 	public Button mBackButton;			//back to main menu
 	public Button mContinueButton;		//continue to loadouts
 
-	//TODO -- array of level buttons
-
 	//PRIVATE
 	private SavedGameManager mSavedGameManager;
+
+	private Dictionary<LevelButtonEventHandler, Button> mLevelButtonMap = new Dictionary<LevelButtonEventHandler, Button>();
 
 	private SceneIndex mSelectedLevel;
 
@@ -34,21 +35,53 @@ public class WorldMapEventHandler : MonoBehaviour
 			//TODO -- spawn error message, return to main menu
 		}
 
+		//populate map of level buttons
+		LevelButtonEventHandler[] levelButtons = GetComponentsInChildren<LevelButtonEventHandler>();
+		foreach(LevelButtonEventHandler handler in levelButtons)
+		{
+			Button button = handler.gameObject.GetComponent<Button>();
+			if(button != null)
+			{
+				mLevelButtonMap.Add(handler, button);
+			}
+		}
+
+		//TODO -- init high scores using the game manager and current game ptr
+		//TODO -- enable / disable buttons based on current game ptr level completion
+
 		//sanity check -- null any selected level data on the current game ptr
 		mSavedGameManager.getCurrentGame().setSelectedLevel(SceneIndex.NULL);
 		mSelectedLevel = SceneIndex.NULL;
-
-		//TODO -- init high scores using the game manager and current game ptr
 	}
 
 //--------------------------------------------------------------------------------------------
 
 	void Update()
 	{
-		//TODO -- cycle thru level buttons, highlight whichever is selected level?
+		//for each level button...
+		foreach(KeyValuePair<LevelButtonEventHandler, Button> pair in mLevelButtonMap)
+		{
+			//if the button is active...
+			Button button = pair.Value;
+			if(button.interactable)
+			{
+				//highlight the button if its scene index matches the selected level index
+				LevelButtonEventHandler handler = pair.Key;
+				if(handler.sceneIndex == mSelectedLevel)
+				{
+					//TODO -- highlight button
+				}
+
+				//otherwise, maintain some default color
+				else
+				{
+					//TODO -- restore button to its normal color
+				}
+			}
+		}
 
 		//continue button is disabled when there is no currently selected level
-		//mContinueButton.interactable = mSelectedLevel != SceneIndex.NULL;	//TODO -- temp comment out
+		mContinueButton.interactable = mSelectedLevel != SceneIndex.NULL;
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -65,11 +98,7 @@ public class WorldMapEventHandler : MonoBehaviour
 	public void handleContinueButtonClicked()
 	{
 		//set the current game's selected level
-		SavedGame currentGame = mSavedGameManager.getCurrentGame();
-		if(currentGame != null)
-		{
-			currentGame.setSelectedLevel(mSelectedLevel);
-		}
+		mSavedGameManager.getCurrentGame().setSelectedLevel(mSelectedLevel);
 
 		//load the loadouts scene
 		Debug.Log("LOADING LOADOUTS MENU");
@@ -78,6 +107,10 @@ public class WorldMapEventHandler : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	//TODO -- handlers for level buttons (sets this object's selected level)
-	//				level buttons as toggles
+	public void handleMapButtonClicked(SceneIndex si)
+	{
+		//save the incoming scene index
+		mSelectedLevel = si;
+		Debug.Log("NEW SELECTED LEVEL: " + mSelectedLevel);
+	}
 }
