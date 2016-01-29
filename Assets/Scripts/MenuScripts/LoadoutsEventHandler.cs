@@ -16,21 +16,26 @@ public class LoadoutsEventHandler : MonoBehaviour
 	//TODO -- array of loadout buttons, dynamic?
 
 	//PRIVATE
+	private SavedGameManager mSavedGameManager;
+
 	private Loadout mCurrentLoadout;
 
 //--------------------------------------------------------------------------------------------
 
 	void Start()
 	{
+		mSavedGameManager = GameObject.FindGameObjectWithTag("SaveManager").GetComponent<SavedGameManager>();
+
 		//if the current game ptr is somehow bad, return to the main menu
-		if(SavedGameManager.getCurrentGame() == null)
+		if(mSavedGameManager.getCurrentGame() == null)
 		{
 			Debug.Log("CURRENT GAME PTR NULL: RETURNING TO MAIN MENU");
 
 			//TODO -- spawn error message, return to main menu
 		}
 
-		//create a new loadout object
+		//sanity check -- null any current loadout data on the current game ptr
+		mSavedGameManager.getCurrentGame().setCurrentLoadout(null);
 		mCurrentLoadout = new Loadout();
 
 		//TODO -- fill out array of loadout buttons using current game's avaialble loadouts
@@ -43,21 +48,13 @@ public class LoadoutsEventHandler : MonoBehaviour
 		//TODO -- cycle thru level buttons, highlight whichever is selected level?
 
 		//continue button is disabled when there is no currently selected level
-		mStartButton.interactable = mCurrentLoadout.isComplete();
+		//mStartButton.interactable = mCurrentLoadout.isComplete();	//TODO -- temp comment out
 	}
 
 //--------------------------------------------------------------------------------------------
 
 	public void handleBackButtonClicked()
 	{
-		//sanity check -- reset the selected level and loadout for the current game ptr
-		SavedGame currentGame = SavedGameManager.getCurrentGame();
-		if(currentGame != null)
-		{
-			currentGame.setSelectedLevel(SceneIndex.NULL);
-			currentGame.setCurrentLoadout(null);
-		}
-
 		//load the worldmap scene
 		Debug.Log("LOADING WORLD MAP");
 		SceneManager.LoadScene((int)SceneIndex.WORLD_MAP);
@@ -68,7 +65,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 	public void handleStartButtonClicked()
 	{
 		//set the loadout for the current game (if able)
-		SavedGame currentGame = SavedGameManager.getCurrentGame();
+		SavedGame currentGame = mSavedGameManager.getCurrentGame();
 		if(currentGame != null)
 		{
 			currentGame.setCurrentLoadout(mCurrentLoadout);

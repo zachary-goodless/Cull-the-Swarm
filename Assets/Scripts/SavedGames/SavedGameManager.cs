@@ -9,10 +9,10 @@ public class SavedGameManager : MonoBehaviour
 	//TODO -- saved game file location (set in inspector, relative to user appdata?)
 
 	//PRIVATE
-	private static SavedGameManager mInstance;
+	private SavedGameManager mInstance;
 
-	private static Dictionary<string, SavedGame> mGamesMap;
-	private static SavedGame mCurrentGame;
+	private Dictionary<string, SavedGame> mGamesMap = new Dictionary<string, SavedGame>();
+	private SavedGame mCurrentGame;
 
 	//TODO -- 2d array for global high scores
 
@@ -32,8 +32,6 @@ public class SavedGameManager : MonoBehaviour
 			return;
 		}
 
-		mGamesMap = new Dictionary<string, SavedGame>();
-
 		//read from the saved game file on startup
 		if(!readSavedGameFile())
 		{
@@ -43,7 +41,7 @@ public class SavedGameManager : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	public static bool createNewGame(string name)
+	public bool createNewGame(string name)
 	{
 		mCurrentGame = null;	//sanity check, zero out current game ptr
 
@@ -63,7 +61,7 @@ public class SavedGameManager : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	public static bool loadSavedGame(string name)
+	public bool loadSavedGame(string name)
 	{
 		mCurrentGame = null;	//sanity check, zero out current game ptr
 
@@ -82,7 +80,7 @@ public class SavedGameManager : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	public static bool deleteSavedGame(string name)
+	public bool deleteSavedGame(string name)
 	{
 		mCurrentGame = null;	//sanity check, zero out current game ptr
 
@@ -101,7 +99,7 @@ public class SavedGameManager : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	private static bool readSavedGameFile()
+	private bool readSavedGameFile()
 	{
 		bool success = true;
 
@@ -123,7 +121,7 @@ public class SavedGameManager : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	public static List<string> getSavedGameNames()
+	public List<string> getSavedGameNames()
 	{
 		//add each key in the saved games map to a list, return
 		//	caller takes ownership of list
@@ -139,5 +137,5 @@ public class SavedGameManager : MonoBehaviour
 //--------------------------------------------------------------------------------------------
 
 	//getter for current game ptr
-	public static SavedGame getCurrentGame(){ return mCurrentGame; }
+	public SavedGame getCurrentGame(){ return mCurrentGame; }
 }

@@ -31,15 +31,29 @@ public class MainMenuEventHandler : MonoBehaviour
 	public Button mStartButton;			//start game
 
 	//PRIVATE
+	private SavedGameManager mSavedGameManager;
+
 	//
+
+//--------------------------------------------------------------------------------------------
+
+	void Start()
+	{
+		mSavedGameManager = GameObject.FindGameObjectWithTag("SaveManager").GetComponent<SavedGameManager>();
+
+		//TODO -- temp
+		if(mSavedGameManager.getCurrentGame() == null)
+		{
+			mSavedGameManager.createNewGame("test");
+		}
+	}
 
 //--------------------------------------------------------------------------------------------
 
 	void Update()
 	{
 		//start button is disabled when game manager's current game ptr is null
-		//mStartButton.interactable = SavedGameManager.getCurrentGame() != null;
-		//TODO -- above line temporarily commented out
+		mStartButton.interactable = mSavedGameManager.getCurrentGame() != null;
 	}
 
 //--------------------------------------------------------------------------------------------

@@ -16,23 +16,27 @@ public class WorldMapEventHandler : MonoBehaviour
 	//TODO -- array of level buttons
 
 	//PRIVATE
+	private SavedGameManager mSavedGameManager;
+
 	private SceneIndex mSelectedLevel;
 
 //--------------------------------------------------------------------------------------------
 
 	void Start()
 	{
-		//init the selected level to null
-		//mSelectedLevel = SceneIndex.NULL;
-		//TODO -- above line temporarily commented out
+		mSavedGameManager = GameObject.FindGameObjectWithTag("SaveManager").GetComponent<SavedGameManager>();
 
 		//if the current game ptr is somehow bad, return to the main menu
-		if(SavedGameManager.getCurrentGame() == null)
+		if(mSavedGameManager.getCurrentGame() == null)
 		{
 			Debug.Log("CURRENT GAME PTR NULL: RETURNING TO MAIN MENU");
 
 			//TODO -- spawn error message, return to main menu
 		}
+
+		//sanity check -- null any selected level data on the current game ptr
+		mSavedGameManager.getCurrentGame().setSelectedLevel(SceneIndex.NULL);
+		mSelectedLevel = SceneIndex.NULL;
 
 		//TODO -- init high scores using the game manager and current game ptr
 	}
@@ -44,20 +48,13 @@ public class WorldMapEventHandler : MonoBehaviour
 		//TODO -- cycle thru level buttons, highlight whichever is selected level?
 
 		//continue button is disabled when there is no currently selected level
-		mContinueButton.interactable = mSelectedLevel != SceneIndex.NULL;
+		//mContinueButton.interactable = mSelectedLevel != SceneIndex.NULL;	//TODO -- temp comment out
 	}
 
 //--------------------------------------------------------------------------------------------
 
 	public void handleBackButtonClicked()
 	{
-		//sanity check -- reset the current game ptr's selected level
-		SavedGame currentGame = SavedGameManager.getCurrentGame();
-		if(currentGame != null)
-		{
-			currentGame.setSelectedLevel(SceneIndex.NULL);
-		}
-
 		//load the main menu scene
 		Debug.Log("LOADING MAIN MENU");
 		SceneManager.LoadScene((int)SceneIndex.MAIN_MENU);
@@ -68,7 +65,7 @@ public class WorldMapEventHandler : MonoBehaviour
 	public void handleContinueButtonClicked()
 	{
 		//set the current game's selected level
-		SavedGame currentGame = SavedGameManager.getCurrentGame();
+		SavedGame currentGame = mSavedGameManager.getCurrentGame();
 		if(currentGame != null)
 		{
 			currentGame.setSelectedLevel(mSelectedLevel);
