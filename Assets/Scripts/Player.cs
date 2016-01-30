@@ -17,12 +17,15 @@ public class Player : MonoBehaviour {
 	public Transform gunL;
 	float shootCool;
 	float shootTimer;
+	bool cooling;
 	public GameObject bullet;
 
 	// Use this for initialization
 	void Start()
 	{
 		shootCool = .2f;
+		shootTimer = 0;
+		cooling = false;
 	}
 
 	// Update is called once per frame
@@ -40,9 +43,21 @@ public class Player : MonoBehaviour {
 			vSpeed *= 0.7f;
 		}
 
-		if (Input.GetButtonDown ("Primary")) {
+		if (Input.GetButtonDown ("Primary") && !cooling) {
 			StartCoroutine ("Firing");
 		}
+		if(Input.GetButtonUp("Primary") && !cooling){
+			cooling = true;
+		}
+		if (cooling) {
+			if (shootTimer < shootCool) {
+				shootTimer += Time.deltaTime;
+			} else {
+				shootTimer = 0;
+				cooling = false;
+			}
+		}
+		
 
 		// Adjust for precision mode.
 		if (Input.GetButton("Precision"))
