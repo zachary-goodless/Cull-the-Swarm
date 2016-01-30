@@ -61,7 +61,7 @@ public class ShootTest : MonoBehaviour {
         }
 
         if (timer % 5 == 0) {
-            //text.GetComponent<Text>().text = "Number of bullets onscreen: " + GameObject.FindGameObjectsWithTag("Bullet").Length + "\nFiring " + count + " bullets every " + rate + " frames.";
+            text.GetComponent<Text>().text = "Number of bullets onscreen: " + GameObject.FindGameObjectsWithTag("Bullet").Length + "\nFiring " + count + " bullets every " + rate + " frames.";
         }
 
         timer++;
