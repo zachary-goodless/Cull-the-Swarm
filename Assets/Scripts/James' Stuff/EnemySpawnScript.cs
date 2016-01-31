@@ -34,7 +34,7 @@ public class EnemySpawnScript : MonoBehaviour {
 				StartCoroutine ("SpawnPattern5");
 			}
 			timer = 0;
-			spawnTime = Random.Range (20, 25);
+			spawnTime = Random.Range (15, 20);
 		}
 	}
 
@@ -54,19 +54,19 @@ public class EnemySpawnScript : MonoBehaviour {
 		temp = Instantiate (Jerry, new Vector3 (-250, transform.position.y, 0), Quaternion.identity) as GameObject;
 		wm.enemies.Add(temp);
 		em = temp.GetComponent<EnemyMovement> ();
-		em.dest = new Vector3 (temp.transform.position.x, 300, 0);
+		em.dest = new Vector3 (temp.transform.position.x, 250, 0);
 		em.wm = wm;
 		yield return new WaitForSeconds(.5f);
 		temp = Instantiate (Jerry, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
 		wm.enemies.Add(temp);
 		em = temp.GetComponent<EnemyMovement> ();
-		em.dest = new Vector3 (temp.transform.position.x, 450, 0);
+		em.dest = new Vector3 (temp.transform.position.x, 350, 0);
 		em.wm = wm;
 		yield return new WaitForSeconds(.5f);
 		temp = Instantiate (Jerry, new Vector3 (250, transform.position.y, 0), Quaternion.identity) as GameObject;
 		wm.enemies.Add(temp);
 		em = temp.GetComponent<EnemyMovement> ();
-		em.dest = new Vector3 (temp.transform.position.x, 300, 0);
+		em.dest = new Vector3 (temp.transform.position.x, 250, 0);
 		em.wm = wm;
 		yield return new WaitForSeconds(.5f);
 		temp = Instantiate (Jerry, new Vector3 (500, transform.position.y, 0), Quaternion.identity) as GameObject;

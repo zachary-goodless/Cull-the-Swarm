@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -20,12 +21,22 @@ public class Player : MonoBehaviour {
 	bool cooling;
 	public GameObject bullet;
 
+	bool hitCool;
+	bool dead;
+	public GameObject mesh;
+	int health;
+	KillCount kc;
+
 	// Use this for initialization
 	void Start()
 	{
 		shootCool = .2f;
 		shootTimer = 0;
 		cooling = false;
+		hitCool = false;
+		dead = false;
+		health = 5;
+		kc = GameObject.Find ("KillCount").GetComponent<KillCount> ();
 	}
 
 	// Update is called once per frame
@@ -84,7 +95,10 @@ public class Player : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		GetComponent<AudioSource>().Play();
+		if (other.tag == "Bullet" && !hitCool) {
+			GetComponent<AudioSource> ().Play ();
+			OnDamage ();
+		}
 	}
 
 	void Shoot(){
@@ -93,10 +107,43 @@ public class Player : MonoBehaviour {
 	}
 
 	IEnumerator Firing(){
-		while(Input.GetButton("Primary")){
+		while(Input.GetButton("Primary") && !dead){
 			Shoot();
 			yield return new WaitForSeconds(shootCool);
 		}
 		yield break;
+	}
+
+	void OnDamage(){
+		hitCool = true;
+		health--;
+		kc.health = health;
+		if (health <= 0) {
+			OnDeath ();
+		} else {
+			StartCoroutine ("HitCool");
+			StartCoroutine ("Blink");
+		}
+	}
+
+	IEnumerator HitCool(){
+		yield return new WaitForSeconds (1f);
+		hitCool = false;
+		yield break;
+	}
+
+	IEnumerator Blink(){
+		while (hitCool) {
+			mesh.SetActive (!mesh.activeSelf);
+			yield return new WaitForSeconds (.1f);
+		}
+		mesh.SetActive (true);
+		yield break;
+	}
+
+	void OnDeath(){
+		mesh.SetActive (false);
+		dead = true;
+		SceneManager.LoadScene ("WorldMap");
 	}
 }

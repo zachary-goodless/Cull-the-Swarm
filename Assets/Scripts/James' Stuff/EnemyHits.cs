@@ -9,11 +9,13 @@ public class EnemyHits : MonoBehaviour {
 	float lifeTime;
 	float timer;
 	WaveManager wm;
+	public KillCount kc;
 
 	// Use this for initialization
 	void Start () {
 		lifeTime = 25;
 		timer = 0;
+		kc = GameObject.Find("KillCount").GetComponent<KillCount>();
 	}
 	
 	// Update is called once per frame
@@ -22,15 +24,14 @@ public class EnemyHits : MonoBehaviour {
 			wm = GetComponent<EnemyMovement> ().wm;
 		}
 		if (health <= 0) {
+			kc.score++;
 			wm.enemies.Remove (gameObject);
-			Debug.Log (wm.enemies.Count);
 			Destroy (gameObject);
 		}
 		if (timer < lifeTime) {
 			timer += Time.deltaTime;
 		} else {
 			wm.enemies.Remove (gameObject);
-			Debug.Log (wm.enemies.Count);
 			Destroy (gameObject);
 		}
 	}
