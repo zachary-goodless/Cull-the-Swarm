@@ -20,7 +20,7 @@ public class KillCount : MonoBehaviour {
 	void Update () {
 		text.text = "Killcount:\n" + score + "/20\nHealth:\n" + health + "/5";
 		if (score >= 1) {
-			SceneManager.LoadScene("WorldMap");
+			SceneManager.LoadScene((int)SceneIndex.WORLD_MAP);
 		}
 	}
 }

@@ -95,7 +95,7 @@ public class Player : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.tag == "Bullet" && !hitCool) {
+		if ((other.tag == "Bullet" || other.tag == "EnemyHit")&& !hitCool) {
 			GetComponent<AudioSource> ().Play ();
 			OnDamage ();
 		}
@@ -144,6 +144,6 @@ public class Player : MonoBehaviour {
 	void OnDeath(){
 		mesh.SetActive (false);
 		dead = true;
-		SceneManager.LoadScene ("WorldMap");
+		SceneManager.LoadScene ((int)SceneIndex.WORLD_MAP);
 	}
 }
