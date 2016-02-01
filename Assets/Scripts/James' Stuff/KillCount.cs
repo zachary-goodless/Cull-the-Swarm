@@ -19,7 +19,7 @@ public class KillCount : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		text.text = "Killcount:\n" + score + "/20\nHealth:\n" + health + "/5";
-		if (score >= 1) {
+		if (score >= 20) {
 			SceneManager.LoadScene((int)SceneIndex.WORLD_MAP);
 		}
 	}

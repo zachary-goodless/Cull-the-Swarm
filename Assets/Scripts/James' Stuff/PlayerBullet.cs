@@ -12,7 +12,7 @@ public class PlayerBullet : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		speed = 500;
+		speed = 2000;
 		lifeTimer = 0;
 		dmg = 5;
 		sr = GetComponentInChildren<SpriteRenderer> ();

@@ -30,7 +30,7 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start()
 	{
-		shootCool = .2f;
+		shootCool = .05f;
 		shootTimer = 0;
 		cooling = false;
 		hitCool = false;
