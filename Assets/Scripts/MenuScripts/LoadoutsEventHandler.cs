@@ -57,6 +57,8 @@ public class LoadoutsEventHandler : MonoBehaviour
 		//sanity check -- null any current loadout data on the current game ptr
 		mSavedGameManager.getCurrentGame().setCurrentLoadout(null);
 		mCurrentLoadout = new Loadout();
+
+		initDefaultLoadout();	//initialze the default loadout
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -175,5 +177,25 @@ public class LoadoutsEventHandler : MonoBehaviour
 		{
 			b.interactable = b.gameObject.GetComponent<LoadoutElementButtonEventHandler>().isUnlocked;
 		}
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	void initDefaultLoadout()
+	{
+		//set the current loadout to the default values
+		mCurrentLoadout.setChasis(Loadout.LoadoutChasis.DEFAULT);
+		mCurrentLoadout.setPrimary(Loadout.LoadoutPrimary.DEFAULT);
+		mCurrentLoadout.setSecondary(Loadout.LoadoutSecondary.DEFAULT);
+
+		//force the default buttons to disabled
+		Button[] buttons = mChasisPanel.GetComponentsInChildren<Button>();
+		buttons[0].interactable = false;
+
+		buttons = mPrimaryPanel.GetComponentsInChildren<Button>();
+		buttons[0].interactable = false;
+
+		buttons = mSecondaryPanel.GetComponentsInChildren<Button>();
+		buttons[0].interactable = false;
 	}
 }
