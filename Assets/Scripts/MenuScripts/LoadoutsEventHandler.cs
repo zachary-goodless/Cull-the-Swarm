@@ -10,13 +10,16 @@ using UnityEngine.SceneManagement;
 public class LoadoutsEventHandler : MonoBehaviour
 {
 	//PUBLIC
-	public Button mBackButton;		//back to world map
-	public Button mStartButton;		//start game
+	public Button mBackButton;			//back to world map
+	public Button mStartButton;			//start game
+
+	public GameObject mMainPanel;		//ui element panels
+	public GameObject mChasisPanel;
+	public GameObject mPrimaryPanel;
+	public GameObject mSecondaryPanel;
 
 	//PRIVATE
 	private SavedGameManager mSavedGameManager;
-
-	//TODO -- map of loadout buttons
 
 	private Loadout mCurrentLoadout;
 
@@ -34,7 +37,22 @@ public class LoadoutsEventHandler : MonoBehaviour
 			//TODO -- spawn error message, return to main menu
 		}
 
-		//TODO -- enable / disable loadout buttons using current game ptr's avaialble loadouts
+		//set all loadout element buttons' isUnlocked using the saved game data
+		//	back buttons' interactable must be set via the inspector view 
+		setButtonsUnlock(
+			mChasisPanel.GetComponentsInChildren<LoadoutElementButtonEventHandler>(), 
+			mSavedGameManager.getCurrentGame().unlockedChasis);
+		setButtonsUnlock(
+			mPrimaryPanel.GetComponentsInChildren<LoadoutElementButtonEventHandler>(), 
+			mSavedGameManager.getCurrentGame().unlockedPrimary);
+		setButtonsUnlock(
+			mSecondaryPanel.GetComponentsInChildren<LoadoutElementButtonEventHandler>(), 
+			mSavedGameManager.getCurrentGame().unlockedSecondary);
+
+		//assert buttons' enabled now that their unlock status is set
+		setButtonsEnable(mChasisPanel.GetComponentsInChildren<Button>());
+		setButtonsEnable(mPrimaryPanel.GetComponentsInChildren<Button>());
+		setButtonsEnable(mSecondaryPanel.GetComponentsInChildren<Button>());
 
 		//sanity check -- null any current loadout data on the current game ptr
 		mSavedGameManager.getCurrentGame().setCurrentLoadout(null);
@@ -45,10 +63,8 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 	void Update()
 	{
-		//TODO -- cycle thru loadout button map
-
 		//continue button is disabled when there is no currently selected level
-		//mStartButton.interactable = mCurrentLoadout.isComplete();	//TODO -- temp comment out
+		mStartButton.interactable = mCurrentLoadout.isComplete();
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -69,11 +85,95 @@ public class LoadoutsEventHandler : MonoBehaviour
 		currentGame.setCurrentLoadout(mCurrentLoadout);
 
 		//load the gameplay scene
+		Debug.Log("CURRENT LOADOUT: " + mCurrentLoadout.toString());
 		Debug.Log("LOADING GAMEPLAY SCENE: " + currentGame.getSelectedLevel());
 		SceneManager.LoadScene((int)currentGame.getSelectedLevel());
 	}
 		
 //--------------------------------------------------------------------------------------------
 
-	//TODO -- handler for loadout buttons
+	public void handleChasisButtonClicked()
+	{
+		mChasisPanel.SetActive(true);
+		mMainPanel.SetActive(false);
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	public void handlePrimaryButtonClicked()
+	{
+		mPrimaryPanel.SetActive(true);
+		mMainPanel.SetActive(false);
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	public void handleSecondaryButtonClicked()
+	{
+		mSecondaryPanel.SetActive(true);
+		mMainPanel.SetActive(false);
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	public void handleLoadoutElementButtonClicked(
+		Loadout.LoadoutChasis lc,
+		Loadout.LoadoutPrimary lp,
+		Loadout.LoadoutSecondary ls)
+	{
+		//update current chasis if that's what was passed in
+		if(lc != Loadout.LoadoutChasis.NULL)
+		{
+			mCurrentLoadout.setChasis(lc);
+			setButtonsEnable(mChasisPanel.GetComponentsInChildren<Button>());
+
+			Debug.Log("NEW SELECTED CHASIS: " + lc);
+		}
+
+		//update current primary if that's what was passed in
+		else if(lp != Loadout.LoadoutPrimary.NULL)
+		{
+			mCurrentLoadout.setPrimary(lp);
+			setButtonsEnable(mPrimaryPanel.GetComponentsInChildren<Button>());
+
+			Debug.Log("NEW SELECTED PRIMARY: " + lp);
+		}
+
+		//update current secondary if that's what was passed in
+		else if(ls != Loadout.LoadoutSecondary.NULL)
+		{
+			mCurrentLoadout.setSecondary(ls);
+			setButtonsEnable(mSecondaryPanel.GetComponentsInChildren<Button>());
+
+			Debug.Log("NEW SELECTED SECONDARY: " + ls);
+		}
+
+		//else back button, reenable the main panel
+		else
+		{
+			mMainPanel.SetActive(true);
+		}
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	void setButtonsUnlock(LoadoutElementButtonEventHandler[] behs, bool[] unlocks)
+	{
+		//for each element in the unlocks array...
+		for(int i = 0; i < unlocks.Length; ++i)
+		{
+			behs[i].isUnlocked = unlocks[i];
+		}
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	void setButtonsEnable(Button[] buttons)
+	{
+		//asserts button enabled based on whether or not it has been unlocked on the current game
+		foreach(Button b in buttons)
+		{
+			b.interactable = b.gameObject.GetComponent<LoadoutElementButtonEventHandler>().isUnlocked;
+		}
+	}
 }

@@ -17,8 +17,6 @@ public class WorldMapEventHandler : MonoBehaviour
 	//PRIVATE
 	private SavedGameManager mSavedGameManager;
 
-	private Dictionary<LevelButtonEventHandler, Button> mLevelButtonMap = new Dictionary<LevelButtonEventHandler, Button>();
-
 	private SceneIndex mSelectedLevel;
 
 //--------------------------------------------------------------------------------------------
@@ -35,17 +33,6 @@ public class WorldMapEventHandler : MonoBehaviour
 			//TODO -- spawn error message, return to main menu
 		}
 
-		//populate map of level buttons
-		LevelButtonEventHandler[] levelButtons = GetComponentsInChildren<LevelButtonEventHandler>();
-		foreach(LevelButtonEventHandler handler in levelButtons)
-		{
-			Button button = handler.gameObject.GetComponent<Button>();
-			if(button != null)
-			{
-				mLevelButtonMap.Add(handler, button);
-			}
-		}
-
 		//TODO -- init high scores using the game manager and current game ptr
 		//TODO -- enable / disable buttons based on current game ptr level completion
 
@@ -58,28 +45,6 @@ public class WorldMapEventHandler : MonoBehaviour
 
 	void Update()
 	{
-		//for each level button...
-		foreach(KeyValuePair<LevelButtonEventHandler, Button> pair in mLevelButtonMap)
-		{
-			//if the button is active...
-			Button button = pair.Value;
-			if(button.interactable)
-			{
-				//highlight the button if its scene index matches the selected level index
-				LevelButtonEventHandler handler = pair.Key;
-				if(handler.sceneIndex == mSelectedLevel)
-				{
-					//TODO -- highlight button
-				}
-
-				//otherwise, maintain some default color
-				else
-				{
-					//TODO -- restore button to its normal color
-				}
-			}
-		}
-
 		//continue button is disabled when there is no currently selected level
 		mContinueButton.interactable = mSelectedLevel != SceneIndex.NULL;
 	}

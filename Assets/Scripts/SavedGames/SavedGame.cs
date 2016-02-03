@@ -9,25 +9,36 @@ public class Loadout
 	{
 		NULL = -1,
 
-		TEST = 0,
-		//
+		DEFAULT = 0,
+		CHASIS_1 = 1,
+		CHASIS_2 = 2,
+		CHASIS_3 = 3,
+		CHASIS_4 = 4
 	}
 
 	public enum LoadoutPrimary		//primary weapon enums
 	{
 		NULL = -1,
 
-		TEST = 0,
-		//
+		DEFAULT = 0,
+		PRIMARY_1 = 1,
+		PRIMARY_2 = 2,
+		PRIMARY_3 = 3,
+		PRIMARY_4 = 4
 	}
 
 	public enum LoadoutSecondary	//secondary weapon enums
 	{
 		NULL = -1,
 
-		TEST = 0,
-		//
+		DEFAULT = 0,
+		SECONDARY_1 = 1,
+		SECONDARY_2 = 2,
+		SECONDARY_3 = 3,
+		SECONDARY_4 = 4
 	}
+
+	public static int numLoadouts = 5;
 
 	//PRIVATE
 	private LoadoutChasis mChasis;
@@ -63,6 +74,13 @@ public class Loadout
 
 //--------------------------------------------------------------------------------------------
 
+	public string toString()
+	{
+		return "CHASIS: " + mChasis + " | PRIMARY: " + mPrimary + " | SECONDARY: " + mSecondary;
+	}
+
+//--------------------------------------------------------------------------------------------
+
 	//getter-setters for chasis
 	public LoadoutChasis getChasis(){ return mChasis; }
 	public void setChasis(LoadoutChasis lc){ mChasis = lc; }
@@ -87,14 +105,15 @@ public class Loadout
 public class SavedGame
 {
 	//PUBLIC
-	//
-
-	//PRIVATE
-	private string mName;
+	public bool[] unlockedChasis;		//loadout element arrays
+	public bool[] unlockedPrimary;
+	public bool[] unlockedSecondary;
 
 	//TODO -- array for completed levels (or inferred from other arrays?)
 	//TODO -- array for personal high scores
-	//TODO -- array for unlocked loadouts
+
+	//PRIVATE
+	private string mName;
 
 	private SceneIndex mSelectedLevel;
 	private Loadout mCurrentLoadout;
@@ -107,6 +126,38 @@ public class SavedGame
 
 		mSelectedLevel = SceneIndex.NULL;
 		mCurrentLoadout = null;
+
+		//init loadout arrays
+		initLoadoutArrays(Loadout.numLoadouts);
+
+		//TODO -- other stuff
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	private void initLoadoutArrays(int size)
+	{
+		unlockedChasis = initBoolArray(size);
+		unlockedPrimary = initBoolArray(size);
+		unlockedSecondary = initBoolArray(size);
+
+		//unlocked by default
+		unlockedChasis[0] = true;
+		unlockedPrimary[0] = true;
+		unlockedSecondary[0] = true;
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	private bool[] initBoolArray(int size)
+	{
+		bool[] array = new bool[size];
+		for(int i = 0; i < size; ++i)
+		{
+			array[i] = true;	//TODO -- temp force this to true
+		}
+
+		return array;
 	}
 
 //--------------------------------------------------------------------------------------------
