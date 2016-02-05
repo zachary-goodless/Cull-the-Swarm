@@ -5,16 +5,18 @@ using System.Collections.Generic;
 
 public class SavedGameManager : MonoBehaviour
 {
+	public static int NUM_GAMEPLAY_LEVELS = 15;	//TODO -- hardcoded to 15 right now (5 levels of 3 stages)
+
 	//PUBLIC
 	//TODO -- saved game file location (set in inspector, relative to user appdata?)
+
+	public int[] globalHighScores;
 
 	//PRIVATE
 	private static SavedGameManager mInstance;
 
 	private Dictionary<string, SavedGame> mGamesMap = new Dictionary<string, SavedGame>();
 	private SavedGame mCurrentGame;
-
-	//TODO -- array for global high scores
 
 //--------------------------------------------------------------------------------------------
 
@@ -36,6 +38,13 @@ public class SavedGameManager : MonoBehaviour
 		if(!readSavedGameFile())
 		{
 			Debug.Log("ERROR READING FROM SAVED GAME FILE!");
+		}
+
+		//TODO -- temp force high scores
+		globalHighScores = new int[NUM_GAMEPLAY_LEVELS];
+		for(int i = 0; i < globalHighScores.Length; ++i)
+		{
+			globalHighScores[i] = 10 + i;
 		}
 	}
 
@@ -103,6 +112,12 @@ public class SavedGameManager : MonoBehaviour
 
 		//TODO -- read from saved game file
 
+		//first line is global highscore data
+		//foreach line starting w/ '#'
+		//		create new game obj
+		//		read next 'n' lines, populate game obj
+		//add game obj to list of saved games
+
 		return success;
 	}
 
@@ -113,6 +128,11 @@ public class SavedGameManager : MonoBehaviour
 		bool success = true;
 
 		//TODO -- write to saved game file
+
+		//write global highscores to file
+		//foreach game obj in list
+		//		write name
+		//		write out data
 
 		return success;
 	}

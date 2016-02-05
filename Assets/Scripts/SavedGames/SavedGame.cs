@@ -109,8 +109,8 @@ public class SavedGame
 	public bool[] unlockedPrimary;
 	public bool[] unlockedSecondary;
 
-	//TODO -- array for completed levels (or inferred from other arrays?)
-	//TODO -- array for personal high scores
+	public bool[] levelCompletion;		//level completion array
+	public int[] highScores;			//level highscore array
 
 	//PRIVATE
 	private string mName;
@@ -129,8 +129,8 @@ public class SavedGame
 
 		//init loadout arrays
 		initLoadoutArrays(Loadout.numLoadouts);
-
-		//TODO -- other stuff
+		initLevelCompletionArray(SavedGameManager.NUM_GAMEPLAY_LEVELS);
+		initHighScoreArray(SavedGameManager.NUM_GAMEPLAY_LEVELS);
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -149,12 +149,42 @@ public class SavedGame
 
 //--------------------------------------------------------------------------------------------
 
+	private void initLevelCompletionArray(int size)
+	{
+		levelCompletion = initBoolArray(size);
+
+		//unlocked by default
+		levelCompletion[0] = true;
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	private void initHighScoreArray(int size)
+	{
+		highScores = initIntArray(size);
+	}
+
+//--------------------------------------------------------------------------------------------
+
 	private bool[] initBoolArray(int size)
 	{
 		bool[] array = new bool[size];
 		for(int i = 0; i < size; ++i)
 		{
 			array[i] = true;	//TODO -- temp force this to true
+		}
+
+		return array;
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	private int[] initIntArray(int size)
+	{
+		int[] array = new int[size];
+		for(int i = 0; i < size; ++i)
+		{
+			array[i] = 10;	//TODO -- temp force this to 10
 		}
 
 		return array;
