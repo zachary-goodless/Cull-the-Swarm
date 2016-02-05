@@ -154,6 +154,27 @@ public class SavedGameManager : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
+	public void processScore(SceneIndex currentLevel, int score)
+	{
+		//TODO -- be mindful of this, make sure this is the correct index later
+		//convert from SceneIndex to indexing int
+		int i = (int)currentLevel - 3;
+
+		//new personal high score if the old personal is lower than the new
+		if(mCurrentGame.highScores[i] < score)
+		{
+			mCurrentGame.highScores[i] = score;
+		}
+
+		//new global high score if the old global is lower than the new
+		if(globalHighScores[i] < score)
+		{
+			globalHighScores[i] = score;
+		}
+	}
+
+//--------------------------------------------------------------------------------------------
+
 	//getter for current game ptr
 	public SavedGame getCurrentGame(){ return mCurrentGame; }
 }
