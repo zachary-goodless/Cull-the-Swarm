@@ -154,23 +154,23 @@ public class SavedGameManager : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	public void processScore(SceneIndex currentLevel, int score)
+	public void handleLevelCompleted(SceneIndex currentLevel, int score)
 	{
-		//TODO -- be mindful of this, make sure this is the correct index later
+		//TODO -- keep an eye on this for proper indexing
 		//convert from SceneIndex to indexing int
 		int i = (int)currentLevel - 3;
+		if(i < 0 || i >= NUM_GAMEPLAY_LEVELS) return;
 
-		//new personal high score if the old personal is lower than the new
-		if(mCurrentGame.highScores[i] < score)
-		{
-			mCurrentGame.highScores[i] = score;
-		}
-
-		//new global high score if the old global is lower than the new
-		if(globalHighScores[i] < score)
+		//handle high scores
+		if(globalHighScores[i] < score)			//global
 		{
 			globalHighScores[i] = score;
 		}
+
+		//handle stuff on the current game object
+		mCurrentGame.handleIncomingScore(i, score);		//highscore
+		mCurrentGame.handleIncomingLevelUnlock(i);		//level unlock
+		mCurrentGame.handleIncomingLoadoutUnlock(i);	//loadout unlock
 	}
 
 //--------------------------------------------------------------------------------------------

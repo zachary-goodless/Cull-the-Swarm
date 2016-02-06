@@ -38,7 +38,7 @@ public class Loadout
 		SECONDARY_4 = 4
 	}
 
-	public static int numLoadouts = 5;
+	public static int NUM_LOADOUTS = 5;
 
 	//PRIVATE
 	private LoadoutChasis mChasis;
@@ -109,7 +109,7 @@ public class SavedGame
 	public bool[] unlockedPrimary;
 	public bool[] unlockedSecondary;
 
-	public bool[] levelCompletion;		//level completion array
+	public bool[] unlockedLevels;		//level completion array
 	public int[] highScores;			//level highscore array
 
 	//PRIVATE
@@ -128,7 +128,7 @@ public class SavedGame
 		mCurrentLoadout = null;
 
 		//init loadout arrays
-		initLoadoutArrays(Loadout.numLoadouts);
+		initLoadoutArrays(Loadout.NUM_LOADOUTS);
 		initLevelCompletionArray(SavedGameManager.NUM_GAMEPLAY_LEVELS);
 		initHighScoreArray(SavedGameManager.NUM_GAMEPLAY_LEVELS);
 	}
@@ -151,10 +151,10 @@ public class SavedGame
 
 	private void initLevelCompletionArray(int size)
 	{
-		levelCompletion = initBoolArray(size);
+		unlockedLevels = initBoolArray(size);
 
 		//unlocked by default
-		levelCompletion[0] = true;
+		unlockedLevels[0] = true;
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -188,6 +188,74 @@ public class SavedGame
 		}
 
 		return array;
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	public void handleIncomingScore(int index, int score)
+	{
+		if(highScores[index] < score)
+		{
+			highScores[index] = score;
+		}
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	public void handleIncomingLevelUnlock(int index)
+	{
+		//TODO -- keep an eye on this for proper indexing
+		switch(index)
+		{
+		//final tutorial stage
+		case 2:
+
+			unlockedLevels[3] = true;	//unlock the first stages of levels 1, 2, and 3
+			unlockedLevels[5] = true;
+			unlockedLevels[6] = true;
+			break;
+
+		//final non-tutorial stages, no level unlocks
+		case 5:
+		case 8:
+		case 11:
+		case 14:
+			break;
+
+		//all other stages unlock the next stage
+		default:
+
+			unlockedLevels[index + 1] = true;
+			break;
+		}
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	public void handleIncomingLoadoutUnlock(int index)
+	{
+		//TODO -- keep an eye on this for proper indexing
+		switch(index)
+		{
+		//final stages for each level (excluding final level)
+		case 2:
+		case 5:
+		case 8:
+		case 11:
+
+			//index for the array
+			int j = (index / 3) + 1;
+
+			//unlock corresponding loadout
+			unlockedChasis[j] = true;
+			unlockedPrimary[j] = true;
+			unlockedSecondary[j] = true;
+			break;
+
+		//otherwise, do nothing
+		default:
+			break;
+		}
 	}
 
 //--------------------------------------------------------------------------------------------

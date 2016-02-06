@@ -50,7 +50,7 @@ public class WorldMapEventHandler : MonoBehaviour
 		mPanelsList.Add(mLevelFourPanel);
 
 		//some extra stuff for the coming foreach loop...
-		bool[] unlocks = mSavedGameManager.getCurrentGame().levelCompletion;
+		bool[] unlocks = mSavedGameManager.getCurrentGame().unlockedLevels;
 		Button[] buttons = mMainPanel.GetComponentsInChildren<Button>();
 		int i = 0;
 
