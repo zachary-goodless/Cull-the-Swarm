@@ -62,7 +62,6 @@ public class MainMenuEventHandler : MonoBehaviour
 	void Start()
 	{
 		mSavedGameManager = GameObject.FindGameObjectWithTag("SaveManager").GetComponent<SavedGameManager>();
-		enableButtons();
 	}
 
 //--------------------------------------------------------------------------------------------

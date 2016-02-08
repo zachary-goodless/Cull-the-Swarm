@@ -50,13 +50,20 @@ public class NewGameMenu : MonoBehaviour
 		{
 			//create a new game object
 			mSavedGameManager.createNewGame(mName);
-
-			//enable the main menu buttons
-			mMainMenu.enableButtons();
-
-			//clear the text edit, disable the new game panel
-			mNameField.text = "";
-			gameObject.SetActive(false);
 		}
+
+		handleBackButtonClicked();
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	public void handleBackButtonClicked()
+	{
+		//enable the main menu buttons
+		mMainMenu.enableButtons();
+
+		//clear the text edit, disable the new game panel
+		mNameField.text = "";
+		gameObject.SetActive(false);
 	}
 }

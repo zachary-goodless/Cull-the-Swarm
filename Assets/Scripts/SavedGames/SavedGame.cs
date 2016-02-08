@@ -234,21 +234,34 @@ public class SavedGame
 
 	public void handleIncomingLoadoutUnlock(int index)
 	{
+		//index for the array
+		int j = (index / 3) + 1;
+
 		//TODO -- keep an eye on this for proper indexing
+		//TODO -- work on unlock order
 		switch(index)
 		{
-		//final stages for each level (excluding final level)
+		//first stage -- unlock chasis
+		case 0:
+		case 3:
+		case 6:
+		case 9:
+			unlockedChasis[j] = true;
+			break;
+
+		//second stage -- unlock primary weapon
+		case 1:
+		case 4:
+		case 7:
+		case 10:
+			unlockedPrimary[j] = true;
+			break;
+
+		//final stage -- unlock secondary weapon
 		case 2:
 		case 5:
 		case 8:
 		case 11:
-
-			//index for the array
-			int j = (index / 3) + 1;
-
-			//unlock corresponding loadout
-			unlockedChasis[j] = true;
-			unlockedPrimary[j] = true;
 			unlockedSecondary[j] = true;
 			break;
 
