@@ -33,8 +33,6 @@ public class LoadoutsEventHandler : MonoBehaviour
 		if(mSavedGameManager.getCurrentGame() == null)
 		{
 			Debug.Log("CURRENT GAME PTR NULL: RETURNING TO MAIN MENU");
-
-			//TODO -- spawn error message, return to main menu
 		}
 
 		//set all loadout element buttons' isUnlocked using the saved game data

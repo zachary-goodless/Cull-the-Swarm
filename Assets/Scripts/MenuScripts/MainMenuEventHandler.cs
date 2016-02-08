@@ -62,6 +62,24 @@ public class MainMenuEventHandler : MonoBehaviour
 	void Start()
 	{
 		mSavedGameManager = GameObject.FindGameObjectWithTag("SaveManager").GetComponent<SavedGameManager>();
+
+		//TODO -- temp
+		mSavedGameManager.createNewGame("a");
+		mSavedGameManager.createNewGame("b");
+		mSavedGameManager.createNewGame("c");
+		mSavedGameManager.createNewGame("d");
+		mSavedGameManager.createNewGame("e");
+		mSavedGameManager.createNewGame("f");
+		mSavedGameManager.createNewGame("g");
+		mSavedGameManager.createNewGame("h");
+		mSavedGameManager.createNewGame("i");
+		mSavedGameManager.createNewGame("j");
+		mSavedGameManager.createNewGame("k");
+		mSavedGameManager.createNewGame("l");
+
+		mSavedGameManager.createNewGame("_");
+		mSavedGameManager.deleteSavedGame("_");
+		//TODO -- temp
 	}
 
 //--------------------------------------------------------------------------------------------

@@ -37,8 +37,6 @@ public class WorldMapEventHandler : MonoBehaviour
 		if(mSavedGameManager.getCurrentGame() == null)
 		{
 			Debug.Log("CURRENT GAME PTR NULL: RETURNING TO MAIN MENU");
-
-			//TODO -- spawn error message, return to main menu
 		}
 
 		//populate list of level select panels panels (cleaner code)

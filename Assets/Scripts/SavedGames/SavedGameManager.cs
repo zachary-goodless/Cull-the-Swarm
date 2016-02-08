@@ -103,7 +103,9 @@ public class SavedGameManager : MonoBehaviour
 
 		//otherwise, delete the saved game object
 		mGamesMap.Remove(name);
-		if(mCurrentGame.getName() == name)
+
+		//delete the current game if it is being deleted
+		if(mCurrentGame != null && mCurrentGame.getName() == name)
 		{
 			mCurrentGame = null;
 		}
@@ -123,7 +125,7 @@ public class SavedGameManager : MonoBehaviour
 		//foreach line starting w/ '#'
 		//		create new game obj
 		//		read next 'n' lines, populate game obj
-		//add game obj to list of saved games
+		//		add game obj to list of saved games
 
 		return success;
 	}
