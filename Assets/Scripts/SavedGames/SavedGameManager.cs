@@ -44,8 +44,9 @@ public class SavedGameManager : MonoBehaviour
 		globalHighScores = new int[NUM_GAMEPLAY_LEVELS];
 		for(int i = 0; i < globalHighScores.Length; ++i)
 		{
-			globalHighScores[i] = 10 + i;
+			globalHighScores[i] = (int)(Random.value * 10);
 		}
+		//TODO
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -58,6 +59,8 @@ public class SavedGameManager : MonoBehaviour
 			//return false -- no new game created
 			return false;
 		}
+
+		Debug.Log("CREATING NEW SAVED GAME: " + name);
 
 		//otherwise, create a new game object
 		mCurrentGame = new SavedGame(name);
@@ -77,6 +80,8 @@ public class SavedGameManager : MonoBehaviour
 			return false;
 		}
 
+		Debug.Log("LOADING SAVED GAME: " + name);
+
 		//otherwise, set the current game object
 		mCurrentGame = mGamesMap[name];
 
@@ -93,6 +98,8 @@ public class SavedGameManager : MonoBehaviour
 			//return false -- no game deleted
 			return false;
 		}
+
+		Debug.Log("DELETING SAVED GAME: " + name);
 
 		//otherwise, delete the saved game object
 		mGamesMap.Remove(name);
