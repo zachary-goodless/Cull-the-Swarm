@@ -27,9 +27,12 @@ public class Player : MonoBehaviour {
 	int health;
 	KillCount kc;
 
+	Loadout loadout;
+
 	// Use this for initialization
 	void Start()
 	{
+	//s	loadout = SavedGame.getCurrentLoadout ();
 		shootCool = .05f;
 		shootTimer = 0;
 		cooling = false;
@@ -145,5 +148,15 @@ public class Player : MonoBehaviour {
 		mesh.SetActive (false);
 		dead = true;
 		SceneManager.LoadScene ((int)SceneIndex.WORLD_MAP);
+	}
+
+	void setPrimary(){
+
+	}
+	void setSecondary(){
+
+	}
+	void setChasis(){
+
 	}
 }
