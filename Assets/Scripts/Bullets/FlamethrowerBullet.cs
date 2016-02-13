@@ -90,6 +90,10 @@ public class FlamethrowerBullet : MonoBehaviour {
 			transform.localScale += new Vector3 (1f, 1f, 0f);
 		}
 		//sprite.transform.EulerAngles = new Vector3(0f,0f,0f);
+		//kill when off screen
+		if (!sr.isVisible) {
+			Destroy (gameObject);
+		}
 	}
 
 	void ColorCycle(){
