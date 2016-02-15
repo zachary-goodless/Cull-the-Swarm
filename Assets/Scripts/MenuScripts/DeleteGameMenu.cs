@@ -40,7 +40,6 @@ public class DeleteGameMenu : MonoBehaviour
 		clearList();
 
 		//get a list of saved games
-		//TODO -- sort list?
 		List<string> savedGames = mSavedGameManager.getSavedGameNames();
 
 		//get rect transforms

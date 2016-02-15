@@ -26,7 +26,7 @@ public class SwatterBullet : MonoBehaviour {
 	void findTarget(){
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
 		foreach (GameObject enemy in enemies) {
-			if(
+			if(false);
 		}
 	}
 }

@@ -105,12 +105,12 @@ public class Loadout
 public class SavedGame
 {
 	//PUBLIC
+	public int[] highScores;			//level highscore array
+	public bool[] unlockedLevels;		//level completion array
+
 	public bool[] unlockedChasis;		//loadout element arrays
 	public bool[] unlockedPrimary;
 	public bool[] unlockedSecondary;
-
-	public bool[] unlockedLevels;		//level completion array
-	public int[] highScores;			//level highscore array
 
 	//PRIVATE
 	private string mName;
@@ -211,8 +211,8 @@ public class SavedGame
 		case 2:
 
 			unlockedLevels[3] = true;	//unlock the first stages of levels 1, 2, and 3
-			unlockedLevels[5] = true;
 			unlockedLevels[6] = true;
+			unlockedLevels[9] = true;
 			break;
 
 		//final non-tutorial stages, no level unlocks
