@@ -2,10 +2,15 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+
+using System;
 using System.IO;
 
 public class SavedGameManager : MonoBehaviour
 {
+	public bool GOD_MODE;						//TODO -- temp god mode for full-unlock (configurable from inspector)
+	public static bool isGodMode;
+
 	public static int NUM_GAMEPLAY_LEVELS = 15;	//TODO -- hardcoded to 15 right now (5 levels of 3 stages)
 
 	//PUBLIC
@@ -14,7 +19,7 @@ public class SavedGameManager : MonoBehaviour
 	//PRIVATE
 	private static SavedGameManager mInstance;
 
-	private string mSavedGameFile = "../test.txt";	//TODO -- fix location
+	private string mSavedGameFile;
 
 	private Dictionary<string, SavedGame> mGamesMap = new Dictionary<string, SavedGame>();
 	private SavedGame mCurrentGame;
@@ -27,6 +32,7 @@ public class SavedGameManager : MonoBehaviour
 		if(mInstance == null)
 		{
 			mInstance = this;
+			isGodMode = GOD_MODE;
 			GameObject.DontDestroyOnLoad(gameObject);
 		}
 		else
@@ -35,13 +41,45 @@ public class SavedGameManager : MonoBehaviour
 			return;
 		}
 
+		//set saved game file location
+		switch((int)Environment.OSVersion.Platform)
+		{
+		case 0:
+		case 1:
+		case 2:
+		case 3:
+			Debug.Log("PLATFORM DETECTED: WINDOWS");
+
+			mSavedGameFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Cull_the_Swarm";
+			Directory.CreateDirectory(mSavedGameFile);
+			mSavedGameFile += "\\saved_games.txt";
+
+			break;
+
+		case 4:
+		case 6:
+			Debug.Log("PLATFORM DETECTED: UNIX / MAC");
+
+			mSavedGameFile = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "/Library/Cull_the_Swarm";
+			Directory.CreateDirectory(mSavedGameFile);
+			mSavedGameFile += "/saved_games.txt";
+
+			break;
+
+		default:
+			Debug.Log("UNHANDLED PLATFORM: " + Environment.OSVersion.Platform);
+			mSavedGameFile = "";
+			break;
+		}
+
+
+		Debug.Log("SAVED GAME FILE: " + mSavedGameFile);
+
 		//read from the saved game file on startup
 		if(!readSavedGameFile())
 		{
 			Debug.Log("ERROR READING FROM SAVED GAME FILE!");
 		}
-			
-		//writeSavedGameFile();	//TODO -- temp
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -60,6 +98,9 @@ public class SavedGameManager : MonoBehaviour
 		//otherwise, create a new game object
 		mCurrentGame = new SavedGame(name);
 		mGamesMap.Add(name, mCurrentGame);
+
+		//major change -- write out to file
+		writeSavedGameFile();
 
 		return true;
 	}
@@ -104,6 +145,9 @@ public class SavedGameManager : MonoBehaviour
 		{
 			mCurrentGame = null;
 		}
+
+		//major change -- write out to file
+		writeSavedGameFile();
 
 		return true;
 	}
@@ -211,8 +255,6 @@ public class SavedGameManager : MonoBehaviour
 
 	public bool writeSavedGameFile()
 	{
-		//TODO -- call this when we close the game
-
 		//create a file writer
 		StreamWriter writer = new StreamWriter(mSavedGameFile);
 
@@ -310,6 +352,9 @@ public class SavedGameManager : MonoBehaviour
 		mCurrentGame.handleIncomingScore(i, score);		//highscore
 		mCurrentGame.handleIncomingLevelUnlock(i);		//level unlock
 		mCurrentGame.handleIncomingLoadoutUnlock(i);	//loadout unlock
+
+		//major change -- write out to file
+		writeSavedGameFile();
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -329,8 +374,8 @@ public class SavedGameManager : MonoBehaviour
 		char[] delimiters = {' '};
 		string[] tokens = line.Split(delimiters);
 
-		//error -- not enough tokens / target elements
-		if(tokens.Length != target.Length)
+		//error -- not enough tokens
+		if(tokens.Length < target.Length)
 			return false;
 
 		//for each element in the target array...
@@ -355,8 +400,8 @@ public class SavedGameManager : MonoBehaviour
 		char[] delimiters = {' '};
 		string[] tokens = line.Split(delimiters);
 
-		//error -- not enough tokens / target elements
-		if(tokens.Length != target.Length)
+		//error -- not enough tokens
+		if(tokens.Length < target.Length)
 			return false;
 
 		//for each element in the target array...

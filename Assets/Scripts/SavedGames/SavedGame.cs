@@ -171,7 +171,8 @@ public class SavedGame
 		bool[] array = new bool[size];
 		for(int i = 0; i < size; ++i)
 		{
-			array[i] = true;	//TODO -- temp force this to true
+			//defaults to true when in godmode, otherwise false
+			array[i] = SavedGameManager.isGodMode;
 		}
 
 		return array;
@@ -184,7 +185,7 @@ public class SavedGame
 		int[] array = new int[size];
 		for(int i = 0; i < size; ++i)
 		{
-			array[i] = (int)(Random.value * 10);	//TODO -- temp
+			array[i] = 0;
 		}
 
 		return array;
