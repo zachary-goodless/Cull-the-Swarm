@@ -49,12 +49,19 @@ public class SwatterBullet : MonoBehaviour {
 		}
 	}
 
+<<<<<<< HEAD
 
 
 	void OnTriggerStay2D (Collider2D other){
 		if (other.tag == "EnemyHit" && timer  > 1) {
 			other.gameObject.GetComponentInParent<EnemyHits> ().health -= dmg;
 			Destroy (gameObject);
+=======
+	void findTarget(){
+		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
+		foreach (GameObject enemy in enemies) {
+			if(false);
+>>>>>>> origin/master
 		}
 	}
 

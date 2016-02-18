@@ -105,12 +105,12 @@ public class Loadout
 public class SavedGame
 {
 	//PUBLIC
+	public int[] highScores;			//level highscore array
+	public bool[] unlockedLevels;		//level completion array
+
 	public bool[] unlockedChasis;		//loadout element arrays
 	public bool[] unlockedPrimary;
 	public bool[] unlockedSecondary;
-
-	public bool[] unlockedLevels;		//level completion array
-	public int[] highScores;			//level highscore array
 
 	//PRIVATE
 	private string mName;
@@ -171,7 +171,8 @@ public class SavedGame
 		bool[] array = new bool[size];
 		for(int i = 0; i < size; ++i)
 		{
-			array[i] = true;	//TODO -- temp force this to true
+			//defaults to true when in godmode, otherwise false
+			array[i] = SavedGameManager.isGodMode;
 		}
 
 		return array;
@@ -184,7 +185,7 @@ public class SavedGame
 		int[] array = new int[size];
 		for(int i = 0; i < size; ++i)
 		{
-			array[i] = (int)(Random.value * 10);	//TODO -- temp
+			array[i] = 0;
 		}
 
 		return array;
@@ -211,8 +212,8 @@ public class SavedGame
 		case 2:
 
 			unlockedLevels[3] = true;	//unlock the first stages of levels 1, 2, and 3
-			unlockedLevels[5] = true;
 			unlockedLevels[6] = true;
+			unlockedLevels[9] = true;
 			break;
 
 		//final non-tutorial stages, no level unlocks
