@@ -9,15 +9,19 @@ public class FlamethrowerPrimary : MonoBehaviour {
 	bool cooling;
 	public GameObject bullet;
 	private Player player;
+	float degrees;
+	bool rotRight;
 
 	// Use this for initialization
 	void Start () {
-		shootCool = .025f;
+		shootCool = .015f;
 		shootTimer = 0;
 		cooling = false;
 		player = GetComponent<Player> ();
 		bullet = Resources.Load ("PlayerBullets/FireTestBullet") as GameObject;
 		gunF = transform.Find ("GunF");
+
+		degrees = 0;
 	}
 
 	// Update is called once per frame
@@ -39,7 +43,12 @@ public class FlamethrowerPrimary : MonoBehaviour {
 	}
 
 	void Shoot(){
-		Instantiate (bullet, gunF.position, Quaternion.identity);
+
+		GameObject temp = Instantiate (bullet, gunF.position, Quaternion.identity) as GameObject;
+		temp.GetComponent<FlamethrowerBullet>().degrees = degrees;
+		degrees = (degrees + 15) % 360;
+
+
 	}
 
 	IEnumerator Firing(){

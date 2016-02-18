@@ -8,6 +8,7 @@ public class FlamethrowerBullet : MonoBehaviour {
 	Color orange;
 	Color currentCol;
 	string color;
+	public Gradient gradient;
 
 	//Keep track of sprite for color changing
 	SpriteRenderer sr;
@@ -20,7 +21,7 @@ public class FlamethrowerBullet : MonoBehaviour {
 	//stats
 	float speed;
 	float period;
-	float degrees;
+	public float degrees;
 	float amplitude;
 	float decRate;
 	float incRate;
@@ -39,12 +40,11 @@ public class FlamethrowerBullet : MonoBehaviour {
 		orange = new Color (0.9568627f, 0.36862745f, 0f, 1f);
 		decRate = 1f;
 		incRate = 0f;
-		speed = 450f;
+		speed = 700f;
 		period = 1f;
-		amplitude = 10f;
-		degrees = 0;
+		amplitude = 6f;
 		timer = 0;
-		lifeTime = 3;
+		lifeTime = 1;
 		color = "blue";
 		lerpVal = 0;
 		dmg = 5;
@@ -86,8 +86,8 @@ public class FlamethrowerBullet : MonoBehaviour {
 		}
 
 		//increase scale
-		if (transform.localScale.x < 100 || transform.localScale.y < 100) {
-			transform.localScale += new Vector3 (1f, 1f, 0f);
+		if (transform.localScale.x < 200 || transform.localScale.y < 200) {
+			transform.localScale += new Vector3 (2f, 2f, 0f);
 		}
 		//sprite.transform.EulerAngles = new Vector3(0f,0f,0f);
 		//kill when off screen
@@ -104,17 +104,17 @@ public class FlamethrowerBullet : MonoBehaviour {
 				color = "yellow";
 				lerpVal = 0;
 			}
-			lerpVal += .05f;
+			lerpVal += (Time.deltaTime/lifeTime)*3f;
 		} else if (color == "yellow") {
 			currentCol = Color.Lerp (currentCol, orange, lerpVal);
 			if (lerpVal >= 1) {
 				color = "orange";
 				lerpVal = 0;
 			}
-			lerpVal += .02f;
+			lerpVal += (Time.deltaTime/lifeTime)*3f;
 		} else if (color == "orange" && lerpVal < 1) {
 			currentCol = Color.Lerp (currentCol, Color.clear, lerpVal);
-			lerpVal += .005f;
+			lerpVal += (Time.deltaTime/lifeTime)*3f;
 		}
 		sr.color = currentCol;
 	}

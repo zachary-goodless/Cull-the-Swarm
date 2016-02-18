@@ -1,26 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SwatterPrimary : MonoBehaviour {
+public class BugSprayPrimary : MonoBehaviour {
 
+	public Transform gunR;
+	public Transform gunL;
 	float shootCool;
 	float shootTimer;
 	bool cooling;
 	public GameObject bullet;
 	private Player player;
 
+	float rot;
+	float dir;
+	float incAmount;
 
 	// Use this for initialization
 	void Start () {
+		rot = 0;
+		incAmount = 5;
 		shootCool = .075f;
 		shootTimer = 0;
 		cooling = false;
 		player = GetComponent<Player> ();
 		bullet = Resources.Load ("PlayerBullets/SwatterTest") as GameObject;
+		gunR = transform.Find ("GunR");
+		gunL = transform.Find ("GunL");
 	}
-
+	
 	// Update is called once per frame
 	void Update () {
+		dir = Input.GetAxis ("Horizontal");
+		if (dir != 0 && Mathf.Abs (rot) < 45){
+			rot += dir * incAmount;
+		}
+		else{
+			rot = 0;
+		}
 		if (Input.GetButtonDown ("Primary") && !cooling) {
 			StartCoroutine ("Firing");
 		}
@@ -35,14 +51,11 @@ public class SwatterPrimary : MonoBehaviour {
 				cooling = false;
 			}
 		}
+
 	}
 
 	void Shoot(){
-		GameObject target = FindTarget ();
-		if (target != null) {
-			GameObject temp = Instantiate (bullet, target.transform.position, Quaternion.identity) as GameObject;
-			temp.GetComponent<SwatterBullet> ().target = target;
-		}
+		GameObject temp = Instantiate (bullet, transform.position, Quaternion.identity) as GameObject;
 	}
 
 	IEnumerator Firing(){
@@ -51,19 +64,6 @@ public class SwatterPrimary : MonoBehaviour {
 			yield return new WaitForSeconds(shootCool);
 		}
 		yield break;
-	}
-
-	GameObject FindTarget(){
-		GameObject target = null;
-		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
-		foreach (GameObject enemy in enemies) {
-			if (target == null) {
-				target = enemy;
-			} else if(Vector2.Distance(transform.position, enemy.transform.position) < Vector2.Distance(transform.position, target.transform.position)) {
-				target = enemy;
-			}
-		}
-		return target;
 	}
 
 }
