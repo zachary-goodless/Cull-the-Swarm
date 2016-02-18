@@ -52,7 +52,7 @@ public class SavedGameManager : MonoBehaviour
 
 			mSavedGameFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Cull_the_Swarm";
 			Directory.CreateDirectory(mSavedGameFile);
-			mSavedGameFile += "\\saved_games.txt";
+			mSavedGameFile += "\\saved_games.ini";
 
 			break;
 
@@ -62,7 +62,7 @@ public class SavedGameManager : MonoBehaviour
 
 			mSavedGameFile = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "/Library/Cull_the_Swarm";
 			Directory.CreateDirectory(mSavedGameFile);
-			mSavedGameFile += "/saved_games.txt";
+			mSavedGameFile += "/saved_games.ini";
 
 			break;
 
