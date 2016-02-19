@@ -31,14 +31,12 @@ public class WaveManager : MonoBehaviour {
 					} else {
 						em.right = false;
 					}
-					em.lazy = false;
 
 				}
 			} else {
 				foreach (GameObject enemy in enemies) {
 					EnemyMovement em = enemy.GetComponent<EnemyMovement> ();
 						em.right = right;
-						em.lazy = false;
 				}
 			}
 			statsSet = true;

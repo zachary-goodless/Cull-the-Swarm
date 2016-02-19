@@ -37,8 +37,6 @@ public class EnemyMovement : MonoBehaviour {
 	public bool oscillate;
 	public float dir;
 
-	public bool lazy;
-
 	public bool beenSeen;
 
 	void Awake(){
@@ -166,22 +164,16 @@ public class EnemyMovement : MonoBehaviour {
 			movementTimer += Time.deltaTime;
 			if (right) {
 				if (transform.position.x < startX + evasionBounds) {
-					if (!lazy) {
-						transform.position = new Vector3 (Mathf.SmoothStep (transform.position.x, startX + evasionBounds, movementTimer / 1), transform.position.y, 0f);
-					} else {
-						transform.position += new Vector3 (Time.deltaTime * evasionSpeed, 0, 0);
-					}
+					transform.position = new Vector3 (Mathf.SmoothStep (transform.position.x, startX + evasionBounds, movementTimer / 1), transform.position.y, 0f);
+					//transform.position += new Vector3 (Time.deltaTime * evasionSpeed, 0, 0);
 				} else {
 					right = false;
 					movementTimer = 0;
 				}
 			} else {
 				if (transform.position.x > startX - evasionBounds) {
-					if (!lazy) {
-						transform.position = new Vector3 (Mathf.SmoothStep (transform.position.x, startX - evasionBounds, movementTimer / 1), transform.position.y, 0f);
-					} else {
-						transform.position += new Vector3 (Time.deltaTime * -1 * evasionSpeed, 0, 0);
-					}
+					transform.position = new Vector3 (Mathf.SmoothStep (transform.position.x, startX - evasionBounds, movementTimer / 1), transform.position.y, 0f);
+					//transform.position += new Vector3 (Time.deltaTime * -1 * evasionSpeed, 0, 0);
 				} else {
 					right = true;
 					movementTimer = 0;
