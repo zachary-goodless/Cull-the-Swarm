@@ -139,7 +139,8 @@ public class Player : MonoBehaviour {
 				Debug.Log ("Primary set Volt Lantern");
 				break;
 			case Loadout.LoadoutPrimary.PRIMARY_4:
-				Debug.Log ("Primary set 4");
+				Debug.Log ("Primary set Bug Spray");
+				gameObject.AddComponent <BugSprayPrimary>();
 				break;
 			default:
 				Debug.Log ("Primary not in range");

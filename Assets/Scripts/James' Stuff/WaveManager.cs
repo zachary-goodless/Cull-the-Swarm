@@ -5,9 +5,11 @@ using System.Collections.Generic;
 public class WaveManager : MonoBehaviour {
 
 	public bool waveSet;
+	public bool hasDest;
+	public bool right;
+	public float rightNum;
 	bool statsSet;
 	public List<GameObject> enemies; 
-	public float right;
 
 	// Use this for initialization
 	void Start () {
@@ -16,19 +18,28 @@ public class WaveManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!waveSet) {
+		if (!waveSet && hasDest) {
 			waveSet = checkSet ();
 		}
 		if (waveSet && !statsSet) {
-			right = Random.Range (-1f, 1f);
-			foreach (GameObject enemy in enemies) {
-				EnemyMovement em = enemy.GetComponent<EnemyMovement> ();
-				if (right > 0) {
-					em.right = true;
-				} else {
-					em.right = false;
-				}
+			if (hasDest) {
+				rightNum = Random.Range (-1f, 1f);
+				foreach (GameObject enemy in enemies) {
+					EnemyMovement em = enemy.GetComponent<EnemyMovement> ();
+					if (rightNum > 0) {
+						em.right = true;
+					} else {
+						em.right = false;
+					}
+					em.lazy = false;
 
+				}
+			} else {
+				foreach (GameObject enemy in enemies) {
+					EnemyMovement em = enemy.GetComponent<EnemyMovement> ();
+						em.right = right;
+						em.lazy = false;
+				}
 			}
 			statsSet = true;
 		}

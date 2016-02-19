@@ -16,18 +16,17 @@ public class ShootTestNormal : MonoBehaviour {
     public GameObject text;
 
 	bool onScreen;
-	SpriteRenderer sr;
+	public MeshRenderer mr;
 
     // Use this for initialization
     void Start () {
 		onScreen = true;
-		sr = GetComponent<SpriteRenderer> ();
 	}
 
     // Update is called once per frame
     void Update() {
 
-		if (sr.isVisible) {
+		if (mr.isVisible) {
 			onScreen = true;
 		} else {
 			onScreen = false;

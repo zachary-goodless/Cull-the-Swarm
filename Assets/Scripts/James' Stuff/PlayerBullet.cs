@@ -33,7 +33,7 @@ public class PlayerBullet : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D other){
 		if (other.tag == "EnemyHit") {
-			other.gameObject.GetComponentInParent<EnemyHits> ().health -= dmg;
+			other.gameObject.GetComponentInParent<EnemyMovement> ().health -= dmg;
 			Destroy (gameObject);
 		}
 	}
