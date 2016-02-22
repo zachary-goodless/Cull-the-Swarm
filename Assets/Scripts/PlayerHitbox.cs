@@ -28,8 +28,8 @@ public class PlayerHitbox : MonoBehaviour {
         }
 
         GetComponent<SpriteRenderer>().color = new Color(1,1,1, visibleRatio);
-        transform.Rotate(new Vector3(0, 0, 3));
-        transform.localScale = new Vector3(visibleRatio * 0.8f, visibleRatio * 0.8f, 1);
+        transform.Rotate(new Vector3(0, 0, 6));
+        transform.localScale = new Vector3(visibleRatio * 1.2f, visibleRatio * 1.2f, 1);
 	}
 
 

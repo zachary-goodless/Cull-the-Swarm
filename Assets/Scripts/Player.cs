@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
-	public GameObject model;
+	public GameObject mesh;
 	public float TimeScale = 1f;
 
 	// Make these into constants of another class later...
@@ -16,7 +16,6 @@ public class Player : MonoBehaviour {
 
 	bool hitCool;
 	public bool dead;
-	public GameObject mesh;
 	int health;
 	KillCount kc;
 
@@ -70,7 +69,7 @@ public class Player : MonoBehaviour {
 			0
 		);
 
-		model.transform.rotation = Quaternion.Euler(0f, shipTilt, 0f);
+		mesh.transform.rotation = Quaternion.Euler(0f, shipTilt, 0f);
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
@@ -102,7 +101,7 @@ public class Player : MonoBehaviour {
 	IEnumerator Blink(){
 		while (hitCool) {
 			mesh.SetActive (!mesh.activeSelf);
-			yield return new WaitForSeconds (.1f);
+			yield return new WaitForSeconds (.05f);
 		}
 		mesh.SetActive (true);
 		yield break;

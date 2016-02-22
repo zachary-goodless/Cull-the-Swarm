@@ -7,18 +7,20 @@ public class BugSprayPrimary : MonoBehaviour {
 	public Transform gunL;
 	float shootCool;
 	float shootTimer;
+    float shotRange;
+    float intertia;
 	bool cooling;
 	public GameObject bullet;
 	private Player player;
 
 	float rot;
 	float dir;
-	float incAmount;
 
 	// Use this for initialization
 	void Start () {
 		rot = 0;
-		incAmount = 1;
+        shotRange = 40;
+        intertia = 5;
 		shootCool = .075f;
 		shootTimer = 0;
 		cooling = false;
@@ -32,16 +34,7 @@ public class BugSprayPrimary : MonoBehaviour {
 	void Update () {
 		if(!Input.GetButton("Precision")){
 			dir = Input.GetAxis ("Horizontal");
-			if (dir != 0){
-				if (Mathf.Abs (rot) < 40) {
-					rot += dir * -1 * incAmount;
-				} else {
-					rot = dir * -1 * 40;
-				}
-			}
-			else{
-				rot = 0;
-			}
+            rot = (rot * intertia + shotRange * -dir) / (intertia + 1);
 		}
 		if (Input.GetButtonDown ("Primary") && !cooling) {
 			StartCoroutine ("Firing");

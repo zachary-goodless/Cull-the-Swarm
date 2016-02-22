@@ -17,9 +17,9 @@ public class BulletAction {
         relative = rel;
         speed = spd;
         angle = ang;
-        acceleration = 0;
-        maxSpeed = 0;
-        angularVelocity = 0;
+        acceleration = float.MinValue;
+        maxSpeed = float.MinValue;
+        angularVelocity = float.MinValue;
     }
 
     // Slightly more advanced

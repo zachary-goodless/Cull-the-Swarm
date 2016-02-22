@@ -41,7 +41,7 @@ public class BulletManager : MonoBehaviour {
         shotID.GetComponent<Bullet>().AddAction(action);
     }
 
-    // Adds a list of action to the queue of the last shot bullet.
+    // Adds a list of actions to the queue of the last shot bullet.
     public static void AddAction(List<BulletAction> actions)
     {
         foreach(BulletAction action in actions)
@@ -56,7 +56,7 @@ public class BulletManager : MonoBehaviour {
         shot.GetComponent<Bullet>().AddAction(action);
     }
 
-    // Adds a list of action to the queue of a specified bullet.
+    // Adds a list of actions to the queue of a specified bullet.
     public static void AddAction(GameObject shot, List<BulletAction> actions)
     {
         foreach (BulletAction action in actions)
