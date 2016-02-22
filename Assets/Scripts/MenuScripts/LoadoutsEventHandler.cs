@@ -88,8 +88,10 @@ public class LoadoutsEventHandler : MonoBehaviour
 		Debug.Log("CURRENT LOADOUT: " + mCurrentLoadout.toString());
 		Debug.Log("LOADING GAMEPLAY SCENE: " + currentGame.getSelectedLevel());
 
-		SceneManager.LoadScene((int)SceneIndex.PRE_GAME);
-		//SceneManager.LoadScene((int)currentGame.getSelectedLevel());
+		//TODO
+		//SceneManager.LoadScene((int)SceneIndex.PRE_GAME);
+		SceneManager.LoadScene((int)currentGame.getSelectedLevel());
+		//TODO
 	}
 		
 //--------------------------------------------------------------------------------------------
