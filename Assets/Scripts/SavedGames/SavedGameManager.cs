@@ -199,16 +199,16 @@ public class SavedGameManager : MonoBehaviour
 		//read saved game data until the end of the file...
 		while(!reader.EndOfStream)
 		{
-			string tokens = "";
+			string name = "";
 
 			//read the next line (game name)
-			tokens = reader.ReadLine();
-			if(tokens == null || tokens == "" || tokens[0] != '$')	//skip if there was any problem
+			name = reader.ReadLine();
+			if(name == null || name == "" || name[0] != '$')	//skip if there was any problem
 				continue;
 
 			//create a new saved game object
-			tokens = tokens.Remove(0, 1);
-			SavedGame game = new SavedGame(tokens);
+			name = name.Remove(0, 1);
+			SavedGame game = new SavedGame(name);
 
 			//read high scores for current game
 			int[] highscores = new int[NUM_GAMEPLAY_LEVELS];
@@ -244,7 +244,7 @@ public class SavedGameManager : MonoBehaviour
 			game.unlockedSecondary = secondary;
 
 			//add the game to the list of saved games
-			mGamesMap.Add(game.getName(), game);
+			mGamesMap.Add(name, game);
 		}
 
 		reader.Close();
