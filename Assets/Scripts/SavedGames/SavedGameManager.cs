@@ -255,6 +255,8 @@ public class SavedGameManager : MonoBehaviour
 
 	public bool writeSavedGameFile()
 	{
+		Debug.Log("WRITING OUT TO FILE");
+
 		//create a file writer
 		StreamWriter writer = new StreamWriter(mSavedGameFile);
 
