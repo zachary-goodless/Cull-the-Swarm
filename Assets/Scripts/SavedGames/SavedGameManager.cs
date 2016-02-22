@@ -258,7 +258,16 @@ public class SavedGameManager : MonoBehaviour
 		Debug.Log("WRITING OUT TO FILE");
 
 		//create a file writer
-		StreamWriter writer = new StreamWriter(mSavedGameFile);
+		StreamWriter writer;
+		try
+		{
+			writer = new StreamWriter(mSavedGameFile);
+		}
+		catch
+		{
+			Debug.Log("ERROR: UNABLE TO OPEN / CREATE STREAM WRITER");
+			return false;
+		}
 
 		//write the global high scores
 		string line = "";
