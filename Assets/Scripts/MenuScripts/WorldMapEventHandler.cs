@@ -11,19 +11,15 @@ using UnityEngine.SceneManagement;
 public class WorldMapEventHandler : MonoBehaviour
 {
 	//PUBLIC
-	public Button mBackButton;			//back to main menu
-	public Button mContinueButton;		//continue to loadouts
+	public Button mBackButton;
+	public Button mContinueButton;
 
-	public GameObject mMainPanel;
-	public GameObject mTutorialPanel;
-	public GameObject mLevelOnePanel;
-	public GameObject mLevelTwoPanel;
-	public GameObject mLevelThreePanel;
-	public GameObject mLevelFourPanel;
+	public GameObject mLevelPanel;
+	public GameObject mStagePanel;
+	public GameObject mDataPanel;
 
 	//PRIVATE
 	private SavedGameManager mSavedGameManager;
-	private List<GameObject> mPanelsList;
 
 	private SceneIndex mSelectedLevel;
 
@@ -39,34 +35,7 @@ public class WorldMapEventHandler : MonoBehaviour
 			Debug.Log("CURRENT GAME PTR NULL: RETURNING TO MAIN MENU");
 		}
 
-		//populate list of level select panels panels (cleaner code)
-		mPanelsList = new List<GameObject>();
-		mPanelsList.Add(mTutorialPanel);
-		mPanelsList.Add(mLevelOnePanel);
-		mPanelsList.Add(mLevelTwoPanel);
-		mPanelsList.Add(mLevelThreePanel);
-		mPanelsList.Add(mLevelFourPanel);
-
-		//some extra stuff for the coming foreach loop...
-		bool[] unlocks = mSavedGameManager.getCurrentGame().unlockedLevels;
-		Button[] buttons = mMainPanel.GetComponentsInChildren<Button>();
-		int i = 0;
-
-		//for each level select panel...
-		foreach(GameObject panel in mPanelsList)
-		{
-			//set the buttons' unlocks and the corresponding main panel's button unlock
-			setButtonsUnlock(i, i + 3, panel.GetComponentsInChildren<LevelButtonEventHandler>(), unlocks);
-			buttons[i / 3].interactable = unlocks[i];
-
-			//set the buttons' enabled status now that their unlock status is set
-			setButtonsEnable(panel.GetComponentsInChildren<Button>());
-
-			//set the global and personal high scores
-			setHighScores(i, i + 3, panel);
-
-			i += 3;
-		}
+		toggleLevelButtonsActive();
 
 		//sanity check -- null any selected level data on the current game ptr
 		mSavedGameManager.getCurrentGame().setSelectedLevel(SceneIndex.NULL);
@@ -75,11 +44,13 @@ public class WorldMapEventHandler : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
+	//TODO -- delete this function when the mouse-over stuff is added and we load the next menu on stage button click
 	void Update()
 	{
 		//continue button is disabled when there is no currently selected level
 		mContinueButton.interactable = mSelectedLevel != SceneIndex.NULL;
 	}
+
 
 //--------------------------------------------------------------------------------------------
 
@@ -104,42 +75,38 @@ public class WorldMapEventHandler : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	public void handleTutorialButtonClicked()
-	{
-		mTutorialPanel.SetActive(true);
-		mMainPanel.SetActive(false);
-	}
+	public void handleTutorialButtonClicked(){ 		handleLevelButtonClicked(0); }
+	public void handleLevelOneButtonClicked(){ 		handleLevelButtonClicked(3); }
+	public void handleLevelTwoButtonClicked(){ 		handleLevelButtonClicked(6); }
+	public void handleLevelThreeButtonClicked(){ 	handleLevelButtonClicked(9); }
+	public void handleLevelFourButtonClicked(){ 	handleLevelButtonClicked(12); }
 
 //--------------------------------------------------------------------------------------------
 
-	public void handleLevelOneButtonClicked()
+	private void handleLevelButtonClicked(int firstStageIndex)
 	{
-		mLevelOnePanel.SetActive(true);
-		mMainPanel.SetActive(false);
-	}
+		//activate the stage and data panels, toggle level buttons
+		mStagePanel.SetActive(true);
+		mDataPanel.SetActive(true);
 
-//--------------------------------------------------------------------------------------------
+		toggleLevelButtonsActive();
 
-	public void handleLevelTwoButtonClicked()
-	{
-		mLevelTwoPanel.SetActive(true);
-		mMainPanel.SetActive(false);
-	}
+		//for the first three buttons (stages 1, 2, and 3)...
+		LevelButtonEventHandler[] behs = mStagePanel.GetComponentsInChildren<LevelButtonEventHandler>();
+		for(int i = 0; i < 3; ++i)
+		{
+			//set isUnlocked and sceneIndex for the current button
+			behs[i].isUnlocked = mSavedGameManager.getCurrentGame().unlockedLevels[firstStageIndex + i];
+			behs[i].sceneIndex = (SceneIndex)firstStageIndex + i + 3;
+		}
 
-//--------------------------------------------------------------------------------------------
+		//force the unlock for the back button (button 4)
+		behs[3].isUnlocked = true;
 
-	public void handleLevelThreeButtonClicked()
-	{
-		mLevelThreePanel.SetActive(true);
-		mMainPanel.SetActive(false);
-	}
+		//set the buttons enable
+		setStageButtonsActive();
 
-//--------------------------------------------------------------------------------------------
-
-	public void handleLevelFourButtonClicked()
-	{
-		mLevelFourPanel.SetActive(true);
-		mMainPanel.SetActive(false);
+		initDataPanel();
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -152,65 +119,125 @@ public class WorldMapEventHandler : MonoBehaviour
 			mSelectedLevel = si;
 			Debug.Log("NEW SELECTED LEVEL: " + mSelectedLevel);
 
-			//for each level select panel...
-			foreach(GameObject panel in mPanelsList)
-			{
-				//reassert button enabled -- button just clicked is disabled in its own handler after
-				setButtonsEnable(panel.GetComponentsInChildren<Button>());
-			}
+			//reassert button enabled -- button just clicked is disabled in its own handler after
+			setStageButtonsActive();
+
+			initDataPanel();	//TODO -- move this to stage button mouse-over
+			//TODO -- automatically load into loadout select menu, add once mouse-over is working
 		}
+
+		//back button clicked...
 		else
 		{
-			mMainPanel.SetActive(true);
+			//deactivate the stage and data panels, toggle level buttons
+			mStagePanel.SetActive(false);
+			mDataPanel.SetActive(false);
+
+			toggleLevelButtonsActive();
 		}
 	}
 
 //--------------------------------------------------------------------------------------------
 
-	private void setButtonsUnlock(int start, int end, LevelButtonEventHandler[] behs, bool[] unlocks)
+	void initDataPanel()
 	{
-		//for each group in the unlocks array...
-		for(int i = start; i < end; ++i)
+		//using the selected level...
+		switch(mSelectedLevel)
 		{
-			//set the isUnlocked on the corresponding button
-			behs[i - start].isUnlocked = unlocks[i];
+		case SceneIndex.NULL:
+			
+			//TODO -- restore default image
+
+			//restore default high score text
+			foreach(Text t in mDataPanel.GetComponentsInChildren<Text>())
+			{
+				if(t.gameObject.name == "HighScorePersonal")
+				{
+					t.text = "-";
+				}
+				else if(t.gameObject.name == "HighScoreGlobal")
+				{
+					t.text = "-";
+				}
+			}
+
+			break;
+
+		case SceneIndex.GAMEPLAY_TUTORIAL_1:
+		case SceneIndex.GAMEPLAY_TUTORIAL_2:
+		case SceneIndex.GAMEPLAY_TUTORIAL_3:
+		case SceneIndex.GAMEPLAY_1_1:
+		case SceneIndex.GAMEPLAY_1_2:
+		case SceneIndex.GAMEPLAY_1_3:
+		case SceneIndex.GAMEPLAY_2_1:
+		case SceneIndex.GAMEPLAY_2_2:
+		case SceneIndex.GAMEPLAY_2_3:
+		case SceneIndex.GAMEPLAY_3_1:
+		case SceneIndex.GAMEPLAY_3_2:
+		case SceneIndex.GAMEPLAY_3_3:
+		case SceneIndex.GAMEPLAY_4_1:
+		case SceneIndex.GAMEPLAY_4_2:
+		case SceneIndex.GAMEPLAY_4_3:
+
+			//TODO -- set data panel image
+
+			//set data panel high scores
+			int i = (int)mSelectedLevel - 3;
+			foreach(Text t in mDataPanel.GetComponentsInChildren<Text>())
+			{
+				if(t.gameObject.name == "HighScorePersonal")
+				{
+					t.text = (mSavedGameManager.getCurrentGame().highScores[i]).ToString();
+				}
+				else if(t.gameObject.name == "HighScoreGlobal")
+				{
+					t.text = (mSavedGameManager.globalHighScores[i]).ToString();
+				}
+			}
+
+			break;
+
+		default:
+			break;
 		}
 	}
 
 //--------------------------------------------------------------------------------------------
 
-	void setButtonsEnable(Button[] buttons)
+	void setStageButtonsActive()
 	{
-		//asserts button enabled based on whether or not it has been unlocked on the current game
-		foreach(Button b in buttons)
+		//for each button on the stage panel...
+		foreach(Button b in mStagePanel.GetComponentsInChildren<Button>())
 		{
-			b.interactable = b.gameObject.GetComponent<LevelButtonEventHandler>().isUnlocked;
+			LevelButtonEventHandler beh = b.gameObject.GetComponent<LevelButtonEventHandler>();
+
+			//if the current button's scene index is not null (not a back button)...
+			if(beh.sceneIndex != SceneIndex.NULL)
+			{
+				//the current button is interactable if it's level is unlocked and it's not already selected
+				b.interactable = mSelectedLevel == beh.sceneIndex ? false : beh.isUnlocked;
+			}
 		}
 	}
 
 //--------------------------------------------------------------------------------------------
 
-	private void setHighScores(int start, int end, GameObject panel)
+	void toggleLevelButtonsActive()
 	{
-		//lists of the labels that will display our high scores
-		List<Text> personalLabels = new List<Text>();
-		List<Text> globalLabels = new List<Text>();
+		bool[] unlocks = mSavedGameManager.getCurrentGame().unlockedLevels;
+		int i = 0;
 
-		//for each text component on this panel...
-		Text[] texts = panel.GetComponentsInChildren<Text>();
-		foreach(Text t in texts)
+		//for each button in the main level panel...
+		foreach(Button b in mLevelPanel.GetComponentsInChildren<Button>())
 		{
-			//add it to one of the lists if it has an appropriate tag
-			if(t.gameObject.tag == "PersonalHighScoreLabel") personalLabels.Add(t);
-			else if(t.gameObject.tag == "GlobalHighScoreLabel") globalLabels.Add(t);
-		}
-
-		//for each high score stored in this block...
-		for(int i = start; i < end; ++i)
-		{
-			//set the high score labels' text
-			personalLabels[i - start].text = mSavedGameManager.getCurrentGame().highScores[i].ToString();
-			globalLabels[i - start].text = mSavedGameManager.globalHighScores[i].ToString();
+			//if the first stage for that level is unlocked... toggle the button
+			b.interactable = unlocks[i] ? !b.interactable : false;
+			i += 3;
 		}
 	}
+
+//--------------------------------------------------------------------------------------------
+
+	//TODO -- mouse over events for level buttons (updates large panel with picture / story info)
+	//TODO -- mouse over events for stage buttons (updates data panel high score stuff)
 }

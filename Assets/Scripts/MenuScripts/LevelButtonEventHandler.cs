@@ -16,7 +16,6 @@ public class LevelButtonEventHandler : MonoBehaviour
 
 	//PRIVATE
 	private WorldMapEventHandler mParentEventHandler;
-	private GameObject mParentPanel;
 
 //--------------------------------------------------------------------------------------------
 
@@ -24,7 +23,6 @@ public class LevelButtonEventHandler : MonoBehaviour
 	{
 		//get the worldmap canvas event handler
 		mParentEventHandler = GetComponentInParent<WorldMapEventHandler>();
-		mParentPanel = transform.parent.gameObject;
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -35,18 +33,6 @@ public class LevelButtonEventHandler : MonoBehaviour
 		{
 			//call to the canvas -- sets the selected level to this button's index
 			mParentEventHandler.handleMapButtonClicked(sceneIndex);
-
-			//if this is a back button, return to the main panel
-			if(sceneIndex == SceneIndex.NULL)
-			{
-				mParentPanel.SetActive(false);
-			}
-
-			//otherwise, this is a stage-select button -- disable it
-			else
-			{
-				GetComponent<Button>().interactable = false;
-			}
 		}
 	}
 }
