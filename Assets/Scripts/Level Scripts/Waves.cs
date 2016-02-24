@@ -383,6 +383,7 @@ public class Waves : MonoBehaviour{
 		StartCoroutine ("DroneCrossWave");
 	}
 
+	//Spawns drones in a semicircle at the top of the map
 	IEnumerator DronesInnerCircle(){
 		GameObject temp;
 		EnemyMovement em;
@@ -437,6 +438,7 @@ public class Waves : MonoBehaviour{
 		StartCoroutine ("DronesInnerCircle");
 	}
 
+	//spawns drones in quarter circles on the upper left and right corners
 	IEnumerator DronesCornerCircles(){
 		GameObject temp;
 		EnemyMovement em;
@@ -484,7 +486,7 @@ public class Waves : MonoBehaviour{
 		StartCoroutine ("DronesCornerCircles");
 	}
 
-	//spawns turrests every 2 seconds
+	//spawns turrets every 2 seconds on alternating sides of the screen
 	IEnumerator AlternateTurrets(){
 		GameObject temp;
 		EnemyMovement em;
@@ -530,6 +532,7 @@ public class Waves : MonoBehaviour{
 		StartCoroutine ("AlternateTurrets");
 	}
 
+	//Two collumns of turrets surrounded by drones
 	IEnumerator DronesAndTurrets(){
 		GameObject temp;
 		EnemyMovement em;

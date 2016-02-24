@@ -59,7 +59,7 @@ public class EnemyMovement : MonoBehaviour {
 		evasionBounds = 150;
 		retreat = false;
 		movementTimer = 0;
-		lifeTime = 25;
+		lifeTime = 30;
 		lifeTimer = 0;
 		beenSeen = false;
 		kc = GameObject.Find("KillCount").GetComponent<KillCount>();
