@@ -35,7 +35,8 @@ public class EnemyMovement : MonoBehaviour {
 	public bool sine;
 	public bool followNose;
 	public bool oscillate;
-	public float dir;
+	public float dirX;
+	public float dirY;
 
 	public bool beenSeen;
 
@@ -96,14 +97,14 @@ public class EnemyMovement : MonoBehaviour {
 		} else {
 			if(vert){
 				Debug.Log ("vert going through");
-				transform.position += new Vector3 (0, speed *dir* Time.deltaTime,0f);
+				transform.position += new Vector3 (0, speed *dirY* Time.deltaTime,0f);
 			}
 			if (hori) {
-				transform.position += new Vector3 (speed * dir * Time.deltaTime, 0f, 0f);
+				transform.position += new Vector3 (speed * dirX * Time.deltaTime, 0f, 0f);
 			}
 			if (followNose) {
 				transform.eulerAngles += new Vector3 (0f, 0f, rotInc);
-				transform.position = transform.up * -1 * speed * Time.deltaTime;
+				transform.position += transform.up * -1 * speed * Time.deltaTime*dirY;
 			}
 			if (sine) {
 				SineWave ();
@@ -129,7 +130,7 @@ public class EnemyMovement : MonoBehaviour {
 			Destroy (gameObject);
 		}
 		if (lifeTimer < lifeTime) {
-			timer += Time.deltaTime;
+			lifeTimer += Time.deltaTime;
 		} else {
 			if (wm) {
 				wm.enemies.Remove (gameObject);
@@ -145,16 +146,16 @@ public class EnemyMovement : MonoBehaviour {
 	}
 
 	void SineWave(){
-		float amplitude = 50;
+		float amplitude = 10;
 		float period = 2;
 		Vector3 currentPos = transform.position;
-		currentPos.x += Time.deltaTime * speed;
+		currentPos.x += Time.deltaTime * speed*dirX;
 
 		float degPerSec = 360.0f / period; 
-		degrees = Mathf.Repeat (degrees + (Time.deltaTime * degPerSec), 360.0f);
+		degrees = Mathf.Repeat (degrees + (Time.deltaTime * degPerSec*dirX), 360.0f);
 		float rads = degrees * Mathf.Deg2Rad;
 
-		Vector3 offset = new Vector3 (amplitude*Mathf.Sin (rads), 0.0f, 0.0f);
+		Vector3 offset = new Vector3 (0.0f, amplitude*Mathf.Sin (rads), 0.0f);
 
 		transform.position = currentPos + offset;
 	}
