@@ -383,7 +383,7 @@ public class Waves : MonoBehaviour{
 		StartCoroutine ("DroneCrossWave");
 	}
 
-	//Spawns drones in a semicircle at the top of the map
+	//Spawns drones in a semicircle at the top of the map0
 	IEnumerator DronesInnerCircle(){
 		GameObject temp;
 		EnemyMovement em;
