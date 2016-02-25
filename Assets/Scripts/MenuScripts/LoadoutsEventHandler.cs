@@ -88,10 +88,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 		Debug.Log("CURRENT LOADOUT: " + mCurrentLoadout.toString());
 		Debug.Log("LOADING GAMEPLAY SCENE: " + currentGame.getSelectedLevel());
 
-		//TODO
-		//SceneManager.LoadScene((int)SceneIndex.PRE_GAME);
 		SceneManager.LoadScene((int)currentGame.getSelectedLevel());
-		//TODO
 	}
 		
 //--------------------------------------------------------------------------------------------
@@ -125,6 +122,8 @@ public class LoadoutsEventHandler : MonoBehaviour
 		Loadout.LoadoutPrimary lp,
 		Loadout.LoadoutSecondary ls)
 	{
+		//TODO -- updates 3d preview of character model as player selects loadout elements
+
 		//update current chasis if that's what was passed in
 		if(lc != Loadout.LoadoutChasis.NULL)
 		{

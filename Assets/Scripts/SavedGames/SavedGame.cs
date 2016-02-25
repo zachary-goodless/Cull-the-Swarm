@@ -4,6 +4,8 @@ using System.Collections;
 
 public class Loadout
 {
+	//TODO -- rename enum elements
+
 	//PUBLIC 
 	public enum LoadoutChasis		//chasis enums
 	{
@@ -205,7 +207,6 @@ public class SavedGame
 
 	public void handleIncomingLevelUnlock(int index)
 	{
-		//TODO -- keep an eye on this for proper indexing
 		switch(index)
 		{
 		//final tutorial stage
@@ -238,7 +239,6 @@ public class SavedGame
 		//index for the array
 		int j = (index / 3) + 1;
 
-		//TODO -- keep an eye on this for proper indexing
 		//TODO -- work on unlock order
 		switch(index)
 		{

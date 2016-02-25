@@ -34,9 +34,7 @@ public enum SceneIndex
 
 	GAMEPLAY_4_1 = 15,			//level 4 stages
 	GAMEPLAY_4_2 = 16,
-	GAMEPLAY_4_3 = 17,
-
-	PRE_GAME = 4	//TODO -- temp set to 4
+	GAMEPLAY_4_3 = 17
 }
 
 //============================================================================================
@@ -56,8 +54,6 @@ public class MainMenuEventHandler : MonoBehaviour
 
 	//PRIVATE
 	private SavedGameManager mSavedGameManager;
-
-	//
 
 //--------------------------------------------------------------------------------------------
 

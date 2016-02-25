@@ -32,7 +32,7 @@ public class LevelButtonEventHandler : MonoBehaviour
 		if(mParentEventHandler != null)
 		{
 			//call to the canvas -- sets the selected level to this button's index
-			mParentEventHandler.handleMapButtonClicked(sceneIndex);
+			mParentEventHandler.handleStageButtonClicked(sceneIndex);
 		}
 	}
 }

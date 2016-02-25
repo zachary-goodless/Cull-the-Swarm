@@ -55,6 +55,7 @@ public class NewGameMenu : MonoBehaviour
 			{
 				Debug.Log("LOADING WORLD MAP");
 				SceneManager.LoadScene((int)SceneIndex.WORLD_MAP);
+				return;
 			}
 		}
 

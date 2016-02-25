@@ -1,0 +1,657 @@
+fileFormatVersion: 2
+guid: cc718f97a81184950947bc4a42361181
+timeCreated: 1456409847
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: StageButtonIcons_0
+    21300002: StageButtonIcons_1
+    21300004: StageButtonIcons_2
+    21300006: StageButtonIcons_3
+    21300008: StageButtonIcons_4
+    21300010: StageButtonIcons_5
+    21300012: StageButtonIcons_6
+    21300014: StageButtonIcons_7
+    21300016: StageButtonIcons_8
+    21300018: StageButtonIcons_9
+    21300020: StageButtonIcons_10
+    21300022: StageButtonIcons_11
+    21300024: StageButtonIcons_12
+    21300026: StageButtonIcons_13
+    21300028: StageButtonIcons_14
+    21300030: StageButtonIcons_15
+    21300032: StageButtonIcons_16
+    21300034: StageButtonIcons_17
+    21300036: StageButtonIcons_18
+    21300038: StageButtonIcons_19
+    21300040: StageButtonIcons_20
+    21300042: StageButtonIcons_21
+    21300044: StageButtonIcons_22
+    21300046: StageButtonIcons_23
+    21300048: StageButtonIcons_24
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: StageButtonIcons_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1224
+        width: 362
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 125, y: -63}
+        - {x: 166, y: -23}
+        - {x: 181, y: -8}
+        - {x: 181, y: 0}
+        - {x: 91, y: 90}
+        - {x: -93, y: 90}
+        - {x: -98, y: 86}
+        - {x: -178, y: 6}
+        - {x: -181, y: 2}
+        - {x: -181, y: -6}
+        - {x: -97, y: -90}
+        - {x: 97, y: -90}
+        - {x: 103, y: -85}
+        - {x: 105, y: -84}
+        - {x: 108, y: -80}
+    - name: StageButtonIcons_1
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 1224
+        width: 362
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 181, y: -7}
+        - {x: 181, y: 0}
+        - {x: 91, y: 90}
+        - {x: -92, y: 90}
+        - {x: -98, y: 85}
+        - {x: -103, y: 81}
+        - {x: -173, y: 11}
+        - {x: -180, y: 3}
+        - {x: -181, y: 2}
+        - {x: -181, y: -6}
+        - {x: -97, y: -90}
+        - {x: 97, y: -90}
+        - {x: 103, y: -85}
+    - name: StageButtonIcons_2
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 1225
+        width: 362
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -92, y: 89.5}
+        - {x: -181, y: 0.5}
+        - {x: -181, y: -5.5}
+        - {x: -97, y: -89.5}
+        - {x: 99, y: -89.5}
+        - {x: 181, y: -7.5}
+        - {x: 181, y: 0.5}
+        - {x: 92, y: 89.5}
+    - name: StageButtonIcons_3
+      rect:
+        serializedVersion: 2
+        x: 1153
+        y: 1224
+        width: 361
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -92.5, y: 89.5}
+        - {x: -180.5, y: 1.5}
+        - {x: -180.5, y: -5.5}
+        - {x: -96.5, y: -89.5}
+        - {x: 98.5, y: -89.5}
+        - {x: 180.5, y: -7.5}
+        - {x: 180.5, y: 1.5}
+        - {x: 92.5, y: 89.5}
+    - name: StageButtonIcons_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1017
+        width: 362
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 163, y: -25.5}
+        - {x: 172, y: -17.5}
+        - {x: 181, y: -7.5}
+        - {x: 181, y: 0.5}
+        - {x: 92, y: 89.5}
+        - {x: -93, y: 89.5}
+        - {x: -100, y: 83.5}
+        - {x: -163, y: 20.5}
+        - {x: -181, y: 1.5}
+        - {x: -181, y: -5.5}
+        - {x: -97, y: -89.5}
+        - {x: 99, y: -89.5}
+    - name: StageButtonIcons_5
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 1018
+        width: 362
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 181, y: -7.5}
+        - {x: 181, y: 0.5}
+        - {x: 92, y: 89.5}
+        - {x: -93, y: 89.5}
+        - {x: -100, y: 83.5}
+        - {x: -170, y: 13.5}
+        - {x: -181, y: 1.5}
+        - {x: -181, y: -5.5}
+        - {x: -97, y: -89.5}
+        - {x: 99, y: -89.5}
+        - {x: 100, y: -88.5}
+        - {x: 102, y: -87.5}
+        - {x: 129, y: -59.5}
+    - name: StageButtonIcons_6
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 1017
+        width: 362
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -94, y: 90}
+        - {x: -181, y: 1}
+        - {x: -181, y: -6}
+        - {x: -97, y: -90}
+        - {x: 98, y: -90}
+        - {x: 181, y: -7}
+        - {x: 181, y: 0}
+        - {x: 93, y: 90}
+    - name: StageButtonIcons_7
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1017
+        width: 362
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 181, y: -8}
+        - {x: 181, y: 1}
+        - {x: 92, y: 90}
+        - {x: -92, y: 90}
+        - {x: -93, y: 89}
+        - {x: -95, y: 88}
+        - {x: -100, y: 83}
+        - {x: -122, y: 60}
+        - {x: -144, y: 38}
+        - {x: -153, y: 30}
+        - {x: -156, y: 26}
+        - {x: -165, y: 19}
+        - {x: -181, y: 1}
+        - {x: -181, y: -6}
+        - {x: -97, y: -90}
+        - {x: 99, y: -90}
+        - {x: 101, y: -88}
+        - {x: 113, y: -77}
+        - {x: 178, y: -12}
+    - name: StageButtonIcons_8
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 806
+        width: 362
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 181, y: 0}
+        - {x: 91, y: 90}
+        - {x: -92, y: 90}
+        - {x: -100, y: 84}
+        - {x: -163, y: 21}
+        - {x: -181, y: 2}
+        - {x: -181, y: -6}
+        - {x: -97, y: -90}
+        - {x: 98, y: -90}
+        - {x: 123, y: -66}
+        - {x: 181, y: -8}
+    - name: StageButtonIcons_9
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 806
+        width: 362
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 120, y: -69}
+        - {x: 123, y: -65}
+        - {x: 152, y: -36}
+        - {x: 181, y: -8}
+        - {x: 181, y: 0}
+        - {x: 91, y: 90}
+        - {x: -92, y: 90}
+        - {x: -100, y: 84}
+        - {x: -175, y: 9}
+        - {x: -181, y: 2}
+        - {x: -181, y: -6}
+        - {x: -97, y: -90}
+        - {x: 98, y: -90}
+        - {x: 101, y: -87}
+        - {x: 103, y: -86}
+        - {x: 111, y: -77}
+    - name: StageButtonIcons_10
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 807
+        width: 362
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 91, y: 89.5}
+        - {x: -93, y: 89.5}
+        - {x: -181, y: 1.5}
+        - {x: -181, y: -6.5}
+        - {x: -98, y: -89.5}
+        - {x: 108, y: -89.5}
+        - {x: 181, y: -6.5}
+        - {x: 181, y: 8.5}
+    - name: StageButtonIcons_11
+      rect:
+        serializedVersion: 2
+        x: 1153
+        y: 806
+        width: 361
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 178.5, y: -12}
+        - {x: 180.5, y: -9}
+        - {x: 180.5, y: 1}
+        - {x: 91.5, y: 90}
+        - {x: -92.5, y: 90}
+        - {x: -95.5, y: 86}
+        - {x: -104.5, y: 78}
+        - {x: -136.5, y: 45}
+        - {x: -180.5, y: 1}
+        - {x: -180.5, y: -6}
+        - {x: -96.5, y: -90}
+        - {x: 99.5, y: -90}
+        - {x: 103.5, y: -87}
+    - name: StageButtonIcons_12
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 614
+        width: 362
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 181, y: -8.5}
+        - {x: 181, y: 0.5}
+        - {x: 92, y: 89.5}
+        - {x: -92, y: 89.5}
+        - {x: -99, y: 84.5}
+        - {x: -181, y: 2.5}
+        - {x: -181, y: -6.5}
+        - {x: -98, y: -89.5}
+        - {x: 99, y: -89.5}
+        - {x: 102, y: -86.5}
+        - {x: 104, y: -85.5}
+    - name: StageButtonIcons_13
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 614
+        width: 362
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 131, y: -58.5}
+        - {x: 181, y: -7.5}
+        - {x: 181, y: 0.5}
+        - {x: 92, y: 89.5}
+        - {x: -92, y: 89.5}
+        - {x: -99, y: 84.5}
+        - {x: -181, y: 2.5}
+        - {x: -181, y: -6.5}
+        - {x: -98, y: -89.5}
+        - {x: 99, y: -89.5}
+        - {x: 102, y: -86.5}
+        - {x: 104, y: -85.5}
+    - name: StageButtonIcons_14
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 615
+        width: 362
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -93, y: 89.5}
+        - {x: -181, y: 3.5}
+        - {x: -181, y: -6.5}
+        - {x: -98, y: -89.5}
+        - {x: 98, y: -89.5}
+        - {x: 181, y: -6.5}
+        - {x: 181, y: 0.5}
+        - {x: 92, y: 89.5}
+    - name: StageButtonIcons_15
+      rect:
+        serializedVersion: 2
+        x: 1153
+        y: 614
+        width: 361
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 136.5, y: -52.5}
+        - {x: 145.5, y: -44.5}
+        - {x: 153.5, y: -36.5}
+        - {x: 160.5, y: -28.5}
+        - {x: 180.5, y: -8.5}
+        - {x: 180.5, y: 1.5}
+        - {x: 92.5, y: 89.5}
+        - {x: -91.5, y: 89.5}
+        - {x: -98.5, y: 83.5}
+        - {x: -103.5, y: 79.5}
+        - {x: -180.5, y: 2.5}
+        - {x: -180.5, y: -6.5}
+        - {x: -97.5, y: -89.5}
+        - {x: 99.5, y: -89.5}
+        - {x: 107.5, y: -81.5}
+        - {x: 121.5, y: -68.5}
+        - {x: 124.5, y: -64.5}
+    - name: StageButtonIcons_16
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 409
+        width: 362
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 181, y: -7}
+        - {x: 181, y: 1}
+        - {x: 92, y: 90}
+        - {x: -93, y: 90}
+        - {x: -95, y: 88}
+        - {x: -119, y: 65}
+        - {x: -177, y: 7}
+        - {x: -181, y: 2}
+        - {x: -181, y: -6}
+        - {x: -97, y: -90}
+        - {x: 98, y: -90}
+    - name: StageButtonIcons_17
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 409
+        width: 362
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 118, y: -71}
+        - {x: 162, y: -26}
+        - {x: 181, y: -7}
+        - {x: 181, y: 1}
+        - {x: 92, y: 90}
+        - {x: -94, y: 90}
+        - {x: -136, y: 48}
+        - {x: -181, y: 2}
+        - {x: -181, y: -6}
+        - {x: -97, y: -90}
+        - {x: 98, y: -90}
+        - {x: 99, y: -89}
+        - {x: 106, y: -83}
+        - {x: 109, y: -79}
+    - name: StageButtonIcons_18
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 411
+        width: 362
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -151, y: 89.5}
+        - {x: -181, y: 3.5}
+        - {x: -181, y: -6.5}
+        - {x: -98, y: -89.5}
+        - {x: 98, y: -89.5}
+        - {x: 181, y: -6.5}
+        - {x: 181, y: 58.5}
+        - {x: 94, y: 89.5}
+    - name: StageButtonIcons_19
+      rect:
+        serializedVersion: 2
+        x: 1153
+        y: 411
+        width: 361
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 180.5, y: -9}
+        - {x: 180.5, y: 1}
+        - {x: 92.5, y: 89}
+        - {x: -92.5, y: 89}
+        - {x: -94.5, y: 87}
+        - {x: -101.5, y: 81}
+        - {x: -154.5, y: 28}
+        - {x: -165.5, y: 18}
+        - {x: -180.5, y: 1}
+        - {x: -180.5, y: -7}
+        - {x: -98.5, y: -89}
+        - {x: 101.5, y: -89}
+        - {x: 122.5, y: -69}
+        - {x: 150.5, y: -39}
+    - name: StageButtonIcons_20
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 201
+        width: 362
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 181, y: -7}
+        - {x: 181, y: 0}
+        - {x: 91, y: 90}
+        - {x: -94, y: 90}
+        - {x: -97, y: 88}
+        - {x: -106, y: 78}
+        - {x: -159, y: 25}
+        - {x: -181, y: 2}
+        - {x: -181, y: -7}
+        - {x: -98, y: -90}
+        - {x: 98, y: -90}
+    - name: StageButtonIcons_21
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 201
+        width: 362
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 181, y: -7}
+        - {x: 181, y: 0}
+        - {x: 91, y: 90}
+        - {x: -93, y: 90}
+        - {x: -101, y: 83}
+        - {x: -176, y: 8}
+        - {x: -181, y: 2}
+        - {x: -181, y: -7}
+        - {x: -98, y: -90}
+        - {x: 97, y: -90}
+        - {x: 105, y: -83}
+        - {x: 107, y: -82}
+        - {x: 139, y: -49}
+    - name: StageButtonIcons_22
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 201
+        width: 362
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -92, y: 90}
+        - {x: -181, y: 1}
+        - {x: -181, y: -6}
+        - {x: -99, y: -90}
+        - {x: 100, y: -90}
+        - {x: 181, y: -7}
+        - {x: 181, y: 1}
+        - {x: 92, y: 90}
+    - name: StageButtonIcons_23
+      rect:
+        serializedVersion: 2
+        x: 1153
+        y: 200
+        width: 361
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 180.5, y: 0.5}
+        - {x: 90.5, y: 90.5}
+        - {x: -88.5, y: 90.5}
+        - {x: -91.5, y: 89.5}
+        - {x: -103.5, y: 78.5}
+        - {x: -161.5, y: 20.5}
+        - {x: -180.5, y: 0.5}
+        - {x: -180.5, y: -7.5}
+        - {x: -96.5, y: -91.5}
+        - {x: 99.5, y: -91.5}
+        - {x: 121.5, y: -69.5}
+        - {x: 180.5, y: -9.5}
+      - - {x: 120.5, y: 91.5}
+        - {x: 121.5, y: 87.5}
+        - {x: 173.5, y: 87.5}
+        - {x: 180.5, y: 88.5}
+        - {x: 180.5, y: 91.5}
+    - name: StageButtonIcons_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 362
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 181, y: 0.5}
+        - {x: 92, y: 89.5}
+        - {x: -93, y: 89.5}
+        - {x: -97, y: 86.5}
+        - {x: -172, y: 11.5}
+        - {x: -179, y: 3.5}
+        - {x: -181, y: 1.5}
+        - {x: -181, y: -6.5}
+        - {x: -98, y: -89.5}
+        - {x: 98, y: -89.5}
+        - {x: 104, y: -84.5}
+        - {x: 181, y: -7.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
