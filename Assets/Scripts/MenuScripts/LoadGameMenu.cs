@@ -70,12 +70,6 @@ public class LoadGameMenu : MonoBehaviour
 			//set the element's name
 			newElem.GetComponent<GameListElementHandler>().setName(name);
 
-			//disable the element's button if it is the current game
-			if(mSavedGameManager.getCurrentGame() != null)
-			{
-				newElem.GetComponentInChildren<Button>().interactable = mSavedGameManager.getCurrentGame().getName() != name;
-			}
-
 			//place the new list element
 			RectTransform rectTransform = newElem.GetComponent<RectTransform>();
 
@@ -146,6 +140,6 @@ public class LoadGameMenu : MonoBehaviour
 		mLoadButton.interactable = false;
 		gameObject.SetActive(false);
 
-		mMainMenu.mMainPanel.SetActive(true);
+		mMainMenu.toggleButtons();
 	}
 }

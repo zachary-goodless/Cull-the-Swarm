@@ -70,6 +70,6 @@ public class NewGameMenu : MonoBehaviour
 		mNameField.text = "";
 		gameObject.SetActive(false);
 
-		mMainMenu.mMainPanel.SetActive(true);
+		mMainMenu.toggleButtons();
 	}
 }

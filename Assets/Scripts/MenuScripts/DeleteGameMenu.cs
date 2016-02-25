@@ -132,6 +132,6 @@ public class DeleteGameMenu : MonoBehaviour
 		mDeleteButton.interactable = false;
 		gameObject.SetActive(false);
 
-		mMainMenu.mMainPanel.SetActive(true);
+		mMainMenu.toggleButtons();
 	}
 }

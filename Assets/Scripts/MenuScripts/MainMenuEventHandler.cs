@@ -42,11 +42,6 @@ public enum SceneIndex
 public class MainMenuEventHandler : MonoBehaviour
 {
 	//PUBLIC
-	public Button mNewGameButton;		//buttons
-	public Button mLoadGameButton;
-	public Button mDeleteGameButton;
-	public Button mStartButton;
-
 	public GameObject mMainPanel;		//menu panels
 	public GameObject mNewGamePanel;
 	public GameObject mLoadGamePanel;
@@ -66,7 +61,7 @@ public class MainMenuEventHandler : MonoBehaviour
 
 	public void handleNewGameButtonClicked()
 	{
-		mMainPanel.SetActive(false);
+		toggleButtons();
 		mNewGamePanel.SetActive(true);
 	}
 
@@ -74,7 +69,7 @@ public class MainMenuEventHandler : MonoBehaviour
 
 	public void handleLoadGameButtonClicked()
 	{
-		mMainPanel.SetActive(false);
+		toggleButtons();
 		mLoadGamePanel.SetActive(true);
 	}
 
@@ -82,7 +77,19 @@ public class MainMenuEventHandler : MonoBehaviour
 
 	public void handleDeleteGameButtonClicked()
 	{
-		mMainPanel.SetActive(false);
+		toggleButtons();
 		mDeleteGamePanel.SetActive(true);
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	public void toggleButtons()
+	{
+		//for each button on the main panel...
+		foreach(Button b in mMainPanel.GetComponentsInChildren<Button>())
+		{
+			//toggle its enabled state
+			b.interactable = !b.interactable;
+		}
 	}
 }
