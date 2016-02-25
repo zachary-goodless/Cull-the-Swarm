@@ -59,7 +59,11 @@ public class SwatterBullet : MonoBehaviour {
 	void findTarget(){
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
 		foreach (GameObject enemy in enemies) {
-			if(false);
+			if (!target) {
+				target = enemy;
+			} else if(Vector3.Distance(target.transform.position, transform.position) < Vector3.Distance(enemy.transform.position, transform.position)){
+				target = enemy;
+			}
 		}
 	}
 

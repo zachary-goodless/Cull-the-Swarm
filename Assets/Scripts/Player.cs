@@ -136,6 +136,7 @@ public class Player : MonoBehaviour {
 				break;
 			case Loadout.LoadoutPrimary.PRIMARY_3:
 				Debug.Log ("Primary set Volt Lantern");
+				gameObject.AddComponent <LaserPrimary>();
 				break;
 			case Loadout.LoadoutPrimary.PRIMARY_4:
 				Debug.Log ("Primary set Bug Spray");

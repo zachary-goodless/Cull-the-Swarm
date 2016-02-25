@@ -25,6 +25,11 @@ public class EnemyMovement : MonoBehaviour {
 
 	public float flightTime;
 	public float rotInc;
+	public float rotRange;
+	public bool hasRange;
+	bool rotUp;
+	float rotMax;
+	float rotMin;
 	float degrees;
 
 	public MeshRenderer mr;
@@ -35,7 +40,8 @@ public class EnemyMovement : MonoBehaviour {
 	public bool sine;
 	public bool followNose;
 	public bool oscillate;
-	public float dir;
+	public float dirX;
+	public float dirY;
 
 	public bool beenSeen;
 
@@ -58,10 +64,16 @@ public class EnemyMovement : MonoBehaviour {
 		evasionBounds = 150;
 		retreat = false;
 		movementTimer = 0;
-		lifeTime = 25;
+		lifeTime = 30;
 		lifeTimer = 0;
 		beenSeen = false;
 		kc = GameObject.Find("KillCount").GetComponent<KillCount>();
+
+		if (hasRange) {
+			rotMax = (transform.eulerAngles.z + rotRange)%360;
+			rotMin = (transform.eulerAngles.z - rotRange)%360;
+		}
+		rotUp = true;
 	}
 	
 	// Update is called once per frame
@@ -96,14 +108,25 @@ public class EnemyMovement : MonoBehaviour {
 		} else {
 			if(vert){
 				Debug.Log ("vert going through");
-				transform.position += new Vector3 (0, speed *dir* Time.deltaTime,0f);
+				transform.position += new Vector3 (0, speed *dirY* Time.deltaTime,0f);
 			}
 			if (hori) {
-				transform.position += new Vector3 (speed * dir * Time.deltaTime, 0f, 0f);
+				transform.position += new Vector3 (speed * dirX * Time.deltaTime, 0f, 0f);
 			}
 			if (followNose) {
-				transform.eulerAngles += new Vector3 (0f, 0f, rotInc);
-				transform.position = transform.up * -1 * speed * Time.deltaTime;
+				if (rotUp) {
+					transform.eulerAngles += new Vector3 (0f, 0f, rotInc);
+				} else {
+					transform.eulerAngles -= new Vector3 (0f, 0f, rotInc);
+				}
+				if (hasRange) {
+					if ((transform.eulerAngles.z > rotMax && rotMax > rotMin) || (transform.eulerAngles.z > rotMax && transform.eulerAngles.z < rotMin && rotUp)) {
+						rotUp = false;
+					} else if ((transform.eulerAngles.z < rotMin && rotMax > rotMin) || (transform.eulerAngles.z > rotMax && transform.eulerAngles.z < rotMin && !rotUp)) {
+						rotUp = true;
+					}
+				}
+				transform.position += transform.up * -1 * speed * Time.deltaTime*dirY;
 			}
 			if (sine) {
 				SineWave ();
@@ -129,7 +152,7 @@ public class EnemyMovement : MonoBehaviour {
 			Destroy (gameObject);
 		}
 		if (lifeTimer < lifeTime) {
-			timer += Time.deltaTime;
+			lifeTimer += Time.deltaTime;
 		} else {
 			if (wm) {
 				wm.enemies.Remove (gameObject);
@@ -145,16 +168,16 @@ public class EnemyMovement : MonoBehaviour {
 	}
 
 	void SineWave(){
-		float amplitude = 50;
+		float amplitude = 10;
 		float period = 2;
 		Vector3 currentPos = transform.position;
-		currentPos.x += Time.deltaTime * speed;
+		currentPos.x += Time.deltaTime * speed*dirX;
 
 		float degPerSec = 360.0f / period; 
-		degrees = Mathf.Repeat (degrees + (Time.deltaTime * degPerSec), 360.0f);
+		degrees = Mathf.Repeat (degrees + (Time.deltaTime * degPerSec*dirX), 360.0f);
 		float rads = degrees * Mathf.Deg2Rad;
 
-		Vector3 offset = new Vector3 (amplitude*Mathf.Sin (rads), 0.0f, 0.0f);
+		Vector3 offset = new Vector3 (0.0f, amplitude*Mathf.Sin (rads), 0.0f);
 
 		transform.position = currentPos + offset;
 	}
