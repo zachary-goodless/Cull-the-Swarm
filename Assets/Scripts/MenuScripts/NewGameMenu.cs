@@ -5,6 +5,8 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+using UnityEngine.SceneManagement;
+
 public class NewGameMenu : MonoBehaviour
 {
 	//PUBLIC
@@ -48,8 +50,12 @@ public class NewGameMenu : MonoBehaviour
 		//if the name is nonempty...
 		if(mName != "")
 		{
-			//create a new game object
-			mSavedGameManager.createNewGame(mName);
+			//create a new game object, load worldmap if successful
+			if(mSavedGameManager.createNewGame(mName))
+			{
+				Debug.Log("LOADING WORLD MAP");
+				SceneManager.LoadScene((int)SceneIndex.WORLD_MAP);
+			}
 		}
 
 		handleBackButtonClicked();
@@ -59,11 +65,10 @@ public class NewGameMenu : MonoBehaviour
 
 	public void handleBackButtonClicked()
 	{
-		//enable the main menu buttons
-		mMainMenu.enableButtons();
-
 		//clear the text edit, disable the new game panel
 		mNameField.text = "";
 		gameObject.SetActive(false);
+
+		mMainMenu.mMainPanel.SetActive(true);
 	}
 }

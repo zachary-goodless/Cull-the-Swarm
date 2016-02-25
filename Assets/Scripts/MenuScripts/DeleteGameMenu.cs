@@ -128,11 +128,10 @@ public class DeleteGameMenu : MonoBehaviour
 
 	public void handleBackButtonClicked()
 	{
-		//enable the main menu buttons
-		mMainMenu.enableButtons();
-
 		//disable the new game panel
 		mDeleteButton.interactable = false;
 		gameObject.SetActive(false);
+
+		mMainMenu.mMainPanel.SetActive(true);
 	}
 }

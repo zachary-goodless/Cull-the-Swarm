@@ -70,7 +70,7 @@ public class MainMenuEventHandler : MonoBehaviour
 
 	public void handleNewGameButtonClicked()
 	{
-		disableButtons();
+		mMainPanel.SetActive(false);
 		mNewGamePanel.SetActive(true);
 	}
 
@@ -78,7 +78,7 @@ public class MainMenuEventHandler : MonoBehaviour
 
 	public void handleLoadGameButtonClicked()
 	{
-		disableButtons();
+		mMainPanel.SetActive(false);
 		mLoadGamePanel.SetActive(true);
 	}
 
@@ -86,39 +86,7 @@ public class MainMenuEventHandler : MonoBehaviour
 
 	public void handleDeleteGameButtonClicked()
 	{
-		disableButtons();
+		mMainPanel.SetActive(false);
 		mDeleteGamePanel.SetActive(true);
-	}
-
-//--------------------------------------------------------------------------------------------
-
-	public void handleStartButtonClicked()
-	{
-		//load the worldmap scene
-		Debug.Log("LOADING WORLD MAP");
-		SceneManager.LoadScene((int)SceneIndex.WORLD_MAP);
-	}
-
-//--------------------------------------------------------------------------------------------
-
-	private void disableButtons()
-	{
-		mNewGameButton.interactable = false;
-		mLoadGameButton.interactable = false;
-		mDeleteGameButton.interactable = false;
-
-		mStartButton.interactable = false;
-	}
-
-//--------------------------------------------------------------------------------------------
-
-	public void enableButtons()
-	{
-		mNewGameButton.interactable = true;
-		mLoadGameButton.interactable = true;
-		mDeleteGameButton.interactable = true;
-
-		//start button is disabled if game manager's current game ptr is null
-		mStartButton.interactable = mSavedGameManager.getCurrentGame() != null;
 	}
 }

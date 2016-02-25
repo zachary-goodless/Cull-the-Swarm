@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+using UnityEngine.SceneManagement;
+
 public class LoadGameMenu : MonoBehaviour
 {
 	//PUBLIC
@@ -65,7 +67,14 @@ public class LoadGameMenu : MonoBehaviour
 			newElem.name = "ListElement_" + name;
 			newElem.transform.SetParent(scrollPanel.transform, false);
 
+			//set the element's name
 			newElem.GetComponent<GameListElementHandler>().setName(name);
+
+			//disable the element's button if it is the current game
+			if(mSavedGameManager.getCurrentGame() != null)
+			{
+				newElem.GetComponentInChildren<Button>().interactable = mSavedGameManager.getCurrentGame().getName() != name;
+			}
 
 			//place the new list element
 			RectTransform rectTransform = newElem.GetComponent<RectTransform>();
@@ -117,8 +126,12 @@ public class LoadGameMenu : MonoBehaviour
 		//if the name is nonempty
 		if(mName != "")
 		{
-			//load a saved game object
-			mSavedGameManager.loadSavedGame(mName);
+			//load a saved game object, load worldmap if successful
+			if(mSavedGameManager.loadSavedGame(mName))
+			{
+				Debug.Log("LOADING WORLD MAP");
+				SceneManager.LoadScene((int)SceneIndex.WORLD_MAP);
+			}
 		}
 
 		handleBackButtonClicked();
@@ -128,11 +141,10 @@ public class LoadGameMenu : MonoBehaviour
 
 	public void handleBackButtonClicked()
 	{
-		//enable the main menu buttons
-		mMainMenu.enableButtons();
-
 		//disable the new game panel
 		mLoadButton.interactable = false;
 		gameObject.SetActive(false);
+
+		mMainMenu.mMainPanel.SetActive(true);
 	}
 }
