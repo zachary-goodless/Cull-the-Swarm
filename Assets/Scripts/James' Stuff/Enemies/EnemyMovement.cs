@@ -25,6 +25,11 @@ public class EnemyMovement : MonoBehaviour {
 
 	public float flightTime;
 	public float rotInc;
+	public float rotRange;
+	public bool hasRange;
+	bool rotUp;
+	float rotMax;
+	float rotMin;
 	float degrees;
 
 	public MeshRenderer mr;
@@ -63,6 +68,12 @@ public class EnemyMovement : MonoBehaviour {
 		lifeTimer = 0;
 		beenSeen = false;
 		kc = GameObject.Find("KillCount").GetComponent<KillCount>();
+
+		if (hasRange) {
+			rotMax = (transform.eulerAngles.z + rotRange)%360;
+			rotMin = (transform.eulerAngles.z - rotRange)%360;
+		}
+		rotUp = true;
 	}
 	
 	// Update is called once per frame
@@ -103,7 +114,18 @@ public class EnemyMovement : MonoBehaviour {
 				transform.position += new Vector3 (speed * dirX * Time.deltaTime, 0f, 0f);
 			}
 			if (followNose) {
-				transform.eulerAngles += new Vector3 (0f, 0f, rotInc);
+				if (rotUp) {
+					transform.eulerAngles += new Vector3 (0f, 0f, rotInc);
+				} else {
+					transform.eulerAngles -= new Vector3 (0f, 0f, rotInc);
+				}
+				if (hasRange) {
+					if ((transform.eulerAngles.z > rotMax && rotMax > rotMin) || (transform.eulerAngles.z > rotMax && transform.eulerAngles.z < rotMin && rotUp)) {
+						rotUp = false;
+					} else if ((transform.eulerAngles.z < rotMin && rotMax > rotMin) || (transform.eulerAngles.z > rotMax && transform.eulerAngles.z < rotMin && !rotUp)) {
+						rotUp = true;
+					}
+				}
 				transform.position += transform.up * -1 * speed * Time.deltaTime*dirY;
 			}
 			if (sine) {

@@ -7,14 +7,13 @@ public class Level1_1 : MonoBehaviour {
 	public Waves waves;
 
 	void Start () {
-		StartCoroutine ("LevelLayout");
+		//StartCoroutine ("LevelLayout");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Q)) {
-			waves.StartDronesInnerCircle ();
-			waves.StartDronesCornerCircles ();
+			waves.StartTest ();
 		}
 	}
 

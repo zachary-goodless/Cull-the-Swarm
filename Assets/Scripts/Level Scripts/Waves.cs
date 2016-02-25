@@ -5,12 +5,55 @@ using System.Collections.Generic;
 public class Waves : MonoBehaviour{
 	public GameObject drone;
 	public GameObject turret;
+	public GameObject wormHead;
+	public GameObject WormBod;
 
 	//Either need to get rid of this or update it.
 	public GameObject waveManager;
 	public WaveManager wm;
 
 	//So far, these waves are specific to a certain kind fo enemy. Need to figure out how to fix that.
+
+	//Bods is # of segments including head, Pos is the position of the head, rot is the rotation of the head
+	GameObject MakeWorm(int bods, Vector3 pos, Vector3 rot){
+		//Puts the segments behind the proper place;
+		Vector3 backPush;
+		if (rot.z % 360 <= 45 || rot.z % 360 > 315) {
+			backPush = new Vector3 (0, 70, 0);
+		} else if (rot.z % 360 <= 135 || rot.z % 360 > 45) {
+			backPush = new Vector3 (-70, 0, 0);
+		} else if (rot.z % 360 <= 225 || rot.z % 360 > 135) {
+			backPush = new Vector3 (0, -70, 0);
+		} else {
+			backPush = new Vector3 (70, 0, 0);
+		}
+
+		GameObject head = Instantiate (wormHead, pos, Quaternion.Euler (rot)) as GameObject;
+		WormScript ws = head.GetComponent <WormScript>();
+		for (int i = 1; i < bods; i++) {
+			GameObject bod = Instantiate(WormBod, pos + backPush*i, Quaternion.Euler(rot)) as GameObject;
+			ws.segments.Add (bod.transform);
+		}
+		return head;
+	}
+
+	IEnumerator TestGround(){
+		GameObject temp;
+		EnemyMovement em;
+		temp = MakeWorm (6, new Vector3 (1000, 0, 0),new Vector3(0,0,270));
+		em = temp.GetComponent<EnemyMovement> ();
+		em.followNose = true;
+		em.hasDest = false;
+		em.hasRange = true;
+		em.rotInc = .5f;
+		em.rotRange = 40;
+		em.dirY = 1;
+		yield break;
+	}
+
+	public void StartTest(){
+		StartCoroutine ("TestGround");
+	}
 
 	//Space invaders-style wave 
 	IEnumerator WaveOne(){
@@ -391,6 +434,7 @@ public class Waves : MonoBehaviour{
 		em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.followNose = true;
+		em.hasRange = false;
 		em.rotInc = 0;
 		em.dirY = .8f;
 		yield return new WaitForSeconds(.5f);
@@ -398,12 +442,14 @@ public class Waves : MonoBehaviour{
 		em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.followNose = true;
+		em.hasRange = false;
 		em.rotInc = 0;
 		em.dirY = 1;
 		temp = Instantiate (drone, new Vector3 (-50, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,-30))) as GameObject;
 		em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.followNose = true;
+		em.hasRange = false;
 		em.rotInc = 0;
 		em.dirY = 1;
 		yield return new WaitForSeconds(.5f);
@@ -411,12 +457,14 @@ public class Waves : MonoBehaviour{
 		em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.followNose = true;
+		em.hasRange = false;
 		em.rotInc = 0;
 		em.dirY = 1;
 		temp = Instantiate (drone, new Vector3 (-100, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,-45))) as GameObject;
 		em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.followNose = true;
+		em.hasRange = false;
 		em.rotInc = 0;
 		em.dirY = 1;
 		yield return new WaitForSeconds(.5f);
@@ -424,12 +472,14 @@ public class Waves : MonoBehaviour{
 		em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.followNose = true;
+		em.hasRange = false;
 		em.rotInc = 0;
 		em.dirY = 1;
 		temp = Instantiate (drone, new Vector3 (-150, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,-60))) as GameObject;
 		em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.followNose = true;
+		em.hasRange = false;
 		em.rotInc = 0;
 		em.dirY = 1;
 		yield break;
@@ -446,12 +496,14 @@ public class Waves : MonoBehaviour{
 		em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.followNose = true;
+		em.hasRange = false;
 		em.rotInc = 0;
 		em.dirY = 1f;
 		temp = Instantiate (drone, new Vector3 (-1000, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,60))) as GameObject;
 		em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.followNose = true;
+		em.hasRange = false;
 		em.rotInc = 0;
 		em.dirY = 1f;
 		yield return new WaitForSeconds(.5f);
@@ -459,12 +511,14 @@ public class Waves : MonoBehaviour{
 		em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.followNose = true;
+		em.hasRange = false;
 		em.rotInc = 0;
 		em.dirY = 1f;
 		temp = Instantiate (drone, new Vector3 (-1000, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,45))) as GameObject;
 		em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.followNose = true;
+		em.hasRange = false;
 		em.rotInc = 0;
 		em.dirY = 1f;
 		yield return new WaitForSeconds(.5f);
@@ -472,12 +526,14 @@ public class Waves : MonoBehaviour{
 		em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.followNose = true;
+		em.hasRange = false;
 		em.rotInc = 0;
 		em.dirY = 1f;
 		temp = Instantiate (drone, new Vector3 (-1000, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,30))) as GameObject;
 		em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.followNose = true;
+		em.hasRange = false;
 		em.rotInc = 0;
 		em.dirY = 1f;
 		yield break;
@@ -540,6 +596,7 @@ public class Waves : MonoBehaviour{
 		em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.followNose = true;
+		em.hasRange = false;
 		em.dirY = 1f;
 		em.rotInc = -.05f;
 		temp = Instantiate (turret, new Vector3 (300, transform.position.y, 0), Quaternion.identity) as GameObject;
@@ -561,6 +618,7 @@ public class Waves : MonoBehaviour{
 		em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.followNose = true;
+		em.hasRange = false;
 		em.dirY = 1f;
 		em.rotInc = .05f;
 		yield return new WaitForSeconds(1.5f);
@@ -568,6 +626,7 @@ public class Waves : MonoBehaviour{
 		em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.followNose = true;
+		em.hasRange = false;
 		em.dirY = 1f;
 		em.rotInc = -.05f;
 		temp = Instantiate (turret, new Vector3 (300, transform.position.y, 0), Quaternion.identity) as GameObject;
@@ -589,6 +648,7 @@ public class Waves : MonoBehaviour{
 		em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.followNose = true;
+		em.hasRange = false;
 		em.dirY = 1f;
 		em.rotInc = .05f;
 		yield return new WaitForSeconds(1.5f);
@@ -596,6 +656,7 @@ public class Waves : MonoBehaviour{
 		em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.followNose = true;
+		em.hasRange = false;
 		em.dirY = 1f;
 		em.rotInc = -.05f;
 		temp = Instantiate (turret, new Vector3 (300, transform.position.y, 0), Quaternion.identity) as GameObject;
@@ -617,6 +678,7 @@ public class Waves : MonoBehaviour{
 		em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.followNose = true;
+		em.hasRange = false;
 		em.dirY = 1f;
 		em.rotInc = .05f;
 		yield return new WaitForSeconds(1.5f);
@@ -624,6 +686,7 @@ public class Waves : MonoBehaviour{
 		em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.followNose = true;
+		em.hasRange = false;
 		em.dirY = 1f;
 		em.rotInc = -.05f;
 		temp = Instantiate (turret, new Vector3 (300, transform.position.y, 0), Quaternion.identity) as GameObject;
@@ -645,6 +708,7 @@ public class Waves : MonoBehaviour{
 		em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.followNose = true;
+		em.hasRange = false;
 		em.dirY = 1f;
 		em.rotInc = .05f;
 		yield return new WaitForSeconds(1.5f);
@@ -652,6 +716,7 @@ public class Waves : MonoBehaviour{
 		em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.followNose = true;
+		em.hasRange = false;
 		em.dirY = 1f;
 		em.rotInc = -.05f;
 		temp = Instantiate (turret, new Vector3 (300, transform.position.y, 0), Quaternion.identity) as GameObject;
@@ -673,6 +738,7 @@ public class Waves : MonoBehaviour{
 		em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.followNose = true;
+		em.hasRange = false;
 		em.dirY = 1f;
 		em.rotInc = .05f;
 		yield break;
