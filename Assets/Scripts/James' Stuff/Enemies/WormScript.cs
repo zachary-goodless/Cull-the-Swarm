@@ -51,7 +51,7 @@ public class WormScript : MonoBehaviour {
 			segment.position = Vector3.MoveTowards (segment.position,target,speed*Time.deltaTime);
 			target = segment.position + segment.up *distance;
 		}
-		for(int i = segments.Count - 1; i>0; i--){
+		/*for(int i = segments.Count - 1; i>0; i--){
 			target = segments[i-1].position + segments[i-1].up *distance;
 			dir = target - segments[i].position;
 			segments[i].rotation = Quaternion.LookRotation(Vector3.forward,dir);
@@ -63,6 +63,7 @@ public class WormScript : MonoBehaviour {
 		segments[0].rotation = Quaternion.LookRotation(Vector3.forward,dir);
 		segments[0].Rotate (0, 0, 180);
 		segments[0].position = Vector3.MoveTowards (segments[0].position,target,speed*Time.deltaTime);
+		*/
 	}
 
 	IEnumerator FollowDelay(){
