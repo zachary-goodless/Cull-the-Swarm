@@ -121,7 +121,8 @@ public class WorldMapEventHandler : MonoBehaviour
 		//set the buttons enable
 		setStageButtonsActive();
 
-		initDataPanel();
+		//initialize the data panel with no data (data is set on stage button mouseover)
+		initDataPanel(SceneIndex.NULL);
 
 		//activate the stage and data panels, toggle level buttons
 		mStagePanel.SetActive(true);
@@ -143,7 +144,7 @@ public class WorldMapEventHandler : MonoBehaviour
 			//reassert button enabled -- button just clicked is disabled in its own handler after
 			setStageButtonsActive();
 
-			initDataPanel();	//TODO -- move this to stage button mouse-over
+			initDataPanel(mSelectedLevel);	//TODO -- move this to stage button mouse-over
 
 			//automatically start the loadouts menu
 			//handleContinueButtonClicked();	//TODO -- temp commented out
@@ -162,9 +163,9 @@ public class WorldMapEventHandler : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	void initDataPanel()
+	void initDataPanel(SceneIndex sceneIndex)
 	{
-		switch(mSelectedLevel)
+		switch(sceneIndex)
 		{
 		case SceneIndex.GAMEPLAY_TUTORIAL_1:
 		case SceneIndex.GAMEPLAY_TUTORIAL_2:
@@ -239,7 +240,7 @@ public class WorldMapEventHandler : MonoBehaviour
 				//if the current button's level is unlocked...
 				if(beh.isUnlocked)
 				{
-					//set its sprite images based on what level it is (special case for final boss level)
+					//set its sprite images based on what stage it is (special case for final boss level)
 					switch(beh.sceneIndex)
 					{
 					case SceneIndex.GAMEPLAY_4_3:
