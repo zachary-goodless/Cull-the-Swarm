@@ -84,7 +84,8 @@ public class WorldMapEventHandler : MonoBehaviour
 	public void handleContinueButtonClicked()
 	{
 		//set the current game's selected level
-		mSavedGameManager.getCurrentGame().setSelectedLevel(mSelectedLevel);
+		//mSavedGameManager.getCurrentGame().setSelectedLevel(mSelectedLevel);
+		mSavedGameManager.getCurrentGame().setSelectedLevel(SceneIndex.GAMEPLAY_TUTORIAL_1);	//TODO -- temp force load into city 1_1
 
 		//load the loadouts scene
 		Debug.Log("LOADING LOADOUTS MENU");
@@ -93,18 +94,10 @@ public class WorldMapEventHandler : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	public void handleTutorialButtonClicked(){ 		initStagePanel(0); }
-	public void handleLevelOneButtonClicked(){ 		initStagePanel(3); }
-	public void handleLevelTwoButtonClicked(){ 		initStagePanel(6); }
-	public void handleLevelThreeButtonClicked(){ 	initStagePanel(9); }
-	public void handleLevelFourButtonClicked(){ 	initStagePanel(12); }
-
-//--------------------------------------------------------------------------------------------
-
-	private void initStagePanel(int firstStageIndex)
+	public void handleLevelButtonClicked(int firstStageIndex)
 	{
 		//for the first three buttons (stages 1, 2, and 3)...
-		LevelButtonEventHandler[] behs = mStagePanel.GetComponentsInChildren<LevelButtonEventHandler>();
+		StageButtonEventHandler[] behs = mStagePanel.GetComponentsInChildren<StageButtonEventHandler>();
 		for(int i = 0; i < 3; ++i)
 		{
 			//set isUnlocked and sceneIndex for the current button
@@ -121,13 +114,33 @@ public class WorldMapEventHandler : MonoBehaviour
 		//set the buttons enable
 		setStageButtonsActive();
 
-		initDataPanel();
+		//initialize the data panel with no information (set on stage button mouse over)
+		initDataPanel(SceneIndex.NULL);
 
 		//activate the stage and data panels, toggle level buttons
+		handleLevelButtonMouseExit();
 		mStagePanel.SetActive(true);
 		mDataPanel.SetActive(true);
 
 		toggleLevelButtonsActive();
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	public void handleLevelButtonMouseOver(int firstStageIndex)
+	{
+		Debug.Log("LEVEL BUTTON MOUSE OVER: " + firstStageIndex);
+
+		//TODO -- mouse over event for level buttons (updates large panel with picture / story info)
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	public void handleLevelButtonMouseExit()
+	{
+		Debug.Log("LEVEL BUTTON MOUSE EXIT");
+
+		//TODO -- mouse exit event for level buttons (updates large panel with picture / story info)
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -142,8 +155,6 @@ public class WorldMapEventHandler : MonoBehaviour
 
 			//reassert button enabled -- button just clicked is disabled in its own handler after
 			setStageButtonsActive();
-
-			initDataPanel();	//TODO -- move this to stage button mouse-over
 
 			//automatically start the loadouts menu
 			//handleContinueButtonClicked();	//TODO -- temp commented out
@@ -162,9 +173,29 @@ public class WorldMapEventHandler : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	void initDataPanel()
+	public void handleStageButtonMouseOver(SceneIndex si)
 	{
-		switch(mSelectedLevel)
+		Debug.Log("STAGE BUTTON MOUSE OVER: " + si);
+
+		//initialize the data panel with the current stage's data
+		initDataPanel(si);
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	public void handleStageButtonMouseExit(SceneIndex si)
+	{
+		Debug.Log("STAGE BUTTON MOUSE EXIT: " + si);
+
+		//overwrite the data panel with null data
+		initDataPanel(SceneIndex.NULL);
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	void initDataPanel(SceneIndex sceneIndex)
+	{
+		switch(sceneIndex)
 		{
 		case SceneIndex.GAMEPLAY_TUTORIAL_1:
 		case SceneIndex.GAMEPLAY_TUTORIAL_2:
@@ -183,11 +214,11 @@ public class WorldMapEventHandler : MonoBehaviour
 		case SceneIndex.GAMEPLAY_4_3:
 
 			//set data panel image
-			int i = ((int)mSelectedLevel - 3) / 3;
-			mDataPanelImg.sprite = levelImgSprites[i];
+			int i = ((int)sceneIndex - 3) / 3;
+			mDataPanelImg.sprite = levelImgSprites[i];	//TODO -- if level is locked, use CLASSIFIED IMAGE
 
 			//set data panel high scores
-			i = (int)mSelectedLevel - 3;
+			i = (int)sceneIndex - 3;
 			foreach(Text t in mDataPanel.GetComponentsInChildren<Text>())
 			{
 				if(t.gameObject.name == "HighScorePersonal")
@@ -231,7 +262,7 @@ public class WorldMapEventHandler : MonoBehaviour
 		int spriteIndex = 0;
 		foreach(Button b in mStagePanel.GetComponentsInChildren<Button>())
 		{
-			LevelButtonEventHandler beh = b.gameObject.GetComponent<LevelButtonEventHandler>();
+			StageButtonEventHandler beh = b.gameObject.GetComponent<StageButtonEventHandler>();
 
 			//if the current button's level is not null (not a back button)...
 			if(beh.sceneIndex != SceneIndex.NULL)
@@ -331,9 +362,4 @@ public class WorldMapEventHandler : MonoBehaviour
 			i += 3;
 		}
 	}
-
-//--------------------------------------------------------------------------------------------
-
-	//TODO -- mouse over events for level buttons (updates large panel with picture / story info)
-	//TODO -- mouse over events for stage buttons (updates data panel high score stuff)
 }

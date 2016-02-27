@@ -7,10 +7,12 @@ using UnityEngine.EventSystems;
 
 using UnityEngine.SceneManagement;
 
-public class LevelButtonEventHandler : MonoBehaviour
+public class StageButtonEventHandler : MonoBehaviour
 {
 	//PUBLIC
-	public int firstStageIndex;
+	public SceneIndex sceneIndex;
+
+	public bool isUnlocked;
 
 	//PRIVATE
 	private WorldMapEventHandler mParentEventHandler;
@@ -25,12 +27,12 @@ public class LevelButtonEventHandler : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	public void handleButtonClick()
+	public void handleButtonClicked()
 	{
 		if(mParentEventHandler != null)
 		{
-			//call to the canvas' event handler
-			mParentEventHandler.handleLevelButtonClicked(firstStageIndex);
+			//call to the canvas -- sets the selected level to this button's index
+			mParentEventHandler.handleStageButtonClicked(sceneIndex);
 		}
 	}
 
@@ -38,13 +40,10 @@ public class LevelButtonEventHandler : MonoBehaviour
 
 	public void handleButtonMouseOver()
 	{
-		if(gameObject.GetComponent<Button>().interactable)
+		if(mParentEventHandler != null)
 		{
-			if(mParentEventHandler != null)
-			{
-				//call to the canvas' event handler
-				mParentEventHandler.handleLevelButtonMouseOver(firstStageIndex);
-			}
+			//call to the canvas -- sets the selected level to this button's index
+			mParentEventHandler.handleStageButtonMouseOver(sceneIndex);
 		}
 	}
 
@@ -52,13 +51,10 @@ public class LevelButtonEventHandler : MonoBehaviour
 
 	public void handleButtonMouseExit()
 	{
-		if(gameObject.GetComponent<Button>().interactable)
+		if(mParentEventHandler != null)
 		{
-			if(mParentEventHandler != null)
-			{
-				//call to the canvas' event handler
-				mParentEventHandler.handleLevelButtonMouseExit();
-			}
+			//call to the canvas -- sets the selected level to this button's index
+			mParentEventHandler.handleStageButtonMouseExit(sceneIndex);
 		}
 	}
 }
