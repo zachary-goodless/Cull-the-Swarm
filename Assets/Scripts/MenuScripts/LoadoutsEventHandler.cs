@@ -9,6 +9,8 @@ using UnityEngine.SceneManagement;
 
 public class LoadoutsEventHandler : MonoBehaviour
 {
+	//TODO -- REWORK!!!
+
 	//PUBLIC
 	public Button mBackButton;			//back to world map
 	public Button mStartButton;			//start game

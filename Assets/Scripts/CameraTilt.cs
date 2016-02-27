@@ -12,6 +12,6 @@ public class CameraTilt : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.rotation = Quaternion.Euler(new Vector3(0, p.transform.position.x / 100, 0));
+		transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, p.transform.position.x / 100, transform.eulerAngles.z));
 	}
 }

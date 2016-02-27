@@ -6,32 +6,107 @@ public class BulletManager : MonoBehaviour {
 
     public GameObject bulletPrefab;
     public int poolSize = 1000;
+    public Sprite[] spriteList;
+    public Material[] bulletMats;
+    public Dictionary<BulletType, BulletTypeProperties> propertyList;
     public static PoolSystem bulletPool;
     public static GameObject shotID;
+    public static BulletManager manager;
+
+    
 
 	// Use this for initialization
 	void Start ()
     {
+        manager = this;
         gameObject.AddComponent<PoolSystem>();
         bulletPool = gameObject.GetComponent<PoolSystem>();
         bulletPool.Initialize(poolSize, bulletPrefab);
+
+
+        // Suffering^2
+        propertyList = new Dictionary<BulletType, BulletTypeProperties>();
+        propertyList.Add(BulletType.RedDot, new BulletTypeProperties(95, 4, false, null));
+        propertyList.Add(BulletType.RedDarkDot, new BulletTypeProperties(92, 4, false, null));
+        propertyList.Add(BulletType.RedShard, new BulletTypeProperties(101, 4, false, null));
+        propertyList.Add(BulletType.RedArrow, new BulletTypeProperties(84, 4, false, null));
+        propertyList.Add(BulletType.RedDarkArrow, new BulletTypeProperties(89, 4, false, null));
+        propertyList.Add(BulletType.RedCrawler, new BulletTypeProperties(87, 4, false, spriteListSection(87,2)));
+        propertyList.Add(BulletType.RedFire, new BulletTypeProperties(96, 4, true, spriteListSection(96, 4)));
+        propertyList.Add(BulletType.YellowDot, new BulletTypeProperties(129, 4, false, null));
+        propertyList.Add(BulletType.YellowDarkDot, new BulletTypeProperties(126, 4, false, null));
+        propertyList.Add(BulletType.YellowShard, new BulletTypeProperties(135, 4, false, null));
+        propertyList.Add(BulletType.YellowArrow, new BulletTypeProperties(118, 4, false, null));
+        propertyList.Add(BulletType.YellowDarkArrow, new BulletTypeProperties(123, 4, false, null));
+        propertyList.Add(BulletType.YellowCrawler, new BulletTypeProperties(121, 4, false, spriteListSection(121, 2)));
+        propertyList.Add(BulletType.YellowFire, new BulletTypeProperties(130, 4, true, spriteListSection(130, 4)));
+        propertyList.Add(BulletType.GreenDot, new BulletTypeProperties(45, 4, false, null));
+        propertyList.Add(BulletType.GreenDarkDot, new BulletTypeProperties(42, 4, false, null));
+        propertyList.Add(BulletType.GreenShard, new BulletTypeProperties(47, 4, false, null));
+        propertyList.Add(BulletType.GreenArrow, new BulletTypeProperties(34, 4, false, null));
+        propertyList.Add(BulletType.GreenDarkArrow, new BulletTypeProperties(39, 4, false, null));
+        propertyList.Add(BulletType.GreenCrawler, new BulletTypeProperties(37, 4, false, spriteListSection(37, 2)));
+        propertyList.Add(BulletType.CyanDot, new BulletTypeProperties(30, 4, false, null));
+        propertyList.Add(BulletType.CyanDarkDot, new BulletTypeProperties(27, 4, false, null));
+        propertyList.Add(BulletType.CyanShard, new BulletTypeProperties(32, 4, false, null));
+        propertyList.Add(BulletType.CyanArrow, new BulletTypeProperties(19, 4, false, null));
+        propertyList.Add(BulletType.CyanDarkArrow, new BulletTypeProperties(24, 4, false, null));
+        propertyList.Add(BulletType.CyanCrawler, new BulletTypeProperties(22, 4, false, spriteListSection(22, 2)));
+        propertyList.Add(BulletType.BlueDot, new BulletTypeProperties(11, 4, false, null));
+        propertyList.Add(BulletType.BlueDarkDot, new BulletTypeProperties(8, 4, false, null));
+        propertyList.Add(BulletType.BlueShard, new BulletTypeProperties(17, 4, false, null));
+        propertyList.Add(BulletType.BlueArrow, new BulletTypeProperties(0, 4, false, null));
+        propertyList.Add(BulletType.BlueDarkArrow, new BulletTypeProperties(5, 4, false, null));
+        propertyList.Add(BulletType.BlueCrawler, new BulletTypeProperties(3, 4, false, spriteListSection(3, 2)));
+        propertyList.Add(BulletType.BlueFire, new BulletTypeProperties(12, 4, true, spriteListSection(12, 4)));
+        propertyList.Add(BulletType.PurpleDot, new BulletTypeProperties(76, 4, false, null));
+        propertyList.Add(BulletType.PurpleDarkDot, new BulletTypeProperties(73, 4, false, null));
+        propertyList.Add(BulletType.PurpleShard, new BulletTypeProperties(82, 4, false, null));
+        propertyList.Add(BulletType.PurpleArrow, new BulletTypeProperties(65, 4, false, null));
+        propertyList.Add(BulletType.PurpleDarkArrow, new BulletTypeProperties(70, 4, false, null));
+        propertyList.Add(BulletType.PurpleCrawler, new BulletTypeProperties(68, 4, false, spriteListSection(68, 2)));
+        propertyList.Add(BulletType.PurpleFire, new BulletTypeProperties(77, 4, true, spriteListSection(77, 4)));
+        propertyList.Add(BulletType.PinkDot, new BulletTypeProperties(61, 4, false, null));
+        propertyList.Add(BulletType.PinkDarkDot, new BulletTypeProperties(58, 4, false, null));
+        propertyList.Add(BulletType.PinkShard, new BulletTypeProperties(63, 4, false, null));
+        propertyList.Add(BulletType.PinkArrow, new BulletTypeProperties(50, 4, false, null));
+        propertyList.Add(BulletType.PinkDarkArrow, new BulletTypeProperties(55, 4, false, null));
+        propertyList.Add(BulletType.PinkCrawler, new BulletTypeProperties(68, 4, false, spriteListSection(68, 2)));
+        propertyList.Add(BulletType.WhiteDot, new BulletTypeProperties(114, 4, false, null));
+        propertyList.Add(BulletType.WhiteDarkDot, new BulletTypeProperties(111, 4, false, null));
+        propertyList.Add(BulletType.WhiteShard, new BulletTypeProperties(116, 4, false, null));
+        propertyList.Add(BulletType.WhiteArrow, new BulletTypeProperties(103, 4, false, null));
+        propertyList.Add(BulletType.WhiteDarkArrow, new BulletTypeProperties(108, 4, false, null));
+        propertyList.Add(BulletType.WhiteCrawler, new BulletTypeProperties(106, 4, false, spriteListSection(106, 2)));
+
+    }
+
+    Sprite[] spriteListSection(int start, int size) {
+        Sprite[] section = new Sprite[size];
+        for(int i = 0; i < size; i++) {
+            section[i] = spriteList[start + i];
+        }
+        return section;
     }
 
     // Shoots a bullet from the specified position, with a certain speed and angle. The bullet is stored for subsequent AddActions.
-    public static void ShootBullet(Vector2 position, float speed, float angle)
+    public static void ShootBullet(Vector2 position, float speed, float angle, BulletType type)
     {
         GameObject bt = bulletPool.GetRecycledObject();
         bt.SetActive(true);
         bt.GetComponent<Bullet>().Init(position, speed, angle);
+        bt.GetComponent<Bullet>().SetGraphic(manager.propertyList[type]);
+        Debug.Log(type);
         shotID = bt;
     }
 
     // Shoots a bullet with a few more parameters. The bullet is stored for subsequent AddActions.
-    public static void ShootBullet(Vector2 position, float speed, float angle, float acc, float max, float angv)
+    public static void ShootBullet(Vector2 position, float speed, float angle, float acc, float max, float angv, BulletType type)
     {
         GameObject bt = bulletPool.GetRecycledObject();
         bt.SetActive(true);
         bt.GetComponent<Bullet>().Init(position, speed, angle, acc, max, angv);
+        bt.GetComponent<Bullet>().SetGraphic(manager.propertyList[type]);
         shotID = bt;
     }
 
@@ -71,4 +146,52 @@ public class BulletManager : MonoBehaviour {
         shot.GetComponent<Bullet>().Reset();
         bulletPool.Recycle(shot);
     }
+
+    public static void SetBulletType(GameObject shot, BulletType t)
+    {
+
+    }
+}
+
+public class BulletTypeProperties {
+    public Sprite graphicIndex;
+    public int radius;
+    public bool isAddBlend;
+    public Sprite[] extraAnimation;
+
+    public BulletTypeProperties(int g, int r, bool add, Sprite[] ani) {
+        graphicIndex = BulletManager.manager.spriteList[g];
+        radius = r;
+        isAddBlend = add;
+        extraAnimation = ani;
+    }
+}
+
+public enum BulletType {
+    RedDot, RedDarkDot, RedShard, RedArrow, RedDarkArrow, RedCrawler, RedFire,
+    YellowDot, YellowDarkDot, YellowShard, YellowArrow, YellowDarkArrow, YellowCrawler, YellowFire,
+    GreenDot, GreenDarkDot, GreenShard, GreenArrow, GreenDarkArrow, GreenCrawler,
+    CyanDot, CyanDarkDot, CyanShard, CyanArrow, CyanDarkArrow, CyanCrawler,
+    BlueDot, BlueDarkDot, BlueShard, BlueArrow, BlueDarkArrow, BlueCrawler, BlueFire,
+    PurpleDot, PurpleDarkDot, PurpleShard, PurpleArrow, PurpleDarkArrow, PurpleCrawler, PurpleFire,
+    PinkDot, PinkDarkDot, PinkShard, PinkArrow, PinkDarkArrow, PinkCrawler,
+    WhiteDot, WhiteDarkDot, WhiteShard, WhiteArrow, WhiteDarkArrow, WhiteCrawler,
+
+    RedOrb, RedDarkOrb, RedWave, RedDarkWave, RedBlade, RedDarkBlade,
+    YellowOrb, YellowDarkOrb, YellowWave, YellowDarkWave, YellowBlade, YellowDarkBlade,
+    GreenOrb, GreenDarkOrb, GreenWave, GreenDarkWave, GreenBlade, GreenDarkBlade,
+    CyanOrb, CyanDarkOrb, CyanWave, CyanDarkWave, CyanBlade, CyanDarkBlade,
+    BlueOrb, BlueDarkOrb, BlueWave, BlueDarkWave, BlueBlade, BlueDarkBlade,
+    PurpleOrb, PurpleDarkOrb, PurpleWave, PurpleDarkWave, PurpleBlade, PurpleDarkBlade,
+    PinkOrb, PinkDarkOrb, PinkWave, PinkDarkWave, PinkBlade, PinkDarkBlade,
+    WhiteOrb, WhiteDarkOrb, WhiteWave, WhiteDarkWave, WhiteBlade, WhiteDarkBlade,
+
+    RedBubble, RedDarkBubble,
+    YellowBubble, YellowDarkBubble,
+    GreenBubble, GreenDarkBubble,
+    CyanBubble, CyanDarkBubble,
+    BlueBubble, BlueDarkBubble,
+    PurpleBubble, PurpleDarkBubble,
+    PinkBubble, PinkDarkBubble,
+    WhiteBubble, WhiteDarkBubble
 }

@@ -38,8 +38,10 @@ public class Waves : MonoBehaviour{
 	}
 
 	IEnumerator TestGround(){
+		//initialize stuff
 		GameObject temp;
 		EnemyMovement em;
+
 		temp = MakeWorm (6, new Vector3 (1000, 0, 0),new Vector3(0,0,270));
 		em = temp.GetComponent<EnemyMovement> ();
 		em.followNose = true;
@@ -48,6 +50,7 @@ public class Waves : MonoBehaviour{
 		em.rotInc = .5f;
 		em.rotRange = 40;
 		em.dirY = 1;
+
 		yield break;
 	}
 
@@ -57,13 +60,19 @@ public class Waves : MonoBehaviour{
 
 	//Space invaders-style wave 
 	IEnumerator WaveOne(){
+
 		GameObject temp;
 		GameObject wmTemp = Instantiate (waveManager, transform.position, Quaternion.identity) as GameObject;
+
 		WaveManager wm = wmTemp.GetComponent<WaveManager> ();
 		EnemyMovement em;
+
+		//Set up wavemanager
 		wm.hasDest = true;
 		wm.enemies = new List<GameObject>();
 		wm.waveSet = false;
+
+		//Start spawns
 		temp = Instantiate (drone, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
 		wm.enemies.Add(temp);
 		em = temp.GetComponent<EnemyMovement> ();
@@ -71,7 +80,9 @@ public class Waves : MonoBehaviour{
 		em.dest = new Vector3 (temp.transform.position.x, 150, 0);
 		em.wm = wm;
 		em.flightTime = 2;
+
 		yield return new WaitForSeconds(.5f);
+
 		temp = Instantiate (drone, new Vector3 (-250, transform.position.y, 0), Quaternion.identity) as GameObject;
 		wm.enemies.Add(temp);
 		em = temp.GetComponent<EnemyMovement> ();
@@ -79,6 +90,7 @@ public class Waves : MonoBehaviour{
 		em.dest = new Vector3 (temp.transform.position.x, 250, 0);
 		em.wm = wm;
 		em.flightTime = 2;
+
 		temp = Instantiate (drone, new Vector3 (250, transform.position.y, 0), Quaternion.identity) as GameObject;
 		wm.enemies.Add(temp);
 		em = temp.GetComponent<EnemyMovement> ();
@@ -86,7 +98,9 @@ public class Waves : MonoBehaviour{
 		em.dest = new Vector3 (temp.transform.position.x, 250, 0);
 		em.wm = wm;
 		em.flightTime = 2;
+
 		yield return new WaitForSeconds(.5f);
+
 		temp = Instantiate (drone, new Vector3 (-500, transform.position.y, 0), Quaternion.identity) as GameObject;
 		wm.enemies.Add(temp);
 		em = temp.GetComponent<EnemyMovement> ();
@@ -94,6 +108,7 @@ public class Waves : MonoBehaviour{
 		em.dest = new Vector3 (temp.transform.position.x, 350, 0);
 		em.wm = wm;
 		em.flightTime = 2;
+
 		temp = Instantiate (drone, new Vector3 (500, transform.position.y, 0), Quaternion.identity) as GameObject;
 		wm.enemies.Add(temp);
 		em = temp.GetComponent<EnemyMovement> ();
@@ -101,6 +116,7 @@ public class Waves : MonoBehaviour{
 		em.dest = new Vector3 (temp.transform.position.x, 350, 0);
 		em.wm = wm;
 		em.flightTime = 2;
+
 		yield break;
 	}
 
@@ -110,12 +126,16 @@ public class Waves : MonoBehaviour{
 
 	//Left side sloping wave that travels down while moving left and right
 	IEnumerator WaveTwo(){
+
 		GameObject temp;
 		EnemyMovement em;
+
 		GameObject wmTemp = Instantiate (waveManager, transform.position, Quaternion.identity) as GameObject;
 		WaveManager wm = wmTemp.GetComponent<WaveManager> ();
+
 		wm.hasDest = false;
 		wm.right = true;
+
 		temp = Instantiate (drone, new Vector3 (-600, transform.position.y, 0), Quaternion.identity) as GameObject;
 		wm.enemies.Add(temp);
 		em = temp.GetComponent<EnemyMovement> ();
@@ -125,7 +145,9 @@ public class Waves : MonoBehaviour{
 		em.vert = true;
 		em.dirY = -1;
 		em.oscillate = true;
+
 		yield return new WaitForSeconds(.5f);
+
 		temp = Instantiate (drone, new Vector3 (-450, transform.position.y, 0), Quaternion.identity) as GameObject;
 		wm.enemies.Add(temp);
 		em = temp.GetComponent<EnemyMovement> ();
@@ -135,7 +157,9 @@ public class Waves : MonoBehaviour{
 		em.vert = true;
 		em.dirY = -1;
 		em.oscillate = true;
+
 		yield return new WaitForSeconds(.5f);
+
 		temp = Instantiate (drone, new Vector3 (-300, transform.position.y, 0), Quaternion.identity) as GameObject;
 		wm.enemies.Add(temp);
 		em = temp.GetComponent<EnemyMovement> ();
@@ -145,7 +169,9 @@ public class Waves : MonoBehaviour{
 		em.vert = true;
 		em.dirY = -1;
 		em.oscillate = true;
+
 		yield return new WaitForSeconds(.5f);
+
 		temp = Instantiate (drone, new Vector3 (-150, transform.position.y, 0), Quaternion.identity) as GameObject;
 		wm.enemies.Add(temp);
 		em = temp.GetComponent<EnemyMovement> ();
@@ -155,7 +181,9 @@ public class Waves : MonoBehaviour{
 		em.vert = true;
 		em.dirY = -1;
 		em.oscillate = true;
+
 		yield return new WaitForSeconds(.5f);
+
 		temp = Instantiate (drone, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
 		wm.enemies.Add(temp);
 		em = temp.GetComponent<EnemyMovement> ();
@@ -166,6 +194,7 @@ public class Waves : MonoBehaviour{
 		em.dirY = -1;
 		em.oscillate = true;
 		wm.waveSet = true;
+
 		yield break;
 
 	}
@@ -176,12 +205,16 @@ public class Waves : MonoBehaviour{
 
 	//Right side sloping wave that travels down while moving left and right
 	IEnumerator WaveTwoPointFive(){
+
 		GameObject temp;
 		EnemyMovement em;
+
 		GameObject wmTemp = Instantiate (waveManager, transform.position, Quaternion.identity) as GameObject;
 		WaveManager wm = wmTemp.GetComponent<WaveManager> ();
+
 		wm.hasDest = false;
 		wm.right = false;
+
 		temp = Instantiate (drone, new Vector3 (600, transform.position.y, 0), Quaternion.identity) as GameObject;
 		wm.enemies.Add(temp);
 		em = temp.GetComponent<EnemyMovement> ();
@@ -191,7 +224,9 @@ public class Waves : MonoBehaviour{
 		em.vert = true;
 		em.dirY = -1;
 		em.oscillate = true;
+
 		yield return new WaitForSeconds(.5f);
+
 		temp = Instantiate (drone, new Vector3 (450, transform.position.y, 0), Quaternion.identity) as GameObject;
 		wm.enemies.Add(temp);
 		em = temp.GetComponent<EnemyMovement> ();
@@ -201,7 +236,9 @@ public class Waves : MonoBehaviour{
 		em.vert = true;
 		em.dirY = -1;
 		em.oscillate = true;
+
 		yield return new WaitForSeconds(.5f);
+
 		temp = Instantiate (drone, new Vector3 (300, transform.position.y, 0), Quaternion.identity) as GameObject;
 		wm.enemies.Add(temp);
 		em = temp.GetComponent<EnemyMovement> ();
@@ -211,7 +248,9 @@ public class Waves : MonoBehaviour{
 		em.vert = true;
 		em.dirY = -1;
 		em.oscillate = true;
+
 		yield return new WaitForSeconds(.5f);
+
 		temp = Instantiate (drone, new Vector3 (150, transform.position.y, 0), Quaternion.identity) as GameObject;
 		wm.enemies.Add(temp);
 		em = temp.GetComponent<EnemyMovement> ();
@@ -221,7 +260,9 @@ public class Waves : MonoBehaviour{
 		em.vert = true;
 		em.dirY = -1;
 		em.oscillate = true;
+
 		yield return new WaitForSeconds(.5f);
+
 		temp = Instantiate (drone, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
 		wm.enemies.Add(temp);
 		em = temp.GetComponent<EnemyMovement> ();
@@ -232,6 +273,7 @@ public class Waves : MonoBehaviour{
 		em.dirY = -1;
 		em.oscillate = true;
 		wm.waveSet = true;
+
 		yield break;
 	}
 

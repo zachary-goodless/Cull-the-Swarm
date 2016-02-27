@@ -114,7 +114,7 @@ public class WorldMapEventHandler : MonoBehaviour
 		//set the buttons enable
 		setStageButtonsActive();
 
-		//initialize the data panel with no information (set on stage button mouse over)
+		//initialize the data panel with no data (data is set on stage button mouseover)
 		initDataPanel(SceneIndex.NULL);
 
 		//activate the stage and data panels, toggle level buttons
@@ -270,7 +270,7 @@ public class WorldMapEventHandler : MonoBehaviour
 				//if the current button's level is unlocked...
 				if(beh.isUnlocked)
 				{
-					//set its sprite images based on what level it is (special case for final boss level)
+					//set its sprite images based on what stage it is (special case for final boss level)
 					switch(beh.sceneIndex)
 					{
 					case SceneIndex.GAMEPLAY_4_3:

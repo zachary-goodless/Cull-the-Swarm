@@ -153,7 +153,14 @@ public class Bullet : MonoBehaviour {
         actionQueue.Add(action);
     }
 
-    public void SetGraphic(float t) {
-        
+    public void SetGraphic(BulletTypeProperties t) {
+
+        GetComponent<CircleCollider2D>().radius = t.radius;
+        GetComponent<SpriteRenderer>().sprite = t.graphicIndex;
+        if (t.isAddBlend) {
+            GetComponent<SpriteRenderer>().material = BulletManager.manager.bulletMats[1];
+        } else {
+            GetComponent<SpriteRenderer>().material = BulletManager.manager.bulletMats[0];
+        }
     }
 }
