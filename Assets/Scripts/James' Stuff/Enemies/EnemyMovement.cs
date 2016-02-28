@@ -45,6 +45,8 @@ public class EnemyMovement : MonoBehaviour {
 
 	public bool beenSeen;
 
+	Vector3 nullZ;
+
 	void Awake(){
 		vert = false;
 		hori = false;
@@ -68,6 +70,9 @@ public class EnemyMovement : MonoBehaviour {
 		lifeTimer = 0;
 		beenSeen = false;
 		//kc = GameObject.Find("KillCount").GetComponent<KillCount>();
+
+		//Vector 3 that prevents movement on z due to rotation
+		nullZ = new Vector3 (1, 1, 0);
 
 		if (hasRange) {
 			rotMax = (transform.eulerAngles.z + rotRange)%360;
@@ -126,7 +131,8 @@ public class EnemyMovement : MonoBehaviour {
 						rotUp = true;
 					}
 				}
-				transform.position += transform.up * -1 * speed * Time.deltaTime*dirY;
+				transform.position += transform.up* -1 * speed * Time.deltaTime*dirY;
+				transform.position = new Vector3(transform.position.x,transform.position.y,0);
 			}
 			if (sine) {
 				SineWave ();
@@ -143,6 +149,7 @@ public class EnemyMovement : MonoBehaviour {
 
 
 		}
+		transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.position.x / 20, transform.eulerAngles.z));
 		lifeTimer += Time.deltaTime;
 		if (health <= 0) {
 			//kc.score++;
