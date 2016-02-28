@@ -13,6 +13,8 @@ public class NewGameMenu : MonoBehaviour
 	public InputField mNameField;
 	public Button mCreateNewGameButton;
 
+	public ScreenFade mScreenFader;
+
 	//PRIVATE
 	private string mName;
 
@@ -45,7 +47,8 @@ public class NewGameMenu : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	public void handleCreateNewGameButtonClicked()
+	public void handleCreateNewGameButtonClicked(){ StartCoroutine(handleCreateNewGameButtonClickedHelper()); }
+	private IEnumerator handleCreateNewGameButtonClickedHelper()
 	{
 		//if the name is nonempty...
 		if(mName != "")
@@ -54,13 +57,17 @@ public class NewGameMenu : MonoBehaviour
 			if(mSavedGameManager.createNewGame(mName))
 			{
 				Debug.Log("LOADING WORLD MAP");
+
+				yield return mScreenFader.FadeToBlack();
 				SceneManager.LoadScene((int)SceneIndex.WORLD_MAP);
-				return;
+				yield return null;
 			}
 		}
 
 		handleBackButtonClicked();
+		yield return null;
 	}
+	
 
 //--------------------------------------------------------------------------------------------
 

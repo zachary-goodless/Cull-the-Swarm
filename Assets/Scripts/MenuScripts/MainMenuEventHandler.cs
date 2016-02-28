@@ -47,6 +47,9 @@ public class MainMenuEventHandler : MonoBehaviour
 	public GameObject mLoadGamePanel;
 	public GameObject mDeleteGamePanel;
 
+	public ScreenFade mScreenFader;
+	public GameObject gmPrefab;
+
 	//PRIVATE
 	private SavedGameManager mSavedGameManager;
 
@@ -54,7 +57,8 @@ public class MainMenuEventHandler : MonoBehaviour
 
 	void Start()
 	{
-		mSavedGameManager = GameObject.FindGameObjectWithTag("SaveManager").GetComponent<SavedGameManager>();
+		mSavedGameManager = SavedGameManager.createOrLoadSavedGameManager(gmPrefab).GetComponent<SavedGameManager>();
+		StartCoroutine(mScreenFader.FadeFromBlack());
 	}
 
 //--------------------------------------------------------------------------------------------

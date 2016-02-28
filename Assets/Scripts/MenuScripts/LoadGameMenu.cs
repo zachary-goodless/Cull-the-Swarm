@@ -17,6 +17,8 @@ public class LoadGameMenu : MonoBehaviour
 
 	public GameObject scrollPanel;
 
+	public ScreenFade mScreenFader;
+
 	//PRIVATE
 	private string mName;
 
@@ -115,7 +117,8 @@ public class LoadGameMenu : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	public void handleLoadButtonClicked()
+	public void handleLoadButtonClicked(){ StartCoroutine(handleLoadButtonClickedHelper()); }
+	private IEnumerator handleLoadButtonClickedHelper()
 	{
 		//if the name is nonempty
 		if(mName != "")
@@ -124,12 +127,15 @@ public class LoadGameMenu : MonoBehaviour
 			if(mSavedGameManager.loadSavedGame(mName))
 			{
 				Debug.Log("LOADING WORLD MAP");
+
+				yield return mScreenFader.FadeToBlack();
 				SceneManager.LoadScene((int)SceneIndex.WORLD_MAP);
-				return;
+				yield return null;
 			}
 		}
 
 		handleBackButtonClicked();
+		yield return null;
 	}
 
 //--------------------------------------------------------------------------------------------

@@ -20,6 +20,9 @@ public class LoadoutsEventHandler : MonoBehaviour
 	public GameObject mPrimaryPanel;
 	public GameObject mSecondaryPanel;
 
+	public ScreenFade mScreenFader;
+	public GameObject gmPrefab;
+
 	//PRIVATE
 	private SavedGameManager mSavedGameManager;
 
@@ -29,12 +32,14 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 	void Start()
 	{
-		mSavedGameManager = GameObject.FindGameObjectWithTag("SaveManager").GetComponent<SavedGameManager>();
+		mSavedGameManager = SavedGameManager.createOrLoadSavedGameManager(gmPrefab).GetComponent<SavedGameManager>();
 
 		//if the current game ptr is somehow bad, return to the main menu
 		if(mSavedGameManager.getCurrentGame() == null)
 		{
-			Debug.Log("CURRENT GAME PTR NULL: RETURNING TO MAIN MENU");
+			Debug.Log("ERROR: CURRENT GAME PTR NULL -- LOADING MAIN MENU");
+			SceneManager.LoadScene((int)SceneIndex.MAIN_MENU);
+			return;
 		}
 
 		//set all loadout element buttons' isUnlocked using the saved game data
@@ -58,7 +63,11 @@ public class LoadoutsEventHandler : MonoBehaviour
 		mSavedGameManager.getCurrentGame().setCurrentLoadout(null);
 		mCurrentLoadout = new Loadout();
 
+		Debug.Log(mCurrentLoadout.toString());
+
 		initDefaultLoadout();	//initialze the default loadout
+
+		StartCoroutine(mScreenFader.FadeFromBlack());
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -71,16 +80,22 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	public void handleBackButtonClicked()
+	public void handleBackButtonClicked(){ StartCoroutine(handleBackButtonClickedHelper()); }
+	private IEnumerator handleBackButtonClickedHelper()
 	{
 		//load the worldmap scene
 		Debug.Log("LOADING WORLD MAP");
+
+		yield return mScreenFader.FadeToBlack();
 		SceneManager.LoadScene((int)SceneIndex.WORLD_MAP);
+
+		yield return null;
 	}
 
 //--------------------------------------------------------------------------------------------
 
-	public void handleStartButtonClicked()
+	public void handleStartButtonClicked(){ StartCoroutine(handleStartButtonClickedHelper()); }
+	private IEnumerator handleStartButtonClickedHelper()
 	{
 		//set the current game ptr's loadout object
 		SavedGame currentGame = mSavedGameManager.getCurrentGame();
@@ -90,7 +105,10 @@ public class LoadoutsEventHandler : MonoBehaviour
 		Debug.Log("CURRENT LOADOUT: " + mCurrentLoadout.toString());
 		Debug.Log("LOADING GAMEPLAY SCENE: " + currentGame.getSelectedLevel());
 
+		yield return mScreenFader.FadeToBlack();
 		SceneManager.LoadScene((int)currentGame.getSelectedLevel());
+
+		yield return null;
 	}
 		
 //--------------------------------------------------------------------------------------------
