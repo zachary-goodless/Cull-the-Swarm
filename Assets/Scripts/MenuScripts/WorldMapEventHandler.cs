@@ -23,6 +23,9 @@ public class WorldMapEventHandler : MonoBehaviour
 	public GameObject mStagePanel;
 	public GameObject mDataPanel;
 
+	public ScreenFade mScreenFader;
+	public GameObject gmPrefab;
+
 	//PRIVATE
 	private Sprite[] levelTitleSprites;		//arrays to store sprites to dynamically update gui elements
 	private Sprite[] levelButtonSprites;
@@ -37,12 +40,14 @@ public class WorldMapEventHandler : MonoBehaviour
 
 	void Start()
 	{
-		mSavedGameManager = GameObject.FindGameObjectWithTag("SaveManager").GetComponent<SavedGameManager>();
+		mSavedGameManager = SavedGameManager.createOrLoadSavedGameManager(gmPrefab).GetComponent<SavedGameManager>();
 
 		//if the current game ptr is somehow bad, return to the main menu
 		if(mSavedGameManager.getCurrentGame() == null)
 		{
-			Debug.Log("CURRENT GAME PTR NULL: RETURNING TO MAIN MENU");
+			Debug.Log("ERROR: CURRENT GAME PTR NULL -- LOADING MAIN MENU");
+			SceneManager.LoadScene((int)SceneIndex.MAIN_MENU);
+			return;
 		}
 
 		//init the sprite arrays
@@ -58,6 +63,8 @@ public class WorldMapEventHandler : MonoBehaviour
 		//sanity check -- null any selected level data on the current game ptr
 		mSavedGameManager.getCurrentGame().setSelectedLevel(SceneIndex.NULL);
 		mSelectedLevel = SceneIndex.NULL;
+
+		StartCoroutine(mScreenFader.FadeFromBlack());
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -72,16 +79,22 @@ public class WorldMapEventHandler : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	public void handleBackButtonClicked()
+	public void handleBackButtonClicked(){ StartCoroutine(handleBackButtonClickedHelper()); }
+	private IEnumerator handleBackButtonClickedHelper()
 	{
 		//load the main menu scene
 		Debug.Log("LOADING MAIN MENU");
+
+		yield return mScreenFader.FadeToBlack();
 		SceneManager.LoadScene((int)SceneIndex.MAIN_MENU);
+
+		yield return null;
 	}
 
 //--------------------------------------------------------------------------------------------
 
-	public void handleContinueButtonClicked()
+	public void handleContinueButtonClicked(){ StartCoroutine(handleContinueButtonClickedHelper()); }
+	private IEnumerator handleContinueButtonClickedHelper()
 	{
 		//set the current game's selected level
 		//mSavedGameManager.getCurrentGame().setSelectedLevel(mSelectedLevel);
@@ -89,7 +102,11 @@ public class WorldMapEventHandler : MonoBehaviour
 
 		//load the loadouts scene
 		Debug.Log("LOADING LOADOUTS MENU");
+
+		yield return mScreenFader.FadeToBlack();
 		SceneManager.LoadScene((int)SceneIndex.LOADOUTS);
+
+		yield return null;
 	}
 
 //--------------------------------------------------------------------------------------------

@@ -84,6 +84,25 @@ public class SavedGameManager : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
+	public static GameObject createOrLoadSavedGameManager(GameObject gmPrefab)
+	{
+		GameObject gm = null;
+
+		if(mInstance == null)
+		{
+			gm = Instantiate(gmPrefab);
+			gm.name = "SavedGameManager";
+		}
+		else
+		{
+			gm = mInstance.gameObject;
+		}
+
+		return gm;
+	}
+
+//--------------------------------------------------------------------------------------------
+
 	public bool createNewGame(string name)
 	{
 		//if our games map contains a game w/ the given name...
