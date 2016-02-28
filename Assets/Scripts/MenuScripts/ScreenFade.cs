@@ -2,36 +2,41 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class ScreenFade : MonoBehaviour {
-
+public class ScreenFade : MonoBehaviour
+{
 	Image fader;
-	//Or Public string toLevel?
+	public bool finished;
 
-	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 		fader = GetComponent<Image> ();
-		// StartCoroutine ("FadeToBlack");
 	}
 	
-	// Update is called once per frame
-	void Update () {
-
+	public void Fade()
+	{
+		StartCoroutine ("FadeToBlack");
 	}
 
-	public IEnumerator FadeToBlack(){
-
+	public IEnumerator FadeToBlack()
+	{
 		gameObject.SetActive(true);
+		finished = false;
 
 		Color color = fader.color;
 		bool fading = true;
 		float alphaVal = 0;
 
-		while (fading) {
-			if (color.a < 1) {
+		while (fading)
+		{
+			if (color.a < 1)
+			{
 				alphaVal += .05f;
-			} else {
+			}
+			else
+			{
 				alphaVal = 1;
 				fading = false;
+				finished = true;
 			}
 
 			color.a = alphaVal;
@@ -44,6 +49,7 @@ public class ScreenFade : MonoBehaviour {
 	public IEnumerator FadeFromBlack()
 	{
 		yield return new WaitForSeconds(0.5f);
+		finished = false;
 
 		Color color = fader.color;
 		float alphaVal = 1;
@@ -59,6 +65,7 @@ public class ScreenFade : MonoBehaviour {
 			{
 				alphaVal = 0;
 				fading = false;
+				finished = true;
 			}
 
 			color.a = alphaVal;
