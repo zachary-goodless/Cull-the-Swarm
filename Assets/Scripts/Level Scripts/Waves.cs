@@ -289,17 +289,17 @@ public class Waves : MonoBehaviour{
 		em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.vert = true;
-		em.dirY = -.5f;
+		em.dirY = -1f;
 		temp = Instantiate (turret, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
 		em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.vert = true;
-		em.dirY = -.5f;
+		em.dirY = -1f;
 		temp = Instantiate (turret, new Vector3 (-500, transform.position.y, 0), Quaternion.identity) as GameObject;
 		em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.vert = true;
-		em.dirY = -.5f;
+		em.dirY = -1f;
 		yield break;
 	}
 

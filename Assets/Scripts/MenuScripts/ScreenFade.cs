@@ -11,12 +11,15 @@ public class ScreenFade : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		fader = GetComponent<Image> ();
-		StartCoroutine ("FadeToBlack");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+	}
+
+	public void Fade(){
+		StartCoroutine ("FadeToBlack");
 	}
 
 	IEnumerator FadeToBlack(){
@@ -27,7 +30,7 @@ public class ScreenFade : MonoBehaviour {
 
 		while (fading) {
 			if (color.a < 1) {
-				alphaVal += .01f;
+				alphaVal += .02f;
 			} else {
 				alphaVal = 1;
 				fading = false;

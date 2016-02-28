@@ -21,7 +21,7 @@ public class EnemyMovement : MonoBehaviour {
 
 	float lifeTime;
 	float lifeTimer;
-	public KillCount kc;
+	//public KillCount kc;
 
 	public float flightTime;
 	public float rotInc;
@@ -67,7 +67,7 @@ public class EnemyMovement : MonoBehaviour {
 		lifeTime = 30;
 		lifeTimer = 0;
 		beenSeen = false;
-		kc = GameObject.Find("KillCount").GetComponent<KillCount>();
+		//kc = GameObject.Find("KillCount").GetComponent<KillCount>();
 
 		if (hasRange) {
 			rotMax = (transform.eulerAngles.z + rotRange)%360;
@@ -145,7 +145,7 @@ public class EnemyMovement : MonoBehaviour {
 		}
 		lifeTimer += Time.deltaTime;
 		if (health <= 0) {
-			kc.score++;
+			//kc.score++;
 			if (wm) {
 				wm.enemies.Remove (gameObject);
 			}

@@ -14,10 +14,13 @@ public class Player : MonoBehaviour {
 	float precisionSpeed = 5f;
 	float shipTilt = 0f;
 
+	public ParticleSystem ps;
+
 	bool hitCool;
 	public bool dead;
 	int health;
-	KillCount kc;
+	HealthBar hb;
+	ScreenFade sf;
 
 	Loadout loadout;
 
@@ -29,8 +32,10 @@ public class Player : MonoBehaviour {
 
 		hitCool = false;
 		dead = false;
-		health = 5;
-		kc = GameObject.Find ("KillCount").GetComponent<KillCount> ();
+		health = 3;
+		hb = GameObject.Find ("HealthBar").GetComponent<HealthBar> ();
+		sf = GameObject.Find ("ScreenFade").GetComponent<ScreenFade> ();
+		hb.health = health;	
 	}
 
 	// Update is called once per frame
@@ -69,7 +74,15 @@ public class Player : MonoBehaviour {
 			0
 		);
 
+		if (!hitCool && !mesh.activeSelf) {
+			mesh.SetActive (true);
+		}
+
 		mesh.transform.rotation = Quaternion.Euler(0f, shipTilt, 0f);
+
+		if (sf.finished && dead) {
+			SceneManager.LoadScene ((int)SceneIndex.WORLD_MAP);
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
@@ -83,7 +96,7 @@ public class Player : MonoBehaviour {
 	void OnDamage(){
 		hitCool = true;
 		health--;
-		kc.health = health;
+		hb.health = health;
 		if (health <= 0) {
 			OnDeath ();
 		} else {
@@ -99,18 +112,24 @@ public class Player : MonoBehaviour {
 	}
 
 	IEnumerator Blink(){
+		ParticleSystem.EmissionModule em = ps.emission;
 		while (hitCool) {
+			em.enabled = false;
 			mesh.SetActive (!mesh.activeSelf);
 			yield return new WaitForSeconds (.05f);
 		}
+		em.enabled = true;
 		mesh.SetActive (true);
 		yield break;
 	}
 
 	void OnDeath(){
+		ParticleSystem.EmissionModule em = ps.emission;
+		em.enabled = false;
 		mesh.SetActive (false);
 		dead = true;
-		SceneManager.LoadScene ((int)SceneIndex.WORLD_MAP);
+		sf.Fade ();
+
 	}
 	void setLoadout(){
 		setPrimary ();
