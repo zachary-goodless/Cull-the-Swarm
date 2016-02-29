@@ -147,9 +147,9 @@ public class BulletManager : MonoBehaviour {
         bulletPool.Recycle(shot);
     }
 
-    public static void SetBulletType(GameObject shot, BulletType t)
-    {
-
+    public static float AngleToPlayerFrom(Vector2 t) {
+        Vector2 pt = GameObject.FindGameObjectWithTag("Player").transform.position;
+        return Mathf.Rad2Deg * Mathf.Atan2(pt.y - t.y, pt.x - t.x);
     }
 }
 

@@ -21,7 +21,7 @@ public class BugSprayPrimary : MonoBehaviour {
 		rot = 0;
         shotRange = 40;
         intertia = 5;
-		shootCool = .075f;
+		shootCool = .15f;
 		shootTimer = 0;
 		cooling = false;
 		player = GetComponent<Player> ();
@@ -54,10 +54,8 @@ public class BugSprayPrimary : MonoBehaviour {
 	}
 
 	void Shoot(){
-		Instantiate (bullet, new Vector3(gunL.position.x - 10, gunL.position.y, 0f), Quaternion.Euler(0f,0f,rot));
-		Instantiate (bullet, new Vector3(gunL.position.x + 10, gunL.position.y, 0f), Quaternion.Euler(0f,0f,rot));
-		Instantiate (bullet, new Vector3(gunR.position.x - 10, gunL.position.y, 0f), Quaternion.Euler(0f,0f,rot));
-		Instantiate (bullet, new Vector3(gunR.position.x + 10, gunL.position.y, 0f), Quaternion.Euler(0f,0f,rot));
+		Instantiate (bullet, new Vector3(gunL.position.x, gunL.position.y, 0f), Quaternion.Euler(0f,0f,rot));
+		Instantiate (bullet, new Vector3(gunR.position.x, gunL.position.y, 0f), Quaternion.Euler(0f,0f,rot));
 	}
 
 	IEnumerator Firing(){

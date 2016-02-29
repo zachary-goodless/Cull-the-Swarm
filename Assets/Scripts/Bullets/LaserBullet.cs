@@ -28,11 +28,11 @@ public class LaserBullet : MonoBehaviour {
 	void Update () {
 
 		if (Input.GetButton ("Precision")) {
-			dmg = 20;
-		}
-
-		if (Input.GetButtonUp ("Precision")) {
-			dmg = 10;
+			dmg = 30;
+            transform.localScale = new Vector3(2f, transform.localScale.y, 0f);
+        } else {
+            transform.localScale = new Vector3(1f, transform.localScale.y, 0f);
+            dmg = 20;
 		}
 
 		if (Input.GetButton ("Primary")) {

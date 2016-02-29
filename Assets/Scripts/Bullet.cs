@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour {
     bool stillSpawning = false;
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         if (!stillSpawning) {
 
@@ -58,31 +58,41 @@ public class Bullet : MonoBehaviour {
     }
 
     // Apply the changes as specified in the action. If the action is relative, add the action to the existing values rather than replacing.
-    public void ExecuteAction(BulletAction action)
-    {
-        if (action.relative)
-        {
-            if(speed != float.MinValue)
+    public void ExecuteAction(BulletAction action) {
+
+        if (action.relative) {
+            if (action.speed != float.MinValue) {
                 speed += action.speed;
-            if (angle != float.MinValue)
+            }
+            if (action.angle != float.MinValue) {
                 angle += action.angle;
-            if (acceleration != float.MinValue)
+            }
+            if (action.acceleration != float.MinValue) {
                 acceleration += action.acceleration;
-            if (maxSpeed != float.MinValue)
+            }
+            if (action.maxSpeed != float.MinValue) {
                 maxSpeed += action.maxSpeed;
-            if (angularVelocity != float.MinValue)
+            }
+            if (action.angularVelocity != float.MinValue) {
                 angularVelocity += action.angularVelocity;
+            }
         } else {
-            if (speed != float.MinValue)
+            if (action.speed != float.MinValue) {
+                Debug.Log("Setting speed");
                 speed = action.speed;
-            if (angle != float.MinValue)
+            }
+            if (action.angle != float.MinValue) {
                 angle = action.angle;
-            if (acceleration != float.MinValue)
+            }
+            if (action.acceleration != float.MinValue) {
                 acceleration = action.acceleration;
-            if (maxSpeed != float.MinValue)
+            }
+            if (action.maxSpeed != float.MinValue) {
                 maxSpeed = action.maxSpeed;
-            if (angularVelocity != float.MinValue)
+            }
+            if (action.angularVelocity != float.MinValue) {
                 angularVelocity = action.angularVelocity;
+            }
         }
     }
 
@@ -139,7 +149,7 @@ public class Bullet : MonoBehaviour {
     // Add an action to the action queue.
     public void AddAction(BulletAction action)
     {
-        if (action.timer == 0)
+        if (action.timer <= 0)
         {
             ExecuteAction(action);
             return;
