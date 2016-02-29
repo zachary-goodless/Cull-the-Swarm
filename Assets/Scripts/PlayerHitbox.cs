@@ -2,8 +2,7 @@
 using System.Collections;
 
 public class PlayerHitbox : MonoBehaviour {
-
-    float angle = 0f;
+    
     float visibleRatio = 0f;
 
 	// Use this for initialization
@@ -29,7 +28,7 @@ public class PlayerHitbox : MonoBehaviour {
 
         GetComponent<SpriteRenderer>().color = new Color(1,1,1, visibleRatio);
         transform.Rotate(new Vector3(0, 0, 6));
-        transform.localScale = new Vector3(visibleRatio * 1.2f, visibleRatio * 1.2f, 1);
+        transform.localScale = new Vector3(3.2f - visibleRatio * 2f, 3.2f - visibleRatio * 2f, 1);
 	}
 
 

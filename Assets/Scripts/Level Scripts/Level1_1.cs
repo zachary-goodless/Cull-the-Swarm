@@ -24,9 +24,10 @@ public class Level1_1 : MonoBehaviour {
 	}
 
 	IEnumerator LevelLayout(){
+        
 		yield return new WaitForSeconds (5f);
 		waves.StartOne ();
-		yield return new WaitForSeconds (15f);
+		yield return new WaitForSeconds (13f);
 		waves.StartTwo();
 		yield return new WaitForSeconds (5f);
 		waves.StartTwoPointFive();
@@ -35,8 +36,10 @@ public class Level1_1 : MonoBehaviour {
 		yield return new WaitForSeconds (5f);
 		waves.StartTwoPointFive();
 		yield return new WaitForSeconds (5f);
-		waves.StartTurretWaveOne ();
-		yield return new WaitForSeconds (2f);
+        waves.StartOne();
+        yield return new WaitForSeconds(8f);
+        waves.StartTurretWaveOne ();
+		yield return new WaitForSeconds (4f);
 		waves.StartDroneSineWave ();
 		yield return new WaitForSeconds (15f);
 		waves.StartDroneCrossWave ();
@@ -61,7 +64,7 @@ public class Level1_1 : MonoBehaviour {
 		yield return new WaitForSeconds (2f);
 		waves.StartDronesInnerCircle ();
 		waves.StartDronesCornerCircles ();
-		yield return new WaitForSeconds (7f);
+		yield return new WaitForSeconds (16f);
 		sf.Fade ();
 	}
 

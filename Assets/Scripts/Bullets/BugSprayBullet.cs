@@ -12,9 +12,10 @@ public class BugSprayBullet : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		sr = GetComponentInChildren<SpriteRenderer> ();
-		//rot = transform.eulerAngles.z;
-		speed = 2000;
-		dmg = 5;
+        sr.transform.Rotate(0, 0, Random.Range(0,360));
+        //rot = transform.eulerAngles.z;
+        speed = 2000;
+		dmg = 20;
 		//if (rot > 180) {
 		//	multiplier = 1 + (Mathf.Abs (rot - 360) / 40);
 		//} else {
@@ -25,7 +26,13 @@ public class BugSprayBullet : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		transform.position += transform.up * Time.deltaTime * speed;
+        sr.transform.Rotate(0, 0, 3f);
+
+        if(speed > 1000) {
+            speed -= 20;
+        }
+
+        transform.position += transform.up * Time.deltaTime * speed;
 		if (!sr.isVisible) {
 			Destroy (gameObject);
 		}

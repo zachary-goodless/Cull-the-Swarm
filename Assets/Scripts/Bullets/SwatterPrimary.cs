@@ -12,7 +12,7 @@ public class SwatterPrimary : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		shootCool = .075f;
+		shootCool = .2f;
 		shootTimer = 0;
 		cooling = false;
 		player = GetComponent<Player> ();
@@ -42,7 +42,12 @@ public class SwatterPrimary : MonoBehaviour {
 		if (target != null) {
 			GameObject temp = Instantiate (bullet, target.transform.position, Quaternion.identity) as GameObject;
 			temp.GetComponent<SwatterBullet> ().target = target;
-		}
+		} else {
+            Vector3 shipPos = transform.position;
+            shipPos.y += 120;
+            GameObject temp = Instantiate(bullet, shipPos, Quaternion.identity) as GameObject;
+            temp.GetComponent<SwatterBullet>().target = null;
+        }
 	}
 
 	IEnumerator Firing(){
