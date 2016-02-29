@@ -322,21 +322,21 @@ public class Waves : MonoBehaviour{
         em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.vert = true;
-		em.dirY = -1f;
-		temp = Instantiate (turret, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
+        em.dirY = -0.8f;
+        temp = Instantiate (turret, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
         temp.AddComponent<Drones_1_1>();
         temp.GetComponent<Drones_1_1>().StartTurret1();
         em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.vert = true;
-		em.dirY = -1f;
+        em.dirY = -0.8f;
         temp = Instantiate (turret, new Vector3 (-500, transform.position.y, 0), Quaternion.identity) as GameObject;
         temp.AddComponent<Drones_1_1>();
         temp.GetComponent<Drones_1_1>().StartTurret1();
         em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.vert = true;
-		em.dirY = -1f;
+        em.dirY = -0.8f;
         yield break;
 	}
 
@@ -768,8 +768,8 @@ public class Waves : MonoBehaviour{
         em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.vert = true;
-		em.dirY = -1f;
-		temp = Instantiate (drone, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
+        em.dirY = -0.8f;
+        temp = Instantiate (drone, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
         temp.AddComponent<Drones_1_1>();
         temp.GetComponent<Drones_1_1>().Start23();
         em = temp.GetComponent<EnemyMovement> ();
@@ -782,8 +782,8 @@ public class Waves : MonoBehaviour{
         em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.vert = true;
-		em.dirY = -1f;
-		temp = Instantiate (drone, new Vector3 (600, transform.position.y, 0), Quaternion.identity) as GameObject;
+        em.dirY = -0.8f;
+        temp = Instantiate (drone, new Vector3 (600, transform.position.y, 0), Quaternion.identity) as GameObject;
         temp.AddComponent<Drones_1_1>();
         temp.GetComponent<Drones_1_1>().Start23();
         em = temp.GetComponent<EnemyMovement> ();
@@ -808,8 +808,8 @@ public class Waves : MonoBehaviour{
         em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.vert = true;
-		em.dirY = -1f;
-		temp = Instantiate (drone, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
+        em.dirY = -0.8f;
+        temp = Instantiate (drone, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
         temp.AddComponent<Drones_1_1>();
         temp.GetComponent<Drones_1_1>().Start23();
         em = temp.GetComponent<EnemyMovement> ();
@@ -822,8 +822,8 @@ public class Waves : MonoBehaviour{
         em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.vert = true;
-		em.dirY = -1f;
-		temp = Instantiate (drone, new Vector3 (600, transform.position.y, 0), Quaternion.identity) as GameObject;
+        em.dirY = -0.8f;
+        temp = Instantiate (drone, new Vector3 (600, transform.position.y, 0), Quaternion.identity) as GameObject;
         temp.AddComponent<Drones_1_1>();
         temp.GetComponent<Drones_1_1>().Start23();
         em = temp.GetComponent<EnemyMovement> ();
@@ -848,8 +848,8 @@ public class Waves : MonoBehaviour{
         em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.vert = true;
-		em.dirY = -1f;
-		temp = Instantiate (drone, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
+        em.dirY = -0.8f;
+        temp = Instantiate (drone, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
         temp.AddComponent<Drones_1_1>();
         temp.GetComponent<Drones_1_1>().Start23();
         em = temp.GetComponent<EnemyMovement> ();
@@ -862,8 +862,8 @@ public class Waves : MonoBehaviour{
         em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.vert = true;
-		em.dirY = -1f;
-		temp = Instantiate (drone, new Vector3 (600, transform.position.y, 0), Quaternion.identity) as GameObject;
+        em.dirY = -0.8f;
+        temp = Instantiate (drone, new Vector3 (600, transform.position.y, 0), Quaternion.identity) as GameObject;
         temp.AddComponent<Drones_1_1>();
         temp.GetComponent<Drones_1_1>().Start23();
         em = temp.GetComponent<EnemyMovement> ();
@@ -888,8 +888,8 @@ public class Waves : MonoBehaviour{
         em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.vert = true;
-		em.dirY = -1f;
-		temp = Instantiate (drone, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
+        em.dirY = -0.8f;
+        temp = Instantiate (drone, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
         temp.AddComponent<Drones_1_1>();
         temp.GetComponent<Drones_1_1>().Start23();
         em = temp.GetComponent<EnemyMovement> ();
@@ -902,8 +902,8 @@ public class Waves : MonoBehaviour{
         em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.vert = true;
-		em.dirY = -1f;
-		temp = Instantiate (drone, new Vector3 (600, transform.position.y, 0), Quaternion.identity) as GameObject;
+        em.dirY = -0.8f;
+        temp = Instantiate (drone, new Vector3 (600, transform.position.y, 0), Quaternion.identity) as GameObject;
         temp.AddComponent<Drones_1_1>();
         temp.GetComponent<Drones_1_1>().Start23();
         em = temp.GetComponent<EnemyMovement> ();
@@ -928,8 +928,8 @@ public class Waves : MonoBehaviour{
         em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.vert = true;
-		em.dirY = -1f;
-		temp = Instantiate (drone, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
+        em.dirY = -0.8f;
+        temp = Instantiate (drone, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
         temp.AddComponent<Drones_1_1>();
         temp.GetComponent<Drones_1_1>().Start23();
         em = temp.GetComponent<EnemyMovement> ();
@@ -942,7 +942,7 @@ public class Waves : MonoBehaviour{
         em = temp.GetComponent<EnemyMovement> ();
 		em.hasDest = false;
 		em.vert = true;
-		em.dirY = -1f;
+		em.dirY = -0.8f;
 		temp = Instantiate (drone, new Vector3 (600, transform.position.y, 0), Quaternion.identity) as GameObject;
         temp.AddComponent<Drones_1_1>();
         temp.GetComponent<Drones_1_1>().Start23();
