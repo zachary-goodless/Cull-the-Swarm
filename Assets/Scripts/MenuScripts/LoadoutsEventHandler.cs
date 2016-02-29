@@ -205,9 +205,9 @@ public class LoadoutsEventHandler : MonoBehaviour
 	void initDefaultLoadout()
 	{
 		//set the current loadout to the default values
-		mCurrentLoadout.setChasis(Loadout.LoadoutChasis.DEFAULT);
-		mCurrentLoadout.setPrimary(Loadout.LoadoutPrimary.DEFAULT);
-		mCurrentLoadout.setSecondary(Loadout.LoadoutSecondary.DEFAULT);
+		mCurrentLoadout.setChasis(Loadout.LoadoutChasis.EXTERMINATOR);
+		mCurrentLoadout.setPrimary(Loadout.LoadoutPrimary.REPEL);
+		mCurrentLoadout.setSecondary(Loadout.LoadoutSecondary.EMP);
 
 		//force the default buttons to disabled
 		Button[] buttons = mChasisPanel.GetComponentsInChildren<Button>();

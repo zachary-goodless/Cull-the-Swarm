@@ -27,6 +27,20 @@ public class LoadoutElementButtonEventHandler : MonoBehaviour
 		//get the worldmap canvas event handler
 		mParentEventHandler = GetComponentInParent<LoadoutsEventHandler>();
 		mParentPanel = transform.parent.gameObject;
+
+		//TODO -- temp force button text
+		if(chasisIndex != Loadout.LoadoutChasis.NULL)
+		{
+			gameObject.GetComponentInChildren<Text>().text = chasisIndex.ToString();
+		}
+		else if(primaryIndex != Loadout.LoadoutPrimary.NULL)
+		{
+			gameObject.GetComponentInChildren<Text>().text = primaryIndex.ToString();
+		}
+		else if(secondaryIndex != Loadout.LoadoutSecondary.NULL)
+		{
+			gameObject.GetComponentInChildren<Text>().text = secondaryIndex.ToString();
+		}
 	}
 
 //--------------------------------------------------------------------------------------------
