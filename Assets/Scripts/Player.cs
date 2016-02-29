@@ -141,23 +141,23 @@ public class Player : MonoBehaviour {
 			case Loadout.LoadoutPrimary.NULL:
 				Debug.Log ("Primary NULL");
 				break;
-		case Loadout.LoadoutPrimary.DEFAULT:
+		case Loadout.LoadoutPrimary.REPEL:
 				Debug.Log ("Primary Set Bug Repellant");
 				gameObject.AddComponent <StandardPrimary>();
 				break;
-			case Loadout.LoadoutPrimary.PRIMARY_1:
+			case Loadout.LoadoutPrimary.SWATTER:
 				Debug.Log ("Primary set No-Miss Swatter");
 				gameObject.AddComponent <SwatterPrimary>();
 				break;
-			case Loadout.LoadoutPrimary.PRIMARY_2:
+			case Loadout.LoadoutPrimary.FLAME:
 				Debug.Log ("Primary set Flamethrower");
 				gameObject.AddComponent <FlamethrowerPrimary>();
 				break;
-			case Loadout.LoadoutPrimary.PRIMARY_3:
+			case Loadout.LoadoutPrimary.VOLT:
 				Debug.Log ("Primary set Volt Lantern");
 				gameObject.AddComponent <LaserPrimary>();
 				break;
-			case Loadout.LoadoutPrimary.PRIMARY_4:
+			case Loadout.LoadoutPrimary.BUGSPRAY:
 				Debug.Log ("Primary set Bug Spray");
 				gameObject.AddComponent <BugSprayPrimary>();
 				break;
@@ -171,19 +171,19 @@ public class Player : MonoBehaviour {
 			case Loadout.LoadoutSecondary.NULL:
 				Debug.Log ("Secondary NULL");
 				break;
-		case Loadout.LoadoutSecondary.DEFAULT:
-				Debug.Log ("Secondary set Phasing System");
-				break;
-			case Loadout.LoadoutSecondary.SECONDARY_1:
+			case Loadout.LoadoutSecondary.EMP:
 				Debug.Log ("Secondary set EMP Counter");
 				break;
-			case Loadout.LoadoutSecondary.SECONDARY_2:
+			case Loadout.LoadoutSecondary.PHASING:
+				Debug.Log ("Secondary set Phasing System");
+				break;
+			case Loadout.LoadoutSecondary.TESLA:
 				Debug.Log ("CSecondary set Mosquito Tesla Coil");
 				break;
-			case Loadout.LoadoutSecondary.SECONDARY_3:
+			case Loadout.LoadoutSecondary.FREEZE:
 				Debug.Log ("Secondary set Freeze Ray");
 				break;
-			case Loadout.LoadoutSecondary.SECONDARY_4:
+			case Loadout.LoadoutSecondary.HOLOGRAM:
 				Debug.Log ("Secondary set Holo Duplicate");
 				break;
 			default:
@@ -196,19 +196,19 @@ public class Player : MonoBehaviour {
 			case Loadout.LoadoutChasis.NULL:
 				Debug.Log ("Armor NULL");
 				break;
-			case Loadout.LoadoutChasis.DEFAULT:
+			case Loadout.LoadoutChasis.EXTERMINATOR:
 				Debug.Log ("Armor Set Exterminator Chasis");
 				break;
-			case Loadout.LoadoutChasis.CHASIS_1:
+			case Loadout.LoadoutChasis.BOOSTER:
 				Debug.Log ("Armor set Booster Chasis");
 				break;
-			case Loadout.LoadoutChasis.CHASIS_2:
+			case Loadout.LoadoutChasis.SHRINK:
 				Debug.Log ("Armor set Shrink Chasis");
 				break;
-			case Loadout.LoadoutChasis.CHASIS_3:
+			case Loadout.LoadoutChasis.QUICK:
 				Debug.Log ("Armor set Quick Chasis");
 				break;
-			case Loadout.LoadoutChasis.CHASIS_4:
+			case Loadout.LoadoutChasis.FINAL:
 				Debug.Log ("Armor set Final Chasis");
 				break;
 			default:

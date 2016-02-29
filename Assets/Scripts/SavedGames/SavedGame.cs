@@ -11,33 +11,33 @@ public class Loadout
 	{
 		NULL = -1,
 
-		DEFAULT = 0,
-		CHASIS_1 = 1,
-		CHASIS_2 = 2,
-		CHASIS_3 = 3,
-		CHASIS_4 = 4
+		EXTERMINATOR = 	0,
+		FINAL = 		1,
+		BOOSTER = 		2,
+		SHRINK = 		3,
+		QUICK = 		4
 	}
 
 	public enum LoadoutPrimary		//primary weapon enums
 	{
 		NULL = -1,
 
-		DEFAULT = 0,
-		PRIMARY_1 = 1,
-		PRIMARY_2 = 2,
-		PRIMARY_3 = 3,
-		PRIMARY_4 = 4
+		REPEL = 	0,
+		SWATTER = 	1,
+		BUGSPRAY = 	2,
+		FLAME = 	3,
+		VOLT = 		4
 	}
 
 	public enum LoadoutSecondary	//secondary weapon enums
 	{
 		NULL = -1,
 
-		DEFAULT = 0,
-		SECONDARY_1 = 1,
-		SECONDARY_2 = 2,
-		SECONDARY_3 = 3,
-		SECONDARY_4 = 4
+		EMP = 		0,
+		PHASING = 	1,
+		HOLOGRAM = 	2,
+		TESLA = 	3,
+		FREEZE = 	4
 	}
 
 	public static int NUM_LOADOUTS = 5;
@@ -234,39 +234,50 @@ public class SavedGame
 
 //--------------------------------------------------------------------------------------------
 
-	public void handleIncomingLoadoutUnlock(int index)
+	public void handleIncomingLoadoutUnlock(SceneIndex index)
 	{
-		//index for the array
-		int j = (index / 3) + 1;
-
-		//TODO -- work on unlock order
 		switch(index)
 		{
-		//first stage -- unlock chasis
-		case 0:
-		case 3:
-		case 6:
-		case 9:
-			unlockedChasis[j] = true;
+		case SceneIndex.GAMEPLAY_TUTORIAL_1:
+			unlockedSecondary[(int)Loadout.LoadoutSecondary.PHASING] = true;
+			break;
+		case SceneIndex.GAMEPLAY_TUTORIAL_2:
+			unlockedPrimary[(int)Loadout.LoadoutPrimary.SWATTER] = true;
+			break;
+		case SceneIndex.GAMEPLAY_TUTORIAL_3:
+			unlockedChasis[(int)Loadout.LoadoutChasis.FINAL] = true;
 			break;
 
-		//second stage -- unlock primary weapon
-		case 1:
-		case 4:
-		case 7:
-		case 10:
-			unlockedPrimary[j] = true;
+		case SceneIndex.GAMEPLAY_1_1:
+			unlockedChasis[(int)Loadout.LoadoutChasis.BOOSTER] = true;
+			break;
+		case SceneIndex.GAMEPLAY_1_2:
+			unlockedPrimary[(int)Loadout.LoadoutPrimary.BUGSPRAY] = true;
+			break;
+		case SceneIndex.GAMEPLAY_1_3:
+			unlockedSecondary[(int)Loadout.LoadoutSecondary.HOLOGRAM] = true;
 			break;
 
-		//final stage -- unlock secondary weapon
-		case 2:
-		case 5:
-		case 8:
-		case 11:
-			unlockedSecondary[j] = true;
+		case SceneIndex.GAMEPLAY_2_1:
+			unlockedPrimary[(int)Loadout.LoadoutPrimary.FLAME] = true;
+			break;
+		case SceneIndex.GAMEPLAY_2_2:
+			unlockedChasis[(int)Loadout.LoadoutChasis.SHRINK] = true;
+			break;
+		case SceneIndex.GAMEPLAY_2_3:
+			unlockedSecondary[(int)Loadout.LoadoutSecondary.TESLA] = true;
 			break;
 
-		//otherwise, do nothing
+		case SceneIndex.GAMEPLAY_3_1:
+			unlockedSecondary[(int)Loadout.LoadoutSecondary.FREEZE] = true;
+			break;
+		case SceneIndex.GAMEPLAY_3_2:
+			unlockedPrimary[(int)Loadout.LoadoutPrimary.VOLT] = true;
+			break;
+		case SceneIndex.GAMEPLAY_3_3:
+			unlockedChasis[(int)Loadout.LoadoutChasis.QUICK] = true;
+			break;
+
 		default:
 			break;
 		}

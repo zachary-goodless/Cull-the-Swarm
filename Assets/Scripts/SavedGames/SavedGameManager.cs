@@ -380,9 +380,9 @@ public class SavedGameManager : MonoBehaviour
 		}
 
 		//handle stuff on the current game object
-		mCurrentGame.handleIncomingScore(i, score);		//highscore
-		mCurrentGame.handleIncomingLevelUnlock(i);		//level unlock
-		mCurrentGame.handleIncomingLoadoutUnlock(i);	//loadout unlock
+		mCurrentGame.handleIncomingScore(i, score);				//highscore
+		mCurrentGame.handleIncomingLevelUnlock(i);				//level unlock
+		mCurrentGame.handleIncomingLoadoutUnlock(currentLevel);	//loadout unlock
 
 		//major change -- write out to file
 		writeSavedGameFile();
