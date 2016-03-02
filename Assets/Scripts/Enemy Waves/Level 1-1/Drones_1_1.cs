@@ -37,7 +37,7 @@ public class Drones_1_1 : MonoBehaviour {
 	}
 
     public void Start23() {
-        StartCoroutine(DroneWave23());
+        //StartCoroutine(DroneWave23());
     }
     
     public IEnumerator DroneWave23() {

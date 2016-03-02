@@ -16,7 +16,7 @@ public class Level1_1 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Q)) {
-			//waves.StartTest ();
+			waves.StartTest ();
 		}
 		if (sf.finished) {
 			SceneManager.LoadScene ((int)SceneIndex.WORLD_MAP);
