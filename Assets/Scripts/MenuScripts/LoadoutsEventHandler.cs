@@ -9,21 +9,21 @@ using UnityEngine.SceneManagement;
 
 public class LoadoutsEventHandler : MonoBehaviour
 {
-	//TODO -- REWORK!!!
-
 	//PUBLIC
-	public Button mBackButton;			//back to world map
-	public Button mStartButton;			//start game
+	public Button mBackButton;
+	public Button mStartButton;
 
-	public GameObject mMainPanel;		//ui element panels
-	public GameObject mChasisPanel;
-	public GameObject mPrimaryPanel;
-	public GameObject mSecondaryPanel;
+	public GameObject mMainPanel;
+	public GameObject mChoicePanel;
+	public GameObject mDataPanel;
 
 	public ScreenFade mScreenFader;
 	public GameObject gmPrefab;
 
 	//PRIVATE
+	//TODO -- sprite arrays (chassis buttons, primary buttons, secondary buttons, choice images)
+	//TODO -- string arrays (loadout choice names, loadout choice descriptions, loadout choice unlocks)
+
 	private SavedGameManager mSavedGameManager;
 
 	private Loadout mCurrentLoadout;
@@ -42,30 +42,16 @@ public class LoadoutsEventHandler : MonoBehaviour
 			return;
 		}
 
-		//set all loadout element buttons' isUnlocked using the saved game data
-		//	back buttons' interactable must be set via the inspector view 
-		setButtonsUnlock(
-			mChasisPanel.GetComponentsInChildren<LoadoutElementButtonEventHandler>(), 
-			mSavedGameManager.getCurrentGame().unlockedChasis);
-		setButtonsUnlock(
-			mPrimaryPanel.GetComponentsInChildren<LoadoutElementButtonEventHandler>(), 
-			mSavedGameManager.getCurrentGame().unlockedPrimary);
-		setButtonsUnlock(
-			mSecondaryPanel.GetComponentsInChildren<LoadoutElementButtonEventHandler>(), 
-			mSavedGameManager.getCurrentGame().unlockedSecondary);
-
-		//assert buttons' enabled now that their unlock status is set
-		setButtonsEnable(mChasisPanel.GetComponentsInChildren<Button>());
-		setButtonsEnable(mPrimaryPanel.GetComponentsInChildren<Button>());
-		setButtonsEnable(mSecondaryPanel.GetComponentsInChildren<Button>());
+		//TODO -- init arrays
 
 		//sanity check -- null any current loadout data on the current game ptr
 		mSavedGameManager.getCurrentGame().setCurrentLoadout(null);
 		mCurrentLoadout = new Loadout();
 
-		Debug.Log(mCurrentLoadout.toString());
-
-		initDefaultLoadout();	//initialze the default loadout
+		//initialize the default loadout
+		mCurrentLoadout.setChasis(Loadout.LoadoutChasis.EXTERMINATOR);
+		mCurrentLoadout.setPrimary(Loadout.LoadoutPrimary.REPEL);
+		mCurrentLoadout.setSecondary(Loadout.LoadoutSecondary.EMP);
 
 		StartCoroutine(mScreenFader.FadeFromBlack());
 	}
@@ -110,113 +96,252 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 		yield return null;
 	}
-		
+
 //--------------------------------------------------------------------------------------------
 
-	public void handleChasisButtonClicked()
+	public void handleChassisButtonClicked()
 	{
-		mChasisPanel.SetActive(true);
-		mMainPanel.SetActive(false);
+		mChoicePanel.GetComponentInChildren<Text>().text = "Chassis";
+
+		//for the first 5 buttons in the choices panel...
+		Button[] buttons = mChoicePanel.GetComponentsInChildren<Button>();
+		for(int i = 0; i < buttons.Length - 1; ++i)
+		{
+			//get the button event handler
+			LoadoutElementButtonEventHandler beh = buttons[i].GetComponent<LoadoutElementButtonEventHandler>();
+
+			//set its loadout element indicies -- only chassis not null
+			beh.setLoadoutIndices(i, -1, -1);
+
+			//set the button's unlock and image
+			beh.isUnlocked = mSavedGameManager.getCurrentGame().unlockedChasis[i];
+			buttons[i].interactable = beh.chasisIndex != mCurrentLoadout.getChasis() && beh.isUnlocked;
+
+			if(beh.isUnlocked)
+			{
+				//TODO -- change picture of button
+				buttons[i].GetComponentInChildren<Text>().text = beh.chasisIndex.ToString();
+			}
+			else
+			{
+				//TODO -- classified image
+				buttons[i].GetComponentInChildren<Text>().text = beh.chasisIndex.ToString();
+			}
+		}
+
+		toggleMainPanelButtonsActive();
+
+		mChoicePanel.SetActive(true);
+		mDataPanel.SetActive(true);
 	}
 
 //--------------------------------------------------------------------------------------------
 
 	public void handlePrimaryButtonClicked()
 	{
-		mPrimaryPanel.SetActive(true);
-		mMainPanel.SetActive(false);
+		mChoicePanel.GetComponentInChildren<Text>().text = "Primary";
+
+		//for the first 5 buttons in the choices panel...
+		Button[] buttons = mChoicePanel.GetComponentsInChildren<Button>();
+		for(int i = 0; i < buttons.Length - 1; ++i)
+		{
+			//get the button event handler
+			LoadoutElementButtonEventHandler beh = buttons[i].GetComponent<LoadoutElementButtonEventHandler>();
+
+			//set its loadout element indicies -- only primary not null
+			beh.setLoadoutIndices(-1, i, -1);
+
+			//set the button's unlock and image
+			beh.isUnlocked = mSavedGameManager.getCurrentGame().unlockedPrimary[i];
+			buttons[i].interactable = beh.primaryIndex != mCurrentLoadout.getPrimary() && beh.isUnlocked;
+
+			if(beh.isUnlocked)
+			{
+				//TODO -- change picture of button
+				buttons[i].GetComponentInChildren<Text>().text = beh.primaryIndex.ToString();
+			}
+			else
+			{
+				//TODO -- classified image
+				buttons[i].GetComponentInChildren<Text>().text = beh.primaryIndex.ToString();
+			}
+		}
+
+		toggleMainPanelButtonsActive();
+
+		mChoicePanel.SetActive(true);
+		mDataPanel.SetActive(true);
 	}
 
 //--------------------------------------------------------------------------------------------
 
 	public void handleSecondaryButtonClicked()
 	{
-		mSecondaryPanel.SetActive(true);
-		mMainPanel.SetActive(false);
+		mChoicePanel.GetComponentInChildren<Text>().text = "Secondary";
+
+		//for the first 5 buttons in the choices panel...
+		Button[] buttons = mChoicePanel.GetComponentsInChildren<Button>();
+		for(int i = 0; i < buttons.Length - 1; ++i)
+		{
+			//get the button event handler
+			LoadoutElementButtonEventHandler beh = buttons[i].GetComponent<LoadoutElementButtonEventHandler>();
+
+			//set its loadout element indicies -- only secondary not null
+			beh.setLoadoutIndices(-1, -1, i);
+
+			//set the button's unlock and image
+			beh.isUnlocked = mSavedGameManager.getCurrentGame().unlockedSecondary[i];
+			buttons[i].interactable = beh.secondaryIndex != mCurrentLoadout.getSecondary() && beh.isUnlocked;
+
+			if(beh.isUnlocked)
+			{
+				//TODO -- change picture of button
+				buttons[i].GetComponentInChildren<Text>().text = beh.secondaryIndex.ToString();
+			}
+			else
+			{
+				//TODO -- classified image
+				buttons[i].GetComponentInChildren<Text>().text = beh.primaryIndex.ToString();
+			}
+		}
+
+		toggleMainPanelButtonsActive();
+
+		mChoicePanel.SetActive(true);
+		mDataPanel.SetActive(true);
 	}
 
-//--------------------------------------------------------------------------------------------
+	//--------------------------------------------------------------------------------------------//--------------------------------------------------------------------------------------------
 
-	public void handleLoadoutElementButtonClicked(
-		Loadout.LoadoutChasis lc,
-		Loadout.LoadoutPrimary lp,
-		Loadout.LoadoutSecondary ls)
+	public void handleChoiceButtonClicked(Loadout.LoadoutChasis ci, Loadout.LoadoutPrimary pi, Loadout.LoadoutSecondary si)
 	{
-		//TODO -- updates 3d preview of character model as player selects loadout elements
-
-		//update current chasis if that's what was passed in
-		if(lc != Loadout.LoadoutChasis.NULL)
+		//CHASSIS
+		if(ci != Loadout.LoadoutChasis.NULL)
 		{
-			mCurrentLoadout.setChasis(lc);
-			setButtonsEnable(mChasisPanel.GetComponentsInChildren<Button>());
+			mCurrentLoadout.setChasis(ci);
+			Debug.Log("NEW CHASSIS SELECTED: " + ci);
 
-			Debug.Log("NEW SELECTED CHASIS: " + lc);
+			setChoiceButtonsActive();
 		}
 
-		//update current primary if that's what was passed in
-		else if(lp != Loadout.LoadoutPrimary.NULL)
+		//PRIMARY
+		else if(pi != Loadout.LoadoutPrimary.NULL)
 		{
-			mCurrentLoadout.setPrimary(lp);
-			setButtonsEnable(mPrimaryPanel.GetComponentsInChildren<Button>());
+			mCurrentLoadout.setPrimary(pi);
+			Debug.Log("NEW PRIMARY SELECTED: " + pi);
 
-			Debug.Log("NEW SELECTED PRIMARY: " + lp);
+			setChoiceButtonsActive();
 		}
 
-		//update current secondary if that's what was passed in
-		else if(ls != Loadout.LoadoutSecondary.NULL)
+		//SECONDARY
+		else if(si != Loadout.LoadoutSecondary.NULL)
 		{
-			mCurrentLoadout.setSecondary(ls);
-			setButtonsEnable(mSecondaryPanel.GetComponentsInChildren<Button>());
+			mCurrentLoadout.setSecondary(si);
+			Debug.Log("NEW SECONDARY SELECTED: " + si);
 
-			Debug.Log("NEW SELECTED SECONDARY: " + ls);
+			setChoiceButtonsActive();
 		}
 
-		//else back button, reenable the main panel
+		//BACK BUTTON
 		else
 		{
-			mMainPanel.SetActive(true);
+			toggleMainPanelButtonsActive();
+
+			mChoicePanel.SetActive(false);
+			mDataPanel.SetActive(false);
 		}
 	}
 
 //--------------------------------------------------------------------------------------------
 
-	void setButtonsUnlock(LoadoutElementButtonEventHandler[] behs, bool[] unlocks)
+	public void handleChoiceButtonMouseOver(Loadout.LoadoutChasis ci, Loadout.LoadoutPrimary pi, Loadout.LoadoutSecondary si)
 	{
-		//for each element in the unlocks array...
-		for(int i = 0; i < unlocks.Length; ++i)
+		initDataPanel(ci, pi, si);
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	public void handleChoiceButtonMouseExit()
+	{
+		initDataPanel(Loadout.LoadoutChasis.NULL, Loadout.LoadoutPrimary.NULL, Loadout.LoadoutSecondary.NULL);
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	private void initDataPanel(Loadout.LoadoutChasis ci, Loadout.LoadoutPrimary pi, Loadout.LoadoutSecondary si)
+	{
+		Text[] texts = mDataPanel.GetComponentsInChildren<Text>();
+
+		//CHASSIS
+		if(ci != Loadout.LoadoutChasis.NULL)
 		{
-			behs[i].isUnlocked = unlocks[i];
+			texts[0].text = ci.ToString();
+			texts[1].text = ci.ToString();
+			texts[2].text = ci.ToString();
+
+			//TODO -- set image
 		}
-	}
 
-//--------------------------------------------------------------------------------------------
-
-	void setButtonsEnable(Button[] buttons)
-	{
-		//asserts button enabled based on whether or not it has been unlocked on the current game
-		foreach(Button b in buttons)
+		//PRIMARY
+		else if(pi != Loadout.LoadoutPrimary.NULL)
 		{
-			b.interactable = b.gameObject.GetComponent<LoadoutElementButtonEventHandler>().isUnlocked;
+			texts[0].text = pi.ToString();
+			texts[1].text = pi.ToString();
+			texts[2].text = pi.ToString();
+
+			//TODO -- set image
+		}
+
+		//SECONDARY
+		else if(si != Loadout.LoadoutSecondary.NULL)
+		{
+			texts[0].text = si.ToString();
+			texts[1].text = si.ToString();
+			texts[2].text = si.ToString();
+
+			//TODO -- set image
+		}
+
+		//NULL
+		else
+		{
+			//set each textbox's text to empty
+			foreach(Text t in mDataPanel.GetComponentsInChildren<Text>())
+			{
+				t.text = "-";
+			}
+
+			//TODO -- set image to empty
 		}
 	}
 
 //--------------------------------------------------------------------------------------------
 
-	void initDefaultLoadout()
+	private void setChoiceButtonsActive()
 	{
-		//set the current loadout to the default values
-		mCurrentLoadout.setChasis(Loadout.LoadoutChasis.EXTERMINATOR);
-		mCurrentLoadout.setPrimary(Loadout.LoadoutPrimary.REPEL);
-		mCurrentLoadout.setSecondary(Loadout.LoadoutSecondary.EMP);
+		//for each button on the choice panel...
+		foreach(Button b in mChoicePanel.GetComponentsInChildren<Button>())
+		{
+			//it is interactable if its choice is unlocked
+			LoadoutElementButtonEventHandler beh = b.GetComponent<LoadoutElementButtonEventHandler>();
+			b.interactable = beh.isUnlocked;
+		}
+	}
 
-		//force the default buttons to disabled
-		Button[] buttons = mChasisPanel.GetComponentsInChildren<Button>();
-		buttons[0].interactable = false;
+//--------------------------------------------------------------------------------------------
 
-		buttons = mPrimaryPanel.GetComponentsInChildren<Button>();
-		buttons[0].interactable = false;
+	private void setChoiceButtonsSprites(Sprite[] spriteArray)
+	{
+		//TODO
+	}
 
-		buttons = mSecondaryPanel.GetComponentsInChildren<Button>();
-		buttons[0].interactable = false;
+//--------------------------------------------------------------------------------------------
+
+	public void toggleMainPanelButtonsActive()
+	{
+		foreach(Button b in mMainPanel.GetComponentsInChildren<Button>())
+		{
+			b.interactable = !b.interactable;
+		}
 	}
 }

@@ -18,29 +18,12 @@ public class LoadoutElementButtonEventHandler : MonoBehaviour
 
 	//PRIVATE
 	private LoadoutsEventHandler mParentEventHandler;
-	private GameObject mParentPanel;
 
 //--------------------------------------------------------------------------------------------
 
 	void Start()
 	{
-		//get the worldmap canvas event handler
 		mParentEventHandler = GetComponentInParent<LoadoutsEventHandler>();
-		mParentPanel = transform.parent.gameObject;
-
-		//TODO -- temp force button text
-		if(chasisIndex != Loadout.LoadoutChasis.NULL)
-		{
-			gameObject.GetComponentInChildren<Text>().text = chasisIndex.ToString();
-		}
-		else if(primaryIndex != Loadout.LoadoutPrimary.NULL)
-		{
-			gameObject.GetComponentInChildren<Text>().text = primaryIndex.ToString();
-		}
-		else if(secondaryIndex != Loadout.LoadoutSecondary.NULL)
-		{
-			gameObject.GetComponentInChildren<Text>().text = secondaryIndex.ToString();
-		}
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -49,25 +32,45 @@ public class LoadoutElementButtonEventHandler : MonoBehaviour
 	{
 		if(mParentEventHandler != null)
 		{
-			//call to the canvas -- sets the selected loadout to this button's indicies
-			mParentEventHandler.handleLoadoutElementButtonClicked(
-				chasisIndex, 
-				primaryIndex, 
-				secondaryIndex);
+			mParentEventHandler.handleChoiceButtonClicked(chasisIndex, primaryIndex, secondaryIndex);
 
-			//if all indicies are NULL, this is a back button, disable the panel
-			if(chasisIndex == Loadout.LoadoutChasis.NULL &&
-				primaryIndex == Loadout.LoadoutPrimary.NULL &&
-				secondaryIndex == Loadout.LoadoutSecondary.NULL)
+			//if any of the indicies are not null (not a back button)...
+			if(chasisIndex != Loadout.LoadoutChasis.NULL ||
+				primaryIndex != Loadout.LoadoutPrimary.NULL ||
+				secondaryIndex != Loadout.LoadoutSecondary.NULL)
 			{
-				mParentPanel.SetActive(false);
-			}
-
-			//otherwise, diable the button itself
-			else
-			{
-				GetComponent<Button>().interactable = false;
+				//set the button to non-interactable
+				gameObject.GetComponent<Button>().interactable = false;
 			}
 		}
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	public void handleButtonMouseOver()
+	{
+		if(mParentEventHandler != null)
+		{
+			mParentEventHandler.handleChoiceButtonMouseOver(chasisIndex, primaryIndex, secondaryIndex);
+		}
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	public void handleButtonMouseExit()
+	{
+		if(mParentEventHandler != null)
+		{
+			mParentEventHandler.handleChoiceButtonMouseExit();
+		}
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	public void setLoadoutIndices(int ci, int pi, int si)
+	{
+		chasisIndex = (Loadout.LoadoutChasis)ci;
+		primaryIndex = (Loadout.LoadoutPrimary)pi;
+		secondaryIndex = (Loadout.LoadoutSecondary)si;
 	}
 }

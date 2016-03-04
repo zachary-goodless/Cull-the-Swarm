@@ -367,8 +367,6 @@ public class SavedGameManager : MonoBehaviour
 
 	public void handleLevelCompleted(SceneIndex currentLevel, int score)
 	{
-		//TODO -- get current level from inside this function instead of from param?
-
 		//convert from SceneIndex to indexing int
 		int i = (int)currentLevel - 3;
 		if(i < 0 || i >= NUM_GAMEPLAY_LEVELS) return;
