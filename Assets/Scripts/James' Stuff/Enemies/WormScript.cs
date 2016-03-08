@@ -10,6 +10,7 @@ public class WormScript : MonoBehaviour {
 	float speed;
 	float smooth;
 	float distance;
+	float maxRot;
 
 	EnemyMovement em;
 
@@ -24,6 +25,8 @@ public class WormScript : MonoBehaviour {
 		speed = 600;
 		distance = 70;
 		smooth = .02f;
+		maxRot = .8f;
+
 		//StartCoroutine ("FollowDelay");
 	}
 	
@@ -43,14 +46,23 @@ public class WormScript : MonoBehaviour {
 
 			//segment.LookAt (target, Vector3.forward);
 
-			//Quaternion lookRot
-			//segment.rotation = Quaternion.LookRotation(Vector3.forward,dir); 
-			//segment.rotation = Quaternion.Lerp(segment.rotation,lookRot,Time.deltaTime*smooth);
-			//segment.LookAt(target);
+			float formerRot = segment.eulerAngles.z;
+
+			segment.rotation = Quaternion.LookRotation(Vector3.forward,dir); 
+
+			if (segment.eulerAngles.z > formerRot + maxRot) {
+				segment.eulerAngles = new Vector3 (0, 0, formerRot + maxRot);
+			}
+			else if(segment.eulerAngles.z < formerRot - maxRot) {
+				segment.eulerAngles = new Vector3 (0, 0, formerRot - maxRot);
+			}
+
 			//segment.Rotate (0, 0, 180);
 
+			//segment.position = Vector3.MoveTowards (segment.position,target-dir,speed*Time.deltaTime);
+
 			segment.position = Vector3.MoveTowards (segment.position,target,speed*Time.deltaTime);
-			target = segment.position + segment.up *distance;
+			target = segment.position + segment.up *distance*-1;
 		}
 		/*for(int i = segments.Count - 1; i>0; i--){
 			target = segments[i-1].position + segments[i-1].up *distance;

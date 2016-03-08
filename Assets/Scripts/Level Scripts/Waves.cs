@@ -21,17 +21,17 @@ public class Waves : MonoBehaviour{
 		if (rot.z % 360 <= 45 || rot.z % 360 > 315) {
 			backPush = new Vector3 (0, 70, 0);
 		} else if (rot.z % 360 <= 135 || rot.z % 360 > 45) {
-			backPush = new Vector3 (-70, 0, 0);
+			backPush = new Vector3 (70, 0, 0);
 		} else if (rot.z % 360 <= 225 || rot.z % 360 > 135) {
 			backPush = new Vector3 (0, -70, 0);
 		} else {
-			backPush = new Vector3 (70, 0, 0);
+			backPush = new Vector3 (-70, 0, 0);
 		}
 
 		GameObject head = Instantiate (wormHead, pos, Quaternion.Euler (rot)) as GameObject;
 		WormScript ws = head.GetComponent <WormScript>();
 		for (int i = 1; i < bods; i++) {
-			GameObject bod = Instantiate(WormBod, pos + backPush*i, Quaternion.Euler(rot)) as GameObject;
+			GameObject bod = Instantiate(WormBod, pos + backPush*i, Quaternion.Euler(rot-new Vector3(0,0,90))) as GameObject;
 			ws.segments.Add (bod.transform);
 		}
 		return head;
@@ -42,7 +42,7 @@ public class Waves : MonoBehaviour{
 		GameObject temp;
 		EnemyMovement em;
 
-		temp = MakeWorm (6, new Vector3 (1000, 0, 0),new Vector3(0,0,270));
+		temp = MakeWorm (6, new Vector3 (1250, 0, 0),new Vector3(0,0,270));
 		em = temp.GetComponent<EnemyMovement> ();
 		em.followNose = true;
 		em.hasDest = false;
