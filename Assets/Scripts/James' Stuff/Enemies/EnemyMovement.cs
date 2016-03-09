@@ -53,6 +53,8 @@ public class EnemyMovement : MonoBehaviour {
 		sine = false;
 		followNose = false;
 		oscillate = false;
+		lifeTime = 40;
+		lifeTimer = 0;
 	}
 
 	// Use this for initialization
@@ -66,8 +68,7 @@ public class EnemyMovement : MonoBehaviour {
 		evasionBounds = 150;
 		retreat = false;
 		movementTimer = 0;
-		lifeTime = 30;
-		lifeTimer = 0;
+
 		beenSeen = false;
 		//kc = GameObject.Find("KillCount").GetComponent<KillCount>();
 

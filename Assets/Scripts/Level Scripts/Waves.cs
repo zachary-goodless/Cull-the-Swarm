@@ -958,4 +958,35 @@ public class Waves : MonoBehaviour{
 	public void StartDronesAndTurrets(){
 		StartCoroutine ("DronesAndTurrets");
 	}
+
+	//City-2 START!...yah, I think I might just split these into different scripts...We're nearing 1000 lines per level
+	IEnumerator DoubleWorms(){
+		//initialize stuff
+		GameObject temp;
+		EnemyMovement em;
+
+		temp = MakeWorm (6, new Vector3 (1250, 0, 0),new Vector3(0,0,270));
+		em = temp.GetComponent<EnemyMovement> ();
+		em.followNose = true;
+		em.hasDest = false;
+		em.hasRange = true;
+		em.rotInc = .5f;
+		em.rotRange = 40;
+		em.dirY = 1;
+
+		temp = MakeWorm (6, new Vector3 (-1250, 0, 0),new Vector3(0,0,90));
+		em = temp.GetComponent<EnemyMovement> ();
+		em.followNose = true;
+		em.hasDest = false;
+		em.hasRange = true;
+		em.rotInc = .5f;
+		em.rotRange = 40;
+		em.dirY = 1;
+
+		yield break;
+	}
+
+	public void StartDoubleWorms(){
+		StartCoroutine ("DoubleWorms");
+	}
 }
