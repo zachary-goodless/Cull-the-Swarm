@@ -275,11 +275,12 @@ public class LoadoutsEventHandler : MonoBehaviour
 		//CHASSIS
 		if(ci != Loadout.LoadoutChasis.NULL)
 		{
-			texts[0].text = ci.ToString();
-			texts[1].text = ci.ToString();
-			texts[2].text = ci.ToString();
+			texts[0].text = ci.ToString();	//name
+			texts[1].text = ci.ToString();	//description
+			texts[2].text = ci.ToString();	//unlock
 
 			//TODO -- set image
+			//TODO -- set texts
 		}
 
 		//PRIMARY
@@ -290,6 +291,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 			texts[2].text = pi.ToString();
 
 			//TODO -- set image
+			//TODO -- set texts
 		}
 
 		//SECONDARY
@@ -300,6 +302,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 			texts[2].text = si.ToString();
 
 			//TODO -- set image
+			//TODO -- set texts
 		}
 
 		//NULL

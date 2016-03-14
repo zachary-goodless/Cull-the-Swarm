@@ -8,8 +8,6 @@ using UnityEngine.EventSystems;
 
 using UnityEngine.SceneManagement;
 
-//using UnityEditor;
-
 public class WorldMapEventHandler : MonoBehaviour
 {
 	//PUBLIC
