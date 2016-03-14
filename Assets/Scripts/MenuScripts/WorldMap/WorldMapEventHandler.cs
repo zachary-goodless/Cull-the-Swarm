@@ -95,8 +95,7 @@ public class WorldMapEventHandler : MonoBehaviour
 	private IEnumerator handleContinueButtonClickedHelper()
 	{
 		//set the current game's selected level
-		//mSavedGameManager.getCurrentGame().setSelectedLevel(mSelectedLevel);
-		mSavedGameManager.getCurrentGame().setSelectedLevel(SceneIndex.GAMEPLAY_TUTORIAL_1);	//TODO -- temp force load into city 1_1
+		mSavedGameManager.getCurrentGame().setSelectedLevel(mSelectedLevel);
 
 		//load the loadouts scene
 		Debug.Log("LOADING LOADOUTS MENU");
