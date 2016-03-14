@@ -24,6 +24,8 @@ public class WorldMapEventHandler : MonoBehaviour
 	public ScreenFade mScreenFader;
 	public GameObject gmPrefab;
 
+	public GameObject stageThreeButton;		//used to force enable of stage 3 button in specific instances
+
 	//PRIVATE
 	private Sprite[] levelTitleSprites;		//arrays to store sprites to dynamically update gui elements
 	private Sprite[] levelButtonSprites;
@@ -110,9 +112,12 @@ public class WorldMapEventHandler : MonoBehaviour
 
 	public void handleLevelButtonClicked(int firstStageIndex)
 	{
+		//IF FINAL LEVELS, DISABLE FINAL BUTTON
+		stageThreeButton.SetActive(firstStageIndex != 12);
+
 		//for the first three buttons (stages 1, 2, and 3)...
 		StageButtonEventHandler[] behs = mStagePanel.GetComponentsInChildren<StageButtonEventHandler>();
-		for(int i = 0; i < 3; ++i)
+		for(int i = 0; i < behs.Length - 1; ++i)
 		{
 			//set isUnlocked and sceneIndex for the current button
 			behs[i].isUnlocked = mSavedGameManager.getCurrentGame().unlockedLevels[firstStageIndex + i];
@@ -122,8 +127,8 @@ public class WorldMapEventHandler : MonoBehaviour
 		//set the stage panel's title image based on the firstStageIndex
 		mStagePanelTitle.sprite = levelTitleSprites[firstStageIndex / 3];
 
-		//force the unlock for the back button (button 4)
-		behs[3].isUnlocked = true;
+		//force the unlock for the back button
+		behs[behs.Length - 1].isUnlocked = true;
 
 		//set the buttons enable
 		setStageButtonsActive();
@@ -284,10 +289,14 @@ public class WorldMapEventHandler : MonoBehaviour
 				//if the current button's level is unlocked...
 				if(beh.isUnlocked)
 				{
-					//set its sprite images based on what stage it is (special case for final boss level)
+					//set its sprite images based on what stage it is (special case for final levels)
 					switch(beh.sceneIndex)
 					{
-					case SceneIndex.GAMEPLAY_4_3:
+					case SceneIndex.GAMEPLAY_4_1:
+						setStageButtonSprites(b, 12);
+						break;
+
+					case SceneIndex.GAMEPLAY_4_2:
 						setStageButtonSprites(b, 16);
 						break;
 

@@ -7,8 +7,6 @@ using UnityEngine.EventSystems;
 
 public class LoadoutElementButtonEventHandler : MonoBehaviour
 {
-	//TODO -- handle in similar fassion to the worldmap menu
-
 	//PUBLIC
 	public Loadout.LoadoutChasis chasisIndex;
 	public Loadout.LoadoutPrimary primaryIndex;
