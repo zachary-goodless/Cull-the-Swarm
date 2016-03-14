@@ -9,14 +9,14 @@ public class Level1_1 : MonoBehaviour {
 	public ScreenFade sf;
 
 	void Start () {
-		StartCoroutine ("LevelLayout");
+		StartCoroutine ("LevelLayout2");
 		sf = GameObject.Find ("ScreenFade").GetComponent<ScreenFade> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Q)) {
-			//waves.StartTest ();
+			waves.StartTest ();
 		}
 		if (sf.finished) {
 			SceneManager.LoadScene ((int)SceneIndex.WORLD_MAP);
@@ -66,6 +66,14 @@ public class Level1_1 : MonoBehaviour {
 		waves.StartDronesCornerCircles ();
 		yield return new WaitForSeconds (16f);
 		sf.Fade ();
+		yield break;
+	}
+
+	IEnumerator LevelLayout2(){
+
+		yield return new WaitForSeconds (5f);
+		waves.StartDoubleWorms ();
+		yield break;
 	}
 
 }
