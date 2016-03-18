@@ -11,7 +11,7 @@ public class SavedGameManager : MonoBehaviour
 	public bool GOD_MODE;						//TODO -- temp god mode for full-unlock (configurable from inspector)
 	public static bool isGodMode;
 
-	public static int NUM_GAMEPLAY_LEVELS = 15;	//TODO -- hardcoded to 15 right now (5 levels of 3 stages)
+	public static int NUM_GAMEPLAY_LEVELS = 14;	//TODO -- hardcoded to 14 right now (4 levels of 3 stages, 1 of 2 stages)
 
 	//PUBLIC
 	public int[] globalHighScores;
@@ -367,8 +367,6 @@ public class SavedGameManager : MonoBehaviour
 
 	public void handleLevelCompleted(SceneIndex currentLevel, int score)
 	{
-		//TODO -- get current level from inside this function instead of from param?
-
 		//convert from SceneIndex to indexing int
 		int i = (int)currentLevel - 3;
 		if(i < 0 || i >= NUM_GAMEPLAY_LEVELS) return;

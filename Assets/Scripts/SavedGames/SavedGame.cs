@@ -4,8 +4,6 @@ using System.Collections;
 
 public class Loadout
 {
-	//TODO -- rename enum elements
-
 	//PUBLIC 
 	public enum LoadoutChasis		//chasis enums
 	{
