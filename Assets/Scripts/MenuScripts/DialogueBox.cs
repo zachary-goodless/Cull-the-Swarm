@@ -4,16 +4,16 @@ using System.Collections;
 
 using UnityEngine.UI;
 
+public enum Characters
+{
+	NULL = -1,
+
+	//TODO -- add characters
+}
+
 public class DialogueBox : MonoBehaviour
 {
 	//PUBLIC
-	public enum Characters
-	{
-		NULL = -1,
-
-		//TODO -- add characters
-	}
-
 	public Image mSpeakerImg;
 	public Text mSpeakerName;
 	public Text mDialogue;

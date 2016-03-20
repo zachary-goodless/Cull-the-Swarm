@@ -211,7 +211,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 		mDataPanel.SetActive(true);
 	}
 
-	//--------------------------------------------------------------------------------------------//--------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 	public void handleChoiceButtonClicked(Loadout.LoadoutChasis ci, Loadout.LoadoutPrimary pi, Loadout.LoadoutSecondary si)
 	{
