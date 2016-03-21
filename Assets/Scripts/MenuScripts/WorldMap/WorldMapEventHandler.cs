@@ -12,7 +12,6 @@ public class WorldMapEventHandler : MonoBehaviour
 {
 	//PUBLIC
 	public Button mBackButton;
-	public Button mContinueButton;
 
 	public Image mStagePanelTitle;			//quick refs to dynamic image elements
 	public Image mDataPanelImg;
@@ -66,16 +65,6 @@ public class WorldMapEventHandler : MonoBehaviour
 
 		StartCoroutine(mScreenFader.FadeFromBlack());
 	}
-
-//--------------------------------------------------------------------------------------------
-
-	//TODO -- delete this function when the mouse-over stuff is added and we load the next menu on stage button click
-	void Update()
-	{
-		//continue button is disabled when there is no currently selected level
-		mContinueButton.interactable = mSelectedLevel != SceneIndex.NULL;
-	}
-
 
 //--------------------------------------------------------------------------------------------
 
@@ -176,7 +165,7 @@ public class WorldMapEventHandler : MonoBehaviour
 			setStageButtonsActive();
 
 			//automatically start the loadouts menu
-			//handleContinueButtonClicked();	//TODO -- temp commented out
+			handleContinueButtonClicked();
 		}
 
 		//back button clicked...

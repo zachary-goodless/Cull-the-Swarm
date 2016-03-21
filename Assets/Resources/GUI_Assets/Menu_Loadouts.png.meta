@@ -1,0 +1,1481 @@
+fileFormatVersion: 2
+guid: 3927870ffaa1049cd86b95bc412b9ed7
+timeCreated: 1458520580
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Menu_Loadouts_0
+    21300002: Menu_Loadouts_1
+    21300004: Menu_Loadouts_2
+    21300006: Menu_Loadouts_3
+    21300008: Menu_Loadouts_4
+    21300010: Menu_Loadouts_5
+    21300012: Menu_Loadouts_6
+    21300014: Menu_Loadouts_7
+    21300016: Menu_Loadouts_8
+    21300018: Menu_Loadouts_9
+    21300020: Menu_Loadouts_10
+    21300022: Menu_Loadouts_11
+    21300024: Menu_Loadouts_12
+    21300026: Menu_Loadouts_13
+    21300028: Menu_Loadouts_14
+    21300030: Menu_Loadouts_15
+    21300032: Menu_Loadouts_16
+    21300034: Menu_Loadouts_17
+    21300036: Menu_Loadouts_18
+    21300038: Menu_Loadouts_19
+    21300040: Menu_Loadouts_20
+    21300042: Menu_Loadouts_21
+    21300044: Menu_Loadouts_22
+    21300046: Menu_Loadouts_23
+    21300048: Menu_Loadouts_24
+    21300050: Menu_Loadouts_25
+    21300052: Menu_Loadouts_26
+    21300054: Menu_Loadouts_27
+    21300056: Menu_Loadouts_28
+    21300058: Menu_Loadouts_29
+    21300060: Menu_Loadouts_30
+    21300062: Menu_Loadouts_31
+    21300064: Menu_Loadouts_32
+    21300066: Menu_Loadouts_33
+    21300068: Menu_Loadouts_34
+    21300070: Menu_Loadouts_35
+    21300072: Menu_Loadouts_36
+    21300074: Menu_Loadouts_37
+    21300076: Menu_Loadouts_38
+    21300078: Menu_Loadouts_39
+    21300080: Menu_Loadouts_40
+    21300082: Menu_Loadouts_41
+    21300084: Menu_Loadouts_42
+    21300086: Menu_Loadouts_43
+    21300088: Menu_Loadouts_44
+    21300090: Menu_Loadouts_45
+    21300092: Menu_Loadouts_46
+    21300094: Menu_Loadouts_47
+    21300096: Menu_Loadouts_48
+    21300098: Menu_Loadouts_49
+    21300100: Menu_Loadouts_50
+    21300102: Menu_Loadouts_51
+    21300104: Menu_Loadouts_52
+    21300106: Menu_Loadouts_53
+    21300108: Menu_Loadouts_54
+    21300110: Menu_Loadouts_55
+    21300112: Menu_Loadouts_56
+    21300114: Menu_Loadouts_57
+    21300116: Menu_Loadouts_58
+    21300118: Menu_Loadouts_59
+    21300120: Menu_Loadouts_60
+    21300122: Menu_Loadouts_61
+    21300124: Menu_Loadouts_62
+    21300126: Menu_Loadouts_63
+    21300128: Menu_Loadouts_64
+    21300130: Menu_Loadouts_65
+    21300132: Menu_Loadouts_66
+    21300134: Menu_Loadouts_67
+    21300136: Menu_Loadouts_68
+    21300138: Menu_Loadouts_69
+    21300140: Menu_Loadouts_70
+    21300142: Menu_Loadouts_71
+    21300144: Menu_Loadouts_72
+    21300146: Menu_Loadouts_73
+    21300148: Menu_Loadouts_74
+    21300150: Menu_Loadouts_75
+    21300152: Menu_Loadouts_76
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Menu_Loadouts_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1408
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_1
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 1408
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_2
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 1408
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_3
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 1408
+        width: 254
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31}
+        - {x: -127, y: -20}
+        - {x: -127, y: -31}
+        - {x: 106, y: -31}
+        - {x: 127, y: 18}
+        - {x: 127, y: 31}
+    - name: Menu_Loadouts_4
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1337
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_5
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 1337
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_6
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 1337
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_7
+      rect:
+        serializedVersion: 2
+        x: 997
+        y: 1337
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_8
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 1265
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_9
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 1264
+        width: 256
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -105, y: 31.5}
+        - {x: -128, y: -20.5}
+        - {x: -128, y: -31.5}
+        - {x: 107, y: -31.5}
+        - {x: 127, y: 25.5}
+        - {x: 127, y: 31.5}
+      - - {x: 125, y: -31.5}
+        - {x: 128, y: -31.5}
+        - {x: 128, y: -25.5}
+        - {x: 125, y: -26.5}
+    - name: Menu_Loadouts_10
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 1264
+        width: 256
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -105, y: 31.5}
+        - {x: -128, y: -20.5}
+        - {x: -128, y: -31.5}
+        - {x: 107, y: -31.5}
+        - {x: 127, y: 25.5}
+        - {x: 127, y: 31.5}
+      - - {x: 125, y: -31.5}
+        - {x: 128, y: -31.5}
+        - {x: 128, y: -25.5}
+        - {x: 125, y: -26.5}
+    - name: Menu_Loadouts_11
+      rect:
+        serializedVersion: 2
+        x: 998
+        y: 1265
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_12
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 1193
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_13
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 1193
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_14
+      rect:
+        serializedVersion: 2
+        x: 666
+        y: 1193
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_15
+      rect:
+        serializedVersion: 2
+        x: 998
+        y: 1194
+        width: 254
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31}
+        - {x: -127, y: -22}
+        - {x: -127, y: -31}
+        - {x: 106, y: -31}
+        - {x: 127, y: 18}
+        - {x: 127, y: 31}
+    - name: Menu_Loadouts_16
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 1121
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_17
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 1121
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_18
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 1121
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_19
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 1122
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_20
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 1048
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_21
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 1048
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_22
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 1048
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_23
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 1050
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_24
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 976
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_25
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 976
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_26
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 976
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_27
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 978
+        width: 254
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31}
+        - {x: -127, y: -22}
+        - {x: -127, y: -31}
+        - {x: 106, y: -31}
+        - {x: 127, y: 18}
+        - {x: 127, y: 31}
+    - name: Menu_Loadouts_28
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 904
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_29
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 904
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_30
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 904
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_31
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 906
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_32
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 832
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_33
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 832
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_34
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 832
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_35
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 834
+        width: 254
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31}
+        - {x: -127, y: -20}
+        - {x: -127, y: -31}
+        - {x: 106, y: -31}
+        - {x: 127, y: 18}
+        - {x: 127, y: 31}
+    - name: Menu_Loadouts_36
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 761
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_37
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 761
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_38
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 761
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_39
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 762
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_40
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 688
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_41
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 688
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_42
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 688
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_43
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 690
+        width: 254
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31}
+        - {x: -127, y: -22}
+        - {x: -127, y: -31}
+        - {x: 106, y: -31}
+        - {x: 127, y: 18}
+        - {x: 127, y: 31}
+    - name: Menu_Loadouts_44
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 617
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_45
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 617
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_46
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 617
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_47
+      rect:
+        serializedVersion: 2
+        x: 1003
+        y: 618
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_48
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 544
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_49
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 544
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_50
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 544
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_51
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 546
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_52
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 473
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_53
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 473
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_54
+      rect:
+        serializedVersion: 2
+        x: 674
+        y: 473
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_55
+      rect:
+        serializedVersion: 2
+        x: 1005
+        y: 474
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_56
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 401
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_57
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 401
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_58
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 401
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_59
+      rect:
+        serializedVersion: 2
+        x: 1006
+        y: 402
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_60
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 328
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_61
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 328
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_62
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 328
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_63
+      rect:
+        serializedVersion: 2
+        x: 1006
+        y: 330
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 102.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_64
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 256
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_65
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 256
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_66
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 256
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_67
+      rect:
+        serializedVersion: 2
+        x: 1005
+        y: 258
+        width: 254
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31}
+        - {x: -127, y: -22}
+        - {x: -127, y: -31}
+        - {x: 106, y: -31}
+        - {x: 127, y: 18}
+        - {x: 127, y: 31}
+    - name: Menu_Loadouts_68
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 184
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_69
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 184
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_70
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 184
+        width: 254
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103, y: 31.5}
+        - {x: -127, y: -21.5}
+        - {x: -127, y: -31.5}
+        - {x: 100, y: -31.5}
+        - {x: 105, y: -30.5}
+        - {x: 127, y: 20.5}
+        - {x: 127, y: 31.5}
+    - name: Menu_Loadouts_71
+      rect:
+        serializedVersion: 2
+        x: 1006
+        y: 186
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 20}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_72
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 113
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_73
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 113
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_74
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 113
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_75
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 114
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    - name: Menu_Loadouts_76
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 41
+        width: 253
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -103.5, y: 31}
+        - {x: -126.5, y: -21}
+        - {x: -126.5, y: -31}
+        - {x: 105.5, y: -31}
+        - {x: 126.5, y: 18}
+        - {x: 126.5, y: 31}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

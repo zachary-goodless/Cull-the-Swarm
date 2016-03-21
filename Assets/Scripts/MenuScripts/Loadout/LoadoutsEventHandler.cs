@@ -21,8 +21,10 @@ public class LoadoutsEventHandler : MonoBehaviour
 	public GameObject gmPrefab;
 
 	//PRIVATE
-	//TODO -- sprite arrays (chassis buttons, primary buttons, secondary buttons, choice images)
-	//TODO -- string arrays (loadout choice names, loadout choice descriptions, loadout choice unlocks)
+	public Sprite[] buttonSprites;
+	//TODO -- sprite arrays (choice icons)
+
+	public string[,] elementStrings;
 
 	private SavedGameManager mSavedGameManager;
 
@@ -42,7 +44,33 @@ public class LoadoutsEventHandler : MonoBehaviour
 			return;
 		}
 
-		//TODO -- init arrays
+		//init resource arrays
+		buttonSprites = Resources.LoadAll<Sprite>("GUI_Assets/Menu_Loadouts");
+		//TODO -- init choice icon array
+
+		//TODO -- complete the element strings arrays
+		elementStrings = new string[16, 3]		//name, description, unlock
+		{
+			{"Exterminator", 		"a", "a"},
+			{"Final", 				"b", "b"},
+			{"Booster", 			"c", "c"},
+			{"Shrink", 				"d", "d"},
+			{"Quick", 				"e", "e"},
+
+			{"Bug Repellants", 		"f", "f"},
+			{"No-Miss Swatter", 	"g", "g"},
+			{"Precision Pesticide", "h", "h"},
+			{"Citronella Flame", 	"i", "i"},
+			{"Volt Lantern", 		"j", "j"},
+
+			{"EMP Counter", 		"k", "k"},
+			{"Phasing System", 		"l", "l"},
+			{"Holo-Duplicate", 		"m", "m"},
+			{"Mosquito Tesla Coil", "n", "n"},
+			{"Freeze Ray", 			"o", "o"},
+
+			{"-", "-", "-"}
+		};
 
 		//sanity check -- null any current loadout data on the current game ptr
 		mSavedGameManager.getCurrentGame().setCurrentLoadout(null);
@@ -119,13 +147,12 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 			if(beh.isUnlocked)
 			{
-				//TODO -- change picture of button
-				buttons[i].GetComponentInChildren<Text>().text = beh.chasisIndex.ToString();
+				setChoiceButtonsSprites(buttons[i], i * 4 + 16);
 			}
 			else
 			{
-				//TODO -- classified image
-				buttons[i].GetComponentInChildren<Text>().text = beh.chasisIndex.ToString();
+				buttons[i].gameObject.GetComponent<Image>().sprite = buttonSprites[buttonSprites.Length - 1];
+				buttons[i].transition = Button.Transition.None;
 			}
 		}
 
@@ -157,13 +184,12 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 			if(beh.isUnlocked)
 			{
-				//TODO -- change picture of button
-				buttons[i].GetComponentInChildren<Text>().text = beh.primaryIndex.ToString();
+				setChoiceButtonsSprites(buttons[i], i * 4 + 36);
 			}
 			else
 			{
-				//TODO -- classified image
-				buttons[i].GetComponentInChildren<Text>().text = beh.primaryIndex.ToString();
+				buttons[i].gameObject.GetComponent<Image>().sprite = buttonSprites[buttonSprites.Length - 1];
+				buttons[i].transition = Button.Transition.None;
 			}
 		}
 
@@ -195,13 +221,12 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 			if(beh.isUnlocked)
 			{
-				//TODO -- change picture of button
-				buttons[i].GetComponentInChildren<Text>().text = beh.secondaryIndex.ToString();
+				setChoiceButtonsSprites(buttons[i], i * 4 + 56);
 			}
 			else
 			{
-				//TODO -- classified image
-				buttons[i].GetComponentInChildren<Text>().text = beh.primaryIndex.ToString();
+				buttons[i].gameObject.GetComponent<Image>().sprite = buttonSprites[buttonSprites.Length - 1];
+				buttons[i].transition = Button.Transition.None;
 			}
 		}
 
@@ -254,9 +279,13 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	public void handleChoiceButtonMouseOver(Loadout.LoadoutChasis ci, Loadout.LoadoutPrimary pi, Loadout.LoadoutSecondary si)
+	public void handleChoiceButtonMouseOver(
+		Loadout.LoadoutChasis ci, 
+		Loadout.LoadoutPrimary pi, 
+		Loadout.LoadoutSecondary si,
+		bool isChoiceUnlocked)
 	{
-		initDataPanel(ci, pi, si);
+		initDataPanel(ci, pi, si, isChoiceUnlocked);
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -268,54 +297,44 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	private void initDataPanel(Loadout.LoadoutChasis ci, Loadout.LoadoutPrimary pi, Loadout.LoadoutSecondary si)
+	private void initDataPanel(
+		Loadout.LoadoutChasis ci, 
+		Loadout.LoadoutPrimary pi, 
+		Loadout.LoadoutSecondary si,
+		bool isChoiceUnlocked = false)
 	{
 		Text[] texts = mDataPanel.GetComponentsInChildren<Text>();
+		int index = 0;
 
 		//CHASSIS
-		if(ci != Loadout.LoadoutChasis.NULL)
+		if(ci != Loadout.LoadoutChasis.NULL && isChoiceUnlocked)
 		{
-			texts[0].text = ci.ToString();	//name
-			texts[1].text = ci.ToString();	//description
-			texts[2].text = ci.ToString();	//unlock
-
-			//TODO -- set image
-			//TODO -- set texts
+			index = (int)ci;
 		}
 
 		//PRIMARY
-		else if(pi != Loadout.LoadoutPrimary.NULL)
+		else if(pi != Loadout.LoadoutPrimary.NULL && isChoiceUnlocked)
 		{
-			texts[0].text = pi.ToString();
-			texts[1].text = pi.ToString();
-			texts[2].text = pi.ToString();
-
-			//TODO -- set image
-			//TODO -- set texts
+			index = (int)pi + 5;
 		}
 
 		//SECONDARY
-		else if(si != Loadout.LoadoutSecondary.NULL)
+		else if(si != Loadout.LoadoutSecondary.NULL && isChoiceUnlocked)
 		{
-			texts[0].text = si.ToString();
-			texts[1].text = si.ToString();
-			texts[2].text = si.ToString();
-
-			//TODO -- set image
-			//TODO -- set texts
+			index = (int)si + 10;
 		}
 
 		//NULL
 		else
 		{
-			//set each textbox's text to empty
-			foreach(Text t in mDataPanel.GetComponentsInChildren<Text>())
-			{
-				t.text = "-";
-			}
-
-			//TODO -- set image to empty
+			index = 15;
 		}
+
+		texts[0].text = elementStrings[index, 0];	//name
+		texts[1].text = elementStrings[index, 1];	//description
+		texts[2].text = elementStrings[index, 2];	//unlock
+
+		//TODO -- set image
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -333,9 +352,21 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	private void setChoiceButtonsSprites(Sprite[] spriteArray)
+	private void setChoiceButtonsSprites(Button b, int spriteIndex)
 	{
-		//TODO
+		SpriteState ss = new SpriteState();
+
+		//set the default state
+		b.gameObject.GetComponent<Image>().sprite = buttonSprites[spriteIndex];
+
+		//set sprite stage images
+		ss.pressedSprite = buttonSprites[spriteIndex + 1];
+		ss.disabledSprite = buttonSprites[spriteIndex + 2];
+		ss.highlightedSprite = buttonSprites[spriteIndex + 3];
+
+		//apply change to the button
+		b.transition = Button.Transition.SpriteSwap;
+		b.spriteState = ss;
 	}
 
 //--------------------------------------------------------------------------------------------

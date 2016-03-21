@@ -49,7 +49,11 @@ public class LoadoutElementButtonEventHandler : MonoBehaviour
 	{
 		if(mParentEventHandler != null)
 		{
-			mParentEventHandler.handleChoiceButtonMouseOver(chasisIndex, primaryIndex, secondaryIndex);
+			mParentEventHandler.handleChoiceButtonMouseOver(
+				chasisIndex, 
+				primaryIndex, 
+				secondaryIndex, 
+				isUnlocked);
 		}
 	}
 
