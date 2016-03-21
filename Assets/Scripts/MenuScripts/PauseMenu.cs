@@ -86,7 +86,7 @@ public class PauseMenu : MonoBehaviour
 		if(confirmation)
 		{
 			unpauseGame();
-			Application.Quit();
+			Application.Quit();	//TODO -- does this work?
 		}
 
 		toggleButtonsEnable();
