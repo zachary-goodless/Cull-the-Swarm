@@ -173,15 +173,18 @@ public class Player : MonoBehaviour {
 				break;
 			case Loadout.LoadoutSecondary.EMP:
 				Debug.Log ("Secondary set EMP Counter");
+				gameObject.AddComponent<EMPManager>();
 				break;
 			case Loadout.LoadoutSecondary.PHASING:
 				Debug.Log ("Secondary set Phasing System");
 				break;
 			case Loadout.LoadoutSecondary.TESLA:
 				Debug.Log ("CSecondary set Mosquito Tesla Coil");
+				gameObject.AddComponent<TeslaManager>();
 				break;
 			case Loadout.LoadoutSecondary.FREEZE:
 				Debug.Log ("Secondary set Freeze Ray");
+				gameObject.AddComponent<FreezeManager>();
 				break;
 			case Loadout.LoadoutSecondary.HOLOGRAM:
 				Debug.Log ("Secondary set Holo Duplicate");
