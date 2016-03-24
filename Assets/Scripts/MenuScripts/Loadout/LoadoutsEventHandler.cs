@@ -51,23 +51,23 @@ public class LoadoutsEventHandler : MonoBehaviour
 		//TODO -- complete the element strings arrays
 		elementStrings = new string[16, 3]		//name, description, unlock
 		{
-			{"Exterminator", 		"a", "a"},
-			{"Final", 				"b", "b"},
-			{"Booster", 			"c", "c"},
-			{"Shrink", 				"d", "d"},
-			{"Quick", 				"e", "e"},
+			{"Exterminator", 		"a", "-"},
+			{"Final", 				"b", "Complete Tutorial 3 to unlock!"},
+			{"Booster", 			"c", "Complete Level 1-1 to unlock!"},
+			{"Shrink", 				"d", "Complete Level 2-2 to unlock!"},
+			{"Quick", 				"e", "Complete Level 3-3 to unlock!"},
 
-			{"Bug Repellants", 		"f", "f"},
-			{"No-Miss Swatter", 	"g", "g"},
-			{"Precision Pesticide", "h", "h"},
-			{"Citronella Flame", 	"i", "i"},
-			{"Volt Lantern", 		"j", "j"},
+			{"Bug Repellants", 		"f", "-"},
+			{"No-Miss Swatter", 	"g", "Complete Tutorial 2 to unlock!"},
+			{"Precision Pesticide", "h", "Complete Level 1-2 to unlock!"},
+			{"Citronella Flame", 	"i", "Complete Level 2-1 to unlock!"},
+			{"Volt Lantern", 		"j", "Complete Level 3-2 to unlock!"},
 
-			{"EMP Counter", 		"k", "k"},
-			{"Phasing System", 		"l", "l"},
-			{"Holo-Duplicate", 		"m", "m"},
-			{"Mosquito Tesla Coil", "n", "n"},
-			{"Freeze Ray", 			"o", "o"},
+			{"EMP Counter", 		"k", "-"},
+			{"Phasing System", 		"l", "Complete Tutorial 1 to unlock!"},
+			{"Holo-Duplicate", 		"m", "Complete Level 1-3 to unlock!"},
+			{"Mosquito Tesla Coil", "n", "Complete Level 2-3 to unlock!"},
+			{"Freeze Ray", 			"o", "Complete Level 3-1 to unlock!"},
 
 			{"-", "-", "-"}
 		};
@@ -306,35 +306,44 @@ public class LoadoutsEventHandler : MonoBehaviour
 		Text[] texts = mDataPanel.GetComponentsInChildren<Text>();
 		int index = 0;
 
-		//CHASSIS
-		if(ci != Loadout.LoadoutChasis.NULL && isChoiceUnlocked)
+		if(ci != Loadout.LoadoutChasis.NULL)
 		{
 			index = (int)ci;
 		}
-
-		//PRIMARY
-		else if(pi != Loadout.LoadoutPrimary.NULL && isChoiceUnlocked)
+		else if(pi != Loadout.LoadoutPrimary.NULL)
 		{
 			index = (int)pi + 5;
 		}
-
-		//SECONDARY
-		else if(si != Loadout.LoadoutSecondary.NULL && isChoiceUnlocked)
+		else if(si != Loadout.LoadoutSecondary.NULL)
 		{
 			index = (int)si + 10;
 		}
-
-		//NULL
 		else
 		{
 			index = 15;
 		}
 
-		texts[0].text = elementStrings[index, 0];	//name
-		texts[1].text = elementStrings[index, 1];	//description
-		texts[2].text = elementStrings[index, 2];	//unlock
+		//if the element is unlocked...
+		if(isChoiceUnlocked)
+		{
+			//TODO -- set element icon
 
-		//TODO -- set image
+			//set name, description, blank unlock criteria
+			texts[0].text = elementStrings[index, 0];
+			texts[1].text = elementStrings[index, 1];
+			texts[2].text = "-";
+		}
+
+		//otherwise, if the element is locked...
+		else
+		{
+			//TODO -- set locked icon
+
+			//set blank name, blank description, unlock criteria
+			texts[0].text = "-";
+			texts[1].text = "-";
+			texts[2].text = elementStrings[index, 2];
+		}
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -359,7 +368,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 		//set the default state
 		b.gameObject.GetComponent<Image>().sprite = buttonSprites[spriteIndex];
 
-		//set sprite stage images
+		//set sprite state images
 		ss.pressedSprite = buttonSprites[spriteIndex + 1];
 		ss.disabledSprite = buttonSprites[spriteIndex + 2];
 		ss.highlightedSprite = buttonSprites[spriteIndex + 3];
