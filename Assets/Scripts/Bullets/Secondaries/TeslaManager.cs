@@ -20,6 +20,8 @@ public class TeslaManager : MonoBehaviour
 
 	private GameObject teslaObjPhase_1;
 
+	private Transform forwardPos;
+
 	private float currEnergy;
 	private float storedDamage;
 
@@ -33,7 +35,11 @@ public class TeslaManager : MonoBehaviour
 		//get handle on energy bar
 		energyBar = GameObject.Find("EnergyBar").GetComponent<RectTransform>();
 
-		//TODO -- init prefabs
+		//init prefabs
+		teslaPrefabPhase_1 = Resources.Load<GameObject>("PlayerBullets/TeslaPhase_1");
+		teslaPrefabPhase_2 = Resources.Load<GameObject>("PlayerBullets/TeslaPhase_2");
+
+		forwardPos = transform.Find ("GunF");
 
 		currEnergy = maxEnergy;
 		storedDamage = 0f;
@@ -64,8 +70,14 @@ public class TeslaManager : MonoBehaviour
 				//enter the weapon's second phase
 				if(teslaObjPhase_1 != null)
 				{
-					//TODO -- extract phase 1 obj stored damage, destroy it
-					//TODO -- create phase 2 obj, pass it stored damage
+					//extract phase 1 obj stored damage, destroy it
+					storedDamage = teslaObjPhase_1.GetComponent<TeslaPhase_1>().getStoredDamage();
+					Destroy(teslaObjPhase_1);
+
+					//create phase 2 obj, pass it stored damage
+					GameObject objPhase_2 = Instantiate(teslaPrefabPhase_2, forwardPos.position, Quaternion.identity) as GameObject;
+					objPhase_2.GetComponent<TeslaPhase_2>().setDamage(storedDamage);
+					objPhase_2.transform.parent = forwardPos;
 				}
 			}
 		}
@@ -80,7 +92,9 @@ public class TeslaManager : MonoBehaviour
 			//enter the weapon's first phase
 			if(teslaObjPhase_1 == null)
 			{
-				//TODO -- create phase 1 obj...
+				//create phase 1 obj
+				teslaObjPhase_1 = Instantiate(teslaPrefabPhase_1, transform.position, Quaternion.identity) as GameObject;
+				teslaObjPhase_1.transform.parent = transform;
 			}
 		}
 
@@ -93,8 +107,14 @@ public class TeslaManager : MonoBehaviour
 			//store damage if the weapon's first phase is active
 			if(teslaObjPhase_1 != null)
 			{
-				//TODO -- extract phase 1 obj stored damage, destroy it
-				//TODO -- create phase 2 obj, pass it stored damage	???
+				//extract phase 1 obj stored damage, destroy it
+				storedDamage = teslaObjPhase_1.GetComponent<TeslaPhase_1>().getStoredDamage();
+				Destroy(teslaObjPhase_1);
+
+				//create phase 2 obj, pass it stored damage
+				GameObject objPhase_2 = Instantiate(teslaPrefabPhase_2, forwardPos.position, Quaternion.identity) as GameObject;
+				objPhase_2.GetComponent<TeslaPhase_2>().setDamage(storedDamage);
+				objPhase_2.transform.parent = forwardPos;
 			}
 		}
 	}
