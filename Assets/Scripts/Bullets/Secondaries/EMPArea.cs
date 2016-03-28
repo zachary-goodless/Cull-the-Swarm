@@ -5,7 +5,8 @@ using System.Collections;
 public class EMPArea : MonoBehaviour
 {
 	//PUBLIC
-	public float duration;
+	public float duration = 1.5f;
+	public float delayBetweenTicks = 0.00001f;
 
 	//PRIVATE
 	//
@@ -14,13 +15,15 @@ public class EMPArea : MonoBehaviour
 
 	void Start ()
 	{
-		//
+		StartCoroutine(handleGrow());
 	}
 
 //--------------------------------------------------------------------------------------------
 
-	void Update ()
+	IEnumerator handleGrow()
 	{
-		//
+		float remainingTime = duration;
+
+		yield break;
 	}
 }
