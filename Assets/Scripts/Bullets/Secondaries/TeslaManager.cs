@@ -67,18 +67,7 @@ public class TeslaManager : MonoBehaviour
 				currEnergy = 0f;
 				isCharging = false;
 
-				//enter the weapon's second phase
-				if(teslaObjPhase_1 != null)
-				{
-					//extract phase 1 obj stored damage, destroy it
-					storedDamage = teslaObjPhase_1.GetComponent<TeslaPhase_1>().getStoredDamage();
-					Destroy(teslaObjPhase_1);
-
-					//create phase 2 obj, pass it stored damage
-					GameObject objPhase_2 = Instantiate(teslaPrefabPhase_2, forwardPos.position, Quaternion.identity) as GameObject;
-					objPhase_2.GetComponent<TeslaPhase_2>().setDamage(storedDamage);
-					objPhase_2.transform.parent = forwardPos;
-				}
+				enterWeaponPhase_2();
 			}
 		}
 
@@ -104,17 +93,28 @@ public class TeslaManager : MonoBehaviour
 			//stop charging
 			isCharging = false;
 
-			//store damage if the weapon's first phase is active
-			if(teslaObjPhase_1 != null)
-			{
-				//extract phase 1 obj stored damage, destroy it
-				storedDamage = teslaObjPhase_1.GetComponent<TeslaPhase_1>().getStoredDamage();
-				Destroy(teslaObjPhase_1);
+			enterWeaponPhase_2();
+		}
+	}
 
-				//create phase 2 obj, pass it stored damage
+//--------------------------------------------------------------------------------------------
+
+	void enterWeaponPhase_2()
+	{
+		//if a phase 1 object is present...
+		if(teslaObjPhase_1 != null)
+		{
+			//extract phase 1 obj stored damage, destroy it
+			storedDamage = teslaObjPhase_1.GetComponent<TeslaPhase_1>().getStoredDamage();
+			Destroy(teslaObjPhase_1);
+
+			//if any damage stored, enter phase 2
+			if(storedDamage > 0f)
+			{
 				GameObject objPhase_2 = Instantiate(teslaPrefabPhase_2, forwardPos.position, Quaternion.identity) as GameObject;
-				objPhase_2.GetComponent<TeslaPhase_2>().setDamage(storedDamage);
 				objPhase_2.transform.parent = forwardPos;
+
+				objPhase_2.GetComponent<TeslaPhase_2>().setDamage(storedDamage);
 			}
 		}
 	}

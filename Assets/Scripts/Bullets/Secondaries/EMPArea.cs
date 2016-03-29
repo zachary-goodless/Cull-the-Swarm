@@ -5,8 +5,10 @@ using System.Collections;
 public class EMPArea : MonoBehaviour
 {
 	//PUBLIC
-	public float duration = 1f;
+	public float duration = 0.75f;
 	public float delayBetweenTicks = 0.01f;
+
+	public float enemyDisabledCooldown = 3f;
 
 	//PRIVATE
 	//
@@ -22,20 +24,24 @@ public class EMPArea : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		OnTriggerStay2D(other);
-	}
-
-//--------------------------------------------------------------------------------------------
-
-	void OnTriggerStay2D(Collider2D other)
-	{
 		//if this hits an enemy...
 		if(other.tag == "EnemyHit")
 		{
-			//TODO -- grab enemy script, turn off canfire bool
+			//TODO -- this script is likely going to change
+			//disable enemy's ability to fire bullets
+			Drones_1_1 enemyFireScript = other.GetComponentInParent<Drones_1_1>();
+			if(enemyFireScript != null)
+			{
+				enemyFireScript.setFireDisabled(enemyDisabledCooldown);
+			}
 		}
 
-		//TODO -- if other is enemy bullet?
+		//other is enemy bullet...
+		else if(other.tag == "Bullet")
+		{
+			//reset bullet???
+			BulletManager.DeleteBullet(other.gameObject);
+		}
 	}
 
 //--------------------------------------------------------------------------------------------

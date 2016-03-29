@@ -7,6 +7,11 @@ public class Drones_1_1 : MonoBehaviour {
 	public string pattern;
 	bool ongoing;
 
+	//JUSTIN
+	public bool canFire = true;
+	public float fireDisabledCooldown = 0f;
+	//JUSTIN
+
 	// Use this for initialization
 	void Start () {
 
@@ -16,6 +21,27 @@ public class Drones_1_1 : MonoBehaviour {
 	void Update () {
 
 	}
+
+	//JUSTIN
+	public void setFireDisabled(float fdc)
+	{
+		if(canFire)
+		{
+			canFire = false;
+			fireDisabledCooldown = fdc;
+
+			StartCoroutine(handleFireDisabledCooldown());
+		}
+	}
+
+	IEnumerator handleFireDisabledCooldown()
+	{
+		yield return new WaitForSeconds(fireDisabledCooldown);
+		canFire = true;
+
+		yield break;
+	}
+	//JUSITN
 
     public void Start1() {
         StartCoroutine(DroneWave1());
@@ -29,8 +55,11 @@ public class Drones_1_1 : MonoBehaviour {
 
         yield return new WaitForSeconds(1f);
         for (int i = 0; i < loops; i++) {
-            Vector2 pos = transform.position;
-            BulletManager.ShootBullet(pos, 2, BulletManager.AngleToPlayerFrom(pos), 0.05f, 12, 0, BulletType.BlueDot);
+			if(canFire)
+			{
+				Vector2 pos = transform.position;
+            	BulletManager.ShootBullet(pos, 2, BulletManager.AngleToPlayerFrom(pos), 0.05f, 12, 0, BulletType.BlueDot);
+			}
             yield return new WaitForSeconds(cooldown);
         }
 
@@ -46,9 +75,12 @@ public class Drones_1_1 : MonoBehaviour {
 
         yield return new WaitForSeconds(1f);
         for (int i = 0; i < loops; i++) {
-            Vector2 pos = transform.position;
-            BulletManager.ShootBullet(pos, 12, Random.Range(260,280), -0.15f, 0, 0, BulletType.RedDot);
-            BulletManager.AddAction(new BulletAction(240, false, 0, 270, 0.02f, 4, 0));
+			if(canFire)
+			{
+           		Vector2 pos = transform.position;
+            	BulletManager.ShootBullet(pos, 12, Random.Range(260,280), -0.15f, 0, 0, BulletType.RedDot);
+            	BulletManager.AddAction(new BulletAction(240, false, 0, 270, 0.02f, 4, 0));
+			}
             yield return new WaitForSeconds(cooldown);
         }
 
@@ -65,9 +97,12 @@ public class Drones_1_1 : MonoBehaviour {
 
         yield return new WaitForSeconds(0.5f);
         for (int i = 0; i < loops; i++) {
-            Vector2 pos = transform.position;
-            BulletManager.ShootBullet(pos, 12, angle, -0.5f, 3, 0, BulletType.GreenShard);
-            angle += 124.3f;
+			if(canFire)
+			{
+            	Vector2 pos = transform.position;
+            	BulletManager.ShootBullet(pos, 12, angle, -0.5f, 3, 0, BulletType.GreenShard);
+            	angle += 124.3f;
+			}
             yield return new WaitForSeconds(cooldown);
         }
 
@@ -87,8 +122,11 @@ public class Drones_1_1 : MonoBehaviour {
             Vector2 pos = transform.position;
             float curve = Random.Range(-0.5f, 0.5f);
             for (int j = 0; j < linelength; j++) {
-                BulletManager.ShootBullet(pos, 2, 90, 0.2f, 12, -curve, BulletType.CyanDot);
-                BulletManager.ShootBullet(pos, 2, 270, 0.2f, 12, curve, BulletType.CyanDot);
+				if(canFire)
+				{
+              		BulletManager.ShootBullet(pos, 2, 90, 0.2f, 12, -curve, BulletType.CyanDot);
+                	BulletManager.ShootBullet(pos, 2, 270, 0.2f, 12, curve, BulletType.CyanDot);
+				}
                 yield return new WaitForSeconds(linelength * 0.02f);
             }
             yield return new WaitForSeconds(cooldown - linelength * 0.02f);
@@ -110,8 +148,11 @@ public class Drones_1_1 : MonoBehaviour {
             Vector2 pos = transform.position;
             float ang = Random.Range(0, 360);
             for (int j = 0; j < ringnum; j++) {
-                BulletManager.ShootBullet(pos, 12, ang + j * 360f / ringnum, -0.4f, 4, 0, BulletType.RedDarkDot);
-                BulletManager.ShootBullet(pos, 16, ang + (j + 0.5f) * 360f / ringnum, -0.4f, 8, 0, BulletType.BlueDarkDot);
+				if(canFire)
+				{
+                	BulletManager.ShootBullet(pos, 12, ang + j * 360f / ringnum, -0.4f, 4, 0, BulletType.RedDarkDot);
+                	BulletManager.ShootBullet(pos, 16, ang + (j + 0.5f) * 360f / ringnum, -0.4f, 8, 0, BulletType.BlueDarkDot);
+				}
             }
             yield return new WaitForSeconds(cooldown);
         }
@@ -129,7 +170,10 @@ public class Drones_1_1 : MonoBehaviour {
         Vector2 pos = transform.position;
         float ang = BulletManager.AngleToPlayerFrom(pos);
         for (int j = 0; j < ringnum; j++) {
-            BulletManager.ShootBullet(pos, 1, ang + j * 360f / ringnum, 0.04f, 4, 0, BulletType.GreenDarkDot);
+			if(canFire)
+			{
+            	BulletManager.ShootBullet(pos, 1, ang + j * 360f / ringnum, 0.04f, 4, 0, BulletType.GreenDarkDot);
+			}
         }
 
     }
@@ -145,9 +189,12 @@ public class Drones_1_1 : MonoBehaviour {
 
         yield return new WaitForSeconds(0.5f);
         for (int i = 0; i < loops; i++) {
-            Vector2 pos = transform.position;
-            BulletManager.ShootBullet(pos, 12, angle, -0.5f, 6, 0, BulletType.CyanShard);
-            angle = (angle + 90) % 360;
+			if(canFire)
+			{
+            	Vector2 pos = transform.position;
+            	BulletManager.ShootBullet(pos, 12, angle, -0.5f, 6, 0, BulletType.CyanShard);
+            	angle = (angle + 90) % 360;
+			}
             yield return new WaitForSeconds(cooldown);
         }
 
@@ -164,9 +211,12 @@ public class Drones_1_1 : MonoBehaviour {
 
         yield return new WaitForSeconds(0.5f);
         for (int i = 0; i < loops; i++) {
-            Vector2 pos = transform.position;
-            BulletManager.ShootBullet(pos, 12, angle, -0.5f, 6, 0, BulletType.YellowShard);
-            angle = (angle + 180) % 360;
+			if(canFire)
+			{
+           		Vector2 pos = transform.position;
+            	BulletManager.ShootBullet(pos, 12, angle, -0.5f, 6, 0, BulletType.YellowShard);
+            	angle = (angle + 180) % 360;
+			}
             yield return new WaitForSeconds(cooldown);
         }
 

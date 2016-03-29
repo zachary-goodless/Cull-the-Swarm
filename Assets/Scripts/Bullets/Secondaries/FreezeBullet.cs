@@ -8,7 +8,7 @@ public class FreezeBullet : MonoBehaviour
 	public float duration = 3f;
 
 	//PRIVATE
-	int depthRemaining = 0;
+	int recursionLevel = 0;
 
 	GameObject freezeBulletPrefab;
 
@@ -25,16 +25,23 @@ public class FreezeBullet : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		OnTriggerStay2D(other);
-	}
-
-//--------------------------------------------------------------------------------------------
-
-	void OnTriggerStay2D(Collider2D other)
-	{
-		if(other.tag == "Bullet")
+		//if other is bullet and we're not at the bottom recursion level...
+		if(other.tag == "Bullet" && recursionLevel != 0)
 		{
-			//TODO -- other is enemy bullet -- reset bullet, spawn freeze bullet
+			//grab bullet position
+			Vector3 spawnPos = other.transform.position;
+
+			//delete bullet and spawn freeze bullet
+			BulletManager.DeleteBullet(other.gameObject);
+
+			GameObject freezeBulletObj = Instantiate(freezeBulletPrefab, spawnPos, Quaternion.identity) as GameObject;
+
+			//set freezebullet recursion level
+			FreezeBullet freezeBulletScript = freezeBulletObj.GetComponent<FreezeBullet>();
+			if(freezeBulletScript != null)
+			{
+				freezeBulletScript.setRecursionLevel(recursionLevel - 1);
+			}
 		}
 	}
 
@@ -44,11 +51,13 @@ public class FreezeBullet : MonoBehaviour
 	{
 		yield return new WaitForSeconds(duration);
 
+		//TODO -- explode?
+
 		Destroy(gameObject);
 		yield break;
 	}
 
 //--------------------------------------------------------------------------------------------
 
-	public void setDepthRemaining(int d){ depthRemaining = d; }
+	public void setRecursionLevel(int d){ recursionLevel = d; }
 }

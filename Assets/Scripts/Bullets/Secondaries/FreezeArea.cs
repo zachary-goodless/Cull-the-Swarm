@@ -10,9 +10,9 @@ public class FreezeArea : MonoBehaviour
 
 	public float delayBetweenTicks = 0.01f;
 
-	//PRIVATE
-	int depthRemaining = 10;
+	public int maxRecursion = 5;
 
+	//PRIVATE
 	GameObject freezeBulletPrefab;
 	Light spinupLight;
 
@@ -31,16 +31,23 @@ public class FreezeArea : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		OnTriggerStay2D(other);
-	}
-
-//--------------------------------------------------------------------------------------------
-
-	void OnTriggerStay2D(Collider2D other)
-	{
+		//if other is bullet...
 		if(other.tag == "Bullet")
 		{
-			//TODO -- other is enemy bullet -- reset bullet, spawn freeze bullet
+			//grab bullet position
+			Vector3 spawnPos = other.transform.position;
+
+			//delete bullet and spawn freeze bullet
+			BulletManager.DeleteBullet(other.gameObject);
+
+			GameObject freezeBulletObj = Instantiate(freezeBulletPrefab, spawnPos, Quaternion.identity) as GameObject;
+
+			//set freezebullet recursion level
+			FreezeBullet freezeBulletScript = freezeBulletObj.GetComponent<FreezeBullet>();
+			if(freezeBulletScript != null)
+			{
+				freezeBulletScript.setRecursionLevel(maxRecursion - 1);
+			}
 		}
 	}
 

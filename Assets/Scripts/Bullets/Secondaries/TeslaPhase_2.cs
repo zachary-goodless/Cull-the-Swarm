@@ -6,7 +6,6 @@ public class TeslaPhase_2 : MonoBehaviour
 {
 	//PUBLIC
 	public float duration = 1f;
-	public float delayBetweenTicks = 0.01f;
 
 	//PRIVATE
 	float damage = 0f;

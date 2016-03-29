@@ -8,6 +8,8 @@ public class TeslaPhase_1 : MonoBehaviour
 	public float growDuration = 0.5f;
 	public float delayBetweenTicks = 0.01f;
 
+	public float damageTick = 5f;
+
 	//PRIVATE
 	float storedDamage;
 
@@ -25,16 +27,12 @@ public class TeslaPhase_1 : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		OnTriggerStay2D(other);
-	}
-
-//--------------------------------------------------------------------------------------------
-
-	void OnTriggerStay2D(Collider2D other)
-	{
+		//other is bullet...
 		if(other.tag == "Bullet")
 		{
-			//TODO -- other is enemy bullet -- reset bullet, store damage
+			//reset bullet, grow damage
+			BulletManager.DeleteBullet(other.gameObject);
+			storedDamage += damageTick;
 		}
 	}
 
