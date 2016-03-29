@@ -58,6 +58,7 @@ public class FreezeManager : MonoBehaviour
 		if(Input.GetButtonDown("Secondary") && currEnergy == maxEnergy && !isOnSpinup)
 		{
 			//start spin up
+			isOnSpinup = true;
 			StartCoroutine(handleSpinup());
 		}
 
