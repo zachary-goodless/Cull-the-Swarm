@@ -68,6 +68,8 @@ public class Movement : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if(Time.timeScale != 1f) return;
+
 		if (mr.isVisible) {
 			beenSeen = true;
 		}
