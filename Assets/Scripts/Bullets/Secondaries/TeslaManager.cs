@@ -52,6 +52,8 @@ public class TeslaManager : MonoBehaviour
 
 	void Update()
 	{
+		if(Time.timeScale != 1f) return;
+
 		//update energy bar fill according to max energy
 		Vector3 localScale = energyBar.localScale;
 		localScale.y = currEnergy / maxEnergy;

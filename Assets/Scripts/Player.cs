@@ -24,6 +24,10 @@ public class Player : MonoBehaviour {
 
 	Loadout loadout;
 
+	//JUSTIN
+	public PauseMenu pauseMenu;
+	//JUSTIN
+
 	// Use this for initialization
 	void Start()
 	{
@@ -41,7 +45,15 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-		Time.timeScale = TimeScale;
+		//JUSTIN
+		if(Input.GetButtonDown("Pause") && pauseMenu != null)
+		{
+			pauseMenu.togglePaused();
+			return;
+		}
+		if(Time.timeScale != 1f) return;
+		//Time.timeScale = TimeScale;
+		//JUSTIN
 
 		// Get input from controller.
 		float hSpeed = Mathf.Round(Input.GetAxisRaw("Horizontal"));

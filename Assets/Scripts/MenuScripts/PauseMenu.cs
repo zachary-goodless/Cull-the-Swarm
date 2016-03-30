@@ -13,11 +13,28 @@ public class PauseMenu : MonoBehaviour
 	public ConfirmationDialog confirmationDialog;
 
 	//PRIVATE
-	bool isPaused = false;
+	//
 
 //--------------------------------------------------------------------------------------------
 
-	public void pauseGame()
+	public void togglePaused()
+	{
+		//if time scale is 0 (paused), unpause
+		if(Time.timeScale == 0f)
+		{
+			unpauseGame();
+		}
+
+		//else game is unpaused, pause
+		else
+		{
+			pauseGame();
+		}
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	void pauseGame()
 	{
 		Time.timeScale = 0f;
 		gameObject.SetActive(true);
@@ -25,7 +42,7 @@ public class PauseMenu : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	public void unpauseGame()
+	void unpauseGame()
 	{
 		Time.timeScale = 1f;
 		gameObject.SetActive(false);

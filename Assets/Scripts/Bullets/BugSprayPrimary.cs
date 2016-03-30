@@ -32,6 +32,8 @@ public class BugSprayPrimary : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(Time.timeScale != 1f) return;
+
 		if(!Input.GetButton("Precision")){
 			dir = Input.GetAxis ("Horizontal");
             rot = (rot * intertia + shotRange * -dir) / (intertia + 1);

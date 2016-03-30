@@ -24,6 +24,8 @@ public class LaserPrimary : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if(Time.timeScale != 1f) return;
+
 		if (Input.GetButtonDown ("Primary") && !cooling) {
 			Shoot ();
 		}

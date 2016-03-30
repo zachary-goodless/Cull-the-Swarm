@@ -26,6 +26,8 @@ public class SwatterBullet : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(Time.timeScale != 1f) return;
+
 		Color temp = sr.color;
         if (target != null) {
             transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);

@@ -53,6 +53,7 @@ public class FlamethrowerBullet : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(Time.timeScale != 1f) return;
 
 		float deltaTime = Time.deltaTime;
 
