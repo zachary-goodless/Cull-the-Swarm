@@ -51,7 +51,7 @@ public class Player : MonoBehaviour {
 			pauseMenu.togglePaused();
 			return;
 		}
-		if(Time.timeScale != 1f) return;
+		if(Time.timeScale != 1f || LevelCompleteHandler.isLevelComplete) return;
 		//Time.timeScale = TimeScale;
 		//JUSTIN
 
