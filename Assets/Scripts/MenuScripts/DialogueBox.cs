@@ -21,24 +21,19 @@ public class DialogueBox : MonoBehaviour
 	//PRIVATE
 	float timeBetweenTicks = 0.01f;
 
-	private Sprite[] speakerSprites;
-	private string[] speakerNames;
-
-//--------------------------------------------------------------------------------------------
-
-	void Start()
-	{
-		//disable by default
-		gameObject.SetActive(false);
-
-		//TODO -- init speaker sprites array
-		//TODO -- init speaker names array
-	}
+	private Sprite[] speakerSprites = null;
+	private string[] speakerNames;				//TODO -- init speaker names
 
 //--------------------------------------------------------------------------------------------
 
 	public IEnumerator handleDialogue(float duration, Characters character, string content)
 	{
+		//load the speaker sprites if we haven't already
+		if(speakerSprites == null)
+		{
+			//TODO -- init speaker sprites
+		}
+
 		if(character != Characters.NULL)
 		{
 			//mSpeakerImg.sprite = speakerSprites[(int)character];		//TODO -- temp comment out
