@@ -37,6 +37,172 @@ public class Waves : MonoBehaviour{
 		return head;
 	}
 
+	IEnumerator Template(){
+		GameObject temp;
+		Movement m;
+
+		/*Any parameters defined here will be in the order they are assigned in the function
+		 * 
+		 * 
+		*/
+
+		Debug.Log ("Linear");
+		temp = Instantiate (drone, new Vector3 (-500, transform.position.y, 0), Quaternion.identity) as GameObject;
+		m = temp.GetComponent<Movement> ();
+		//Just sets the linear boolean to true
+		m.SetLinear();
+		//So, general stats: speed, x direction, y direction, life time, and health
+		//Since both x and y != 0, this will move diagonally
+		//You'll need to call this function whenver instantiating something with this movement script
+		m.SetGeneral(200,.5f,-.5f,40,50);
+
+		yield return new WaitForSeconds (5);
+
+		Debug.Log ("SinWave");
+		temp = Instantiate (drone, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
+		m = temp.GetComponent<Movement> ();
+		//Set amplitude and period
+		m.SetSin(10,1);
+		//You'll still need x/y direction; the sin will travel appropriately.
+		//However, I don;t have anything set up for both x and y not being 0, so that won;t move
+		m.SetGeneral(200,0,-1,40,50);
+
+		//just making sure horizontal works too
+		temp = Instantiate (drone, new Vector3 (600, 0, 0), Quaternion.identity) as GameObject;
+		m = temp.GetComponent<Movement> ();
+		m.SetSin(10,1);
+		m.SetGeneral(200,-1,0,40,50);
+
+		yield return new WaitForSeconds (5);
+
+		Debug.Log ("Quadratic");
+		temp = Instantiate (drone, new Vector3 (-800, 0, 0), Quaternion.identity) as GameObject;
+		m = temp.GetComponent<Movement> ();
+		//Currently an empty function; not sure how to do quadratic movement/how we would use it
+		//Just does linear movement for now
+		m.SetQuadratic ();
+		m.SetGeneral(200,1,0,40,50);
+
+		yield return new WaitForSeconds (5);
+
+		Debug.Log ("Oscillation");
+		temp = Instantiate (drone, new Vector3 (-600, 0, 0), Quaternion.identity) as GameObject;
+		m = temp.GetComponent<Movement> ();
+		//Oscillation: this MUST be used in tandem with another movement function (preferably linear movement)
+		//Stats: the speed at which is oscillates, the bounds to which it can osciallte (in positive an negative direction from whichever exis it's oscillating on), 
+		//vertical (true) or horizontal(false) oscillation, and starting in the x or y positive (true) or negative(false) direction, depending on vertical or horizontal oscillation.
+		m.SetOsc(100,200,true,true);
+		m.SetLinear();
+		m.SetGeneral(200,1,0,40,50);
+
+		//Vertical example
+		temp = Instantiate (drone, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
+		m = temp.GetComponent<Movement> ();
+		m.SetOsc(100,200,false,true);
+		m.SetLinear();
+		m.SetGeneral(200,0,-1,40,50);
+
+		yield return new WaitForSeconds (5);
+
+		Debug.Log ("NoseFollow");
+		temp = Instantiate (drone, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
+		m = temp.GetComponent<Movement> ();
+		//Leftover from last script; rotates the enemy and has it move in the direction it's facing
+		//Kinda useful if you want curves paterns, or pseudo-sine waves
+		//Stats: The rotational increment from each update (in degrees), and the range that it can rotate (if set to zero, the program assumes no range)
+		m.SetFollow(1f,50);
+		//x direction does nothing, y direction decides to move i the direction of the top of the prefab (-1), or the bottom (1)
+		m.SetGeneral(200,0,1,40,50);
+
+		//Example with no range
+		temp = Instantiate (drone, new Vector3 (200, transform.position.y, 0), Quaternion.identity) as GameObject;
+		m = temp.GetComponent<Movement> ();
+		m.SetFollow(.2f,0);
+		m.SetGeneral(200,0,1,40,50);
+
+		yield return new WaitForSeconds (5);
+
+		Debug.Log ("DiveAtPlayer");
+		temp = Instantiate (drone, new Vector3 (-600, 500, 0), Quaternion.identity) as GameObject;
+		m = temp.GetComponent<Movement> ();
+		//Stats: speed at which to dive, and time (in seconds) to wait to dive
+		//Currently only moves horizontally, but this can become a function that adds on to other functions
+		//(e.g. trave in a sin wave, then dive at player) with some tweaking
+		m.SetDiveAtPlayer(400,5);
+		//Currently only x direction is relevant
+		m.SetGeneral(200,1,0,40,50);
+
+		yield return new WaitForSeconds (5);
+
+		Debug.Log ("TopToSide");
+		temp = Instantiate (drone, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
+		m = temp.GetComponent<Movement> ();
+		//Stats: time until it changes direction
+		m.SetTopToSide (5);
+		//Need both x and y directions; fairly straightforward.
+		m.SetGeneral(200,-1,-1,40,50);
+
+		//testing opposite directions
+		temp = Instantiate (drone, new Vector3 (0, -900, 0), Quaternion.identity) as GameObject;
+		m = temp.GetComponent<Movement> ();
+		m.SetTopToSide (5);
+		m.SetGeneral(200,1,1,40,50);
+
+		yield return new WaitForSeconds (5);
+
+		Debug.Log ("SideToBottom");
+		temp = Instantiate (drone, new Vector3 (-800, 0, 0), Quaternion.identity) as GameObject;
+		m = temp.GetComponent<Movement> ();
+		//basically the same as the last one, but start horizontal and changes to vertical
+		//stats: time until it changes direction
+		m.SetSideToBottom (5);
+		//need both x and y directions
+		m.SetGeneral(200,1,-1,40,50);
+
+		//testing different direction
+		temp = Instantiate (drone, new Vector3 (800, 0, 0), Quaternion.identity) as GameObject;
+		m = temp.GetComponent<Movement> ();
+		m.SetSideToBottom (5);
+		m.SetGeneral(200,-1,1,40,50);
+
+		yield return new WaitForSeconds (5);
+
+		Debug.Log ("FromBackground");
+		//this will need to start in a different z position
+		temp = Instantiate (drone, new Vector3 (0, 0, 1000), Quaternion.identity) as GameObject;
+		m = temp.GetComponent<Movement> ();
+		//Stats: speed that it comes up from below, and target position it goes to
+		m.SetFromBackground (100,  new Vector3 (0,0,0));
+		//After it comes up, it will move linearly, so x and y directions are important
+		m.SetGeneral(200,-1,-1,40,50);
+
+		/*temp = Instantiate (drone, new Vector3 (800, 0, 1000), Quaternion.identity) as GameObject;
+		m = temp.GetComponent<Movement> ();
+		//curious to see what coming from above looks like
+		m.SetFromBackground (100, new Vector3(200,0,0));
+		m.SetGeneral(200,-1,-1,40,50);
+		*/
+
+		yield return new WaitForSeconds (5);
+
+		/*Debug.Log ("Change");
+		//EXPERIMENTAL: changing behaviors after a set amount to time
+		temp = Instantiate (drone, new Vector3 (-800, 0, 0), Quaternion.identity) as GameObject;
+		m = temp.GetComponent<Movement> ();
+		//linear to sine
+		m.SetLinear();
+		m.SetSin (100, 20);
+		m.SetWaitTime (5, new int[1] {1});
+		m.SetGeneral(200,1,0,40,50);
+		*/
+
+		yield break;
+	}
+
+	public void StartTemplate(){
+		StartCoroutine ("Template");
+	}
+
 	IEnumerator TestGround(){
 		//initialize stuff
 		GameObject temp;

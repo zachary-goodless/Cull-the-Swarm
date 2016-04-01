@@ -9,7 +9,7 @@ public class Level1_1 : MonoBehaviour {
 	public ScreenFade sf;
 
 	void Start () {
-		StartCoroutine ("LevelLayout2");
+		//StartCoroutine ("LevelLayout2");
 		sf = GameObject.Find ("ScreenFade").GetComponent<ScreenFade> ();
 	}
 	
@@ -17,6 +17,9 @@ public class Level1_1 : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Q)) {
 			waves.StartTest ();
+		}
+		if (Input.GetKeyDown (KeyCode.Y)) {
+			waves.StartTemplate ();
 		}
 		if (sf.finished) {
 			SceneManager.LoadScene ((int)SceneIndex.WORLD_MAP);
