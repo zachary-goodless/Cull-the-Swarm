@@ -6,9 +6,14 @@ public class FreezeBullet : MonoBehaviour
 {
 	//PUBLIC
 	public float duration = 3f;
+	public float explosionDuration = 0.25f;
+
+	public float damage = 50f;
 
 	//PRIVATE
 	int recursionLevel = 0;
+
+	bool isExploding = false;
 
 	GameObject freezeBulletPrefab;
 
@@ -43,17 +48,45 @@ public class FreezeBullet : MonoBehaviour
 				freezeBulletScript.setRecursionLevel(recursionLevel - 1);
 			}
 		}
+
+		OnTriggerStay2D(other);
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	void OnTriggerStay2D(Collider2D other)
+	{
+		//if explosion is active and other is enemy...
+		if(isExploding && other.tag == "EnemyHit")
+		{
+			other.gameObject.GetComponentInParent<EnemyMovement>().health -= damage;
+		}
 	}
 
 //--------------------------------------------------------------------------------------------
 
 	IEnumerator handleDuration()
 	{
+		//exist for duration, then explode for damage
 		yield return new WaitForSeconds(duration);
 
-		//TODO -- explode?
+		StartCoroutine(handleExplosion());
+		yield break;
+	}
 
+//--------------------------------------------------------------------------------------------
+
+	IEnumerator handleExplosion()
+	{
+		//set state, grow circle collider
+		isExploding = false;
+		GetComponent<CircleCollider2D>().radius *= 3;
+
+		yield return new WaitForSeconds(explosionDuration);
+
+		//destroy at end of explosion duration
 		Destroy(gameObject);
+
 		yield break;
 	}
 
