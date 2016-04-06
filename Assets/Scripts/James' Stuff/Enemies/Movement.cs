@@ -68,8 +68,12 @@ public class Movement : MonoBehaviour {
 	float turnTimer;
 
 	//From Background stats
-	float upSpeed;
+	float upTime;
 	Vector3 destination;
+
+	float upTimer;
+	Vector3 curPos;
+	CircleCollider2D col;
 
 	//Array that holds behavior types, just in case you want the thing to wait a bit to start doing something;
 	//int[] behaviors;
@@ -79,6 +83,9 @@ public class Movement : MonoBehaviour {
 	public MeshRenderer mr;
 
 	public bool beenSeen;
+	public bool screenDeath;
+
+	public bool doesTilt;
 
 	Vector3 nullZ;
 
@@ -93,6 +100,9 @@ public class Movement : MonoBehaviour {
 		topToSide = false;
 		sideToBottom = false;
 		fromBackground = false;
+
+		doesTilt = true;
+		screenDeath = true;
 	}
 
 	// Use this for initialization
@@ -137,7 +147,9 @@ public class Movement : MonoBehaviour {
 		if (fromBackground) {
 			HandleFromBackground ();
 		}
-		handleTilt ();
+		if (doesTilt) {
+			handleTilt ();
+		}
 		HandleLife ();
 
 	}
@@ -159,7 +171,7 @@ public class Movement : MonoBehaviour {
 			Destroy (gameObject);
 		}
 		//If it's been on and hten off screen, destroy it
-		if (!mr.isVisible && beenSeen) {
+		if (!mr.isVisible && beenSeen && screenDeath) {
 			Destroy (gameObject);
 		}
 	}
@@ -370,7 +382,7 @@ public class Movement : MonoBehaviour {
 			transform.position += transform.up * diveSpeed * Time.deltaTime;
 			transform.position = new Vector3(transform.position.x,transform.position.y,0);
 		} else {
-			transform.position += new Vector3 (speed * dirX * Time.deltaTime, 0f,0f);
+			transform.position += new Vector3 (speed * dirX * Time.deltaTime, speed * dirY * Time.deltaTime,0f);
 		}
 	}
 
@@ -426,21 +438,30 @@ public class Movement : MonoBehaviour {
 		}
 	}
 
-	public void SetFromBackground(/*float mDirX, float mDirY,*/ float mUpSpeed, Vector3 mDestination){
+	public void SetFromBackground(/*float mDirX, float mDirY,*/ float mUpTime, Vector3 mDestination){
 		/*dirX = mDirX;
 		dirY = mDirY;*/
-		upSpeed = mUpSpeed;
+		upTime = mUpTime;
 		destination = mDestination;
 
+		col = GetComponent<CircleCollider2D> ();
+		col.enabled = false;
+		upTimer = 0;
+		curPos = transform.position;
 		transform.localScale = new Vector3 (.01f, .01f, .01f);
 		fromBackground = true;
 	}
 
 	void HandleFromBackground(){
-		if (transform.localScale.z < 1) {
-			transform.localScale += new Vector3 (.01f, .01f, .01f);
-			transform.position = Vector3.MoveTowards (transform.position, destination, speed * Time.deltaTime);
+		if (/*!destReached && (transform.localScale.z < 1 || Vector2.Distance(new Vector2(transform.position.x,transform.position.y),new Vector2(destination.x,destination.y)) > 10)*/ upTimer < upTime  ) {
+			upTimer += Time.deltaTime;
+			transform.localScale = Vector3.Lerp (Vector3.zero, new Vector3 (1, 1, 1), upTimer / upTime);
+			transform.position = Vector3.Lerp (curPos, destination, upTimer / upTime);
 		} else{
+			if (!col.enabled) {
+				col.enabled = true;
+			}
+			transform.localScale = new Vector3(1,1,1);
 			transform.position += new Vector3 (speed * dirX * Time.deltaTime, speed *dirY* Time.deltaTime,0f);
 		}
 	}
