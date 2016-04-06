@@ -79,7 +79,7 @@ public class FreezeBullet : MonoBehaviour
 	IEnumerator handleExplosion()
 	{
 		//set state, grow circle collider
-		isExploding = false;
+		isExploding = true;
 		GetComponent<CircleCollider2D>().radius *= 3;
 
 		yield return new WaitForSeconds(explosionDuration);

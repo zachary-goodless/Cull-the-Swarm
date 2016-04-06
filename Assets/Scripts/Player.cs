@@ -24,6 +24,8 @@ public class Player : MonoBehaviour {
 
 	Loadout loadout;
 
+	Score scoreHandle;	//JUSTIN
+
 	//JUSTIN
 	public PauseMenu pauseMenu;
 	//JUSTIN
@@ -31,6 +33,8 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start()
 	{
+		scoreHandle = GameObject.Find("Score").GetComponent<Score>();	//JUSTIN
+
 		loadout = GameObject.FindGameObjectWithTag ("SaveManager").GetComponent<SavedGameManager> ().getCurrentGame ().getCurrentLoadout ();
 		setLoadout ();
 
@@ -106,6 +110,9 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnDamage(){
+
+		scoreHandle.handlePlayerHit();	//JUSTIN
+
 		hitCool = true;
 		health--;
 		hb.health = health;
