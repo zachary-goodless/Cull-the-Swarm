@@ -8,8 +8,12 @@ public class Level1_1 : MonoBehaviour {
 	public Waves waves;
 	public ScreenFade sf;
 
+	public GameObject drone;
+	public GameObject missile;
+	public GameObject turret;
+
 	void Start () {
-		StartCoroutine ("LevelLayout2");
+		//StartCoroutine ("LevelLayout2");
 		sf = GameObject.Find ("ScreenFade").GetComponent<ScreenFade> ();
 	}
 	
@@ -17,6 +21,9 @@ public class Level1_1 : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Q)) {
 			waves.StartTest ();
+		}
+		if (Input.GetKeyDown (KeyCode.Y)) {
+			waves.StartTemplate ();
 		}
 		if (sf.finished) {
 			SceneManager.LoadScene ((int)SceneIndex.WORLD_MAP);
@@ -70,9 +77,28 @@ public class Level1_1 : MonoBehaviour {
 	}
 
 	IEnumerator LevelLayout2(){
-
+		//Timing and placement need adjustment, but here's an (incomplete) general outline of what was in the GDD
 		yield return new WaitForSeconds (5f);
 		waves.StartDoubleWorms ();
+		waves.StartBigW (drone);
+		yield return new WaitForSeconds (10f);
+		waves.StartLR6Alternate (missile);
+		waves.FiveWormsTop ();
+		yield return new WaitForSeconds (14f);
+		waves.StartFourFromBelow (drone);
+		yield return new WaitForSeconds (6.5f);
+		waves.StartFlanktasticFour (drone);
+		yield return new WaitForSeconds (1.5f);
+		waves.FiveFromBeloW (turret);
+		waves.TwoWormsBelow ();
+		yield return new WaitForSeconds (4f);
+		waves.UpLeftRight (missile);
+		yield return new WaitForSeconds (8f);
+		waves.TopW (drone);
+		yield return new WaitForSeconds (1f);
+		waves.TopW (drone);
+		yield return new WaitForSeconds (1f);
+		waves.TopW (drone);
 		yield break;
 	}
 
