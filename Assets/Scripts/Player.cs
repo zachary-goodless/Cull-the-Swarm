@@ -5,20 +5,30 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour {
 
 	public GameObject mesh;
+	public GameObject playerObj; 
+	private CircleCollider2D shrinkCollider;
+
 	public float TimeScale = 1f;
+
+	public bool chassisBooster;
+	public bool chassisExterminator;
+	public bool chassisShrink;
+	public bool chassisQuick;
+	public bool chassisFinal;
+
 
 	// Make these into constants of another class later...
 	float stageWidth = 1500f;
 	float stageHeight = 950f;
-	float moveSpeed = 10f;
-	float precisionSpeed = 5f;
+	public float moveSpeed;
+	public float precisionSpeed;
 	float shipTilt = 0f;
 
 	public ParticleSystem ps;
 
 	bool hitCool;
 	public bool dead;
-	int health;
+	public int health;
 	HealthBar hb;
 	ScreenFade sf;
 
@@ -28,11 +38,49 @@ public class Player : MonoBehaviour {
 	void Start()
 	{
 		loadout = GameObject.FindGameObjectWithTag ("SaveManager").GetComponent<SavedGameManager> ().getCurrentGame ().getCurrentLoadout ();
+		shrinkCollider = GetComponent<CircleCollider2D>(); 
 		setLoadout ();
 
 		hitCool = false;
 		dead = false;
-		health = 3;
+
+		//determines chassis health type
+		if (chassisExterminator || chassisBooster || chassisShrink) {
+			health = 3;
+		} 
+		else if (chassisQuick)
+		{
+			health = 2;
+		} 
+		else if (chassisFinal)
+		{
+			health = 1;
+		}
+
+		//determines chassis movement speed type
+		if (chassisExterminator || chassisFinal)
+		{
+			moveSpeed = 10f;
+			precisionSpeed = 5f;
+		} 
+		else if (chassisBooster)
+		{
+			moveSpeed = 8f;
+			precisionSpeed = 12f;
+		} 
+		else if (chassisShrink) 
+		{
+			moveSpeed = 6f;
+			precisionSpeed = 4f;
+		} 
+		else if (chassisQuick)
+		{
+			moveSpeed = 14f;
+			precisionSpeed = 8f;
+		}
+
+
+
 		hb = GameObject.Find ("HealthBar").GetComponent<HealthBar> ();
 		sf = GameObject.Find ("ScreenFade").GetComponent<ScreenFade> ();
 		hb.health = health;	
@@ -59,11 +107,25 @@ public class Player : MonoBehaviour {
 		{
 			hSpeed *= precisionSpeed;
 			vSpeed *= precisionSpeed;
+
+			//adjusts scale during precision for shrink chassis
+			if (chassisShrink)
+			{
+				mesh.transform.localScale =  new Vector3(.5f, .5f, .5f);
+				shrinkCollider.radius = 6f;
+			}
 		}
 		else
 		{
 			hSpeed *= moveSpeed;
 			vSpeed *= moveSpeed;
+
+			//adjusts scale during precision for shrink chassis
+			if (chassisShrink)
+			{
+				mesh.transform.localScale = new Vector3(1f, 1f, 1f);
+				shrinkCollider.radius = 12f;
+			}
 		}
 
 		shipTilt = shipTilt * 0.8f - (2 * hSpeed) * 0.2f;
@@ -198,24 +260,59 @@ public class Player : MonoBehaviour {
 		switch (loadout.getChasis ()) {
 			case Loadout.LoadoutChasis.NULL:
 				Debug.Log ("Armor NULL");
+				chassisExterminator = false;
+				chassisBooster = false;
+				chassisShrink = false;
+				chassisQuick = false;
+				chassisFinal = false;
 				break;
-			case Loadout.LoadoutChasis.EXTERMINATOR:
+		case Loadout.LoadoutChasis.EXTERMINATOR:
 				Debug.Log ("Armor Set Exterminator Chasis");
+				chassisExterminator = true;
+				chassisBooster = false;
+				chassisShrink = false;
+				chassisQuick = false;
+				chassisFinal = false;
 				break;
 			case Loadout.LoadoutChasis.BOOSTER:
 				Debug.Log ("Armor set Booster Chasis");
+				chassisExterminator = false;
+				chassisBooster = true;
+				chassisShrink = false;
+				chassisQuick = false;
+				chassisFinal = false;
 				break;
 			case Loadout.LoadoutChasis.SHRINK:
 				Debug.Log ("Armor set Shrink Chasis");
+				chassisExterminator = false;
+				chassisBooster = false;
+				chassisShrink = true;
+				chassisQuick = false;
+				chassisFinal = false;
 				break;
 			case Loadout.LoadoutChasis.QUICK:
 				Debug.Log ("Armor set Quick Chasis");
+				chassisExterminator = false;
+				chassisBooster = false;
+				chassisShrink = false;
+				chassisQuick = true;
+				chassisFinal = false;
 				break;
 			case Loadout.LoadoutChasis.FINAL:
 				Debug.Log ("Armor set Final Chasis");
+				chassisExterminator = false;
+				chassisBooster = false;
+				chassisShrink = false;
+				chassisQuick = false;
+				chassisFinal = true;
 				break;
 			default:
 				Debug.Log ("Armor not in range");
+				chassisExterminator = false;
+				chassisBooster = false;
+				chassisShrink = false;
+				chassisQuick = false;
+				chassisFinal = false;
 				break;
 		}
 	}
