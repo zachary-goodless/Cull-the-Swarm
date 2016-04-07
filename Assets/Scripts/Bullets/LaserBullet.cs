@@ -26,6 +26,7 @@ public class LaserBullet : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if(Time.timeScale != 1f) return;
 
 		if (Input.GetButton ("Precision")) {
 			dmg = 30;

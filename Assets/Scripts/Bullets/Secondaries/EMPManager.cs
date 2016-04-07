@@ -25,7 +25,8 @@ public class EMPManager : MonoBehaviour
 		//get handle on energy bar
 		energyBar = GameObject.Find("EnergyBar").GetComponent<RectTransform>();
 
-		//TODO -- init emp area prefab
+		//init emp area prefab
+		empAreaPrefab = Resources.Load<GameObject>("PlayerBullets/EMPArea");
 
 		currEnergy = maxEnergy;
 		isOnCooldown = false;
@@ -35,6 +36,8 @@ public class EMPManager : MonoBehaviour
 
 	void Update ()
 	{
+		if(Time.timeScale != 1f) return;
+
 		//update energy bar fill according to max energy
 		Vector3 localScale = energyBar.localScale;
 		localScale.y = currEnergy / maxEnergy;
@@ -53,12 +56,14 @@ public class EMPManager : MonoBehaviour
 		}
 
 		//if secondary key pressed and we're not on cooldown...
-		if(Input.GetButtonDown("Secondary") && !isOnCooldown)
+		if(Input.GetButtonDown("Secondary") && !isOnCooldown && Time.timeScale == 1f)
 		{
 			currEnergy = 0f;
 			isOnCooldown = true;
 
-			//TODO -- spawn emp area obj
+			//spawn emp area object
+			GameObject weaponEffect = Instantiate(empAreaPrefab, transform.position, Quaternion.identity) as GameObject;
+			weaponEffect.transform.parent = transform;
 		}
 	}
 }

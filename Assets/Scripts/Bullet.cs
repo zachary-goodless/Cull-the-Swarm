@@ -15,6 +15,8 @@ public class Bullet : MonoBehaviour {
     // Update is called once per frame
     void LateUpdate()
     {
+		if(Time.timeScale != 1f) return;
+
         if (!stillSpawning) {
 
             // Pull the next action and decrement its timer. If the timer is 0, execute the action.

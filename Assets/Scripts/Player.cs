@@ -34,9 +34,17 @@ public class Player : MonoBehaviour {
 
 	Loadout loadout;
 
+	Score scoreHandle;	//JUSTIN
+
+	//JUSTIN
+	public PauseMenu pauseMenu;
+	//JUSTIN
+
 	// Use this for initialization
 	void Start()
 	{
+		scoreHandle = GameObject.Find("Score").GetComponent<Score>();	//JUSTIN
+
 		loadout = GameObject.FindGameObjectWithTag ("SaveManager").GetComponent<SavedGameManager> ().getCurrentGame ().getCurrentLoadout ();
 		shrinkCollider = GetComponent<CircleCollider2D>(); 
 		setLoadout ();
@@ -89,7 +97,15 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-		Time.timeScale = TimeScale;
+		//JUSTIN
+		if(Input.GetButtonDown("Pause") && pauseMenu != null)
+		{
+			pauseMenu.togglePaused();
+			return;
+		}
+		if(Time.timeScale != 1f || LevelCompleteHandler.isLevelComplete) return;
+		//Time.timeScale = TimeScale;
+		//JUSTIN
 
 		// Get input from controller.
 		float hSpeed = Mathf.Round(Input.GetAxisRaw("Horizontal"));
@@ -156,6 +172,9 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnDamage(){
+
+		scoreHandle.handlePlayerHit();	//JUSTIN
+
 		hitCool = true;
 		health--;
 		hb.health = health;

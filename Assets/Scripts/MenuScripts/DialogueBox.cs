@@ -6,9 +6,12 @@ using UnityEngine.UI;
 
 public enum Characters
 {
-	NULL = -1,
+	NULL = 		-1,
 
-	//TODO -- add characters
+	ROGER =		0,
+	COLONEL = 	1,
+	STAMPER = 	2,
+	MARTHA = 	4
 }
 
 public class DialogueBox : MonoBehaviour
@@ -21,28 +24,29 @@ public class DialogueBox : MonoBehaviour
 	//PRIVATE
 	float timeBetweenTicks = 0.01f;
 
-	private Sprite[] speakerSprites;
-	private string[] speakerNames;
-
-//--------------------------------------------------------------------------------------------
-
-	void Start()
+	private Sprite[] speakerSprites = null;
+	private string[] speakerNames = new string[4]
 	{
-		//disable by default
-		gameObject.SetActive(false);
-
-		//TODO -- init speaker sprites array
-		//TODO -- init speaker names array
-	}
+		"ROGER",
+		"COLONEL CUNNINGHAM",
+		"STAMPER",
+		"MARTHA"
+	};
 
 //--------------------------------------------------------------------------------------------
 
 	public IEnumerator handleDialogue(float duration, Characters character, string content)
 	{
+		//load the speaker sprites if we haven't already
+		if(speakerSprites == null)
+		{
+			//TODO -- init speaker sprites
+		}
+
 		if(character != Characters.NULL)
 		{
 			//mSpeakerImg.sprite = speakerSprites[(int)character];		//TODO -- temp comment out
-			//mSpeakerName.text = speakerNames[(int)character];
+			mSpeakerName.text = speakerNames[(int)character];
 		}
 
 		mDialogue.text = "";

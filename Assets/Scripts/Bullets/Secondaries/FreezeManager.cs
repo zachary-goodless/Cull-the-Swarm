@@ -34,7 +34,8 @@ public class FreezeManager : MonoBehaviour
 		//get handle on energy bar
 		energyBar = GameObject.Find("EnergyBar").GetComponent<RectTransform>();
 
-		//TODO -- init prefabs
+		//init prefab
+		freezeAreaPrefab = Resources.Load<GameObject>("PlayerBullets/FreezeArea");
 
 		currEnergy = maxEnergy;
 
@@ -48,6 +49,8 @@ public class FreezeManager : MonoBehaviour
 
 	void Update ()
 	{
+		if(Time.timeScale != 1f) return;
+
 		//update energy bar fill according to max energy
 		Vector3 localScale = energyBar.localScale;
 		localScale.y = currEnergy / maxEnergy;
@@ -57,6 +60,7 @@ public class FreezeManager : MonoBehaviour
 		if(Input.GetButtonDown("Secondary") && currEnergy == maxEnergy && !isOnSpinup)
 		{
 			//start spin up
+			isOnSpinup = true;
 			StartCoroutine(handleSpinup());
 		}
 
@@ -79,7 +83,8 @@ public class FreezeManager : MonoBehaviour
 				//destroy the area obj if it hasn't already been
 				if(freezeAreaInstance != null)
 				{
-					//TODO -- delete area obj
+					//delete area obj
+					Destroy(freezeAreaInstance);
 				}
 			}
 		}
@@ -101,12 +106,14 @@ public class FreezeManager : MonoBehaviour
 
 	IEnumerator handleSpinup()
 	{
+		//create area obj
+		freezeAreaInstance = Instantiate(freezeAreaPrefab, transform.position, Quaternion.identity) as GameObject;
+		freezeAreaInstance.transform.parent = transform;
+
 		yield return new WaitForSeconds(spinUpTime);
 
 		isOnSpinup = false;
 		isActive = true;
-
-		//TODO -- create area obj
 
 		yield break;
 	}

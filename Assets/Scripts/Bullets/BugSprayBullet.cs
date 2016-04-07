@@ -25,6 +25,7 @@ public class BugSprayBullet : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(Time.timeScale != 1f) return;
 
         sr.transform.Rotate(0, 0, 3f);
 
