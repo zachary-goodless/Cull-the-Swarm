@@ -69,7 +69,7 @@ public class Score : MonoBehaviour
 	public void handleGraze()
 	{
 		numGrazes++;
-		multiplier = 1 + (numGrazes / GRAZES_PER_TICK) * GRAZE_MULTIPLIER_TICK;		//TODO -- add graze
+		multiplier = 1 + (numGrazes / GRAZES_PER_TICK) * GRAZE_MULTIPLIER_TICK;
 	}
 
 //--------------------------------------------------------------------------------------------
