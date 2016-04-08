@@ -89,6 +89,10 @@ public class Movement : MonoBehaviour {
 
 	Vector3 nullZ;
 
+	//JUSTIN
+	Score scoreHandle;
+	//JUSTIN
+
 	void Awake(){
 		lifeTimer = 0;
 		linearMov = false;
@@ -103,6 +107,11 @@ public class Movement : MonoBehaviour {
 
 		doesTilt = true;
 		screenDeath = true;
+
+		//JUSTIN
+		//get handle to score HUD object
+		scoreHandle = GameObject.Find("Score").GetComponent<Score>();
+		//JUSTIN
 	}
 
 	// Use this for initialization
@@ -161,6 +170,27 @@ public class Movement : MonoBehaviour {
 	void HandleLife(){
 		lifeTimer += Time.deltaTime;
 		if (health <= 0) {
+
+			//JUSTIN
+			//assign point value
+			PointVals enemyType;
+			if(name.StartsWith("Drone"))		//if drone...
+			{
+				enemyType = PointVals.DRONE;
+			}
+			else if(name.StartsWith("Turret"))	//if bagworm...
+			{
+				enemyType = PointVals.BAGWORM;
+			}
+			else 								//if other enemy...
+			{
+				enemyType = PointVals.OTHER;
+			}
+
+			//apply change to score
+			scoreHandle.handleEnemyDefeated(enemyType);
+			//JUSTIN
+
 			//kc.score++;
 			Destroy (gameObject);
 		}

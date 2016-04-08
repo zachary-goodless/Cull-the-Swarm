@@ -42,7 +42,7 @@ public class BugSprayBullet : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D other){
 		if (other.tag == "EnemyHit") {
-			other.gameObject.GetComponentInParent<EnemyMovement> ().health -= dmg;
+			other.gameObject.GetComponentInParent<Movement> ().health -= dmg;
 			Destroy (gameObject);
 		}
 	}

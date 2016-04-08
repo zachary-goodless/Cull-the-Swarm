@@ -59,7 +59,7 @@ public class FreezeBullet : MonoBehaviour
 		//if explosion is active and other is enemy...
 		if(isExploding && other.tag == "EnemyHit")
 		{
-			other.gameObject.GetComponentInParent<EnemyMovement>().health -= damage;
+			other.gameObject.GetComponentInParent<Movement>().health -= damage;
 		}
 	}
 

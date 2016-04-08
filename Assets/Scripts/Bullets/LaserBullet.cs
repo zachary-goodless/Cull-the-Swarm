@@ -65,14 +65,14 @@ public class LaserBullet : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D other){
 		if (other.tag == "EnemyHit" && !cool) {
-			other.gameObject.GetComponentInParent<EnemyMovement> ().health -= dmg;
+			other.gameObject.GetComponentInParent<Movement> ().health -= dmg;
 			StartCoroutine ("Cooldown");
 		}
 	}
 		
 	void OnTriggerStay2D (Collider2D other){
 		if (other.tag == "EnemyHit" && !cool) {
-			other.gameObject.GetComponentInParent<EnemyMovement> ().health -= dmg;
+			other.gameObject.GetComponentInParent<Movement> ().health -= dmg;
 			StartCoroutine ("Cooldown");
 		}
 	}
