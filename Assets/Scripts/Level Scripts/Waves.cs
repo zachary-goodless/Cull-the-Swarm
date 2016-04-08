@@ -240,7 +240,165 @@ public class Waves : MonoBehaviour{
 	public void StartTest(){
 		StartCoroutine ("TestGround");
 	}
-		
+
+	//=====================================================================================================================================================
+	//																UNIVERSAL FUNCTIONS
+	//=====================================================================================================================================================
+
+	//Everything should be fairly self-explanatory;
+	//Spacing is the time between spawns, so currently this only supports spawning thins in order
+	//I may add xInc and yInc variales that allow you to start with a spawn one place and each new spawn starts a bit further across whichever axis you want.
+	//However, this may make the function overly long (well, it already is...)
+
+	IEnumerator SpawnLinear(GameObject enemy, int numEnemies, float spacing, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+		for(int i = 0; i < numEnemies; i++){
+			GameObject temp = Instantiate(enemy, new Vector3(xDir,yDir,50), rotation) as GameObject;
+			Movement m = temp.GetComponent<Movement> ();
+			m.SetLinear ();
+			m.SetGeneral (speed, xDir, yDir, 40, health);
+
+			yield return new WaitForSeconds(spacing);
+		}
+		yield break;
+	}
+
+	public void StartSpawnLinear(GameObject enemy, int numEnemies, float spacing, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+		StartCoroutine (SpawnLinear (enemy, numEnemies, spacing, speed, xDir, yDir, health, startX, startY, rotation));
+	}
+
+	IEnumerator SpawnSin(GameObject enemy, int numEnemies, float spacing, float amplitude, float period, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+		for(int i = 0; i < numEnemies; i++){
+			GameObject temp = Instantiate(enemy, new Vector3(xDir,yDir,50), rotation) as GameObject;
+			Movement m = temp.GetComponent<Movement> ();
+			m.SetSin (amplitude, period);
+			m.SetGeneral (speed, xDir, yDir, 40, health);
+
+			yield return new WaitForSeconds(spacing);
+		}
+		yield break;
+	}
+
+	public void StartSpawnSin(GameObject enemy, int numEnemies, float spacing, float amplitude, float period, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+		StartCoroutine (SpawnSin (enemy, numEnemies, spacing, amplitude, period, speed, xDir, yDir, health, startX, startY, rotation));
+	}
+
+	IEnumerator SpawnOsc(GameObject enemy, int numEnemies, float spacing, float oscSpeed, float bounds, bool vertical, bool posDir, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+		for(int i = 0; i < numEnemies; i++){
+			GameObject temp = Instantiate(enemy, new Vector3(xDir,yDir,50), rotation) as GameObject;
+			Movement m = temp.GetComponent<Movement> ();
+			m.SetLinear ();
+			m.SetOsc(oscSpeed,bounds,vertical,posDir);
+			m.SetGeneral (speed, xDir, yDir, 40, health);
+
+			yield return new WaitForSeconds(spacing);
+		}
+		yield break;
+	}
+
+	public void StartSpawnOsc(GameObject enemy, int numEnemies, float spacing, float oscSpeed, float bounds, bool vertical, bool posDir, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+		StartCoroutine (SpawnOsc (enemy, numEnemies, spacing, oscSpeed, bounds, vertical, posDir, speed, xDir, yDir, health, startX, startY, rotation));
+	}
+
+	IEnumerator SpawnFollow(GameObject enemy, int numEnemies, float spacing, float rotInc, float rotRange, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+		for(int i = 0; i < numEnemies; i++){
+			GameObject temp = Instantiate(enemy, new Vector3(xDir,yDir,50), rotation) as GameObject;
+			Movement m = temp.GetComponent<Movement> ();
+			m.SetFollow (rotInc, rotRange);
+			m.SetGeneral (speed, xDir, yDir, 40, health);
+
+			yield return new WaitForSeconds(spacing);
+		}
+		yield break;
+	}
+
+	public void StartSpawnFollow(GameObject enemy, int numEnemies, float spacing, float rotInc, float rotRange, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+		StartCoroutine (SpawnFollow (enemy, numEnemies, spacing, rotInc, rotRange, speed, xDir, yDir, health, startX, startY, rotation));
+	}
+
+	IEnumerator SpawnDive(GameObject enemy, int numEnemies, float spacing, float diveSpeed, float diveTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+		for(int i = 0; i < numEnemies; i++){
+			GameObject temp = Instantiate(enemy, new Vector3(xDir,yDir,50), rotation) as GameObject;
+			Movement m = temp.GetComponent<Movement> ();
+			m.SetDiveAtPlayer (diveSpeed, diveTime);
+			m.SetGeneral (speed, xDir, yDir, 40, health);
+
+			yield return new WaitForSeconds(spacing);
+		}
+		yield break;
+	}
+
+	public void StartSpawnDive(GameObject enemy, int numEnemies, float spacing, float diveSpeed, float diveTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+		StartCoroutine (SpawnDive (enemy, numEnemies, spacing, diveSpeed, diveTime, speed, xDir, yDir, health, startX, startY, rotation));
+	}
+
+	IEnumerator SpawnTopToSide(GameObject enemy, int numEnemies, float spacing, float changeTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+		for(int i = 0; i < numEnemies; i++){
+			GameObject temp = Instantiate(enemy, new Vector3(xDir,yDir,50), rotation) as GameObject;
+			Movement m = temp.GetComponent<Movement> ();
+			m.SetTopToSide (changeTime);
+			m.SetGeneral (speed, xDir, yDir, 40, health);
+
+			yield return new WaitForSeconds(spacing);
+		}
+		yield break;
+	}
+
+	public void StartSpawnTopToSide(GameObject enemy, int numEnemies, float spacing, float changeTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+		StartCoroutine (SpawnTopToSide (enemy, numEnemies, spacing, changeTime, speed, xDir, yDir, health, startX, startY, rotation));
+	}
+
+	IEnumerator SpawnSideToBottom(GameObject enemy, int numEnemies, float spacing, float changeTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+		for(int i = 0; i < numEnemies; i++){
+			GameObject temp = Instantiate(enemy, new Vector3(xDir,yDir,50), rotation) as GameObject;
+			Movement m = temp.GetComponent<Movement> ();
+			m.SetSideToBottom(changeTime);
+			m.SetGeneral (speed, xDir, yDir, 40, health);
+
+			yield return new WaitForSeconds(spacing);
+		}
+		yield break;
+	}
+
+	public void StartSpawnSideToBottom(GameObject enemy, int numEnemies, float spacing, float changeTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+		StartCoroutine (SpawnSideToBottom (enemy, numEnemies, spacing, changeTime, speed, xDir, yDir, health, startX, startY, rotation));
+	}
+
+	IEnumerator SpawnFromBackground(GameObject enemy, int numEnemies, float spacing, float upTime, Vector3 destination, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+		for(int i = 0; i < numEnemies; i++){
+			GameObject temp = Instantiate(enemy, new Vector3(xDir,yDir,50), rotation) as GameObject;
+			Movement m = temp.GetComponent<Movement> ();
+			m.SetFromBackground (upTime, destination);
+			m.SetGeneral (speed, xDir, yDir, 40, health);
+
+			yield return new WaitForSeconds(spacing);
+		}
+		yield break;
+	}
+
+	public void StartSpawnFromBackground(GameObject enemy, int numEnemies, float spacing, float upTime, Vector3 destination, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+		StartCoroutine (SpawnFromBackground (enemy, numEnemies, spacing, upTime, destination, speed, xDir, yDir, health, startX, startY, rotation));
+	}
+
+	//maybe do one for worms?
+	//Might add a vaiable for spacing the enemies out along x or y axes
+	//By default, this is going to use Movement.SetFollow();
+
+	IEnumerator SpawnWorms(GameObject enemy, int numEnemies, int numSegments, float spacing, float rotInc, float rotRange, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+		for(int i = 0; i < numEnemies; i++){
+			GameObject temp = MakeWorm (numSegments, new Vector3 (startX, startY, 50), rotation.eulerAngles.z);
+			Movement m = temp.GetComponent<Movement> ();
+			m.SetFollow (rotInc, rotRange);
+			m.SetGeneral (speed, xDir, yDir, 40, health);
+
+			yield return new WaitForSeconds(spacing);
+		}
+		yield break;
+	}
+
+	public void StartSpawnWorms(GameObject enemy, int numEnemies, int numSegments, float spacing, float rotInc, float rotRange, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+		StartCoroutine (SpawnWorms (enemy, numEnemies, numSegments, spacing, rotInc, rotRange, speed, xDir, yDir, health, startX, startY, rotation));
+	}
+
 	//=====================================================================================================================================================
 	//																	CITY 2
 	//=====================================================================================================================================================
