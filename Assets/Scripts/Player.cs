@@ -26,6 +26,7 @@ public class Player : MonoBehaviour {
 
 	public ParticleSystem ps;
 
+	bool phaseOn;
 	bool hitCool;
 	public bool dead;
 	public int health;
@@ -256,8 +257,9 @@ public class Player : MonoBehaviour {
 				Debug.Log ("Secondary set EMP Counter");
 				gameObject.AddComponent<EMPManager>();
 				break;
-			case Loadout.LoadoutSecondary.PHASING:
+		case Loadout.LoadoutSecondary.PHASING:
 				Debug.Log ("Secondary set Phasing System");
+				gameObject.AddComponent<PhaseManager> ();
 				break;
 			case Loadout.LoadoutSecondary.TESLA:
 				Debug.Log ("CSecondary set Mosquito Tesla Coil");
