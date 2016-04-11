@@ -13,7 +13,7 @@ public class Level1_1 : MonoBehaviour {
 	public GameObject turret;
 
 	void Start () {
-		//StartCoroutine ("LevelLayout2");
+		StartCoroutine ("LevelLayout2");
 		sf = GameObject.Find ("ScreenFade").GetComponent<ScreenFade> ();
 	}
 	
@@ -31,7 +31,7 @@ public class Level1_1 : MonoBehaviour {
 	}
 
 	IEnumerator LevelLayout(){
-        
+        /*
 		yield return new WaitForSeconds (5f);
 		waves.StartOne ();
 		yield return new WaitForSeconds (13f);
@@ -72,13 +72,16 @@ public class Level1_1 : MonoBehaviour {
 		waves.StartDronesInnerCircle ();
 		waves.StartDronesCornerCircles ();
 		yield return new WaitForSeconds (16f);
-		sf.Fade ();
+		sf.Fade ();*/
 		yield break;
 	}
 
 	IEnumerator LevelLayout2(){
 		//Timing and placement need adjustment, but here's an (incomplete) general outline of what was in the GDD
-		yield return new WaitForSeconds (5f);
+		yield return new WaitForSeconds(1f);
+		waves.StartSpawnLinear (drone, 5, 1, 300, 1, -1, 50, waves.leftScreen, waves.upScreen, Quaternion.identity, 400, 0);
+		waves.StartSpawnWorms (3, 5, 0, .5f, 30, 300, 1, 50, waves.leftScreen, 200, Quaternion.Euler (0, 0, 90), 0, -200);
+		/*yield return new WaitForSeconds (5f);
 		waves.StartDoubleWorms ();
 		waves.StartBigW (drone);
 		yield return new WaitForSeconds (10f);
@@ -100,6 +103,7 @@ public class Level1_1 : MonoBehaviour {
 		yield return new WaitForSeconds (1f);
 		waves.TopW (drone);
 		yield break;
+		*/
 	}
 
 }

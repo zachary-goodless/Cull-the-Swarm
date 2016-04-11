@@ -67,6 +67,9 @@ public class LaserBullet : MonoBehaviour {
 		if (other.tag == "EnemyHit" && !cool) {
 			other.gameObject.GetComponentInParent<Movement> ().health -= dmg;
 			StartCoroutine ("Cooldown");
+		} else if (other.tag == "WormPart" && !cool) {
+			other.gameObject.GetComponent<WormBod> ().mov.health -= dmg;
+			Destroy (gameObject);
 		}
 	}
 		
@@ -74,6 +77,9 @@ public class LaserBullet : MonoBehaviour {
 		if (other.tag == "EnemyHit" && !cool) {
 			other.gameObject.GetComponentInParent<Movement> ().health -= dmg;
 			StartCoroutine ("Cooldown");
+		} else if (other.tag == "WormPart" && !cool) {
+			other.gameObject.GetComponent<WormBod> ().mov.health -= dmg;
+			Destroy (gameObject);
 		}
 	}
 
