@@ -6,7 +6,8 @@ public class Waves : MonoBehaviour{
 	public GameObject drone;
 	public GameObject turret;
 	public GameObject wormHead;
-	public GameObject WormBod;
+	public GameObject wormBod;
+	public GameObject wormTail;
 
 	//float values for above the screen, left of the screen, etc.
 	public float upScreen;
@@ -39,13 +40,18 @@ public class Waves : MonoBehaviour{
 
 		GameObject head = Instantiate (wormHead, pos, Quaternion.Euler (new Vector3(0,0,rot))) as GameObject;
 		WormScript ws = head.GetComponent <WormScript>();
-		for (int i = 1; i < bods; i++) {
-			GameObject bod = Instantiate(WormBod, pos + backPush*i, Quaternion.Euler(new Vector3(0,0,rot-180))) as GameObject;
+		for (int i = 1; i < bods-1; i++) {
+			GameObject bod = Instantiate(wormBod, pos + backPush*i, Quaternion.Euler(new Vector3(0,0,rot-180))) as GameObject;
 			ws.segments.Add (bod.transform);
 			WormBod wBod = bod.GetComponent<WormBod> ();
 			wBod.head = head;
 
 		}
+		GameObject tail = Instantiate(wormTail, pos + backPush*(bods-1), Quaternion.Euler(new Vector3(0,0,rot-180))) as GameObject;
+		ws.segments.Add (tail.transform);
+		WormBod wTail = tail.GetComponent<WormBod> ();
+		wTail.head = head;
+
 		return head;
 	}
 
