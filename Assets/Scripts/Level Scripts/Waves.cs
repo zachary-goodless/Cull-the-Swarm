@@ -8,10 +8,6 @@ public class Waves : MonoBehaviour{
 	public GameObject wormHead;
 	public GameObject WormBod;
 
-	//Either need to get rid of this or update it.
-	public GameObject waveManager;
-	public WaveManager wm;
-
 	//float values for above the screen, left of the screen, etc.
 	public float upScreen;
 	public float downScreen;
@@ -46,6 +42,9 @@ public class Waves : MonoBehaviour{
 		for (int i = 1; i < bods; i++) {
 			GameObject bod = Instantiate(WormBod, pos + backPush*i, Quaternion.Euler(new Vector3(0,0,rot-180))) as GameObject;
 			ws.segments.Add (bod.transform);
+			WormBod wBod = bod.GetComponent<WormBod> ();
+			wBod.head = head;
+
 		}
 		return head;
 	}
@@ -298,20 +297,20 @@ public class Waves : MonoBehaviour{
 		StartCoroutine (SpawnOsc (enemy, numEnemies, spacing, oscSpeed, bounds, vertical, posDir, speed, xDir, yDir, health, startX, startY, rotation, xInc, yInc));
 	}
 
-	IEnumerator SpawnFollow(GameObject enemy, int numEnemies, float spacing, float rotInc, float rotRange, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
+	IEnumerator SpawnFollow(GameObject enemy, int numEnemies, float spacing, float rotInc, float rotRange, float speed, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
 		for(int i = 0; i < numEnemies; i++){
 			GameObject temp = Instantiate(enemy, new Vector3(startX + xInc*i,startY + yInc*i,50), rotation) as GameObject;
 			Movement m = temp.GetComponent<Movement> ();
 			m.SetFollow (rotInc, rotRange);
-			m.SetGeneral (speed, xDir, yDir, 40, health);
+			m.SetGeneral (speed, 0, yDir, 40, health);
 
 			yield return new WaitForSeconds(spacing);
 		}
 		yield break;
 	}
 
-	public void StartSpawnFollow(GameObject enemy, int numEnemies, float spacing, float rotInc, float rotRange, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
-		StartCoroutine (SpawnFollow (enemy, numEnemies, spacing, rotInc, rotRange, speed, xDir, yDir, health, startX, startY, rotation, xInc, yInc));
+	public void StartSpawnFollow(GameObject enemy, int numEnemies, float spacing, float rotInc, float rotRange, float speed, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
+		StartCoroutine (SpawnFollow (enemy, numEnemies, spacing, rotInc, rotRange, speed, yDir, health, startX, startY, rotation, xInc, yInc));
 	}
 
 	IEnumerator SpawnDive(GameObject enemy, int numEnemies, float spacing, float diveSpeed, float diveTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
@@ -382,20 +381,20 @@ public class Waves : MonoBehaviour{
 	//Might add a vaiable for spacing the enemies out along x or y axes
 	//By default, this is going to use Movement.SetFollow();
 
-	IEnumerator SpawnWorms(GameObject enemy, int numEnemies, int numSegments, float spacing, float rotInc, float rotRange, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
+	IEnumerator SpawnWorms(int numEnemies, int numSegments, float spacing, float rotInc, float rotRange, float speed, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
 		for(int i = 0; i < numEnemies; i++){
 			GameObject temp = MakeWorm (numSegments, new Vector3 (startX + xInc*i, startY + yInc*i, 50), rotation.eulerAngles.z);
 			Movement m = temp.GetComponent<Movement> ();
 			m.SetFollow (rotInc, rotRange);
-			m.SetGeneral (speed, xDir, yDir, 40, health);
+			m.SetGeneral (speed, 0, yDir, 40, health);
 
 			yield return new WaitForSeconds(spacing);
 		}
 		yield break;
 	}
 
-	public void StartSpawnWorms(GameObject enemy, int numEnemies, int numSegments, float spacing, float rotInc, float rotRange, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
-		StartCoroutine (SpawnWorms (enemy, numEnemies, numSegments, spacing, rotInc, rotRange, speed, xDir, yDir, health, startX, startY, rotation, xInc, yInc));
+	public void StartSpawnWorms(int numEnemies, int numSegments, float spacing, float rotInc, float rotRange, float speed, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
+		StartCoroutine (SpawnWorms (numEnemies, numSegments, spacing, rotInc, rotRange, speed, yDir, health, startX, startY, rotation, xInc, yInc));
 	}
 
 	//=====================================================================================================================================================
@@ -809,7 +808,7 @@ public class Waves : MonoBehaviour{
 	//=====================================================================================================================================================
 	//																	CITY 1
 	//=====================================================================================================================================================
-
+	/*
 	//Space invaders-style wave 
 	IEnumerator WaveOne(){
 

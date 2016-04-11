@@ -8,7 +8,7 @@ public class WormBod : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		mov = head.GetComponent<Movement> ();
 	}
 	
 	// Update is called once per frame
