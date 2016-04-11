@@ -124,6 +124,9 @@ public class FlamethrowerBullet : MonoBehaviour {
 		if (other.tag == "EnemyHit") {
 			other.gameObject.GetComponentInParent<Movement> ().health -= dmg;
 			Destroy (gameObject);
+		} else if (other.tag == "WormPart") {
+			other.gameObject.GetComponent<WormBod> ().mov.health -= dmg;
+			Destroy (gameObject);
 		}
 	}
 }

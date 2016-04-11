@@ -55,7 +55,7 @@ public class SwatterBullet : MonoBehaviour {
 		if (other.tag == "EnemyHit" && timer > 0.2 && timer < 0.6) {
 			other.gameObject.GetComponentInParent<Movement> ().health -= dmg;
 			Destroy (gameObject);
-		}
+		} 
 	}
 
 	void findTarget(){
