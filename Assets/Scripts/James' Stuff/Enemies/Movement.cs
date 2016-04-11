@@ -105,6 +105,8 @@ public class Movement : MonoBehaviour {
 		sideToBottom = false;
 		fromBackground = false;
 
+		col = GetComponent<CircleCollider2D> ();
+
 		doesTilt = true;
 		screenDeath = true;
 
@@ -292,7 +294,7 @@ public class Movement : MonoBehaviour {
 	}
 
 	void HandleQuadratic(){
-		
+
 		transform.position += new Vector3 (speed * dirX * Time.deltaTime, speed *dirY* Time.deltaTime,0f);
 	}
 
@@ -463,7 +465,7 @@ public class Movement : MonoBehaviour {
 				dirX = 0;
 			}
 			transform.position += new Vector3 (speed * dirX * Time.deltaTime, 0f, 0f);
-			
+
 			transform.position += new Vector3 (0f, speed * dirY * Time.deltaTime, 0f);
 		}
 	}
@@ -561,3 +563,4 @@ public class Movement : MonoBehaviour {
 		yield break;
 	}
 }
+
