@@ -72,9 +72,8 @@ public class Level1_1 : MonoBehaviour {
 		waves.StartDronesInnerCircle ();
 		waves.StartDronesCornerCircles ();
 		yield return new WaitForSeconds (16f);
-		sf.Fade ();
+		sf.Fade ();*/
 		yield break;
-		*/
 	}
 
 	IEnumerator LevelLayout2(){
