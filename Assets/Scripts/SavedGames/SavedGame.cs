@@ -107,6 +107,7 @@ public class SavedGame
 	//PUBLIC
 	public int[] highScores;			//level highscore array
 	public bool[] unlockedLevels;		//level completion array
+	public bool[] finalChassis;			//says if a level is completed with final chassis
 
 	public bool[] unlockedChasis;		//loadout element arrays
 	public bool[] unlockedPrimary;
@@ -127,24 +128,11 @@ public class SavedGame
 		mSelectedLevel = SceneIndex.NULL;
 		mCurrentLoadout = null;
 
-		//init loadout arrays
-		initLoadoutArrays(Loadout.NUM_LOADOUTS);
 		initLevelCompletionArray(SavedGameManager.NUM_GAMEPLAY_LEVELS);
 		initHighScoreArray(SavedGameManager.NUM_GAMEPLAY_LEVELS);
-	}
+		initFinalChassisArray(SavedGameManager.NUM_GAMEPLAY_LEVELS);
 
-//--------------------------------------------------------------------------------------------
-
-	private void initLoadoutArrays(int size)
-	{
-		unlockedChasis = initBoolArray(size);
-		unlockedPrimary = initBoolArray(size);
-		unlockedSecondary = initBoolArray(size);
-
-		//unlocked by default
-		unlockedChasis[0] = true;
-		unlockedPrimary[0] = true;
-		unlockedSecondary[0] = true;
+		initLoadoutArrays(Loadout.NUM_LOADOUTS);
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -162,6 +150,27 @@ public class SavedGame
 	private void initHighScoreArray(int size)
 	{
 		highScores = initIntArray(size);
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	void initFinalChassisArray(int size)
+	{
+		finalChassis = initBoolArray(size);
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	private void initLoadoutArrays(int size)
+	{
+		unlockedChasis = initBoolArray(size);
+		unlockedPrimary = initBoolArray(size);
+		unlockedSecondary = initBoolArray(size);
+
+		//unlocked by default
+		unlockedChasis[0] = true;
+		unlockedPrimary[0] = true;
+		unlockedSecondary[0] = true;
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -189,6 +198,17 @@ public class SavedGame
 		}
 
 		return array;
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	public void handleIncomingFinalChassis(int index, bool didUseFinalChassis)
+	{
+		//if the final chassis was used...
+		if(didUseFinalChassis)
+		{
+			finalChassis[index] = true;
+		}
 	}
 
 //--------------------------------------------------------------------------------------------

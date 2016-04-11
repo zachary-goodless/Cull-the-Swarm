@@ -239,6 +239,11 @@ public class SavedGameManager : MonoBehaviour
 			if(!tokenizeBools(reader.ReadLine(), levelUnlocks))
 				continue;
 
+			//read final chassis use for current game
+			bool[] finalChassis = new bool[NUM_GAMEPLAY_LEVELS];
+			if(!tokenizeBools(reader.ReadLine(), finalChassis))
+				continue;
+
 			//read chasis unlocks for current game
 			bool[] chasis = new bool[Loadout.NUM_LOADOUTS];
 			if(!tokenizeBools(reader.ReadLine(), chasis))
@@ -257,6 +262,7 @@ public class SavedGameManager : MonoBehaviour
 			//set the values for the current game
 			game.highScores = highscores;
 			game.unlockedLevels = levelUnlocks;
+			game.finalChassis = finalChassis;
 
 			game.unlockedChasis = chasis;
 			game.unlockedPrimary = primary;
@@ -319,6 +325,14 @@ public class SavedGameManager : MonoBehaviour
 			writer.WriteLine(line);
 			line = "";
 
+			//write the game's final chassis use
+			foreach(bool val in pair.Value.finalChassis)
+			{
+				line += ((val ? "1" : "0") + " ");
+			}
+			writer.WriteLine(line);
+			line = "";
+
 			//write the game's chasis unlocks
 			foreach(bool val in pair.Value.unlockedChasis)
 			{
@@ -365,7 +379,7 @@ public class SavedGameManager : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	public void handleLevelCompleted(SceneIndex currentLevel, int score)
+	public void handleLevelCompleted(SceneIndex currentLevel, int score, bool didUseFinalChassis)
 	{
 		//convert from SceneIndex to indexing int
 		int i = (int)currentLevel - 3;
@@ -378,9 +392,10 @@ public class SavedGameManager : MonoBehaviour
 		}
 
 		//handle stuff on the current game object
-		mCurrentGame.handleIncomingScore(i, score);				//highscore
-		mCurrentGame.handleIncomingLevelUnlock(i);				//level unlock
-		mCurrentGame.handleIncomingLoadoutUnlock(currentLevel);	//loadout unlock
+		mCurrentGame.handleIncomingScore(i, score);							//highscore
+		mCurrentGame.handleIncomingLevelUnlock(i);							//level unlock
+		mCurrentGame.handleIncomingFinalChassis(i, didUseFinalChassis);		//final chassis use
+		mCurrentGame.handleIncomingLoadoutUnlock(currentLevel);				//loadout unlock
 
 		//major change -- write out to file
 		writeSavedGameFile();

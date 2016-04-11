@@ -31,6 +31,8 @@ public class WorldMapEventHandler : MonoBehaviour
 	private Sprite[] levelImgSprites;
 	private Sprite[] stageButtonSprites;
 
+	private FinalChassisStar[] finalChassisStars;
+
 	private SavedGameManager mSavedGameManager;
 
 	private SceneIndex mSelectedLevel;
@@ -101,26 +103,48 @@ public class WorldMapEventHandler : MonoBehaviour
 
 	public void handleLevelButtonClicked(int firstStageIndex)
 	{
-		//IF FINAL LEVELS, DISABLE FINAL BUTTON
-		stageThreeButton.SetActive(firstStageIndex != 12);
-
-		//for the first three buttons (stages 1, 2, and 3)...
-		StageButtonEventHandler[] behs = mStagePanel.GetComponentsInChildren<StageButtonEventHandler>();
-		for(int i = 0; i < behs.Length - 1; ++i)
+		//handle final chassis stars
 		{
-			//set isUnlocked and sceneIndex for the current button
-			behs[i].isUnlocked = mSavedGameManager.getCurrentGame().unlockedLevels[firstStageIndex + i];
-			behs[i].sceneIndex = (SceneIndex)(firstStageIndex + i + 3);
+			finalChassisStars = mStagePanel.GetComponentsInChildren<FinalChassisStar>();
+
+			//IF FINAL LEVELS -- DISABLE FINAL STAR
+			if(firstStageIndex == 12)
+			{
+				finalChassisStars[finalChassisStars.Length - 1].gameObject.SetActive(false);
+			}
+
+			//for each other final chassis star...
+			int endIndex = firstStageIndex == 12 ? finalChassisStars.Length - 1 : finalChassisStars.Length;
+			for(int i = 0; i < endIndex; ++i)
+			{
+				//the star is active if the final chassis has been used
+				finalChassisStars[i].gameObject.SetActive(mSavedGameManager.getCurrentGame().finalChassis[firstStageIndex + i]);
+			}
 		}
 
-		//set the stage panel's title image based on the firstStageIndex
-		mStagePanelTitle.sprite = levelTitleSprites[firstStageIndex / 3];
+		//handle buttons and title banner
+		{
+			//IF FINAL LEVELS -- DISABLE FINAL BUTTON
+			stageThreeButton.SetActive(firstStageIndex != 12);
 
-		//force the unlock for the back button
-		behs[behs.Length - 1].isUnlocked = true;
+			//for the first three buttons (stages 1, 2, and 3)...
+			StageButtonEventHandler[] behs = mStagePanel.GetComponentsInChildren<StageButtonEventHandler>();
+			for(int i = 0; i < behs.Length - 1; ++i)
+			{
+				//set isUnlocked and sceneIndex for the current button
+				behs[i].isUnlocked = mSavedGameManager.getCurrentGame().unlockedLevels[firstStageIndex + i];
+				behs[i].sceneIndex = (SceneIndex)(firstStageIndex + i + 3);
+			}
 
-		//set the buttons enable
-		setStageButtonsActive();
+			//force the unlock for the back button
+			behs[behs.Length - 1].isUnlocked = true;
+				
+			//set the buttons enable
+			setStageButtonsActive();
+
+			//set the stage panel's title image based on the firstStageIndex
+			mStagePanelTitle.sprite = levelTitleSprites[firstStageIndex / 3];
+		}
 
 		//initialize the data panel with no data (data is set on stage button mouseover)
 		initDataPanel(SceneIndex.NULL);
@@ -176,6 +200,12 @@ public class WorldMapEventHandler : MonoBehaviour
 			mDataPanel.SetActive(false);
 
 			toggleLevelButtonsActive();
+
+			//reenable final chassis stars
+			foreach(FinalChassisStar star in finalChassisStars)
+			{
+				star.gameObject.SetActive(true);
+			}
 		}
 	}
 
@@ -350,7 +380,7 @@ public class WorldMapEventHandler : MonoBehaviour
 			i += 3;
 		}
 	}
-
+		
 //--------------------------------------------------------------------------------------------
 
 	void lockLevelButtons()
