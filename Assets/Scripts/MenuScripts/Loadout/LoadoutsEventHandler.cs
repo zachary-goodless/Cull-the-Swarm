@@ -22,7 +22,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 	//PRIVATE
 	public Sprite[] buttonSprites;
-	//TODO -- sprite arrays (choice icons)
+	public Sprite[] iconSprites;
 
 	public string[,] elementStrings;
 
@@ -46,28 +46,27 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 		//init resource arrays
 		buttonSprites = Resources.LoadAll<Sprite>("GUI_Assets/Menu_Loadouts");
-		//TODO -- init choice icon array
+		iconSprites = Resources.LoadAll<Sprite>("GUI_Assets/LoadoutIcons");
 
-		//TODO -- complete the element strings arrays
 		elementStrings = new string[16, 3]		//name, description, unlock
 		{
-			{"Exterminator", 		"a", "-"},
-			{"Final", 				"b", "Complete Tutorial 3 to unlock!"},
-			{"Booster", 			"c", "Complete Level 1-1 to unlock!"},
-			{"Shrink", 				"d", "Complete Level 2-2 to unlock!"},
-			{"Quick", 				"e", "Complete Level 3-3 to unlock!"},
+			{"Exterminator", 		"Standard issue chassis. Takes 3 hits.", 									"-"},
+			{"Final", 				"Breaks after a single hit, but radiates a mysterious energy...", 			"Complete Tutorial 3 to unlock!"},
+			{"Booster", 			"Slower than the Exterminator, but Precision gives you a speed boost.", 	"Complete Level 1-1 to unlock!"},
+			{"Shrink", 				"Slower than the Exterminator, but your hitbox in Precision is SMALL.", 	"Complete Level 2-2 to unlock!"},
+			{"Quick", 				"Quicker but weaker than the Exterminator. Secondaries recharge faster.", 	"Complete Level 3-3 to unlock!"},
 
-			{"Bug Repellants", 		"f", "-"},
-			{"No-Miss Swatter", 	"g", "Complete Tutorial 2 to unlock!"},
-			{"Precision Pesticide", "h", "Complete Level 1-2 to unlock!"},
-			{"Citronella Flame", 	"i", "Complete Level 2-1 to unlock!"},
-			{"Volt Lantern", 		"j", "Complete Level 3-2 to unlock!"},
+			{"Bug Repellants", 		"Standard issue anti-bug bullets.", 										"-"},
+			{"No-Miss Swatter", 	"Fire and forget! Automatically attacks the nearest enemy.", 				"Complete Tutorial 2 to unlock!"},
+			{"Precision Pesticide", "Laser that sweeps from side to side as you move.", 						"Complete Level 1-2 to unlock!"},
+			{"Citronella Flame", 	"Shoots a short, but powerful cone of fire.", 								"Complete Level 2-1 to unlock!"},
+			{"Volt Lantern", 		"Powerful forward and rear facing lasers.", 								"Complete Level 3-2 to unlock!"},
 
-			{"EMP Counter", 		"k", "-"},
-			{"Phasing System", 		"l", "Complete Tutorial 1 to unlock!"},
-			{"Holo-Duplicate", 		"m", "Complete Level 1-3 to unlock!"},
-			{"Mosquito Tesla Coil", "n", "Complete Level 2-3 to unlock!"},
-			{"Freeze Ray", 			"o", "Complete Level 3-1 to unlock!"},
+			{"EMP Counter", 		"Disrupts enemy firing systems and clears the area of bullets.", 			"-"},
+			{"Phasing System", 		"Renders your ship invulnerable for a short time.", 						"Complete Tutorial 1 to unlock!"},
+			{"Holo-Duplicate", 		"Deploys a hologram of your ship that enemies attack instead.", 			"Complete Level 1-3 to unlock!"},
+			{"Mosquito Tesla Coil", "Hold to absorb bullets. Release to send damage back. Does not recharge!", 	"Complete Level 2-3 to unlock!"},
+			{"Freeze Ray", 			"Starts a chain reaction that freezes nearby enemy bullets.", 				"Complete Level 3-1 to unlock!"},
 
 			{"-", "-", "-"}
 		};
@@ -303,6 +302,9 @@ public class LoadoutsEventHandler : MonoBehaviour
 		Loadout.LoadoutSecondary si,
 		bool isChoiceUnlocked = false)
 	{
+		GameObject temp = mDataPanel.transform.GetChild(3).gameObject;
+		Image icon = temp.GetComponent<Image>();
+
 		Text[] texts = mDataPanel.GetComponentsInChildren<Text>();
 		int index = 0;
 
@@ -326,23 +328,25 @@ public class LoadoutsEventHandler : MonoBehaviour
 		//if the element is unlocked...
 		if(isChoiceUnlocked)
 		{
-			//TODO -- set element icon
-
 			//set name, description, blank unlock criteria
 			texts[0].text = elementStrings[index, 0];
 			texts[1].text = elementStrings[index, 1];
 			texts[2].text = "-";
+
+			//set element icon
+			icon.sprite = iconSprites[index];
 		}
 
 		//otherwise, if the element is locked...
 		else
 		{
-			//TODO -- set locked icon
-
 			//set blank name, blank description, unlock criteria
 			texts[0].text = "-";
 			texts[1].text = "-";
 			texts[2].text = elementStrings[index, 2];
+
+			//set classified icon
+			icon.sprite = iconSprites[15];
 		}
 	}
 

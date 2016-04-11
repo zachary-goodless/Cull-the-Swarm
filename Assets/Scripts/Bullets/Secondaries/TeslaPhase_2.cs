@@ -57,7 +57,7 @@ public class TeslaPhase_2 : MonoBehaviour
 		//if enemy hit, not on cooldown, and damage has been set...
 		if(other.tag == "EnemyHit" && !isOnCooldown && damage != 0f)
 		{
-			other.gameObject.GetComponentInParent<EnemyMovement>().health -= damage;
+			other.gameObject.GetComponentInParent<Movement>().health -= damage;
 			StartCoroutine(handleCooldown());
 		}
 	}

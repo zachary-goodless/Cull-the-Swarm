@@ -22,7 +22,7 @@ public class PhaseManager : MonoBehaviour
 
 	private float currEnergy;
 
-	private bool isActive;
+	public bool isActive;
 	private bool isOnCooldown;
 	private bool isOnCooldownDelay;
 
@@ -66,6 +66,7 @@ public class PhaseManager : MonoBehaviour
 		//if the weapon is active...
 		if(isActive)
 		{
+			if(playerScript.chassisQuick
 			//reduce energy down to min
 			currEnergy -= consumptionRate * Time.deltaTime;
 
@@ -87,7 +88,7 @@ public class PhaseManager : MonoBehaviour
 		//if the weapon is cooling down...
 		if(isOnCooldown)
 		{
-			if (playerScript.
+			if (playerScript)
 			//increase energy up to max, then no longer on cooldown
 			currEnergy += rechargeRate * Time.deltaTime;
 			if(currEnergy >= maxEnergy)

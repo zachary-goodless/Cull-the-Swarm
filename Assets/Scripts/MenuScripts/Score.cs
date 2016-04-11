@@ -54,7 +54,7 @@ public class Score : MonoBehaviour
 
 	public void handleEnemyDefeated(PointVals points)
 	{
-		trueScore += (int)((int)points * multiplier);	//TODO -- add calls on enemy script
+		trueScore += (int)((int)points * multiplier);
 	}
 
 //--------------------------------------------------------------------------------------------
