@@ -246,13 +246,12 @@ public class Waves : MonoBehaviour{
 	//=====================================================================================================================================================
 
 	//Everything should be fairly self-explanatory;
-	//Spacing is the time between spawns, so currently this only supports spawning thins in order
-	//I may add xInc and yInc variales that allow you to start with a spawn one place and each new spawn starts a bit further across whichever axis you want.
-	//However, this may make the function overly long (well, it already is...)
+	//Spacing is the time between spawns
+	//xInc and yInc is the physical space between enmies
 
-	IEnumerator SpawnLinear(GameObject enemy, int numEnemies, float spacing, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+	IEnumerator SpawnLinear(GameObject enemy, int numEnemies, float spacing, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
 		for(int i = 0; i < numEnemies; i++){
-			GameObject temp = Instantiate(enemy, new Vector3(xDir,yDir,50), rotation) as GameObject;
+			GameObject temp = Instantiate(enemy, new Vector3(startX+xInc*i,startY+yInc*i,50), rotation) as GameObject;
 			Movement m = temp.GetComponent<Movement> ();
 			m.SetLinear ();
 			m.SetGeneral (speed, xDir, yDir, 40, health);
@@ -262,13 +261,13 @@ public class Waves : MonoBehaviour{
 		yield break;
 	}
 
-	public void StartSpawnLinear(GameObject enemy, int numEnemies, float spacing, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
-		StartCoroutine (SpawnLinear (enemy, numEnemies, spacing, speed, xDir, yDir, health, startX, startY, rotation));
+	public void StartSpawnLinear(GameObject enemy, int numEnemies, float spacing, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
+		StartCoroutine (SpawnLinear (enemy, numEnemies, spacing, speed, xDir, yDir, health, startX, startY, rotation, xInc, yInc));
 	}
 
-	IEnumerator SpawnSin(GameObject enemy, int numEnemies, float spacing, float amplitude, float period, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+	IEnumerator SpawnSin(GameObject enemy, int numEnemies, float spacing, float amplitude, float period, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
 		for(int i = 0; i < numEnemies; i++){
-			GameObject temp = Instantiate(enemy, new Vector3(xDir,yDir,50), rotation) as GameObject;
+			GameObject temp = Instantiate(enemy, new Vector3(startX+xInc*i,startY+yInc*i,50), rotation) as GameObject;
 			Movement m = temp.GetComponent<Movement> ();
 			m.SetSin (amplitude, period);
 			m.SetGeneral (speed, xDir, yDir, 40, health);
@@ -278,13 +277,13 @@ public class Waves : MonoBehaviour{
 		yield break;
 	}
 
-	public void StartSpawnSin(GameObject enemy, int numEnemies, float spacing, float amplitude, float period, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
-		StartCoroutine (SpawnSin (enemy, numEnemies, spacing, amplitude, period, speed, xDir, yDir, health, startX, startY, rotation));
+	public void StartSpawnSin(GameObject enemy, int numEnemies, float spacing, float amplitude, float period, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
+		StartCoroutine (SpawnSin (enemy, numEnemies, spacing, amplitude, period, speed, xDir, yDir, health, startX, startY, rotation, xInc, yInc));
 	}
 
-	IEnumerator SpawnOsc(GameObject enemy, int numEnemies, float spacing, float oscSpeed, float bounds, bool vertical, bool posDir, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+	IEnumerator SpawnOsc(GameObject enemy, int numEnemies, float spacing, float oscSpeed, float bounds, bool vertical, bool posDir, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
 		for(int i = 0; i < numEnemies; i++){
-			GameObject temp = Instantiate(enemy, new Vector3(xDir,yDir,50), rotation) as GameObject;
+			GameObject temp = Instantiate(enemy, new Vector3(startX + xInc*i,startY + yInc*i,50), rotation) as GameObject;
 			Movement m = temp.GetComponent<Movement> ();
 			m.SetLinear ();
 			m.SetOsc(oscSpeed,bounds,vertical,posDir);
@@ -295,13 +294,13 @@ public class Waves : MonoBehaviour{
 		yield break;
 	}
 
-	public void StartSpawnOsc(GameObject enemy, int numEnemies, float spacing, float oscSpeed, float bounds, bool vertical, bool posDir, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
-		StartCoroutine (SpawnOsc (enemy, numEnemies, spacing, oscSpeed, bounds, vertical, posDir, speed, xDir, yDir, health, startX, startY, rotation));
+	public void StartSpawnOsc(GameObject enemy, int numEnemies, float spacing, float oscSpeed, float bounds, bool vertical, bool posDir, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
+		StartCoroutine (SpawnOsc (enemy, numEnemies, spacing, oscSpeed, bounds, vertical, posDir, speed, xDir, yDir, health, startX, startY, rotation, xInc, yInc));
 	}
 
-	IEnumerator SpawnFollow(GameObject enemy, int numEnemies, float spacing, float rotInc, float rotRange, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+	IEnumerator SpawnFollow(GameObject enemy, int numEnemies, float spacing, float rotInc, float rotRange, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
 		for(int i = 0; i < numEnemies; i++){
-			GameObject temp = Instantiate(enemy, new Vector3(xDir,yDir,50), rotation) as GameObject;
+			GameObject temp = Instantiate(enemy, new Vector3(startX + xInc*i,startY + yInc*i,50), rotation) as GameObject;
 			Movement m = temp.GetComponent<Movement> ();
 			m.SetFollow (rotInc, rotRange);
 			m.SetGeneral (speed, xDir, yDir, 40, health);
@@ -311,13 +310,13 @@ public class Waves : MonoBehaviour{
 		yield break;
 	}
 
-	public void StartSpawnFollow(GameObject enemy, int numEnemies, float spacing, float rotInc, float rotRange, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
-		StartCoroutine (SpawnFollow (enemy, numEnemies, spacing, rotInc, rotRange, speed, xDir, yDir, health, startX, startY, rotation));
+	public void StartSpawnFollow(GameObject enemy, int numEnemies, float spacing, float rotInc, float rotRange, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
+		StartCoroutine (SpawnFollow (enemy, numEnemies, spacing, rotInc, rotRange, speed, xDir, yDir, health, startX, startY, rotation, xInc, yInc));
 	}
 
-	IEnumerator SpawnDive(GameObject enemy, int numEnemies, float spacing, float diveSpeed, float diveTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+	IEnumerator SpawnDive(GameObject enemy, int numEnemies, float spacing, float diveSpeed, float diveTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
 		for(int i = 0; i < numEnemies; i++){
-			GameObject temp = Instantiate(enemy, new Vector3(xDir,yDir,50), rotation) as GameObject;
+			GameObject temp = Instantiate(enemy, new Vector3(startX+yInc*i,startY+yInc*i,50), rotation) as GameObject;
 			Movement m = temp.GetComponent<Movement> ();
 			m.SetDiveAtPlayer (diveSpeed, diveTime);
 			m.SetGeneral (speed, xDir, yDir, 40, health);
@@ -327,13 +326,13 @@ public class Waves : MonoBehaviour{
 		yield break;
 	}
 
-	public void StartSpawnDive(GameObject enemy, int numEnemies, float spacing, float diveSpeed, float diveTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
-		StartCoroutine (SpawnDive (enemy, numEnemies, spacing, diveSpeed, diveTime, speed, xDir, yDir, health, startX, startY, rotation));
+	public void StartSpawnDive(GameObject enemy, int numEnemies, float spacing, float diveSpeed, float diveTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
+		StartCoroutine (SpawnDive (enemy, numEnemies, spacing, diveSpeed, diveTime, speed, xDir, yDir, health, startX, startY, rotation, xInc, yInc));
 	}
 
-	IEnumerator SpawnTopToSide(GameObject enemy, int numEnemies, float spacing, float changeTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+	IEnumerator SpawnTopToSide(GameObject enemy, int numEnemies, float spacing, float changeTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
 		for(int i = 0; i < numEnemies; i++){
-			GameObject temp = Instantiate(enemy, new Vector3(xDir,yDir,50), rotation) as GameObject;
+			GameObject temp = Instantiate(enemy, new Vector3(startX+xInc*i,startY+yInc*i,50), rotation) as GameObject;
 			Movement m = temp.GetComponent<Movement> ();
 			m.SetTopToSide (changeTime);
 			m.SetGeneral (speed, xDir, yDir, 40, health);
@@ -343,13 +342,13 @@ public class Waves : MonoBehaviour{
 		yield break;
 	}
 
-	public void StartSpawnTopToSide(GameObject enemy, int numEnemies, float spacing, float changeTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
-		StartCoroutine (SpawnTopToSide (enemy, numEnemies, spacing, changeTime, speed, xDir, yDir, health, startX, startY, rotation));
+	public void StartSpawnTopToSide(GameObject enemy, int numEnemies, float spacing, float changeTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
+		StartCoroutine (SpawnTopToSide (enemy, numEnemies, spacing, changeTime, speed, xDir, yDir, health, startX, startY, rotation, xInc, yInc));
 	}
 
-	IEnumerator SpawnSideToBottom(GameObject enemy, int numEnemies, float spacing, float changeTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+	IEnumerator SpawnSideToBottom(GameObject enemy, int numEnemies, float spacing, float changeTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
 		for(int i = 0; i < numEnemies; i++){
-			GameObject temp = Instantiate(enemy, new Vector3(xDir,yDir,50), rotation) as GameObject;
+			GameObject temp = Instantiate(enemy, new Vector3(startX + xInc*i,startY + yInc*i,50), rotation) as GameObject;
 			Movement m = temp.GetComponent<Movement> ();
 			m.SetSideToBottom(changeTime);
 			m.SetGeneral (speed, xDir, yDir, 40, health);
@@ -359,13 +358,13 @@ public class Waves : MonoBehaviour{
 		yield break;
 	}
 
-	public void StartSpawnSideToBottom(GameObject enemy, int numEnemies, float spacing, float changeTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
-		StartCoroutine (SpawnSideToBottom (enemy, numEnemies, spacing, changeTime, speed, xDir, yDir, health, startX, startY, rotation));
+	public void StartSpawnSideToBottom(GameObject enemy, int numEnemies, float spacing, float changeTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
+		StartCoroutine (SpawnSideToBottom (enemy, numEnemies, spacing, changeTime, speed, xDir, yDir, health, startX, startY, rotation, xInc, yInc));
 	}
 
-	IEnumerator SpawnFromBackground(GameObject enemy, int numEnemies, float spacing, float upTime, Vector3 destination, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+	IEnumerator SpawnFromBackground(GameObject enemy, int numEnemies, float spacing, float upTime, Vector3 destination, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
 		for(int i = 0; i < numEnemies; i++){
-			GameObject temp = Instantiate(enemy, new Vector3(xDir,yDir,50), rotation) as GameObject;
+			GameObject temp = Instantiate(enemy, new Vector3(startX + xInc*i,startY + yInc*i,50), rotation) as GameObject;
 			Movement m = temp.GetComponent<Movement> ();
 			m.SetFromBackground (upTime, destination);
 			m.SetGeneral (speed, xDir, yDir, 40, health);
@@ -375,17 +374,17 @@ public class Waves : MonoBehaviour{
 		yield break;
 	}
 
-	public void StartSpawnFromBackground(GameObject enemy, int numEnemies, float spacing, float upTime, Vector3 destination, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
-		StartCoroutine (SpawnFromBackground (enemy, numEnemies, spacing, upTime, destination, speed, xDir, yDir, health, startX, startY, rotation));
+	public void StartSpawnFromBackground(GameObject enemy, int numEnemies, float spacing, float upTime, Vector3 destination, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
+		StartCoroutine (SpawnFromBackground (enemy, numEnemies, spacing, upTime, destination, speed, xDir, yDir, health, startX, startY, rotation, xInc, yInc));
 	}
 
 	//maybe do one for worms?
 	//Might add a vaiable for spacing the enemies out along x or y axes
 	//By default, this is going to use Movement.SetFollow();
 
-	IEnumerator SpawnWorms(GameObject enemy, int numEnemies, int numSegments, float spacing, float rotInc, float rotRange, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
+	IEnumerator SpawnWorms(GameObject enemy, int numEnemies, int numSegments, float spacing, float rotInc, float rotRange, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
 		for(int i = 0; i < numEnemies; i++){
-			GameObject temp = MakeWorm (numSegments, new Vector3 (startX, startY, 50), rotation.eulerAngles.z);
+			GameObject temp = MakeWorm (numSegments, new Vector3 (startX + xInc*i, startY + yInc*i, 50), rotation.eulerAngles.z);
 			Movement m = temp.GetComponent<Movement> ();
 			m.SetFollow (rotInc, rotRange);
 			m.SetGeneral (speed, xDir, yDir, 40, health);
@@ -395,8 +394,8 @@ public class Waves : MonoBehaviour{
 		yield break;
 	}
 
-	public void StartSpawnWorms(GameObject enemy, int numEnemies, int numSegments, float spacing, float rotInc, float rotRange, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation){
-		StartCoroutine (SpawnWorms (enemy, numEnemies, numSegments, spacing, rotInc, rotRange, speed, xDir, yDir, health, startX, startY, rotation));
+	public void StartSpawnWorms(GameObject enemy, int numEnemies, int numSegments, float spacing, float rotInc, float rotRange, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
+		StartCoroutine (SpawnWorms (enemy, numEnemies, numSegments, spacing, rotInc, rotRange, speed, xDir, yDir, health, startX, startY, rotation, xInc, yInc));
 	}
 
 	//=====================================================================================================================================================
