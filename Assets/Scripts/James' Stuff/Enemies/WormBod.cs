@@ -17,5 +17,9 @@ public class WormBod : MonoBehaviour {
 			Destroy (gameObject);
 		}
 	}
-		
+
+	void OnTriggerEnter2D(Collider2D other){
+		Debug.Log (other.tag);
+	}
+
 }

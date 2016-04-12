@@ -103,7 +103,7 @@ public class Player : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if ((other.tag == "Bullet" || other.tag == "EnemyHit")&& !hitCool) {
+		if ((other.tag == "Bullet" || other.tag == "EnemyHit" || other.tag == "WormPart")&& !hitCool) {
 			GetComponent<AudioSource> ().Play ();
 			OnDamage ();
 		}
