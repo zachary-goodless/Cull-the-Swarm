@@ -19,6 +19,9 @@ public class LevelCompleteHandler : MonoBehaviour
 	public Text globalHighScoreMsg;
 	public Text noHitsMsg;
 
+	public Text finalChassisMsg;
+	public Image finalChassisStar;
+
 	public Text scoreDisplay;
 	public Score score;
 
@@ -27,7 +30,7 @@ public class LevelCompleteHandler : MonoBehaviour
 	//PRIVATE
 	SavedGameManager gameManager;
 
-	bool wasFinalChassisUsed = false;
+	bool didUseFinalChassis = false;
 
 	int finalScore = 0;
 	int oldPersonalHighScore = 0;
@@ -47,7 +50,7 @@ public class LevelCompleteHandler : MonoBehaviour
 		}
 
 		//save whether or not the final chassis was used
-		//TODO -- get status of final chassis from player obj
+		didUseFinalChassis = gameManager.getCurrentGame().getCurrentLoadout().getChasis() == Loadout.LoadoutChasis.FINAL;
 
 		//save the score, and if there were no hits (if player not hit, bonus added to final score)
 		score = GameObject.Find("Score").GetComponent<Score>();
@@ -60,7 +63,7 @@ public class LevelCompleteHandler : MonoBehaviour
 		oldGlobalHighScore = gameManager.globalHighScores[(int)level - 3];
 
 		//save game
-		gameManager.handleLevelCompleted(level, finalScore);
+		gameManager.handleLevelCompleted(level, finalScore, didUseFinalChassis);
 
 		//now we can activate the panel and run its animations
 		gameObject.SetActive(true);
@@ -127,6 +130,11 @@ public class LevelCompleteHandler : MonoBehaviour
 			noHitsMsg.gameObject.SetActive(true);
 			isNoHit = true;
 		}
+		if(didUseFinalChassis)
+		{
+			finalChassisMsg.gameObject.SetActive(true);
+			finalChassisStar.gameObject.SetActive(true);
+		}
 
 		//init font size
 		int currentHighScoreFontSize = personalHighScoreMsg.fontSize;
@@ -160,6 +168,10 @@ public class LevelCompleteHandler : MonoBehaviour
 			if(isNoHit)
 			{
 				noHitsMsg.fontSize = currentNoHitFontSize;
+			}
+			if(didUseFinalChassis)
+			{
+				finalChassisMsg.fontSize = currentNoHitFontSize;
 			}
 		}
 

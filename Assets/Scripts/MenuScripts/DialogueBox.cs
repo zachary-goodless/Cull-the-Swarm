@@ -11,7 +11,8 @@ public enum Characters
 	ROGER =		0,
 	COLONEL = 	1,
 	STAMPER = 	2,
-	MARTHA = 	4
+	MARTHA = 	4,
+	DOUCHE =	5
 }
 
 public class DialogueBox : MonoBehaviour
@@ -25,12 +26,13 @@ public class DialogueBox : MonoBehaviour
 	float timeBetweenTicks = 0.01f;
 
 	private Sprite[] speakerSprites = null;
-	private string[] speakerNames = new string[4]
+	private string[] speakerNames = new string[5]
 	{
 		"ROGER",
 		"COLONEL CUNNINGHAM",
 		"STAMPER",
-		"MARTHA"
+		"MARTHA",
+		"CHAD"
 	};
 
 //--------------------------------------------------------------------------------------------
