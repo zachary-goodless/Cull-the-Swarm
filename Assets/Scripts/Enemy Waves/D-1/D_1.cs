@@ -23,25 +23,25 @@ public class D_1 : MonoBehaviour
     {
       // Timing and placement need adjustment, but here's an (incomplete) general outline of what was in the GDD
         yield return new WaitForSeconds(5f);
-        waves.StartSpawnLinear(drone, 5, 2, 300, 1, -1, 50, waves.leftScreen, waves.upScreen, Quaternion.identity, 200, 0);
-        waves.StartSpawnLinear(drone, 2, 2, 200, -1, -1, 50, waves.rightScreen, waves.upScreen, Quaternion.identity, 200, 0);
+        waves.StartSpawnLinear(drone, 5, 2, 300, 1, -1, 50, waves.leftScreen, waves.upScreen, Quaternion.identity, 200, 0,"");
+        waves.StartSpawnLinear(drone, 2, 2, 200, -1, -1, 50, waves.rightScreen, waves.upScreen, Quaternion.identity, 200, 0,"");
         Debug.Log(waves.leftScreen + " " + waves.upScreen);
         yield return new WaitForSeconds(10f);
-        waves.StartSpawnWorms(3, 5, 3, .5f, 30, 200, 1, 50, waves.leftScreen, 100, Quaternion.Euler(0, 0, 90), 0, -200);
+        waves.StartSpawnWorms(3, 5, 3, .5f, 30, 200, 1, 50, waves.leftScreen, 100, Quaternion.Euler(0, 0, 90), 0, -200,"");
         yield return new WaitForSeconds(10f);
-        waves.StartSpawnFollow(turret, 3, 4, .5f, 30, 150, -1, 200, 5, waves.downScreen, Quaternion.identity, 0, 0);
+        waves.StartSpawnFollow(turret, 3, 4, .5f, 30, 150, -1, 200, 5, waves.downScreen, Quaternion.identity, 0, 0,"");
         yield return new WaitForSeconds(5f);
         waves.StartLR6Alternate(drone);
         yield return new WaitForSeconds(6.5f);
         waves.StartFlanktasticFour(turret);
         yield return new WaitForSeconds(8f);
-        waves.StartSpawnFromBackground(drone, 3, 10f, 2f, Vector3.down, 10f, 1, 1, 200, waves.leftScreen, waves.downScreen, Quaternion.identity, 200, 0);
+        waves.StartSpawnFromBackground(drone, 3, 10f, 2f, Vector3.down, 10f, 1, 1, 200, waves.leftScreen, waves.downScreen, Quaternion.identity, 200, 0,"");
         waves.TwoWormsBelow();
         yield return new WaitForSeconds(4f);
-        waves.StartSpawnSideToBottom(turret, 5, 2f, 2f, 4f, 100, -100, 200, waves.leftScreen, waves.upScreen, Quaternion.identity, 200, 0);
-        waves.StartSpawnSideToBottom(turret, 5, 3f, 4f, 5f, -100, -100, 200, waves.rightScreen, waves.upScreen, Quaternion.identity, 200, 0);
+        waves.StartSpawnSideToBottom(turret, 5, 2f, 2f, 4f, 100, -100, 200, waves.leftScreen, waves.upScreen, Quaternion.identity, 200, 0,"");
+        waves.StartSpawnSideToBottom(turret, 5, 3f, 4f, 5f, -100, -100, 200, waves.rightScreen, waves.upScreen, Quaternion.identity, 200, 0,"");
         yield return new WaitForSeconds(6f);
-        waves.StartSpawnSideToBottom(turret, 5, 2f, 3f, 5f, -100, -100, 200, waves.rightScreen, waves.upScreen, Quaternion.identity, 200, 0);
+        waves.StartSpawnSideToBottom(turret, 5, 2f, 3f, 5f, -100, -100, 200, waves.rightScreen, waves.upScreen, Quaternion.identity, 200, 0,"");
         yield return new WaitForSeconds(10f);
         waves.StartBigW(drone);
         yield return new WaitForSeconds(9f);
