@@ -255,10 +255,14 @@ public class Waves : MonoBehaviour{
 	//Spacing is the time between spawns
 	//xInc and yInc is the physical space between enmies
 
-	IEnumerator SpawnLinear(GameObject enemy, int numEnemies, float spacing, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
+	IEnumerator SpawnLinear(GameObject enemy, int numEnemies, float spacing, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc, string attackPattern){
 		for(int i = 0; i < numEnemies; i++){
 			GameObject temp = Instantiate(enemy, new Vector3(startX+xInc*i,startY+yInc*i,50), rotation) as GameObject;
 			Movement m = temp.GetComponent<Movement> ();
+
+			Drones_1_1 bulletPat = temp.AddComponent<Drones_1_1> ();
+			bulletPat.StartWaveNum (attackPattern);
+
 			m.SetLinear ();
 			m.SetGeneral (speed, xDir, yDir, 40, health);
 
@@ -267,14 +271,18 @@ public class Waves : MonoBehaviour{
 		yield break;
 	}
 
-	public void StartSpawnLinear(GameObject enemy, int numEnemies, float spacing, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
-		StartCoroutine (SpawnLinear (enemy, numEnemies, spacing, speed, xDir, yDir, health, startX, startY, rotation, xInc, yInc));
+	public void StartSpawnLinear(GameObject enemy, int numEnemies, float spacing, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc, string attackPattern){
+		StartCoroutine (SpawnLinear (enemy, numEnemies, spacing, speed, xDir, yDir, health, startX, startY, rotation, xInc, yInc, attackPattern));
 	}
 
-	IEnumerator SpawnSin(GameObject enemy, int numEnemies, float spacing, float amplitude, float period, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
+	IEnumerator SpawnSin(GameObject enemy, int numEnemies, float spacing, float amplitude, float period, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc, string attackPattern){
 		for(int i = 0; i < numEnemies; i++){
 			GameObject temp = Instantiate(enemy, new Vector3(startX+xInc*i,startY+yInc*i,50), rotation) as GameObject;
 			Movement m = temp.GetComponent<Movement> ();
+
+			Drones_1_1 bulletPat = temp.AddComponent<Drones_1_1> ();
+			bulletPat.StartWaveNum (attackPattern);
+
 			m.SetSin (amplitude, period);
 			m.SetGeneral (speed, xDir, yDir, 40, health);
 
@@ -283,14 +291,18 @@ public class Waves : MonoBehaviour{
 		yield break;
 	}
 
-	public void StartSpawnSin(GameObject enemy, int numEnemies, float spacing, float amplitude, float period, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
-		StartCoroutine (SpawnSin (enemy, numEnemies, spacing, amplitude, period, speed, xDir, yDir, health, startX, startY, rotation, xInc, yInc));
+	public void StartSpawnSin(GameObject enemy, int numEnemies, float spacing, float amplitude, float period, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc, string attackPattern){
+		StartCoroutine (SpawnSin (enemy, numEnemies, spacing, amplitude, period, speed, xDir, yDir, health, startX, startY, rotation, xInc, yInc, attackPattern));
 	}
 
-	IEnumerator SpawnOsc(GameObject enemy, int numEnemies, float spacing, float oscSpeed, float bounds, bool vertical, bool posDir, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
+	IEnumerator SpawnOsc(GameObject enemy, int numEnemies, float spacing, float oscSpeed, float bounds, bool vertical, bool posDir, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc, string attackPattern){
 		for(int i = 0; i < numEnemies; i++){
 			GameObject temp = Instantiate(enemy, new Vector3(startX + xInc*i,startY + yInc*i,50), rotation) as GameObject;
 			Movement m = temp.GetComponent<Movement> ();
+
+			Drones_1_1 bulletPat = temp.AddComponent<Drones_1_1> ();
+			bulletPat.StartWaveNum (attackPattern);
+
 			m.SetLinear ();
 			m.SetOsc(oscSpeed,bounds,vertical,posDir);
 			m.SetGeneral (speed, xDir, yDir, 40, health);
@@ -300,14 +312,18 @@ public class Waves : MonoBehaviour{
 		yield break;
 	}
 
-	public void StartSpawnOsc(GameObject enemy, int numEnemies, float spacing, float oscSpeed, float bounds, bool vertical, bool posDir, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
-		StartCoroutine (SpawnOsc (enemy, numEnemies, spacing, oscSpeed, bounds, vertical, posDir, speed, xDir, yDir, health, startX, startY, rotation, xInc, yInc));
+	public void StartSpawnOsc(GameObject enemy, int numEnemies, float spacing, float oscSpeed, float bounds, bool vertical, bool posDir, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc, string attackPattern){
+		StartCoroutine (SpawnOsc (enemy, numEnemies, spacing, oscSpeed, bounds, vertical, posDir, speed, xDir, yDir, health, startX, startY, rotation, xInc, yInc, attackPattern));
 	}
 
-	IEnumerator SpawnFollow(GameObject enemy, int numEnemies, float spacing, float rotInc, float rotRange, float speed, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
+	IEnumerator SpawnFollow(GameObject enemy, int numEnemies, float spacing, float rotInc, float rotRange, float speed, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc, string attackPattern){
 		for(int i = 0; i < numEnemies; i++){
 			GameObject temp = Instantiate(enemy, new Vector3(startX + xInc*i,startY + yInc*i,50), rotation) as GameObject;
 			Movement m = temp.GetComponent<Movement> ();
+
+			Drones_1_1 bulletPat = temp.AddComponent<Drones_1_1> ();
+			bulletPat.StartWaveNum (attackPattern);
+
 			m.SetFollow (rotInc, rotRange);
 			m.SetGeneral (speed, 0, yDir, 40, health);
 
@@ -316,14 +332,18 @@ public class Waves : MonoBehaviour{
 		yield break;
 	}
 
-	public void StartSpawnFollow(GameObject enemy, int numEnemies, float spacing, float rotInc, float rotRange, float speed, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
-		StartCoroutine (SpawnFollow (enemy, numEnemies, spacing, rotInc, rotRange, speed, yDir, health, startX, startY, rotation, xInc, yInc));
+	public void StartSpawnFollow(GameObject enemy, int numEnemies, float spacing, float rotInc, float rotRange, float speed, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc, string attackPattern){
+		StartCoroutine (SpawnFollow (enemy, numEnemies, spacing, rotInc, rotRange, speed, yDir, health, startX, startY, rotation, xInc, yInc, attackPattern));
 	}
 
-	IEnumerator SpawnDive(GameObject enemy, int numEnemies, float spacing, float diveSpeed, float diveTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
+	IEnumerator SpawnDive(GameObject enemy, int numEnemies, float spacing, float diveSpeed, float diveTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc, string attackPattern){
 		for(int i = 0; i < numEnemies; i++){
 			GameObject temp = Instantiate(enemy, new Vector3(startX+yInc*i,startY+yInc*i,50), rotation) as GameObject;
 			Movement m = temp.GetComponent<Movement> ();
+
+			Drones_1_1 bulletPat = temp.AddComponent<Drones_1_1> ();
+			bulletPat.StartWaveNum (attackPattern);
+
 			m.SetDiveAtPlayer (diveSpeed, diveTime);
 			m.SetGeneral (speed, xDir, yDir, 40, health);
 
@@ -332,14 +352,18 @@ public class Waves : MonoBehaviour{
 		yield break;
 	}
 
-	public void StartSpawnDive(GameObject enemy, int numEnemies, float spacing, float diveSpeed, float diveTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
-		StartCoroutine (SpawnDive (enemy, numEnemies, spacing, diveSpeed, diveTime, speed, xDir, yDir, health, startX, startY, rotation, xInc, yInc));
+	public void StartSpawnDive(GameObject enemy, int numEnemies, float spacing, float diveSpeed, float diveTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc, string attackPattern){
+		StartCoroutine (SpawnDive (enemy, numEnemies, spacing, diveSpeed, diveTime, speed, xDir, yDir, health, startX, startY, rotation, xInc, yInc, attackPattern));
 	}
 
-	IEnumerator SpawnTopToSide(GameObject enemy, int numEnemies, float spacing, float changeTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
+	IEnumerator SpawnTopToSide(GameObject enemy, int numEnemies, float spacing, float changeTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc, string attackPattern){
 		for(int i = 0; i < numEnemies; i++){
 			GameObject temp = Instantiate(enemy, new Vector3(startX+xInc*i,startY+yInc*i,50), rotation) as GameObject;
 			Movement m = temp.GetComponent<Movement> ();
+
+			Drones_1_1 bulletPat = temp.AddComponent<Drones_1_1> ();
+			bulletPat.StartWaveNum (attackPattern);
+
 			m.SetTopToSide (changeTime);
 			m.SetGeneral (speed, xDir, yDir, 40, health);
 
@@ -348,14 +372,18 @@ public class Waves : MonoBehaviour{
 		yield break;
 	}
 
-	public void StartSpawnTopToSide(GameObject enemy, int numEnemies, float spacing, float changeTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
-		StartCoroutine (SpawnTopToSide (enemy, numEnemies, spacing, changeTime, speed, xDir, yDir, health, startX, startY, rotation, xInc, yInc));
+	public void StartSpawnTopToSide(GameObject enemy, int numEnemies, float spacing, float changeTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc, string attackPattern){
+		StartCoroutine (SpawnTopToSide (enemy, numEnemies, spacing, changeTime, speed, xDir, yDir, health, startX, startY, rotation, xInc, yInc, attackPattern));
 	}
 
-	IEnumerator SpawnSideToBottom(GameObject enemy, int numEnemies, float spacing, float changeTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
+	IEnumerator SpawnSideToBottom(GameObject enemy, int numEnemies, float spacing, float changeTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc, string attackPattern){
 		for(int i = 0; i < numEnemies; i++){
 			GameObject temp = Instantiate(enemy, new Vector3(startX + xInc*i,startY + yInc*i,50), rotation) as GameObject;
 			Movement m = temp.GetComponent<Movement> ();
+
+			Drones_1_1 bulletPat = temp.AddComponent<Drones_1_1> ();
+			bulletPat.StartWaveNum (attackPattern);
+
 			m.SetSideToBottom(changeTime);
 			m.SetGeneral (speed, xDir, yDir, 40, health);
 
@@ -364,14 +392,18 @@ public class Waves : MonoBehaviour{
 		yield break;
 	}
 
-	public void StartSpawnSideToBottom(GameObject enemy, int numEnemies, float spacing, float changeTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
-		StartCoroutine (SpawnSideToBottom (enemy, numEnemies, spacing, changeTime, speed, xDir, yDir, health, startX, startY, rotation, xInc, yInc));
+	public void StartSpawnSideToBottom(GameObject enemy, int numEnemies, float spacing, float changeTime, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc, string attackPattern){
+		StartCoroutine (SpawnSideToBottom (enemy, numEnemies, spacing, changeTime, speed, xDir, yDir, health, startX, startY, rotation, xInc, yInc, attackPattern));
 	}
 
-	IEnumerator SpawnFromBackground(GameObject enemy, int numEnemies, float spacing, float upTime, Vector3 destination, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
+	IEnumerator SpawnFromBackground(GameObject enemy, int numEnemies, float spacing, float upTime, Vector3 destination, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc, string attackPattern){
 		for(int i = 0; i < numEnemies; i++){
 			GameObject temp = Instantiate(enemy, new Vector3(startX + xInc*i,startY + yInc*i,50), rotation) as GameObject;
 			Movement m = temp.GetComponent<Movement> ();
+
+			Drones_1_1 bulletPat = temp.AddComponent<Drones_1_1> ();
+			bulletPat.StartWaveNum (attackPattern);
+
 			m.SetFromBackground (upTime, destination);
 			m.SetGeneral (speed, xDir, yDir, 40, health);
 
@@ -380,15 +412,15 @@ public class Waves : MonoBehaviour{
 		yield break;
 	}
 
-	public void StartSpawnFromBackground(GameObject enemy, int numEnemies, float spacing, float upTime, Vector3 destination, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
-		StartCoroutine (SpawnFromBackground (enemy, numEnemies, spacing, upTime, destination, speed, xDir, yDir, health, startX, startY, rotation, xInc, yInc));
+	public void StartSpawnFromBackground(GameObject enemy, int numEnemies, float spacing, float upTime, Vector3 destination, float speed, float xDir, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc, string attackPattern){
+		StartCoroutine (SpawnFromBackground (enemy, numEnemies, spacing, upTime, destination, speed, xDir, yDir, health, startX, startY, rotation, xInc, yInc, attackPattern));
 	}
 
 	//maybe do one for worms?
 	//Might add a vaiable for spacing the enemies out along x or y axes
 	//By default, this is going to use Movement.SetFollow();
 
-	IEnumerator SpawnWorms(int numEnemies, int numSegments, float spacing, float rotInc, float rotRange, float speed, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
+	IEnumerator SpawnWorms(int numEnemies, int numSegments, float spacing, float rotInc, float rotRange, float speed, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc, string attackPattern){
 		for(int i = 0; i < numEnemies; i++){
 			GameObject temp = MakeWorm (numSegments, new Vector3 (startX + xInc*i, startY + yInc*i, 50), rotation.eulerAngles.z);
 			Movement m = temp.GetComponent<Movement> ();
@@ -400,8 +432,8 @@ public class Waves : MonoBehaviour{
 		yield break;
 	}
 
-	public void StartSpawnWorms(int numEnemies, int numSegments, float spacing, float rotInc, float rotRange, float speed, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc){
-		StartCoroutine (SpawnWorms (numEnemies, numSegments, spacing, rotInc, rotRange, speed, yDir, health, startX, startY, rotation, xInc, yInc));
+	public void StartSpawnWorms(int numEnemies, int numSegments, float spacing, float rotInc, float rotRange, float speed, float yDir, float health, float startX, float startY, Quaternion rotation, float xInc, float yInc, string attackPattern){
+		StartCoroutine (SpawnWorms (numEnemies, numSegments, spacing, rotInc, rotRange, speed, yDir, health, startX, startY, rotation, xInc, yInc, attackPattern));
 	}
 
 	//=====================================================================================================================================================
@@ -815,956 +847,168 @@ public class Waves : MonoBehaviour{
 	//=====================================================================================================================================================
 	//																	CITY 1
 	//=====================================================================================================================================================
-	/*
-	//Space invaders-style wave 
-	IEnumerator WaveOne(){
 
-		GameObject temp;
-		GameObject wmTemp = Instantiate (waveManager, transform.position, Quaternion.identity) as GameObject;
-
-		WaveManager wm = wmTemp.GetComponent<WaveManager> ();
-		EnemyMovement em;
-
-
-		//Set up wavemanager
-		wm.hasDest = true;
-		wm.enemies = new List<GameObject>();
-		wm.waveSet = false;
-
-		//Start spawns
-		temp = Instantiate (drone, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start1();
-        wm.enemies.Add(temp);
-		em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = true;
-		em.dest = new Vector3 (temp.transform.position.x, 150, 0);
-		em.wm = wm;
-		em.flightTime = 2;
-
-		yield return new WaitForSeconds(.5f);
-
-		temp = Instantiate (drone, new Vector3 (-250, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start1();
-        wm.enemies.Add(temp);
-		em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = true;
-		em.dest = new Vector3 (temp.transform.position.x, 250, 0);
-		em.wm = wm;
-		em.flightTime = 2;
-
-		temp = Instantiate (drone, new Vector3 (250, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start1();
-        wm.enemies.Add(temp);
-		em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = true;
-		em.dest = new Vector3 (temp.transform.position.x, 250, 0);
-		em.wm = wm;
-		em.flightTime = 2;
-
-		yield return new WaitForSeconds(.5f);
-
-		temp = Instantiate (drone, new Vector3 (-500, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start1();
-        wm.enemies.Add(temp);
-		em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = true;
-		em.dest = new Vector3 (temp.transform.position.x, 350, 0);
-		em.wm = wm;
-		em.flightTime = 2;
-
-		temp = Instantiate (drone, new Vector3 (500, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start1();
-        wm.enemies.Add(temp);
-		em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = true;
-		em.dest = new Vector3 (temp.transform.position.x, 350, 0);
-		em.wm = wm;
-		em.flightTime = 2;
-
-		yield break;
-	}
-
-	public void StartOne(){
-		StartCoroutine ("WaveOne");
-	}
-
-	//-----------------------------------------------------------------------------------------------------------------------------------------------------
-
-	//Left side sloping wave that travels down while moving left and right
-	IEnumerator WaveTwo(){
-
-		GameObject temp;
-		EnemyMovement em;
-
-		GameObject wmTemp = Instantiate (waveManager, transform.position, Quaternion.identity) as GameObject;
-		WaveManager wm = wmTemp.GetComponent<WaveManager> ();
-
-		wm.hasDest = false;
-		wm.right = true;
-
-		temp = Instantiate (drone, new Vector3 (-600, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start23();
-        wm.enemies.Add(temp);
-		em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.wm = wm;
-		//temp.transform.eulerAngles = new Vector3(0f,0f,90f);
-		em.vert = true;
-		em.dirY = -1;
-		em.oscillate = true;
-
-		yield return new WaitForSeconds(.5f);
-
-		temp = Instantiate (drone, new Vector3 (-450, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start23();
-        wm.enemies.Add(temp);
-		em = temp.GetComponent<EnemyMovement> ();
-		em.wm = wm;
-		em.hasDest = false;
-		//temp.transform.eulerAngles = new Vector3(0f,0f,90f);
-		em.vert = true;
-		em.dirY = -1;
-		em.oscillate = true;
-
-		yield return new WaitForSeconds(.5f);
-
-		temp = Instantiate (drone, new Vector3 (-300, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start23();
-        wm.enemies.Add(temp);
-		em = temp.GetComponent<EnemyMovement> ();
-		em.wm = wm;
-		em.hasDest = false;
-		//temp.transform.eulerAngles = new Vector3(0f,0f,90f);
-		em.vert = true;
-		em.dirY = -1;
-		em.oscillate = true;
-
-		yield return new WaitForSeconds(.5f);
-
-		temp = Instantiate (drone, new Vector3 (-150, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start23();
-        wm.enemies.Add(temp);
-		em = temp.GetComponent<EnemyMovement> ();
-		em.wm = wm;
-		em.hasDest = false;
-		//temp.transform.eulerAngles = new Vector3(0f,0f,90f);
-		em.vert = true;
-		em.dirY = -1;
-		em.oscillate = true;
-
-		yield return new WaitForSeconds(.5f);
-
-		temp = Instantiate (drone, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start23();
-        wm.enemies.Add(temp);
-		em = temp.GetComponent<EnemyMovement> ();
-		em.wm = wm;
-		em.hasDest = false;
-		//temp.transform.eulerAngles = new Vector3(0f,0f,90f);
-		em.vert = true;
-		em.dirY = -1;
-		em.oscillate = true;
-		wm.waveSet = true;
-
-		yield break;
-
-	}
-
-	public void StartTwo(){
-		StartCoroutine ("WaveTwo");
-	}
-
-	//-----------------------------------------------------------------------------------------------------------------------------------------------------
-
-	//Right side sloping wave that travels down while moving left and right
-	IEnumerator WaveTwoPointFive(){
-
-		GameObject temp;
-		EnemyMovement em;
-
-		GameObject wmTemp = Instantiate (waveManager, transform.position, Quaternion.identity) as GameObject;
-		WaveManager wm = wmTemp.GetComponent<WaveManager> ();
-
-		wm.hasDest = false;
-		wm.right = false;
-
-		temp = Instantiate (drone, new Vector3 (600, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start23();
-        wm.enemies.Add(temp);
-		em = temp.GetComponent<EnemyMovement> ();
-		em.wm = wm;
-		em.hasDest = false;
-		//temp.transform.eulerAngles = new Vector3(0f,0f,-90f);
-		em.vert = true;
-		em.dirY = -1;
-		em.oscillate = true;
-
-		yield return new WaitForSeconds(.5f);
-
-		temp = Instantiate (drone, new Vector3 (450, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start23();
-        wm.enemies.Add(temp);
-		em = temp.GetComponent<EnemyMovement> ();
-		em.wm = wm;
-		em.hasDest = false;
-		//temp.transform.eulerAngles = new Vector3(0f,0f,-90f);
-		em.vert = true;
-		em.dirY = -1;
-		em.oscillate = true;
-
-		yield return new WaitForSeconds(.5f);
-
-		temp = Instantiate (drone, new Vector3 (300, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start23();
-        wm.enemies.Add(temp);
-		em = temp.GetComponent<EnemyMovement> ();
-		em.wm = wm;
-		em.hasDest = false;
-		//temp.transform.eulerAngles = new Vector3(0f,0f,-90f);
-		em.vert = true;
-		em.dirY = -1;
-		em.oscillate = true;
-
-		yield return new WaitForSeconds(.5f);
-
-		temp = Instantiate (drone, new Vector3 (150, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start23();
-        wm.enemies.Add(temp);
-		em = temp.GetComponent<EnemyMovement> ();
-		em.wm = wm;
-		em.hasDest = false;
-		//temp.transform.eulerAngles = new Vector3(0f,0f,-90f);
-		em.vert = true;
-		em.dirY = -1;
-		em.oscillate = true;
-
-		yield return new WaitForSeconds(.5f);
-
-		temp = Instantiate (drone, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start23();
-        wm.enemies.Add(temp);
-		em = temp.GetComponent<EnemyMovement> ();
-		em.wm = wm;
-		em.hasDest = false;
-		//temp.transform.eulerAngles = new Vector3(0f,0f,-90f);
-		em.vert = true;
-		em.dirY = -1;
-		em.oscillate = true;
-		wm.waveSet = true;
-
-		yield break;
-	}
-
-	public void StartTwoPointFive(){
-		StartCoroutine ("WaveTwoPointFive");
-	}
-
-	//-----------------------------------------------------------------------------------------------------------------------------------------------------
-
-	//3 turrets travel down screen
-	IEnumerator TurretWaveOne(){
-		GameObject temp;
-		EnemyMovement em;
-		temp = Instantiate (turret, new Vector3 (500, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().StartTurret1();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-        em.dirY = -0.8f;
-        temp = Instantiate (turret, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().StartTurret1();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-        em.dirY = -0.8f;
-        temp = Instantiate (turret, new Vector3 (-500, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().StartTurret1();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-        em.dirY = -0.8f;
-        yield break;
-	}
-
-	public void StartTurretWaveOne(){
-		StartCoroutine ("TurretWaveOne");
-	}
-
-	//-----------------------------------------------------------------------------------------------------------------------------------------------------
-
-	//Double sine wave from each side. Right now they collide with eachother; should I fix this?
-	IEnumerator DroneSineWave(){
-		GameObject temp;
-		EnemyMovement em;
-		temp = Instantiate (drone, new Vector3 (1000, 200, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start4();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.sine = true;
-		em.dirX = -1f;
-		temp = Instantiate (drone, new Vector3 (-1000, -200, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start4();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.sine = true;
-		em.dirX = 1f;
-		temp = Instantiate (drone, new Vector3 (1200, 200, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start4();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.sine = true;
-		em.dirX = -1f;
-		temp = Instantiate (drone, new Vector3 (-1200, -200, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start4();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.sine = true;
-		em.dirX = 1f;
-		yield return new WaitForSeconds(3f);
-		temp = Instantiate (drone, new Vector3 (1000, 200, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start4();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.sine = true;
-		em.dirX = -1f;
-		temp = Instantiate (drone, new Vector3 (-1000, -200, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start4();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.sine = true;
-		em.dirX = 1f;
-		temp = Instantiate (drone, new Vector3 (1200, 200, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start4();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.sine = true;
-		em.dirX = -1f;
-		temp = Instantiate (drone, new Vector3 (-1200, -200, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start4();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.sine = true;
-		em.dirX = 1f;
-		yield return new WaitForSeconds(3f);
-		temp = Instantiate (drone, new Vector3 (1000, 200, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start4();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.sine = true;
-		em.dirX = -1f;
-		temp = Instantiate (drone, new Vector3 (-1000, -200, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start4();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.sine = true;
-		em.dirX = 1f;
-		temp = Instantiate (drone, new Vector3 (1200, 200, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start4();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.sine = true;
-		em.dirX = -1f;
-		temp = Instantiate (drone, new Vector3 (-1200, -200, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start4();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.sine = true;
-		em.dirX = 1f;
-		yield break;
-	}
-	public void StartDroneSineWave(){
-		StartCoroutine ("DroneSineWave");
-	}
-
-	//-----------------------------------------------------------------------------------------------------------------------------------------------------
-
-	//Alternating from left and right top corners to right and left bottom corners
-	IEnumerator DroneCrossWave(){
-		GameObject temp;
-		EnemyMovement em;
-		temp = Instantiate (drone, new Vector3 (-1000, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start5();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-		em.hori = true;
-		em.dirX = 1.5f;
-		em.dirY = -1f;
-		yield return new WaitForSeconds(.5f);
-		temp = Instantiate (drone, new Vector3 (1000, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start5();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-		em.hori = true;
-		em.dirX = -1.5f;
-		em.dirY = -1f;
-		yield return new WaitForSeconds(.5f);
-		temp = Instantiate (drone, new Vector3 (-1000, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start5();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-		em.hori = true;
-		em.dirX = 1.5f;
-		em.dirY = -1f;
-		yield return new WaitForSeconds(.5f);
-		temp = Instantiate (drone, new Vector3 (1000, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start5();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-		em.hori = true;
-		em.dirX = -1.5f;
-		em.dirY = -1f;
-		yield return new WaitForSeconds(.5f);
-		temp = Instantiate (drone, new Vector3 (-1000, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start5();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-		em.hori = true;
-		em.dirX = 1.5f;
-		em.dirY = -1f;
-		yield return new WaitForSeconds(.5f);
-		temp = Instantiate (drone, new Vector3 (1000, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start5();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-		em.hori = true;
-		em.dirX = -1.5f;
-		em.dirY = -1f;
-		yield return new WaitForSeconds(.5f);
-		temp = Instantiate (drone, new Vector3 (-1000, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start5();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-		em.hori = true;
-		em.dirX = 1.5f;
-		em.dirY = -1f;
-		yield return new WaitForSeconds(.5f);
-		temp = Instantiate (drone, new Vector3 (1000, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start5();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-		em.hori = true;
-		em.dirX = -1.5f;
-		em.dirY = -1f;
-		yield return new WaitForSeconds(.5f);
-		temp = Instantiate (drone, new Vector3 (-1000, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start5();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-		em.hori = true;
-		em.dirX = 1.5f;
-		em.dirY = -1f;
-		yield return new WaitForSeconds(.5f);
-		temp = Instantiate (drone, new Vector3 (1000, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start5();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-		em.hori = true;
-		em.dirX = -1.5f;
-		em.dirY = -1f;
-		yield break;
-	}
-	public void StartDroneCrossWave(){
-		StartCoroutine ("DroneCrossWave");
-	}
 
 	//-----------------------------------------------------------------------------------------------------------------------------------------------------
 
 	//Spawns drones in a semicircle at the top of the map0
-	IEnumerator DronesInnerCircle(){
+	IEnumerator SpawnInnerCircle(GameObject enemy, float rotInc, float rotRange, float speed, float yDir, float health, string attackPattern){
 		GameObject temp;
-		EnemyMovement em;
-		temp = Instantiate (drone, new Vector3 (0, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,0))) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start6();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.followNose = true;
-		em.hasRange = false;
-		em.rotInc = 0;
-		em.dirY = .8f;
+		Movement m;
+		Drones_1_1 bulletPat;
+
+		temp = Instantiate (enemy, new Vector3 (0, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,0))) as GameObject;
+		m = temp.GetComponent<Movement> ();
+		m.SetGeneral (speed, 0, yDir, 40, health);
+		m.SetFollow (rotInc, rotRange);
+
+		bulletPat = temp.AddComponent<Drones_1_1> ();
+		bulletPat.StartWaveNum (attackPattern);
+
 		yield return new WaitForSeconds(.5f);
+
 		temp = Instantiate (drone, new Vector3 (50, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,30))) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start6();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.followNose = true;
-		em.hasRange = false;
-		em.rotInc = 0;
-		em.dirY = 1;
+		m = temp.GetComponent<Movement> ();
+		m.SetGeneral (speed, 0, yDir, 40, health);
+		m.SetFollow (rotInc, rotRange);
+
+		bulletPat = temp.AddComponent<Drones_1_1> ();
+		bulletPat.StartWaveNum (attackPattern);
+
 		temp = Instantiate (drone, new Vector3 (-50, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,-30))) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start6();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.followNose = true;
-		em.hasRange = false;
-		em.rotInc = 0;
-		em.dirY = 1;
+		m = temp.GetComponent<Movement> ();
+		m.SetGeneral (speed, 0, yDir, 40, health);
+		m.SetFollow (rotInc, rotRange);
+
+		bulletPat = temp.AddComponent<Drones_1_1> ();
+		bulletPat.StartWaveNum (attackPattern);
+
 		yield return new WaitForSeconds(.5f);
+
 		temp = Instantiate (drone, new Vector3 (100, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,45))) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start6();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.followNose = true;
-		em.hasRange = false;
-		em.rotInc = 0;
-		em.dirY = 1;
+		m = temp.GetComponent<Movement> ();
+		m.SetGeneral (speed, 0, yDir, 40, health);
+		m.SetFollow (rotInc, rotRange);
+
+		bulletPat = temp.AddComponent<Drones_1_1> ();
+		bulletPat.StartWaveNum (attackPattern);
+
 		temp = Instantiate (drone, new Vector3 (-100, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,-45))) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start6();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.followNose = true;
-		em.hasRange = false;
-		em.rotInc = 0;
-		em.dirY = 1;
+		m = temp.GetComponent<Movement> ();
+		m.SetGeneral (speed, 0, yDir, 40, health);
+		m.SetFollow (rotInc, rotRange);
+
+		bulletPat = temp.AddComponent<Drones_1_1> ();
+		bulletPat.StartWaveNum (attackPattern);
+
 		yield return new WaitForSeconds(.5f);
 		temp = Instantiate (drone, new Vector3 (150, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,60))) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start6();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.followNose = true;
-		em.hasRange = false;
-		em.rotInc = 0;
-		em.dirY = 1;
+		m = temp.GetComponent<Movement> ();
+		m.SetGeneral (speed, 0, yDir, 40, health);
+		m.SetFollow (rotInc, rotRange);
+
+		bulletPat = temp.AddComponent<Drones_1_1> ();
+		bulletPat.StartWaveNum (attackPattern);
+
 		temp = Instantiate (drone, new Vector3 (-150, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,-60))) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start6();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.followNose = true;
-		em.hasRange = false;
-		em.rotInc = 0;
-		em.dirY = 1;
+		m = temp.GetComponent<Movement> ();
+		m.SetGeneral (speed, 0, yDir, 40, health);
+		m.SetFollow (rotInc, rotRange);
+
+		bulletPat = temp.AddComponent<Drones_1_1> ();
+		bulletPat.StartWaveNum (attackPattern);
+
 		yield break;
 	}
-	public void StartDronesInnerCircle(){
-		StartCoroutine ("DronesInnerCircle");
+
+	public void StartSpawnInnerCircle(GameObject enemy, float rotInc, float rotRange, float speed, float yDir, float health, string attackPattern){
+		StartCoroutine (SpawnInnerCircle(enemy,rotInc,rotRange,speed,yDir,health,attackPattern));
 	}
 
 	//-----------------------------------------------------------------------------------------------------------------------------------------------------
 
 	//spawns drones in quarter circles on the upper left and right corners
-	IEnumerator DronesCornerCircles(){
+	IEnumerator SpawnLCornerCircle(GameObject enemy, float rotInc, float rotRange, float speed, float yDir, float health, string attackPattern){
 		GameObject temp;
-		EnemyMovement em;
-		temp = Instantiate (drone, new Vector3 (1000, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,-60))) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start6();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.followNose = true;
-		em.hasRange = false;
-		em.rotInc = 0;
-		em.dirY = 1f;
+		Movement m;
+		Drones_1_1 bulletPat;
+
 		temp = Instantiate (drone, new Vector3 (-1000, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,60))) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start6();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.followNose = true;
-		em.hasRange = false;
-		em.rotInc = 0;
-		em.dirY = 1f;
+		m = temp.GetComponent<Movement> ();
+		m.SetGeneral (speed, 0, yDir, 40, health);
+		m.SetFollow (rotInc, rotRange);
+
+		bulletPat = temp.AddComponent<Drones_1_1> ();
+		bulletPat.StartWaveNum (attackPattern);
+
 		yield return new WaitForSeconds(.5f);
-		temp = Instantiate (drone, new Vector3 (1000, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,-45))) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start6();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.followNose = true;
-		em.hasRange = false;
-		em.rotInc = 0;
-		em.dirY = 1f;
+
 		temp = Instantiate (drone, new Vector3 (-1000, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,45))) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start6();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.followNose = true;
-		em.hasRange = false;
-		em.rotInc = 0;
-		em.dirY = 1f;
+		m = temp.GetComponent<Movement> ();
+		m.SetGeneral (speed, 0, yDir, 40, health);
+		m.SetFollow (rotInc, rotRange);
+
+		bulletPat = temp.AddComponent<Drones_1_1> ();
+		bulletPat.StartWaveNum (attackPattern);
+
 		yield return new WaitForSeconds(.5f);
-		temp = Instantiate (drone, new Vector3 (1000, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,-30))) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start6();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.followNose = true;
-		em.hasRange = false;
-		em.rotInc = 0;
-		em.dirY = 1f;
+
 		temp = Instantiate (drone, new Vector3 (-1000, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,30))) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start6();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.followNose = true;
-		em.hasRange = false;
-		em.rotInc = 0;
-		em.dirY = 1f;
+		m = temp.GetComponent<Movement> ();
+		m.SetGeneral (speed, 0, yDir, 40, health);
+		m.SetFollow (rotInc, rotRange);
+
+		bulletPat = temp.AddComponent<Drones_1_1> ();
+		bulletPat.StartWaveNum (attackPattern);
+
 		yield break;
 	}
-	public void StartDronesCornerCircles(){
-		StartCoroutine ("DronesCornerCircles");
+
+	public void StartSpawnLCornerCircle(GameObject enemy, float rotInc, float rotRange, float speed, float yDir, float health, string attackPattern){
+		StartCoroutine (SpawnLCornerCircle(enemy,rotInc,rotRange,speed,yDir,health,attackPattern));
 	}
 
 	//-----------------------------------------------------------------------------------------------------------------------------------------------------
 
-	//spawns turrets every 2 seconds on alternating sides of the screen
-	IEnumerator AlternateTurrets(){
+	IEnumerator SpawnRCornerCircle(GameObject enemy, float rotInc, float rotRange, float speed, float yDir, float health, string attackPattern){
 		GameObject temp;
-		EnemyMovement em;
-		temp = Instantiate (turret, new Vector3 (500, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().StartTurret2();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-		em.dirY = -.5f;
-		yield return new WaitForSeconds(2f);
-		temp = Instantiate (turret, new Vector3 (-500, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().StartTurret2();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-		em.dirY = -.5f;
-		yield return new WaitForSeconds(2f);
-		temp = Instantiate (turret, new Vector3 (500, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().StartTurret2();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-		em.dirY = -.5f;
-		yield return new WaitForSeconds(2f);
-		temp = Instantiate (turret, new Vector3 (-500, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().StartTurret2();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-		em.dirY = -.5f;
-		yield return new WaitForSeconds(2f);
-		temp = Instantiate (turret, new Vector3 (500, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().StartTurret2();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-		em.dirY = -.5f;
-		yield return new WaitForSeconds(2f);
-		temp = Instantiate (turret, new Vector3 (-500, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().StartTurret2();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-		em.dirY = -.5f;
-		yield break;
-	}
+		Movement m;
+		Drones_1_1 bulletPat;
 
-	public void StartAlternateTurrets(){
-		StartCoroutine ("AlternateTurrets");
-	}
+		temp = Instantiate (drone, new Vector3 (1000, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,-60))) as GameObject;
+		m = temp.GetComponent<Movement> ();
+		m.SetGeneral (speed, 0, yDir, 40, health);
+		m.SetFollow (rotInc, rotRange);
 
-	//-----------------------------------------------------------------------------------------------------------------------------------------------------
+		bulletPat = temp.AddComponent<Drones_1_1> ();
+		bulletPat.StartWaveNum (attackPattern);
 
-	//Two collumns of turrets surrounded by drones
-	IEnumerator DronesAndTurrets(){
-		GameObject temp;
-		EnemyMovement em;
-		temp = Instantiate (drone, new Vector3 (-600, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start23();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.followNose = true;
-		em.hasRange = false;
-		em.dirY = 1f;
-		em.rotInc = -.05f;
-		temp = Instantiate (turret, new Vector3 (300, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().StartTurret3();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-        em.dirY = -0.8f;
-        temp = Instantiate (drone, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start23();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-		em.dirY = -1f;
-		temp = Instantiate (turret, new Vector3 (-300, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().StartTurret3();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-        em.dirY = -0.8f;
-        temp = Instantiate (drone, new Vector3 (600, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start23();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.followNose = true;
-		em.hasRange = false;
-		em.dirY = 1f;
-		em.rotInc = .05f;
-		yield return new WaitForSeconds(1.5f);
-		temp = Instantiate (drone, new Vector3 (-600, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start23();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.followNose = true;
-		em.hasRange = false;
-		em.dirY = 1f;
-		em.rotInc = -.05f;
-		temp = Instantiate (turret, new Vector3 (300, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().StartTurret3();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-        em.dirY = -0.8f;
-        temp = Instantiate (drone, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start23();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-		em.dirY = -1f;
-		temp = Instantiate (turret, new Vector3 (-300, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().StartTurret3();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-        em.dirY = -0.8f;
-        temp = Instantiate (drone, new Vector3 (600, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start23();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.followNose = true;
-		em.hasRange = false;
-		em.dirY = 1f;
-		em.rotInc = .05f;
-		yield return new WaitForSeconds(1.5f);
-		temp = Instantiate (drone, new Vector3 (-600, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start23();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.followNose = true;
-		em.hasRange = false;
-		em.dirY = 1f;
-		em.rotInc = -.05f;
-		temp = Instantiate (turret, new Vector3 (300, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().StartTurret3();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-        em.dirY = -0.8f;
-        temp = Instantiate (drone, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start23();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-		em.dirY = -1f;
-		temp = Instantiate (turret, new Vector3 (-300, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().StartTurret3();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-        em.dirY = -0.8f;
-        temp = Instantiate (drone, new Vector3 (600, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start23();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.followNose = true;
-		em.hasRange = false;
-		em.dirY = 1f;
-		em.rotInc = .05f;
-		yield return new WaitForSeconds(1.5f);
-		temp = Instantiate (drone, new Vector3 (-600, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start23();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.followNose = true;
-		em.hasRange = false;
-		em.dirY = 1f;
-		em.rotInc = -.05f;
-		temp = Instantiate (turret, new Vector3 (300, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().StartTurret3();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-        em.dirY = -0.8f;
-        temp = Instantiate (drone, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start23();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-		em.dirY = -1f;
-		temp = Instantiate (turret, new Vector3 (-300, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().StartTurret3();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-        em.dirY = -0.8f;
-        temp = Instantiate (drone, new Vector3 (600, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start23();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.followNose = true;
-		em.hasRange = false;
-		em.dirY = 1f;
-		em.rotInc = .05f;
-		yield return new WaitForSeconds(1.5f);
-		temp = Instantiate (drone, new Vector3 (-600, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start23();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.followNose = true;
-		em.hasRange = false;
-		em.dirY = 1f;
-		em.rotInc = -.05f;
-		temp = Instantiate (turret, new Vector3 (300, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().StartTurret3();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-        em.dirY = -0.8f;
-        temp = Instantiate (drone, new Vector3 (0, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start23();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-		em.dirY = -1f;
-		temp = Instantiate (turret, new Vector3 (-300, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().StartTurret3();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.vert = true;
-		em.dirY = -0.8f;
-		temp = Instantiate (drone, new Vector3 (600, transform.position.y, 0), Quaternion.identity) as GameObject;
-        temp.AddComponent<Drones_1_1>();
-        temp.GetComponent<Drones_1_1>().Start23();
-        em = temp.GetComponent<EnemyMovement> ();
-		em.hasDest = false;
-		em.followNose = true;
-		em.hasRange = false;
-		em.dirY = 1f;
-		em.rotInc = .05f;
-		yield break;
-	}
+		yield return new WaitForSeconds(.5f);
 
-	public void StartDronesAndTurrets(){
-		StartCoroutine ("DronesAndTurrets");
-	}
+		temp = Instantiate (drone, new Vector3 (1000, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,-45))) as GameObject;
+		m = temp.GetComponent<Movement> ();
+		m.SetGeneral (speed, 0, yDir, 40, health);
+		m.SetFollow (rotInc, rotRange);
 
-	//-----------------------------------------------------------------------------------------------------------------------------------------------------
+		bulletPat = temp.AddComponent<Drones_1_1> ();
+		bulletPat.StartWaveNum (attackPattern);
 
-	//City-2 START!...yah, I think I might just split these into different scripts...We're nearing 1000 lines per level
-	/*IEnumerator DoubleWorms(){
-		//initialize stuff
-		GameObject temp;
-		EnemyMovement em;
+		yield return new WaitForSeconds(.5f);
 
-		temp = MakeWorm (6, new Vector3 (1250, 0, 0),new Vector3(0,0,270));
-		em = temp.GetComponent<EnemyMovement> ();
-		em.followNose = true;
-		em.hasDest = false;
-		em.hasRange = true;
-		em.rotInc = .5f;
-		em.rotRange = 40;
-		em.dirY = 1;
+		temp = Instantiate (drone, new Vector3 (1000, transform.position.y, 0), Quaternion.Euler(new Vector3(0,0,-30))) as GameObject;
+		m = temp.GetComponent<Movement> ();
+		m.SetGeneral (speed, 0, yDir, 40, health);
+		m.SetFollow (rotInc, rotRange);
 
-		temp = MakeWorm (6, new Vector3 (-1250, 0, 0),new Vector3(0,0,90));
-		em = temp.GetComponent<EnemyMovement> ();
-		em.followNose = true;
-		em.hasDest = false;
-		em.hasRange = true;
-		em.rotInc = .5f;
-		em.rotRange = 40;
-		em.dirY = 1;
+		bulletPat = temp.AddComponent<Drones_1_1> ();
+		bulletPat.StartWaveNum (attackPattern);
+
 
 		yield break;
 	}
 
-	public void StartDoubleWorms(){
-		StartCoroutine ("DoubleWorms");
-	}*/
+	public void StartSpawnRCornerCircle(GameObject enemy, float rotInc, float rotRange, float speed, float yDir, float health, string attackPattern){
+		StartCoroutine (SpawnRCornerCircle(enemy,rotInc,rotRange,speed,yDir,health,attackPattern));
+	}
+
 }
