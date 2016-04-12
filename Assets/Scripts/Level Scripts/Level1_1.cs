@@ -13,7 +13,7 @@ public class Level1_1 : MonoBehaviour {
 	public GameObject turret;
 
 	void Start () {
-		StartCoroutine ("LevelLayout");
+		StartCoroutine ("LevelLayout2");
 		sf = GameObject.Find ("ScreenFade").GetComponent<ScreenFade> ();
 	}
 	
