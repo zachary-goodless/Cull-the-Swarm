@@ -5,7 +5,7 @@ using System.Collections;
 public class GrazeArea : MonoBehaviour
 {
 	//PUBLIC
-	//
+	public bool isForHolo = false;
 
 	//PRIVATE
 	Score scoreHandle = null;
@@ -29,9 +29,12 @@ public class GrazeArea : MonoBehaviour
 
 	void Update()
 	{
-		if(playerTransform != null)
+		if(!isForHolo)
 		{
-			transform.position = playerTransform.position;
+			if(playerTransform != null)
+			{
+				transform.position = playerTransform.position;
+			}
 		}
 	}
 
