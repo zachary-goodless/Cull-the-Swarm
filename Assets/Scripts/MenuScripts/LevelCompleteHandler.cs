@@ -50,7 +50,7 @@ public class LevelCompleteHandler : MonoBehaviour
 		}
 
 		//save whether or not the final chassis was used
-		//TODO -- get status of final chassis from player obj
+		didUseFinalChassis = gameManager.getCurrentGame().getCurrentLoadout().getChasis() == Loadout.LoadoutChasis.FINAL;
 
 		//save the score, and if there were no hits (if player not hit, bonus added to final score)
 		score = GameObject.Find("Score").GetComponent<Score>();
@@ -63,7 +63,7 @@ public class LevelCompleteHandler : MonoBehaviour
 		oldGlobalHighScore = gameManager.globalHighScores[(int)level - 3];
 
 		//save game
-		gameManager.handleLevelCompleted(level, finalScore, didUseFinalChassis);	//TODO -- confirm final chassis use saves
+		gameManager.handleLevelCompleted(level, finalScore, didUseFinalChassis);
 
 		//now we can activate the panel and run its animations
 		gameObject.SetActive(true);
