@@ -49,6 +49,7 @@ public class MainMenuEventHandler : MonoBehaviour
 	public GameObject mDeleteGamePanel;
 
 	public GameObject mControlsPanel;
+	public GameObject mCreditsPanel;
 
 	public ScreenFade mScreenFader;
 	public GameObject gmPrefab;
@@ -100,7 +101,8 @@ public class MainMenuEventHandler : MonoBehaviour
 
 	public void handleCreditsButtonClicked()
 	{
-		//TODO
+		toggleButtons();
+		mCreditsPanel.SetActive(true);
 	}
 
 //--------------------------------------------------------------------------------------------

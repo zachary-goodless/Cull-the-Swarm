@@ -20,7 +20,6 @@ public class ControlsMenu : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	// Use this for initialization
 	void Start ()
 	{
 		mMainMenu = GetComponentInParent<MainMenuEventHandler>();
