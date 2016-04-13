@@ -221,4 +221,38 @@ public class Drones_1_1 : MonoBehaviour {
         }
 
     }
+
+	//drones will have prefix 'd', turrets will have prefix 't'
+
+	public void StartWaveNum(string num){
+		switch (num) {
+		case "d1":
+			StartCoroutine (DroneWave1 ());
+			break;
+		case "d4":
+			StartCoroutine (DroneWave4 ());
+			break;
+		case "d5":
+			StartCoroutine (DroneWave5 ());
+			break;
+		case "d6":
+			StartCoroutine (DroneWave6 ());
+			break;
+		case "d23":
+			StartCoroutine (DroneWave23 ());
+			break;
+		case "t1":
+			StartCoroutine (TurretWave1 ());
+			break;
+		case "t2":
+			StartCoroutine (TurretWave2 ());
+			break;
+		case "t3":
+			StartCoroutine (TurretWave3 ());
+			break;
+		default:
+			break;
+		}
+
+	}
 }

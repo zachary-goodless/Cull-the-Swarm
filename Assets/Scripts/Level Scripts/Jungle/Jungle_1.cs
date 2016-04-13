@@ -79,8 +79,8 @@ public class Jungle_1 : MonoBehaviour {
 	IEnumerator LevelLayout2(){
 		//Timing and placement need adjustment, but here's an (incomplete) general outline of what was in the GDD
 		yield return new WaitForSeconds(1f);
-		waves.StartSpawnLinear (drone, 5, 1, 300, 1, -1, 50, waves.leftScreen, waves.upScreen, Quaternion.identity, 400, 0);
-		waves.StartSpawnWorms (3, 5, 0, .5f, 30, 300, 1, 50, waves.leftScreen, 200, Quaternion.Euler (0, 0, 90), 0, -200);
+		//waves.StartSpawnLinear (drone, 5, 1, 300, 1, -1, 50, waves.leftScreen, waves.upScreen, Quaternion.identity, 400, 0);
+		//waves.StartSpawnWorms (3, 5, 0, .5f, 30, 300, 1, 50, waves.leftScreen, 200, Quaternion.Euler (0, 0, 90), 0, -200);
 		/*yield return new WaitForSeconds (5f);
 		waves.StartDoubleWorms ();
 		waves.StartBigW (drone);

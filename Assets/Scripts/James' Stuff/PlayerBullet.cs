@@ -39,5 +39,6 @@ public class PlayerBullet : MonoBehaviour {
 			other.gameObject.GetComponent<WormBod> ().mov.health -= dmg;
 			Destroy (gameObject);
 		}
+		Debug.Log (other.tag);
 	}
 }

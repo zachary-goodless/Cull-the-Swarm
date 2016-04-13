@@ -43,9 +43,15 @@ public class MainMenuEventHandler : MonoBehaviour
 {
 	//PUBLIC
 	public GameObject mMainPanel;		//menu panels
+
 	public GameObject mNewGamePanel;
 	public GameObject mLoadGamePanel;
 	public GameObject mDeleteGamePanel;
+
+	public GameObject mControlsPanel;
+	public GameObject mCreditsPanel;
+
+	public GameObject quitConfirmation;
 
 	public ScreenFade mScreenFader;
 	public GameObject gmPrefab;
@@ -83,6 +89,30 @@ public class MainMenuEventHandler : MonoBehaviour
 	{
 		toggleButtons();
 		mDeleteGamePanel.SetActive(true);
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	public void handleControlsButtonClicked()
+	{
+		toggleButtons();
+		mControlsPanel.SetActive(true);
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	public void handleCreditsButtonClicked()
+	{
+		toggleButtons();
+		mCreditsPanel.SetActive(true);
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	public void handleQuitButtonClicked()
+	{
+		toggleButtons();
+		quitConfirmation.SetActive(true);
 	}
 
 //--------------------------------------------------------------------------------------------
