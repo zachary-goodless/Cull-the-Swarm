@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class EMPManager : MonoBehaviour
 {
+	 
 	//PUBLIC
 	public float maxEnergy = 150f;
 	public float rechargeRate = 10f;
@@ -14,6 +15,7 @@ public class EMPManager : MonoBehaviour
 
 	//PRIVATE
 	private GameObject empAreaPrefab;
+	private Player playerScript;
 
 	private float currEnergy;
 	private bool isOnCooldown;
@@ -22,6 +24,8 @@ public class EMPManager : MonoBehaviour
 
 	void Start ()
 	{
+		// get handle on player script
+		playerScript = GetComponent<Player> ();
 		//get handle on energy bar
 		energyBar = GameObject.Find("EnergyBar").GetComponent<RectTransform>();
 

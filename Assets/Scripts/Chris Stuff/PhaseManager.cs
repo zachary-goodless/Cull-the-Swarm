@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class PhaseManager : MonoBehaviour
 {
-	private Player playerScript; 
+	
 	//PUBLIC
 	public float maxEnergy = 100f;
 	public float rechargeRate = 20f;
-	public float consumptionRate = 20f;
+	public float consumptionRate = 50f;
 
 
 	public float cooldownDelay = 2f;
@@ -18,7 +18,7 @@ public class PhaseManager : MonoBehaviour
 	public RectTransform energyBar;
 
 	//PRIVATE
-
+	private Player playerScript; 
 
 	private float currEnergy;
 
@@ -30,6 +30,7 @@ public class PhaseManager : MonoBehaviour
 
 	void Start ()
 	{
+		// get handle on player script
 		playerScript = GetComponent<Player> ();
 		//get handle on energy bar
 		energyBar = GameObject.Find("EnergyBar").GetComponent<RectTransform>();
@@ -56,41 +57,65 @@ public class PhaseManager : MonoBehaviour
 		energyBar.localScale = localScale;
 
 		//if button is pressed, and is at max energy, and not on spinup...
-		if(Input.GetButtonDown("Secondary") && currEnergy == maxEnergy )
+		if(Input.GetButtonDown("Secondary") && currEnergy > 10 && !isOnCooldown)
 		{
 			isActive = true;
-			//start spin up
+
+
+		}
+		else if(!Input.GetButton("Secondary") && !isOnCooldown)
+		{
+			
+			isActive = false;
 
 		}
 
 		//if the weapon is active...
-		if(isActive)
-		{
-			if(playerScript.chassisQuick
-			//reduce energy down to min
+		if (isActive) {
+			
 			currEnergy -= consumptionRate * Time.deltaTime;
-
 			//enter cooldown delay if the weapon hasn't already
-			if(currEnergy < 0f && !isOnCooldownDelay)
-			{
+			if (currEnergy <= 0f && !isOnCooldownDelay) {
 				currEnergy = 0f;
 
 				isActive = false;
 				isOnCooldownDelay = true;
 
-				StartCoroutine(handleCoolDownDelay());
+				StartCoroutine (handleCoolDownDelay ());
 
 				//destroy the area obj if it hasn't already been
 
 			}
+		} 
+		else if (currEnergy < maxEnergy && !isOnCooldown)
+		{
+			if (playerScript.chassisQuick) 
+			{
+				currEnergy += rechargeRate * Time.deltaTime;
+			} 
+			else
+			{
+				currEnergy += rechargeRate * Time.deltaTime;
+			}
+		} 
+		else if (currEnergy >= maxEnergy)
+		{
+			currEnergy = maxEnergy;
+			isOnCooldown = false;
 		}
-
+				
 		//if the weapon is cooling down...
 		if(isOnCooldown)
 		{
-			if (playerScript)
-			//increase energy up to max, then no longer on cooldown
-			currEnergy += rechargeRate * Time.deltaTime;
+			if (playerScript.chassisQuick) 
+			{
+				currEnergy += rechargeRate * Time.deltaTime * playerScript.cooldownBoost;
+			} 
+			else 
+			{
+				//increase energy up to max, then no longer on cooldown
+				currEnergy += rechargeRate * Time.deltaTime;
+			}
 			if(currEnergy >= maxEnergy)
 			{
 				currEnergy = maxEnergy;

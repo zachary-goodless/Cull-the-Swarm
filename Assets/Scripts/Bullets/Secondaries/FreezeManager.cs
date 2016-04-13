@@ -20,6 +20,8 @@ public class FreezeManager : MonoBehaviour
 	private GameObject freezeAreaPrefab;
 	private GameObject freezeAreaInstance;
 
+	private Player playerScript; 
+
 	private float currEnergy;
 
 	private bool isOnSpinup;
@@ -31,6 +33,7 @@ public class FreezeManager : MonoBehaviour
 
 	void Start ()
 	{
+		playerScript = GetComponent<Player> ();
 		//get handle on energy bar
 		energyBar = GameObject.Find("EnergyBar").GetComponent<RectTransform>();
 

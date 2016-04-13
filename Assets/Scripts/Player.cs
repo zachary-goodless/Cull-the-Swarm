@@ -24,9 +24,12 @@ public class Player : MonoBehaviour {
 	public float precisionSpeed;
 	float shipTilt = 0f;
 
+	public float cooldownBoost = 1.2f;
+
 	public ParticleSystem ps;
 
 	private PhaseManager phaseOn;
+	bool phaseEquipped = false;
 	bool hitCool;
 	public bool dead;
 	public int health;
@@ -166,9 +169,25 @@ public class Player : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if ((other.tag == "Bullet" || other.tag == "EnemyHit")&& !hitCool && !phaseOn.isActive) {
-			GetComponent<AudioSource> ().Play ();
-			OnDamage ();
+		if ((other.tag == "Bullet" || other.tag == "EnemyHit") && !hitCool)
+		{
+			if (phaseEquipped)
+			{
+				if (phaseOn.isActive)
+				{
+					return;
+				}
+				else
+				{
+					GetComponent<AudioSource> ().Play ();
+					OnDamage ();
+				}
+			} 
+			else 
+			{
+				GetComponent<AudioSource> ().Play ();
+				OnDamage ();
+			}
 		}
 	}
 
@@ -258,9 +277,10 @@ public class Player : MonoBehaviour {
 				gameObject.AddComponent<EMPManager>();
 				break;
 		case Loadout.LoadoutSecondary.PHASING:
-			Debug.Log ("Secondary set Phasing System");
+				Debug.Log ("Secondary set Phasing System");
 				gameObject.AddComponent<PhaseManager> ();
 				phaseOn = GetComponent<PhaseManager> ();
+				phaseEquipped = true;
 				break;
 			case Loadout.LoadoutSecondary.TESLA:
 				Debug.Log ("CSecondary set Mosquito Tesla Coil");
