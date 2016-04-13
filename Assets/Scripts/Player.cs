@@ -27,6 +27,7 @@ public class Player : MonoBehaviour {
 	public float cooldownBoost = 1.2f;
 
 	public ParticleSystem ps;
+    public ParticleSystem ps2;
 
 	private PhaseManager phaseOn;
 	bool phaseEquipped = false;
@@ -169,7 +170,7 @@ public class Player : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if ((other.tag == "Bullet" || other.tag == "EnemyHit") && !hitCool)
+		if ((other.tag == "Bullet" || other.tag == "EnemyHit" || other.tag == "WormPart") && !hitCool)
 		{
 			if (phaseEquipped)
 			{
@@ -180,13 +181,15 @@ public class Player : MonoBehaviour {
 				else
 				{
 					GetComponent<AudioSource> ().Play ();
-					OnDamage ();
+                    ps2.GetComponent<ParticleSystem>().Play();
+                    OnDamage ();
 				}
 			} 
 			else 
 			{
 				GetComponent<AudioSource> ().Play ();
-				OnDamage ();
+                ps2.GetComponent<ParticleSystem>().Play();
+                OnDamage ();
 			}
 		}
 	}
@@ -198,7 +201,7 @@ public class Player : MonoBehaviour {
 		hitCool = true;
 		health--;
 		hb.health = health;
-		if (health <= 0) {
+        if (health <= 0) {
 			OnDeath ();
 		} else {
 			StartCoroutine ("HitCool");

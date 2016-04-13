@@ -1,0 +1,3076 @@
+fileFormatVersion: 2
+guid: 9001a4ef449a8424086d80ec79438297
+timeCreated: 1456121374
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: RedOrb
+    21300002: YellowOrb
+    21300004: GreenOrb
+    21300006: CyanOrb
+    21300008: BlueOrb
+    21300010: PurpleOrb
+    21300012: PinkOrb
+    21300014: WhiteOrb
+    21300016: RedDarkOrb
+    21300018: YellowDarkOrb
+    21300020: GreenDarkOrb
+    21300022: CyanDarkOrb
+    21300024: BlueDarkOrb
+    21300026: PurpleDarkOrb
+    21300028: PinkDarkOrb
+    21300030: WhiteDarkOrb
+    21300032: RedWave
+    21300034: YellowWave
+    21300036: GreenWave
+    21300038: CyanWave
+    21300040: BlueWave
+    21300042: PurpleWave
+    21300044: PinkWave
+    21300046: WhiteWave
+    21300048: RedDarkWave
+    21300050: YellowDarkWave
+    21300052: GreenDarkWave
+    21300054: CyanDarkWave
+    21300056: BlueDarkWave
+    21300058: PurpleDarkWave
+    21300060: PinkDarkWave
+    21300062: WhiteDarkWave
+    21300064: RedBlade
+    21300066: YellowBlade
+    21300068: GreenBlade
+    21300070: CyanBlade
+    21300072: BlueBlade
+    21300074: PurpleBlade
+    21300076: PinkBlade
+    21300078: WhiteBlade
+    21300080: RedFire1
+    21300082: RedFire2
+    21300084: RedFire3
+    21300086: RedFire4
+    21300088: BlueFire1
+    21300090: BlueFire2
+    21300092: BlueFire3
+    21300094: BlueFire4
+    21300096: RedDarkBlade
+    21300098: YellowDarkBlade
+    21300100: GreenDarkBlade
+    21300102: CyanDarkBlade
+    21300104: BlueDarkBlade
+    21300106: PurpleDarkBlade
+    21300108: PinkDarkBlade
+    21300110: WhiteDarkBlade
+    21300112: YellowFire1
+    21300114: YellowFire2
+    21300116: YellowFire3
+    21300118: YellowFire4
+    21300120: PurpleFire1
+    21300122: PurpleFire2
+    21300124: PurpleFire3
+    21300126: PurpleFire4
+    21300128: RedDot
+    21300130: YellowDot
+    21300132: GreenDot
+    21300134: CyanDot
+    21300136: BlueDot
+    21300138: PurpleDot
+    21300140: PinkDot
+    21300142: WhiteDot
+    21300144: RedDarkDot
+    21300146: YellowDarkDot
+    21300148: GreenDarkDot
+    21300150: CyanDarkDot
+    21300152: BlueDarkDot
+    21300154: PurpleDarkDot
+    21300156: PinkDarkDot
+    21300158: WhiteDarkDot
+    21300160: RedShard
+    21300162: YellowShard
+    21300164: GreenShard
+    21300166: CyanShard
+    21300168: BlueShard
+    21300170: PurpleShard
+    21300172: PinkShard
+    21300174: WhiteShard
+    21300176: RedArrow
+    21300178: YellowArrow
+    21300180: GreenArrow
+    21300182: CyanArrow
+    21300184: BlueArrow
+    21300186: PurpleArrow
+    21300188: PinkArrow
+    21300190: WhiteArrow
+    21300192: RedDarkArrow
+    21300194: YellowDarkArrow
+    21300196: GreenDarkArrow
+    21300198: CyanDarkArrow
+    21300200: BlueDarkArrow
+    21300202: PurpleDarkArrow
+    21300204: PinkDarkArrow
+    21300206: WhiteDarkArrow
+    21300208: RedCrawler1
+    21300210: RedCrawler2
+    21300212: YellowCrawler1
+    21300214: YellowCrawler2
+    21300216: GreenCrawler1
+    21300218: GreenCrawler2
+    21300220: CyanCrawler1
+    21300222: CyanCrawler2
+    21300224: BlueCrawler1
+    21300226: BlueCrawler2
+    21300228: PurpleCrawler1
+    21300230: PurpleCrawler2
+    21300232: PinkCrawler1
+    21300234: PinkCrawler2
+    21300236: WhiteCrawler1
+    21300238: WhiteCrawler2
+    21300240: MegaOrb
+    21300242: RedBubble
+    21300244: YellowBubble
+    21300246: GreenBubble
+    21300248: CyanBubble
+    21300250: BlueBubble
+    21300252: PurpleBubble
+    21300254: PinkBubble
+    21300256: WhiteBubble
+    21300258: RedDarkBubble
+    21300260: YellowDarkBubble
+    21300262: GreenDarkBubble
+    21300264: CyanDarkBubble
+    21300266: BlueDarkBubble
+    21300268: PurpleDarkBubble
+    21300270: PinkDarkBubble
+    21300272: WhiteDarkBubble
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 0.5
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: Standalone
+    maxTextureSize: 4096
+    textureFormat: -3
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  spriteSheet:
+    sprites:
+    - name: RedOrb
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 960
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 32}
+        - {x: -32, y: 28}
+        - {x: -32, y: -23}
+        - {x: -28, y: -32}
+        - {x: 20, y: -32}
+        - {x: 32, y: -22}
+        - {x: 32, y: 21}
+        - {x: 20, y: 32}
+    - name: YellowOrb
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 960
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 32}
+        - {x: -32, y: 28}
+        - {x: -32, y: -23}
+        - {x: -28, y: -32}
+        - {x: 20, y: -32}
+        - {x: 32, y: -22}
+        - {x: 32, y: 21}
+        - {x: 20, y: 32}
+    - name: GreenOrb
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 960
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 32}
+        - {x: -32, y: 28}
+        - {x: -32, y: -23}
+        - {x: -28, y: -32}
+        - {x: 20, y: -32}
+        - {x: 32, y: -22}
+        - {x: 32, y: 21}
+        - {x: 20, y: 32}
+    - name: CyanOrb
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 960
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 32}
+        - {x: -32, y: 28}
+        - {x: -32, y: -23}
+        - {x: -28, y: -32}
+        - {x: 20, y: -32}
+        - {x: 32, y: -22}
+        - {x: 32, y: 21}
+        - {x: 20, y: 32}
+    - name: BlueOrb
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 960
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 32}
+        - {x: -32, y: 28}
+        - {x: -32, y: -23}
+        - {x: -28, y: -32}
+        - {x: 20, y: -32}
+        - {x: 32, y: -22}
+        - {x: 32, y: 21}
+        - {x: 20, y: 32}
+    - name: PurpleOrb
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 960
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 32}
+        - {x: -32, y: 28}
+        - {x: -32, y: -23}
+        - {x: -28, y: -32}
+        - {x: 20, y: -32}
+        - {x: 32, y: -22}
+        - {x: 32, y: 21}
+        - {x: 20, y: 32}
+    - name: PinkOrb
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 960
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 32}
+        - {x: -32, y: 28}
+        - {x: -32, y: -23}
+        - {x: -28, y: -32}
+        - {x: 20, y: -32}
+        - {x: 32, y: -22}
+        - {x: 32, y: 21}
+        - {x: 20, y: 32}
+    - name: WhiteOrb
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 960
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 32}
+        - {x: -32, y: 28}
+        - {x: -32, y: -23}
+        - {x: -28, y: -32}
+        - {x: 20, y: -32}
+        - {x: 32, y: -22}
+        - {x: 32, y: 21}
+        - {x: 20, y: 32}
+    - name: RedDarkOrb
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 32}
+        - {x: -32, y: 28}
+        - {x: -32, y: -23}
+        - {x: -28, y: -32}
+        - {x: 20, y: -32}
+        - {x: 32, y: -22}
+        - {x: 32, y: 21}
+        - {x: 20, y: 32}
+    - name: YellowDarkOrb
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 32}
+        - {x: -32, y: 28}
+        - {x: -32, y: -23}
+        - {x: -28, y: -32}
+        - {x: 20, y: -32}
+        - {x: 32, y: -22}
+        - {x: 32, y: 21}
+        - {x: 20, y: 32}
+    - name: GreenDarkOrb
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 32}
+        - {x: -32, y: 28}
+        - {x: -32, y: -23}
+        - {x: -28, y: -32}
+        - {x: 20, y: -32}
+        - {x: 32, y: -22}
+        - {x: 32, y: 21}
+        - {x: 20, y: 32}
+    - name: CyanDarkOrb
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 32}
+        - {x: -32, y: 28}
+        - {x: -32, y: -23}
+        - {x: -28, y: -32}
+        - {x: 20, y: -32}
+        - {x: 32, y: -22}
+        - {x: 32, y: 21}
+        - {x: 20, y: 32}
+    - name: BlueDarkOrb
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 32}
+        - {x: -32, y: 28}
+        - {x: -32, y: -23}
+        - {x: -28, y: -32}
+        - {x: 20, y: -32}
+        - {x: 32, y: -22}
+        - {x: 32, y: 21}
+        - {x: 20, y: 32}
+    - name: PurpleDarkOrb
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 32}
+        - {x: -32, y: 28}
+        - {x: -32, y: -23}
+        - {x: -28, y: -32}
+        - {x: 20, y: -32}
+        - {x: 32, y: -22}
+        - {x: 32, y: 21}
+        - {x: 20, y: 32}
+    - name: PinkDarkOrb
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 32}
+        - {x: -32, y: 28}
+        - {x: -32, y: -23}
+        - {x: -28, y: -32}
+        - {x: 20, y: -32}
+        - {x: 32, y: -22}
+        - {x: 32, y: 21}
+        - {x: 20, y: 32}
+    - name: WhiteDarkOrb
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 896
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 32}
+        - {x: -32, y: 28}
+        - {x: -32, y: -23}
+        - {x: -28, y: -32}
+        - {x: 20, y: -32}
+        - {x: 32, y: -22}
+        - {x: 32, y: 21}
+        - {x: 20, y: 32}
+    - name: RedWave
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 832
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5, y: 32}
+        - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 6, y: -32}
+        - {x: 21, y: -20}
+        - {x: 21, y: 16}
+        - {x: 19, y: 24}
+      - - {x: 23, y: -11}
+        - {x: 22, y: -13}
+        - {x: 22, y: -16}
+        - {x: 27, y: -22}
+        - {x: 29, y: -22}
+        - {x: 31, y: -21}
+        - {x: 32, y: -18}
+        - {x: 32, y: -12}
+        - {x: 31, y: -11}
+      - - {x: 27, y: 12}
+        - {x: 29, y: 10}
+        - {x: 32, y: 11}
+        - {x: 32, y: 14}
+        - {x: 30, y: 16}
+        - {x: 27, y: 15}
+      - - {x: 26, y: 25}
+        - {x: 26, y: 20}
+        - {x: 28, y: 16}
+        - {x: 30, y: 16}
+        - {x: 32, y: 17}
+        - {x: 32, y: 27}
+        - {x: 30, y: 29}
+        - {x: 27, y: 28}
+    - name: YellowWave
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 832
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 21, y: -32}
+        - {x: 21, y: 32}
+      - - {x: 22, y: -16}
+        - {x: 27, y: -25}
+        - {x: 29, y: -27}
+        - {x: 32, y: -26}
+        - {x: 32, y: -12}
+        - {x: 31, y: -10}
+        - {x: 26, y: -10}
+        - {x: 22, y: -11}
+      - - {x: 27, y: 12}
+        - {x: 29, y: 10}
+        - {x: 32, y: 11}
+        - {x: 32, y: 14}
+        - {x: 30, y: 16}
+        - {x: 27, y: 15}
+      - - {x: 26, y: 25}
+        - {x: 26, y: 20}
+        - {x: 28, y: 16}
+        - {x: 30, y: 16}
+        - {x: 32, y: 17}
+        - {x: 32, y: 27}
+        - {x: 30, y: 29}
+        - {x: 27, y: 28}
+    - name: GreenWave
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 832
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 6, y: 32}
+        - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 7, y: -32}
+        - {x: 21, y: -19}
+        - {x: 21, y: 14}
+        - {x: 20, y: 24}
+      - - {x: 22, y: -13}
+        - {x: 22, y: -15}
+        - {x: 27, y: -22}
+        - {x: 29, y: -22}
+        - {x: 31, y: -21}
+        - {x: 32, y: -12}
+        - {x: 29, y: -10}
+        - {x: 24, y: -11}
+      - - {x: 27, y: 12}
+        - {x: 29, y: 10}
+        - {x: 32, y: 11}
+        - {x: 32, y: 14}
+        - {x: 30, y: 16}
+        - {x: 27, y: 15}
+      - - {x: 26, y: 25}
+        - {x: 26, y: 20}
+        - {x: 28, y: 16}
+        - {x: 30, y: 16}
+        - {x: 32, y: 17}
+        - {x: 32, y: 27}
+        - {x: 30, y: 29}
+        - {x: 27, y: 28}
+    - name: CyanWave
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 832
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5, y: 32}
+        - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 15, y: -32}
+        - {x: 21, y: -21}
+        - {x: 21, y: 14}
+        - {x: 19, y: 24}
+      - - {x: 22, y: -15}
+        - {x: 28, y: -23}
+        - {x: 30, y: -23}
+        - {x: 32, y: -22}
+        - {x: 32, y: -12}
+        - {x: 31, y: -10}
+        - {x: 27, y: -10}
+        - {x: 22, y: -12}
+      - - {x: 27, y: 12}
+        - {x: 29, y: 10}
+        - {x: 32, y: 11}
+        - {x: 32, y: 14}
+        - {x: 30, y: 16}
+        - {x: 27, y: 15}
+      - - {x: 26, y: 25}
+        - {x: 26, y: 20}
+        - {x: 28, y: 16}
+        - {x: 30, y: 16}
+        - {x: 32, y: 17}
+        - {x: 32, y: 27}
+        - {x: 30, y: 29}
+        - {x: 27, y: 28}
+    - name: BlueWave
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 832
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 32}
+        - {x: -32, y: 27}
+        - {x: -32, y: -32}
+        - {x: 21, y: -32}
+        - {x: 21, y: 32}
+      - - {x: 22, y: -13}
+        - {x: 22, y: -14}
+        - {x: 27, y: -18}
+        - {x: 30, y: -17}
+        - {x: 30, y: -13}
+        - {x: 28, y: -11}
+        - {x: 24, y: -11}
+      - - {x: 28, y: 21}
+        - {x: 31, y: 22}
+        - {x: 31, y: 25}
+        - {x: 28, y: 26}
+        - {x: 26, y: 24}
+    - name: PurpleWave
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 832
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5, y: 32}
+        - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 7, y: -32}
+        - {x: 21, y: -19}
+        - {x: 21, y: 13}
+        - {x: 19, y: 24}
+      - - {x: 29, y: -26}
+        - {x: 32, y: -25}
+        - {x: 32, y: -10}
+        - {x: 25, y: -10}
+        - {x: 22, y: -11}
+        - {x: 22, y: -14}
+      - - {x: 27, y: 12}
+        - {x: 29, y: 10}
+        - {x: 32, y: 11}
+        - {x: 32, y: 14}
+        - {x: 30, y: 16}
+        - {x: 27, y: 15}
+      - - {x: 26, y: 25}
+        - {x: 26, y: 20}
+        - {x: 28, y: 16}
+        - {x: 30, y: 16}
+        - {x: 32, y: 17}
+        - {x: 32, y: 27}
+        - {x: 30, y: 29}
+        - {x: 27, y: 28}
+    - name: PinkWave
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 832
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8, y: 32}
+        - {x: -32, y: 32}
+        - {x: -32, y: -28}
+        - {x: -30, y: -32}
+        - {x: 6, y: -32}
+        - {x: 21, y: -20}
+        - {x: 21, y: 13}
+        - {x: 19, y: 23}
+      - - {x: 22, y: -14}
+        - {x: 27, y: -18}
+        - {x: 30, y: -16}
+        - {x: 28, y: -11}
+        - {x: 24, y: -11}
+        - {x: 22, y: -13}
+      - - {x: 26, y: 23}
+        - {x: 28, y: 21}
+        - {x: 31, y: 22}
+        - {x: 32, y: 27}
+        - {x: 30, y: 29}
+        - {x: 27, y: 28}
+    - name: WhiteWave
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 832
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5, y: 32}
+        - {x: -31, y: 32}
+        - {x: -32, y: 31}
+        - {x: -32, y: -32}
+        - {x: 21, y: -32}
+        - {x: 21, y: 13}
+        - {x: 19, y: 24}
+      - - {x: 24, y: -16}
+        - {x: 27, y: -15}
+        - {x: 27, y: -12}
+        - {x: 24, y: -11}
+        - {x: 22, y: -13}
+    - name: RedDarkWave
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5, y: 32}
+        - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 6, y: -32}
+        - {x: 21, y: -20}
+        - {x: 21, y: 16}
+        - {x: 19, y: 24}
+      - - {x: 23, y: -11}
+        - {x: 22, y: -13}
+        - {x: 22, y: -16}
+        - {x: 27, y: -22}
+        - {x: 29, y: -22}
+        - {x: 31, y: -21}
+        - {x: 32, y: -18}
+        - {x: 32, y: -12}
+        - {x: 31, y: -11}
+      - - {x: 27, y: 12}
+        - {x: 29, y: 10}
+        - {x: 32, y: 11}
+        - {x: 32, y: 14}
+        - {x: 30, y: 16}
+        - {x: 27, y: 15}
+      - - {x: 26, y: 25}
+        - {x: 26, y: 20}
+        - {x: 28, y: 16}
+        - {x: 30, y: 16}
+        - {x: 32, y: 17}
+        - {x: 32, y: 27}
+        - {x: 30, y: 29}
+        - {x: 27, y: 28}
+    - name: YellowDarkWave
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 768
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 21, y: -32}
+        - {x: 21, y: 32}
+      - - {x: 22, y: -16}
+        - {x: 27, y: -25}
+        - {x: 29, y: -27}
+        - {x: 32, y: -26}
+        - {x: 32, y: -12}
+        - {x: 31, y: -10}
+        - {x: 26, y: -10}
+        - {x: 22, y: -11}
+      - - {x: 27, y: 12}
+        - {x: 29, y: 10}
+        - {x: 32, y: 11}
+        - {x: 32, y: 14}
+        - {x: 30, y: 16}
+        - {x: 27, y: 15}
+      - - {x: 26, y: 25}
+        - {x: 26, y: 20}
+        - {x: 28, y: 16}
+        - {x: 30, y: 16}
+        - {x: 32, y: 17}
+        - {x: 32, y: 27}
+        - {x: 30, y: 29}
+        - {x: 27, y: 28}
+    - name: GreenDarkWave
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 768
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 6, y: 32}
+        - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 7, y: -32}
+        - {x: 21, y: -19}
+        - {x: 21, y: 14}
+        - {x: 20, y: 24}
+      - - {x: 22, y: -13}
+        - {x: 22, y: -15}
+        - {x: 27, y: -22}
+        - {x: 29, y: -22}
+        - {x: 31, y: -21}
+        - {x: 32, y: -12}
+        - {x: 29, y: -10}
+        - {x: 24, y: -11}
+      - - {x: 27, y: 12}
+        - {x: 29, y: 10}
+        - {x: 32, y: 11}
+        - {x: 32, y: 14}
+        - {x: 30, y: 16}
+        - {x: 27, y: 15}
+      - - {x: 26, y: 25}
+        - {x: 26, y: 20}
+        - {x: 28, y: 16}
+        - {x: 30, y: 16}
+        - {x: 32, y: 17}
+        - {x: 32, y: 27}
+        - {x: 30, y: 29}
+        - {x: 27, y: 28}
+    - name: CyanDarkWave
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 768
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5, y: 32}
+        - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 15, y: -32}
+        - {x: 21, y: -21}
+        - {x: 21, y: 14}
+        - {x: 19, y: 24}
+      - - {x: 22, y: -15}
+        - {x: 28, y: -23}
+        - {x: 30, y: -23}
+        - {x: 32, y: -22}
+        - {x: 32, y: -12}
+        - {x: 31, y: -10}
+        - {x: 27, y: -10}
+        - {x: 22, y: -12}
+      - - {x: 27, y: 12}
+        - {x: 29, y: 10}
+        - {x: 32, y: 11}
+        - {x: 32, y: 14}
+        - {x: 30, y: 16}
+        - {x: 27, y: 15}
+      - - {x: 26, y: 25}
+        - {x: 26, y: 20}
+        - {x: 28, y: 16}
+        - {x: 30, y: 16}
+        - {x: 32, y: 17}
+        - {x: 32, y: 27}
+        - {x: 30, y: 29}
+        - {x: 27, y: 28}
+    - name: BlueDarkWave
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 32}
+        - {x: -32, y: 27}
+        - {x: -32, y: -32}
+        - {x: 21, y: -32}
+        - {x: 21, y: 32}
+      - - {x: 22, y: -13}
+        - {x: 22, y: -14}
+        - {x: 27, y: -18}
+        - {x: 30, y: -17}
+        - {x: 30, y: -13}
+        - {x: 28, y: -11}
+        - {x: 24, y: -11}
+      - - {x: 28, y: 21}
+        - {x: 31, y: 22}
+        - {x: 31, y: 25}
+        - {x: 28, y: 26}
+        - {x: 26, y: 24}
+    - name: PurpleDarkWave
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 768
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5, y: 32}
+        - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 7, y: -32}
+        - {x: 21, y: -19}
+        - {x: 21, y: 13}
+        - {x: 19, y: 24}
+      - - {x: 29, y: -26}
+        - {x: 32, y: -25}
+        - {x: 32, y: -10}
+        - {x: 25, y: -10}
+        - {x: 22, y: -11}
+        - {x: 22, y: -14}
+      - - {x: 27, y: 12}
+        - {x: 29, y: 10}
+        - {x: 32, y: 11}
+        - {x: 32, y: 14}
+        - {x: 30, y: 16}
+        - {x: 27, y: 15}
+      - - {x: 26, y: 25}
+        - {x: 26, y: 20}
+        - {x: 28, y: 16}
+        - {x: 30, y: 16}
+        - {x: 32, y: 17}
+        - {x: 32, y: 27}
+        - {x: 30, y: 29}
+        - {x: 27, y: 28}
+    - name: PinkDarkWave
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 768
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8, y: 32}
+        - {x: -32, y: 32}
+        - {x: -32, y: -28}
+        - {x: -30, y: -32}
+        - {x: 6, y: -32}
+        - {x: 21, y: -20}
+        - {x: 21, y: 13}
+        - {x: 19, y: 23}
+      - - {x: 22, y: -14}
+        - {x: 27, y: -18}
+        - {x: 30, y: -16}
+        - {x: 28, y: -11}
+        - {x: 24, y: -11}
+        - {x: 22, y: -13}
+      - - {x: 26, y: 23}
+        - {x: 28, y: 21}
+        - {x: 31, y: 22}
+        - {x: 32, y: 27}
+        - {x: 30, y: 29}
+        - {x: 27, y: 28}
+    - name: WhiteDarkWave
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 768
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5, y: 32}
+        - {x: -31, y: 32}
+        - {x: -32, y: 31}
+        - {x: -32, y: -32}
+        - {x: 21, y: -32}
+        - {x: 21, y: 13}
+        - {x: 19, y: 24}
+      - - {x: 24, y: -16}
+        - {x: 27, y: -15}
+        - {x: 27, y: -12}
+        - {x: 24, y: -11}
+        - {x: 22, y: -13}
+    - name: RedBlade
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8, y: 21}
+        - {x: -23, y: 21}
+        - {x: -29, y: 19}
+        - {x: -29, y: -13}
+        - {x: -21, y: -20}
+        - {x: 0, y: -20}
+        - {x: 21, y: -3}
+        - {x: 22, y: -1}
+        - {x: 22, y: 4}
+    - name: YellowBlade
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8, y: 21}
+        - {x: -23, y: 21}
+        - {x: -29, y: 19}
+        - {x: -29, y: -13}
+        - {x: -21, y: -20}
+        - {x: 0, y: -20}
+        - {x: 21, y: -3}
+        - {x: 22, y: -1}
+        - {x: 22, y: 4}
+    - name: GreenBlade
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8, y: 21}
+        - {x: -23, y: 21}
+        - {x: -29, y: 19}
+        - {x: -29, y: -13}
+        - {x: -21, y: -20}
+        - {x: 0, y: -20}
+        - {x: 21, y: -3}
+        - {x: 22, y: -1}
+        - {x: 22, y: 4}
+    - name: CyanBlade
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8, y: 21}
+        - {x: -23, y: 21}
+        - {x: -29, y: 19}
+        - {x: -29, y: -13}
+        - {x: -21, y: -20}
+        - {x: 0, y: -20}
+        - {x: 21, y: -3}
+        - {x: 22, y: -1}
+        - {x: 22, y: 4}
+    - name: BlueBlade
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8, y: 21}
+        - {x: -23, y: 21}
+        - {x: -29, y: 19}
+        - {x: -29, y: -13}
+        - {x: -21, y: -20}
+        - {x: 0, y: -20}
+        - {x: 21, y: -3}
+        - {x: 22, y: -1}
+        - {x: 22, y: 4}
+    - name: PurpleBlade
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8, y: 21}
+        - {x: -23, y: 21}
+        - {x: -29, y: 19}
+        - {x: -29, y: -13}
+        - {x: -21, y: -20}
+        - {x: 0, y: -20}
+        - {x: 21, y: -3}
+        - {x: 22, y: -1}
+        - {x: 22, y: 4}
+    - name: PinkBlade
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8, y: 21}
+        - {x: -23, y: 21}
+        - {x: -29, y: 19}
+        - {x: -29, y: -13}
+        - {x: -21, y: -20}
+        - {x: 0, y: -20}
+        - {x: 21, y: -3}
+        - {x: 22, y: -1}
+        - {x: 22, y: 4}
+    - name: WhiteBlade
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8, y: 21}
+        - {x: -23, y: 21}
+        - {x: -29, y: 19}
+        - {x: -29, y: -13}
+        - {x: -21, y: -20}
+        - {x: 0, y: -20}
+        - {x: 21, y: -3}
+        - {x: 22, y: -1}
+        - {x: 22, y: 4}
+    - name: RedFire1
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12, y: 21}
+        - {x: -15, y: 21}
+        - {x: -30, y: 14}
+        - {x: -30, y: -16}
+        - {x: -28, y: -21}
+        - {x: 12, y: -21}
+        - {x: 19, y: -14}
+        - {x: 20, y: -9}
+        - {x: 20, y: 15}
+    - name: RedFire2
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 7, y: 22}
+        - {x: -13, y: 22}
+        - {x: -26, y: 18}
+        - {x: -30, y: 11}
+        - {x: -32, y: 6}
+        - {x: -32, y: -8}
+        - {x: -29, y: -21}
+        - {x: -21, y: -22}
+        - {x: 11, y: -22}
+        - {x: 16, y: -15}
+        - {x: 17, y: -8}
+        - {x: 17, y: 15}
+    - name: RedFire3
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23, y: 24}
+        - {x: -31, y: 15}
+        - {x: -31, y: -12}
+        - {x: -27, y: -21}
+        - {x: 11, y: -21}
+        - {x: 21, y: -10}
+        - {x: 21, y: 13}
+        - {x: -2, y: 24}
+    - name: RedFire4
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 21}
+        - {x: -14, y: 21}
+        - {x: -28, y: 11}
+        - {x: -31, y: 8}
+        - {x: -31, y: -3}
+        - {x: -25, y: -17}
+        - {x: -15, y: -20}
+        - {x: 17, y: -20}
+        - {x: 18, y: -14}
+        - {x: 18, y: 13}
+        - {x: 13, y: 19}
+    - name: BlueFire1
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12, y: 21}
+        - {x: -15, y: 21}
+        - {x: -30, y: 14}
+        - {x: -30, y: -16}
+        - {x: -28, y: -21}
+        - {x: 12, y: -21}
+        - {x: 19, y: -14}
+        - {x: 20, y: -9}
+        - {x: 20, y: 15}
+      - - {x: 27, y: 32}
+        - {x: 28, y: 29}
+        - {x: 32, y: 29}
+        - {x: 32, y: 32}
+    - name: BlueFire2
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 7, y: 22}
+        - {x: -13, y: 22}
+        - {x: -26, y: 18}
+        - {x: -30, y: 11}
+        - {x: -32, y: 6}
+        - {x: -32, y: -8}
+        - {x: -29, y: -21}
+        - {x: -21, y: -22}
+        - {x: 11, y: -22}
+        - {x: 16, y: -15}
+        - {x: 17, y: -8}
+        - {x: 17, y: 15}
+      - - {x: -32, y: 32}
+        - {x: -32, y: 29}
+        - {x: -20, y: 27}
+        - {x: 32, y: 27}
+        - {x: 32, y: 32}
+    - name: BlueFire3
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23, y: 24}
+        - {x: -31, y: 15}
+        - {x: -31, y: -12}
+        - {x: -27, y: -21}
+        - {x: 11, y: -21}
+        - {x: 21, y: -10}
+        - {x: 21, y: 13}
+        - {x: -2, y: 24}
+      - - {x: -32, y: 32}
+        - {x: -32, y: 27}
+        - {x: -4, y: 27}
+        - {x: 18, y: 28}
+        - {x: 19, y: 31}
+        - {x: 19, y: 32}
+    - name: BlueFire4
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 704
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 21}
+        - {x: -14, y: 21}
+        - {x: -28, y: 11}
+        - {x: -31, y: 8}
+        - {x: -31, y: -3}
+        - {x: -25, y: -17}
+        - {x: -15, y: -20}
+        - {x: 17, y: -20}
+        - {x: 18, y: -14}
+        - {x: 18, y: 13}
+        - {x: 13, y: 19}
+    - name: RedDarkBlade
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8, y: 21}
+        - {x: -23, y: 21}
+        - {x: -29, y: 19}
+        - {x: -29, y: -13}
+        - {x: -21, y: -20}
+        - {x: 0, y: -20}
+        - {x: 21, y: -3}
+        - {x: 22, y: -1}
+        - {x: 22, y: 4}
+    - name: YellowDarkBlade
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8, y: 21}
+        - {x: -23, y: 21}
+        - {x: -29, y: 19}
+        - {x: -29, y: -13}
+        - {x: -21, y: -20}
+        - {x: 0, y: -20}
+        - {x: 21, y: -3}
+        - {x: 22, y: -1}
+        - {x: 22, y: 4}
+    - name: GreenDarkBlade
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8, y: 21}
+        - {x: -23, y: 21}
+        - {x: -29, y: 19}
+        - {x: -29, y: -13}
+        - {x: -21, y: -20}
+        - {x: 0, y: -20}
+        - {x: 21, y: -3}
+        - {x: 22, y: -1}
+        - {x: 22, y: 4}
+    - name: CyanDarkBlade
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8, y: 21}
+        - {x: -23, y: 21}
+        - {x: -29, y: 19}
+        - {x: -29, y: -13}
+        - {x: -21, y: -20}
+        - {x: 0, y: -20}
+        - {x: 21, y: -3}
+        - {x: 22, y: -1}
+        - {x: 22, y: 4}
+    - name: BlueDarkBlade
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8, y: 21}
+        - {x: -23, y: 21}
+        - {x: -29, y: 19}
+        - {x: -29, y: -13}
+        - {x: -21, y: -20}
+        - {x: 0, y: -20}
+        - {x: 21, y: -3}
+        - {x: 22, y: -1}
+        - {x: 22, y: 4}
+    - name: PurpleDarkBlade
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8, y: 21}
+        - {x: -23, y: 21}
+        - {x: -29, y: 19}
+        - {x: -29, y: -13}
+        - {x: -21, y: -20}
+        - {x: 0, y: -20}
+        - {x: 21, y: -3}
+        - {x: 22, y: -1}
+        - {x: 22, y: 4}
+    - name: PinkDarkBlade
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8, y: 21}
+        - {x: -23, y: 21}
+        - {x: -29, y: 19}
+        - {x: -29, y: -13}
+        - {x: -21, y: -20}
+        - {x: 0, y: -20}
+        - {x: 21, y: -3}
+        - {x: 22, y: -1}
+        - {x: 22, y: 4}
+    - name: WhiteDarkBlade
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8, y: 21}
+        - {x: -23, y: 21}
+        - {x: -29, y: 19}
+        - {x: -29, y: -13}
+        - {x: -21, y: -20}
+        - {x: 0, y: -20}
+        - {x: 21, y: -3}
+        - {x: 22, y: -1}
+        - {x: 22, y: 4}
+    - name: YellowFire1
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12, y: 21}
+        - {x: -15, y: 21}
+        - {x: -30, y: 14}
+        - {x: -30, y: -16}
+        - {x: -28, y: -21}
+        - {x: 12, y: -21}
+        - {x: 19, y: -14}
+        - {x: 20, y: -9}
+        - {x: 20, y: 15}
+    - name: YellowFire2
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 7, y: 22}
+        - {x: -13, y: 22}
+        - {x: -26, y: 18}
+        - {x: -30, y: 11}
+        - {x: -32, y: 6}
+        - {x: -32, y: -8}
+        - {x: -29, y: -21}
+        - {x: -21, y: -22}
+        - {x: 11, y: -22}
+        - {x: 16, y: -15}
+        - {x: 17, y: -8}
+        - {x: 17, y: 15}
+    - name: YellowFire3
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23, y: 24}
+        - {x: -31, y: 15}
+        - {x: -31, y: -12}
+        - {x: -27, y: -21}
+        - {x: 11, y: -21}
+        - {x: 21, y: -10}
+        - {x: 21, y: 13}
+        - {x: -2, y: 24}
+    - name: YellowFire4
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 21}
+        - {x: -14, y: 21}
+        - {x: -28, y: 11}
+        - {x: -31, y: 8}
+        - {x: -31, y: -3}
+        - {x: -25, y: -17}
+        - {x: -15, y: -20}
+        - {x: 17, y: -20}
+        - {x: 18, y: -14}
+        - {x: 18, y: 13}
+        - {x: 13, y: 19}
+    - name: PurpleFire1
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12, y: 21}
+        - {x: -15, y: 21}
+        - {x: -30, y: 14}
+        - {x: -30, y: -16}
+        - {x: -28, y: -21}
+        - {x: 12, y: -21}
+        - {x: 19, y: -14}
+        - {x: 20, y: -9}
+        - {x: 20, y: 15}
+    - name: PurpleFire2
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 7, y: 22}
+        - {x: -13, y: 22}
+        - {x: -26, y: 18}
+        - {x: -30, y: 11}
+        - {x: -32, y: 6}
+        - {x: -32, y: -8}
+        - {x: -29, y: -21}
+        - {x: -21, y: -22}
+        - {x: 11, y: -22}
+        - {x: 16, y: -15}
+        - {x: 17, y: -8}
+        - {x: 17, y: 15}
+    - name: PurpleFire3
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23, y: 24}
+        - {x: -31, y: 15}
+        - {x: -31, y: -12}
+        - {x: -27, y: -21}
+        - {x: 11, y: -21}
+        - {x: 21, y: -10}
+        - {x: 21, y: 13}
+        - {x: -2, y: 24}
+    - name: PurpleFire4
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 21}
+        - {x: -14, y: 21}
+        - {x: -28, y: 11}
+        - {x: -31, y: 8}
+        - {x: -31, y: -3}
+        - {x: -25, y: -17}
+        - {x: -15, y: -20}
+        - {x: 17, y: -20}
+        - {x: 18, y: -14}
+        - {x: 18, y: 13}
+        - {x: 13, y: 19}
+    - name: RedDot
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 992
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -15}
+        - {x: -13, y: -16}
+        - {x: 15, y: -16}
+        - {x: 16, y: -14}
+        - {x: 16, y: 11}
+        - {x: 14, y: 16}
+    - name: YellowDot
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 992
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -15}
+        - {x: -13, y: -16}
+        - {x: 15, y: -16}
+        - {x: 16, y: -14}
+        - {x: 16, y: 11}
+        - {x: 14, y: 16}
+    - name: GreenDot
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 992
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -15}
+        - {x: -13, y: -16}
+        - {x: 15, y: -16}
+        - {x: 16, y: -14}
+        - {x: 16, y: 11}
+        - {x: 14, y: 16}
+    - name: CyanDot
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 992
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -15}
+        - {x: -13, y: -16}
+        - {x: 15, y: -16}
+        - {x: 16, y: -14}
+        - {x: 16, y: 11}
+        - {x: 14, y: 16}
+    - name: BlueDot
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 992
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -15}
+        - {x: -13, y: -16}
+        - {x: 15, y: -16}
+        - {x: 16, y: -14}
+        - {x: 16, y: 11}
+        - {x: 14, y: 16}
+    - name: PurpleDot
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 992
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -15}
+        - {x: -13, y: -16}
+        - {x: 15, y: -16}
+        - {x: 16, y: -14}
+        - {x: 16, y: 11}
+        - {x: 14, y: 16}
+    - name: PinkDot
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 992
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -15}
+        - {x: -13, y: -16}
+        - {x: 15, y: -16}
+        - {x: 16, y: -14}
+        - {x: 16, y: 11}
+        - {x: 14, y: 16}
+    - name: WhiteDot
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 992
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -15}
+        - {x: -13, y: -16}
+        - {x: 15, y: -16}
+        - {x: 16, y: -14}
+        - {x: 16, y: 11}
+        - {x: 14, y: 16}
+    - name: RedDarkDot
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 960
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -15}
+        - {x: -13, y: -16}
+        - {x: 15, y: -16}
+        - {x: 16, y: -14}
+        - {x: 16, y: 11}
+        - {x: 14, y: 16}
+    - name: YellowDarkDot
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 960
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -15}
+        - {x: -13, y: -16}
+        - {x: 15, y: -16}
+        - {x: 16, y: -14}
+        - {x: 16, y: 11}
+        - {x: 14, y: 16}
+    - name: GreenDarkDot
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 960
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -15}
+        - {x: -13, y: -16}
+        - {x: 15, y: -16}
+        - {x: 16, y: -14}
+        - {x: 16, y: 11}
+        - {x: 14, y: 16}
+    - name: CyanDarkDot
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 960
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -15}
+        - {x: -13, y: -16}
+        - {x: 15, y: -16}
+        - {x: 16, y: -14}
+        - {x: 16, y: 11}
+        - {x: 14, y: 16}
+    - name: BlueDarkDot
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 960
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -15}
+        - {x: -13, y: -16}
+        - {x: 15, y: -16}
+        - {x: 16, y: -14}
+        - {x: 16, y: 11}
+        - {x: 14, y: 16}
+    - name: PurpleDarkDot
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 960
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -15}
+        - {x: -13, y: -16}
+        - {x: 15, y: -16}
+        - {x: 16, y: -14}
+        - {x: 16, y: 11}
+        - {x: 14, y: 16}
+    - name: PinkDarkDot
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 960
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -15}
+        - {x: -13, y: -16}
+        - {x: 15, y: -16}
+        - {x: 16, y: -14}
+        - {x: 16, y: 11}
+        - {x: 14, y: 16}
+    - name: WhiteDarkDot
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 960
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -12}
+        - {x: -13, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 11}
+        - {x: 14, y: 16}
+    - name: RedShard
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 928
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5, y: 10}
+        - {x: -10, y: 9}
+        - {x: -14, y: 8}
+        - {x: -16, y: 7}
+        - {x: -16, y: -7}
+        - {x: -14, y: -9}
+        - {x: 12, y: -9}
+        - {x: 16, y: -8}
+        - {x: 16, y: 9}
+        - {x: 5, y: 10}
+    - name: YellowShard
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 928
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5, y: 10}
+        - {x: -10, y: 9}
+        - {x: -14, y: 8}
+        - {x: -16, y: 7}
+        - {x: -16, y: -7}
+        - {x: -14, y: -9}
+        - {x: 12, y: -9}
+        - {x: 16, y: -8}
+        - {x: 16, y: 9}
+        - {x: 5, y: 10}
+    - name: GreenShard
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 928
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5, y: 10}
+        - {x: -10, y: 9}
+        - {x: -14, y: 8}
+        - {x: -16, y: 7}
+        - {x: -16, y: -7}
+        - {x: -14, y: -9}
+        - {x: 12, y: -9}
+        - {x: 16, y: -8}
+        - {x: 16, y: 9}
+        - {x: 5, y: 10}
+    - name: CyanShard
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 928
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5, y: 10}
+        - {x: -10, y: 9}
+        - {x: -14, y: 8}
+        - {x: -16, y: 7}
+        - {x: -16, y: -7}
+        - {x: -14, y: -9}
+        - {x: 12, y: -9}
+        - {x: 16, y: -8}
+        - {x: 16, y: 9}
+        - {x: 5, y: 10}
+    - name: BlueShard
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 928
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5, y: 10}
+        - {x: -10, y: 9}
+        - {x: -14, y: 8}
+        - {x: -16, y: 7}
+        - {x: -16, y: -7}
+        - {x: -14, y: -9}
+        - {x: 12, y: -9}
+        - {x: 16, y: -8}
+        - {x: 16, y: 9}
+        - {x: 5, y: 10}
+    - name: PurpleShard
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 928
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5, y: 10}
+        - {x: -10, y: 9}
+        - {x: -14, y: 8}
+        - {x: -16, y: 7}
+        - {x: -16, y: -7}
+        - {x: -14, y: -9}
+        - {x: 12, y: -9}
+        - {x: 16, y: -8}
+        - {x: 16, y: 9}
+        - {x: 5, y: 10}
+    - name: PinkShard
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 928
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5, y: 10}
+        - {x: -10, y: 9}
+        - {x: -14, y: 8}
+        - {x: -16, y: 7}
+        - {x: -16, y: -7}
+        - {x: -14, y: -9}
+        - {x: 12, y: -9}
+        - {x: 16, y: -8}
+        - {x: 16, y: 9}
+        - {x: 5, y: 10}
+    - name: WhiteShard
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 928
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 5, y: 16}
+        - {x: -16, y: 9}
+        - {x: -16, y: -10}
+        - {x: 6, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: RedArrow
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 896
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10, y: 12}
+        - {x: -16, y: 10}
+        - {x: -16, y: -9}
+        - {x: -8, y: -11}
+        - {x: 3, y: -11}
+        - {x: 13, y: -2}
+        - {x: 13, y: 5}
+        - {x: 5, y: 12}
+    - name: YellowArrow
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 896
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 6, y: 12}
+        - {x: -12, y: 12}
+        - {x: -16, y: 10}
+        - {x: -16, y: -10}
+        - {x: -11, y: -11}
+        - {x: 4, y: -11}
+        - {x: 12, y: -5}
+        - {x: 13, y: -1}
+        - {x: 13, y: 5}
+    - name: GreenArrow
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 896
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12, y: 12}
+        - {x: -15, y: 9}
+        - {x: -15, y: -8}
+        - {x: -10, y: -11}
+        - {x: 1, y: -11}
+        - {x: 14, y: -2}
+        - {x: 14, y: 7}
+        - {x: -1, y: 12}
+    - name: CyanArrow
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 896
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 6, y: 12}
+        - {x: -14, y: 12}
+        - {x: -16, y: 11}
+        - {x: -16, y: -10}
+        - {x: -12, y: -11}
+        - {x: 3, y: -11}
+        - {x: 10, y: -6}
+        - {x: 13, y: 0}
+        - {x: 13, y: 5}
+    - name: BlueArrow
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 896
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 12}
+        - {x: -16, y: -11}
+        - {x: 4, y: -11}
+        - {x: 13, y: -4}
+        - {x: 13, y: 7}
+        - {x: 12, y: 12}
+    - name: PurpleArrow
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 896
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10, y: 12}
+        - {x: -16, y: 9}
+        - {x: -16, y: -9}
+        - {x: -15, y: -11}
+        - {x: 2, y: -11}
+        - {x: 13, y: -6}
+        - {x: 13, y: 5}
+        - {x: 4, y: 12}
+    - name: PinkArrow
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 896
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -2, y: 12}
+        - {x: -12, y: 12}
+        - {x: -16, y: 8}
+        - {x: -16, y: -8}
+        - {x: -13, y: -11}
+        - {x: 1, y: -11}
+        - {x: 11, y: -8}
+        - {x: 13, y: -3}
+        - {x: 13, y: 5}
+        - {x: 5, y: 10}
+    - name: WhiteArrow
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 896
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4, y: 16}
+        - {x: -16, y: 10}
+        - {x: -16, y: -10}
+        - {x: -1, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: RedDarkArrow
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 864
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10, y: 12}
+        - {x: -16, y: 10}
+        - {x: -16, y: -9}
+        - {x: -8, y: -11}
+        - {x: 3, y: -11}
+        - {x: 13, y: -2}
+        - {x: 13, y: 5}
+        - {x: 5, y: 12}
+    - name: YellowDarkArrow
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 864
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 6, y: 12}
+        - {x: -12, y: 12}
+        - {x: -16, y: 10}
+        - {x: -16, y: -10}
+        - {x: -11, y: -11}
+        - {x: 4, y: -11}
+        - {x: 12, y: -5}
+        - {x: 13, y: -1}
+        - {x: 13, y: 5}
+    - name: GreenDarkArrow
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 864
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12, y: 12}
+        - {x: -15, y: 9}
+        - {x: -15, y: -8}
+        - {x: -10, y: -11}
+        - {x: 1, y: -11}
+        - {x: 14, y: -2}
+        - {x: 14, y: 7}
+        - {x: -1, y: 12}
+    - name: CyanDarkArrow
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 864
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 6, y: 12}
+        - {x: -14, y: 12}
+        - {x: -16, y: 11}
+        - {x: -16, y: -10}
+        - {x: -12, y: -11}
+        - {x: 3, y: -11}
+        - {x: 10, y: -6}
+        - {x: 13, y: 0}
+        - {x: 13, y: 5}
+    - name: BlueDarkArrow
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 864
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 12}
+        - {x: -16, y: -11}
+        - {x: 4, y: -11}
+        - {x: 13, y: -4}
+        - {x: 13, y: 7}
+        - {x: 12, y: 12}
+    - name: PurpleDarkArrow
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 864
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10, y: 12}
+        - {x: -16, y: 9}
+        - {x: -16, y: -9}
+        - {x: -15, y: -11}
+        - {x: 2, y: -11}
+        - {x: 13, y: -6}
+        - {x: 13, y: 5}
+        - {x: 4, y: 12}
+    - name: PinkDarkArrow
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 864
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -2, y: 12}
+        - {x: -12, y: 12}
+        - {x: -16, y: 8}
+        - {x: -16, y: -8}
+        - {x: -13, y: -11}
+        - {x: 1, y: -11}
+        - {x: 11, y: -8}
+        - {x: 13, y: -3}
+        - {x: 13, y: 5}
+        - {x: 5, y: 10}
+    - name: WhiteDarkArrow
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 864
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4, y: 16}
+        - {x: -16, y: 10}
+        - {x: -16, y: -14}
+        - {x: -10, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: RedCrawler1
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 832
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: RedCrawler2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 800
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 16}
+        - {x: -16, y: 15}
+        - {x: -16, y: -15}
+        - {x: -15, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: YellowCrawler1
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 832
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: YellowCrawler2
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 800
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 16}
+        - {x: -16, y: 15}
+        - {x: -16, y: -15}
+        - {x: -15, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: GreenCrawler1
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 832
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: GreenCrawler2
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 800
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 16}
+        - {x: -16, y: 15}
+        - {x: -16, y: -15}
+        - {x: -15, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: CyanCrawler1
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 832
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: CyanCrawler2
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 800
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 16}
+        - {x: -16, y: 15}
+        - {x: -16, y: -15}
+        - {x: -15, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: BlueCrawler1
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 832
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: BlueCrawler2
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 800
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 16}
+        - {x: -16, y: 15}
+        - {x: -16, y: -15}
+        - {x: -15, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: PurpleCrawler1
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 832
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: PurpleCrawler2
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 800
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 16}
+        - {x: -16, y: 15}
+        - {x: -16, y: -15}
+        - {x: -15, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: PinkCrawler1
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 832
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: PinkCrawler2
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 800
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 16}
+        - {x: -16, y: 15}
+        - {x: -16, y: -15}
+        - {x: -15, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: WhiteCrawler1
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 832
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: WhiteCrawler2
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 800
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 16}
+        - {x: -16, y: 15}
+        - {x: -16, y: -15}
+        - {x: -15, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+    - name: MegaOrb
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 114, y: -107}
+        - {x: 123, y: -95}
+        - {x: 128, y: -82}
+        - {x: 128, y: 81}
+        - {x: 115, y: 100}
+        - {x: 89, y: 123}
+        - {x: 78, y: 128}
+        - {x: -62, y: 128}
+        - {x: -68, y: 126}
+        - {x: -73, y: 124}
+        - {x: -113, y: 98}
+        - {x: -120, y: 93}
+        - {x: -128, y: 83}
+        - {x: -128, y: -84}
+        - {x: -121, y: -99}
+        - {x: -93, y: -125}
+        - {x: -83, y: -128}
+        - {x: 84, y: -128}
+        - {x: 91, y: -127}
+        - {x: 101, y: -119}
+    - name: RedBubble
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 53, y: 64}
+        - {x: -64, y: 64}
+        - {x: -64, y: -64}
+        - {x: 59, y: -64}
+        - {x: 64, y: -56}
+        - {x: 64, y: 54}
+    - name: YellowBubble
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 53, y: 64}
+        - {x: -64, y: 64}
+        - {x: -64, y: -64}
+        - {x: 59, y: -64}
+        - {x: 64, y: -56}
+        - {x: 64, y: 54}
+    - name: GreenBubble
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 53, y: 64}
+        - {x: -64, y: 64}
+        - {x: -64, y: -64}
+        - {x: 59, y: -64}
+        - {x: 64, y: -56}
+        - {x: 64, y: 54}
+    - name: CyanBubble
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 53, y: 64}
+        - {x: -64, y: 64}
+        - {x: -64, y: -64}
+        - {x: 59, y: -64}
+        - {x: 64, y: -56}
+        - {x: 64, y: 54}
+    - name: BlueBubble
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 53, y: 64}
+        - {x: -64, y: 64}
+        - {x: -64, y: -64}
+        - {x: 59, y: -64}
+        - {x: 64, y: -56}
+        - {x: 64, y: 54}
+    - name: PurpleBubble
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 53, y: 64}
+        - {x: -64, y: 64}
+        - {x: -64, y: -64}
+        - {x: 59, y: -64}
+        - {x: 64, y: -56}
+        - {x: 64, y: 54}
+    - name: PinkBubble
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 53, y: 64}
+        - {x: -64, y: 64}
+        - {x: -64, y: -64}
+        - {x: 59, y: -64}
+        - {x: 64, y: -56}
+        - {x: 64, y: 54}
+    - name: WhiteBubble
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 53, y: 64}
+        - {x: -64, y: 64}
+        - {x: -64, y: -64}
+        - {x: 59, y: -64}
+        - {x: 64, y: -56}
+        - {x: 64, y: 54}
+    - name: RedDarkBubble
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 53, y: 64}
+        - {x: -43, y: 64}
+        - {x: -56, y: 62}
+        - {x: -64, y: 52}
+        - {x: -64, y: -62}
+        - {x: -53, y: -64}
+        - {x: 62, y: -64}
+        - {x: 64, y: -61}
+        - {x: 64, y: 48}
+        - {x: 63, y: 54}
+    - name: YellowDarkBubble
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 53, y: 64}
+        - {x: -43, y: 64}
+        - {x: -56, y: 62}
+        - {x: -64, y: 52}
+        - {x: -64, y: -62}
+        - {x: -53, y: -64}
+        - {x: 62, y: -64}
+        - {x: 64, y: -61}
+        - {x: 64, y: 48}
+        - {x: 63, y: 54}
+    - name: GreenDarkBubble
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 53, y: 64}
+        - {x: -43, y: 64}
+        - {x: -56, y: 62}
+        - {x: -64, y: 52}
+        - {x: -64, y: -62}
+        - {x: -53, y: -64}
+        - {x: 62, y: -64}
+        - {x: 64, y: -61}
+        - {x: 64, y: 48}
+        - {x: 63, y: 54}
+    - name: CyanDarkBubble
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 53, y: 64}
+        - {x: -43, y: 64}
+        - {x: -56, y: 62}
+        - {x: -64, y: 52}
+        - {x: -64, y: -62}
+        - {x: -53, y: -64}
+        - {x: 62, y: -64}
+        - {x: 64, y: -61}
+        - {x: 64, y: 48}
+        - {x: 63, y: 54}
+    - name: BlueDarkBubble
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 53, y: 64}
+        - {x: -43, y: 64}
+        - {x: -56, y: 62}
+        - {x: -64, y: 52}
+        - {x: -64, y: -62}
+        - {x: -53, y: -64}
+        - {x: 62, y: -64}
+        - {x: 64, y: -61}
+        - {x: 64, y: 48}
+        - {x: 63, y: 54}
+    - name: PurpleDarkBubble
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 53, y: 64}
+        - {x: -43, y: 64}
+        - {x: -56, y: 62}
+        - {x: -64, y: 52}
+        - {x: -64, y: -62}
+        - {x: -53, y: -64}
+        - {x: 62, y: -64}
+        - {x: 64, y: -61}
+        - {x: 64, y: 48}
+        - {x: 63, y: 54}
+    - name: PinkDarkBubble
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 53, y: 64}
+        - {x: -43, y: 64}
+        - {x: -56, y: 62}
+        - {x: -64, y: 52}
+        - {x: -64, y: -62}
+        - {x: -53, y: -64}
+        - {x: 62, y: -64}
+        - {x: 64, y: -61}
+        - {x: 64, y: 48}
+        - {x: 63, y: 54}
+    - name: WhiteDarkBubble
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 53, y: 64}
+        - {x: -43, y: 64}
+        - {x: -56, y: 62}
+        - {x: -64, y: 52}
+        - {x: -64, y: -62}
+        - {x: -53, y: -64}
+        - {x: 62, y: -64}
+        - {x: 64, y: -61}
+        - {x: 64, y: 48}
+        - {x: 63, y: 54}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
