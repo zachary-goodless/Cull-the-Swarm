@@ -51,6 +51,8 @@ public class MainMenuEventHandler : MonoBehaviour
 	public GameObject mControlsPanel;
 	public GameObject mCreditsPanel;
 
+	public GameObject quitConfirmation;
+
 	public ScreenFade mScreenFader;
 	public GameObject gmPrefab;
 
@@ -109,7 +111,8 @@ public class MainMenuEventHandler : MonoBehaviour
 
 	public void handleQuitButtonClicked()
 	{
-		//TODO
+		toggleButtons();
+		quitConfirmation.SetActive(true);
 	}
 
 //--------------------------------------------------------------------------------------------
