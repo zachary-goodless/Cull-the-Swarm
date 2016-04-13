@@ -61,40 +61,39 @@ public class Bullet : MonoBehaviour {
 
     // Apply the changes as specified in the action. If the action is relative, add the action to the existing values rather than replacing.
     public void ExecuteAction(BulletAction action) {
-
-        if (action.relative) {
-            if (action.speed != float.MinValue) {
+        if(action.type == 0)
+        {
+            if (action.relative)
+            {
                 speed += action.speed;
-            }
-            if (action.angle != float.MinValue) {
                 angle += action.angle;
-            }
-            if (action.acceleration != float.MinValue) {
-                acceleration += action.acceleration;
-            }
-            if (action.maxSpeed != float.MinValue) {
-                maxSpeed += action.maxSpeed;
-            }
-            if (action.angularVelocity != float.MinValue) {
-                angularVelocity += action.angularVelocity;
-            }
-        } else {
-            if (action.speed != float.MinValue) {
-                Debug.Log("Setting speed");
+            } else
+            {
                 speed = action.speed;
-            }
-            if (action.angle != float.MinValue) {
                 angle = action.angle;
             }
-            if (action.acceleration != float.MinValue) {
+        }
+        else if (action.type == 1)
+        {
+            if (action.relative)
+            {
+                speed += action.speed;
+                angle += action.angle;
+                acceleration += action.acceleration;
+                maxSpeed += action.maxSpeed;
+                angularVelocity += action.angularVelocity;
+            }
+            else
+            {
+                speed = action.speed;
+                angle = action.angle;
                 acceleration = action.acceleration;
-            }
-            if (action.maxSpeed != float.MinValue) {
                 maxSpeed = action.maxSpeed;
-            }
-            if (action.angularVelocity != float.MinValue) {
                 angularVelocity = action.angularVelocity;
             }
+        } else if (action.type == 2)
+        {
+            SetGraphic(BulletManager.propertyList[action.newGraphic]);
         }
     }
 
@@ -170,9 +169,9 @@ public class Bullet : MonoBehaviour {
         GetComponent<CircleCollider2D>().radius = t.radius;
         GetComponent<SpriteRenderer>().sprite = t.graphicIndex;
         if (t.isAddBlend) {
-            GetComponent<SpriteRenderer>().material = BulletManager.manager.bulletMats[1];
+            GetComponent<SpriteRenderer>().material = BulletManager.bulletMats[1];
         } else {
-            GetComponent<SpriteRenderer>().material = BulletManager.manager.bulletMats[0];
+            GetComponent<SpriteRenderer>().material = BulletManager.bulletMats[0];
         }
     }
 }

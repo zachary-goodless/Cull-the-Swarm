@@ -15,8 +15,9 @@ public class Player : MonoBehaviour {
 	float shipTilt = 0f;
 
 	public ParticleSystem ps;
+    public ParticleSystem ps2;
 
-	bool hitCool;
+    bool hitCool;
 	public bool dead;
 	int health;
 	HealthBar hb;
@@ -105,7 +106,8 @@ public class Player : MonoBehaviour {
 	{
 		if ((other.tag == "Bullet" || other.tag == "EnemyHit" || other.tag == "WormPart")&& !hitCool) {
 			GetComponent<AudioSource> ().Play ();
-			OnDamage ();
+            ps2.GetComponent<ParticleSystem>().Play();
+            OnDamage ();
 		}
 	}
 
@@ -116,7 +118,7 @@ public class Player : MonoBehaviour {
 		hitCool = true;
 		health--;
 		hb.health = health;
-		if (health <= 0) {
+        if (health <= 0) {
 			OnDeath ();
 		} else {
 			StartCoroutine ("HitCool");
