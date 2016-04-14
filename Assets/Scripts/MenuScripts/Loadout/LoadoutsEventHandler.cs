@@ -264,16 +264,14 @@ public class LoadoutsEventHandler : MonoBehaviour
 			Debug.Log("NEW SECONDARY SELECTED: " + si);
 
 			setChoiceButtonsActive();
+			return;
 		}
 
-		//BACK BUTTON
-		else
-		{
-			toggleMainPanelButtonsActive();
+		//BACK BUTTON -- also chassis and primary, button calls for next panel
+		toggleMainPanelButtonsActive();
 
-			mChoicePanel.SetActive(false);
-			mDataPanel.SetActive(false);
-		}
+		mChoicePanel.SetActive(false);
+		mDataPanel.SetActive(false);
 	}
 
 //--------------------------------------------------------------------------------------------
