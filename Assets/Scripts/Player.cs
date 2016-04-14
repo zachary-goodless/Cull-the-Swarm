@@ -40,6 +40,7 @@ public class Player : MonoBehaviour {
 	Loadout loadout;
 
 	Score scoreHandle;	//JUSTIN
+	public GameObject retryDialog;	//JUSTIN
 
 	//JUSTIN
 	public PauseMenu pauseMenu;
@@ -164,7 +165,10 @@ public class Player : MonoBehaviour {
 		mesh.transform.rotation = Quaternion.Euler(0f, shipTilt, 0f);
 
 		if (sf.finished && dead) {
-			SceneManager.LoadScene ((int)SceneIndex.WORLD_MAP);
+			//JUSTIN
+			//SceneManager.LoadScene ((int)SceneIndex.WORLD_MAP);
+			retryDialog.SetActive(true);
+			//JUSTIN
 		}
 	}
 
