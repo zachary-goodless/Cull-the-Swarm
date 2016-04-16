@@ -54,6 +54,7 @@ public class SwatterBullet : MonoBehaviour {
 	void OnTriggerStay2D (Collider2D other){
 		if (other.tag == "EnemyHit" && timer > 0.2 && timer < 0.6) {
 			other.gameObject.GetComponentInParent<Movement> ().health -= dmg;
+			other.gameObject.GetComponentInParent<Movement> ().Blink ();
 			Destroy (gameObject);
 		} 
 	}

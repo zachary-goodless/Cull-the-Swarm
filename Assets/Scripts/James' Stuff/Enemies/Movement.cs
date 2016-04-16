@@ -15,7 +15,7 @@ public class Movement : MonoBehaviour {
 	bool fromBackground;
 
 	//General Stats
-	float speed;
+	public float speed;
 	float lifeTime;
 	float dirX;
 	float dirY;
@@ -93,6 +93,9 @@ public class Movement : MonoBehaviour {
 	Score scoreHandle;
 	//JUSTIN
 
+	MeshRenderer[] mesh;
+	bool blinking;
+
 	void Awake(){
 		lifeTimer = 0;
 		linearMov = false;
@@ -104,11 +107,14 @@ public class Movement : MonoBehaviour {
 		topToSide = false;
 		sideToBottom = false;
 		fromBackground = false;
+		blinking = false;
 
 		col = GetComponent<CircleCollider2D> ();
 
 		doesTilt = true;
 		screenDeath = true;
+
+		mesh = GetComponentsInChildren<MeshRenderer> ();
 
 		//JUSTIN
 		//get handle to score HUD object
@@ -169,6 +175,31 @@ public class Movement : MonoBehaviour {
 		transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.position.x / 20, transform.eulerAngles.z));
 	}
 
+	public void Blink(){
+
+		blinking = true;
+
+		foreach (MeshRenderer m in mesh) {
+			if (m) {
+				m.material.SetColor ("_Color", Color.red);
+			}
+		}
+
+		Invoke ("Reveal", .1f);
+	}
+
+	void Reveal(){
+		
+		foreach (MeshRenderer m in mesh) {
+			if (m) {
+				m.material.SetColor ("_Color", Color.white);
+			}
+		}
+
+		blinking = false;
+
+	}
+
 	void HandleLife(){
 		lifeTimer += Time.deltaTime;
 		if (health <= 0) {
@@ -203,7 +234,7 @@ public class Movement : MonoBehaviour {
 			Destroy (gameObject);
 		}
 		//If it's been on and hten off screen, destroy it
-		if (!mr.isVisible && beenSeen && screenDeath) {
+		if (!mr.isVisible && beenSeen && screenDeath && !blinking) {
 			Destroy (gameObject);
 		}
 	}
