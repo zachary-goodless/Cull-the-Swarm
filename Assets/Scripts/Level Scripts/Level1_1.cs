@@ -23,7 +23,7 @@ public class Level1_1 : MonoBehaviour {
 	IEnumerator LevelLayout(){
 		yield return new WaitForSeconds (5f);
 		//waves.StartOne ();
-		waves.StartSpawnOsc(snail,2,0,300,200,false,true,200,0,-1,50,-250,waves.upScreen,Quaternion.identity,500,0,"d1");
+		waves.StartSpawnOsc(drone,2,0,300,200,false,true,200,0,-1,50,-250,waves.upScreen,Quaternion.identity,500,0,"d1");
 		waves.StartSpawnOsc(drone,3,0,300,200,false,true,200,0,-1,50,-500,waves.upScreen+150,Quaternion.identity,500,0,"d1");
 		yield return new WaitForSeconds (13f);
 		//waves.StartTwo();
