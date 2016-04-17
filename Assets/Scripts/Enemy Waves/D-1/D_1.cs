@@ -13,16 +13,58 @@ public class D_1 : MonoBehaviour
     public GameObject missile;
     public GameObject turret;
 
+	public DialogueBox dialog;
+
     void Start()
     {
+		sf = GameObject.Find("ScreenFade").GetComponent<ScreenFade>();
         StartCoroutine ("LevelLayout2");
-        sf = GameObject.Find("ScreenFade").GetComponent<ScreenFade>();
     }
 
     IEnumerator LevelLayout2()
     {
+		//JUSTIN
+		Coroutine co;
+
+		StartCoroutine(sf.FadeFromBlack());
+		yield return new WaitForSeconds(2f);
+		co = StartCoroutine(dialog.handleDialogue(3f, Characters.COLONEL, "How are you adjusting to the altitude, Roger?"));
+		yield return dialog.WaitForSecondsOrSkip(3.5f, co);
+		co = StartCoroutine(dialog.handleDialogue(6f, Characters.ROGER, "It's none too different from the standard fighter jets I've flown before, sir. Bit smoother, actually."));
+		yield return dialog.WaitForSecondsOrSkip(6.5f, co);
+		co = StartCoroutine(dialog.handleDialogue(1.5f, Characters.COLONEL, "Glad to hear it."));
+		yield return dialog.WaitForSecondsOrSkip(2f, co);
+		co = StartCoroutine(dialog.handleDialogue(5f, Characters.COLONEL, "We still haven't pinpointed the location of this alien invasion, but we'll need every pilot we can manage to fight off these hoards."));
+		yield return dialog.WaitForSecondsOrSkip(5.5f, co);
+		co = StartCoroutine(dialog.handleDialogue(5f, Characters.COLONEL, "There's a small swarm nearing our base as we speak. Should make for an excellent training exercise."));
+		yield return dialog.WaitForSecondsOrSkip(5.5f, co);
+		co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "Well, with a ship like this it shouldn't be a problem."));
+		yield return dialog.WaitForSecondsOrSkip(3.5f, co);
+		co = StartCoroutine(dialog.handleDialogue(2f, Characters.STAMPER, "Much obliged."));
+		yield return dialog.WaitForSecondsOrSkip(2.5f, co);
+		co = StartCoroutine(dialog.handleDialogue(2f, Characters.ROGER, "I'm sorry. Have we met?"));
+		yield return dialog.WaitForSecondsOrSkip(2.5f, co);
+		co = StartCoroutine(dialog.handleDialogue(6f, Characters.COLONEL, "This is Calvin Stamper. He's personally responsible for that ship you're piloting."));
+		yield return dialog.WaitForSecondsOrSkip(6.5f, co);
+		co = StartCoroutine(dialog.handleDialogue(6f, Characters.COLONEL, "I've asked him to contribute his wisdom to your radio support team on missions."));
+		yield return dialog.WaitForSecondsOrSkip(6.5f, co);
+		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.ROGER, "Support team? Who else is on call?"));
+		yield return dialog.WaitForSecondsOrSkip(3f, co);
+		co = StartCoroutine(dialog.handleDialogue(3f, Characters.COLONEL, "Ah, yes. I believe you already know Martha."));
+		yield return dialog.WaitForSecondsOrSkip(3.5f, co);
+		co = StartCoroutine(dialog.handleDialogue(2f, Characters.ROGER, "Oh, God. Please not her..."));
+		yield return dialog.WaitForSecondsOrSkip(2.5f, co);
+		co = StartCoroutine(dialog.handleDialogue(6f, Characters.MARTHA, "I want to be here as much as you do. You know how much I hated my last job."));
+		yield return dialog.WaitForSecondsOrSkip(6.5f, co);
+		co = StartCoroutine(dialog.handleDialogue(5f, Characters.ROGER, "Really? Telephone operating was that stressful of a job?"));
+		yield return dialog.WaitForSecondsOrSkip(5.5f, co);
+		co = StartCoroutine(dialog.handleDialogue(6f, Characters.COLONEL, "That'll be enough! Say what you will, Roger, but she's damn fine at handling intel."));
+		yield return dialog.WaitForSecondsOrSkip(6.5f, co);
+		co = StartCoroutine(dialog.handleDialogue(3f, Characters.COLONEL, "Now look alive! They're headed your way!"));
+		//JUSTIN
+
       // Timing and placement need adjustment, but here's an (incomplete) general outline of what was in the GDD
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
         waves.StartSpawnLinear(drone, 5, 2, 300, 1, -1, 50, waves.leftScreen, waves.upScreen, Quaternion.identity, 200, 0,"d1");
         waves.StartSpawnLinear(drone, 2, 2, 200, -1, -1, 50, waves.rightScreen, waves.upScreen, Quaternion.identity, 200, 0,"d1");
         Debug.Log(waves.leftScreen + " " + waves.upScreen);
@@ -51,8 +93,13 @@ public class D_1 : MonoBehaviour
         yield return new WaitForSeconds(20f);
         waves.StartLR6Alternate(turret);
         waves.StartDoubleWorms();
-        sf.Fade();
+		StartCoroutine(sf.FadeToBlack());
         yield return new WaitForSeconds(2f);
+
+		//JUSTIN
+		co = StartCoroutine(dialog.handleDialogue(5f, Characters.COLONEL, "Excellent work, Roger. You were made for this machine."));
+		yield return dialog.WaitForSecondsOrSkip(5.5f, co);
+		//JUSTIN
         finished.handleLevelCompleted((SceneIndex)SceneManager.GetActiveScene().buildIndex);
         yield break;
     }

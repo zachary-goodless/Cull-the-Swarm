@@ -11,8 +11,8 @@ public enum Characters
 	ROGER =		0,
 	COLONEL = 	1,
 	STAMPER = 	2,
-	MARTHA = 	4,
-	DOUCHE =	5
+	MARTHA = 	3,
+	DOUCHE =	4
 }
 
 public class DialogueBox : MonoBehaviour
@@ -24,6 +24,8 @@ public class DialogueBox : MonoBehaviour
 
 	//PRIVATE
 	float timeBetweenTicks = 0.01f;
+
+	bool isSkipping = false;
 
 	private Sprite[] speakerSprites = null;
 	private string[] speakerNames = new string[5]
@@ -37,12 +39,7 @@ public class DialogueBox : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	public void handleDialogue(float duration, Characters character, string content)
-	{
-		StartCoroutine(handleDialogueHelper(duration, character, content));
-	}
-
-	IEnumerator handleDialogueHelper(float duration, Characters character, string content)
+	public IEnumerator handleDialogue(float duration, Characters character, string content)
 	{
 		//load the speaker sprites if we haven't already
 		if(speakerSprites == null)
@@ -62,19 +59,55 @@ public class DialogueBox : MonoBehaviour
 		//for the length of the content string...
 		for(int i = 0; i < content.Length; ++i)
 		{
+			//if skip key pressed...
+			if(Input.GetKeyDown(KeyCode.Tab))
+			{
+				//add all dialogue and exit early
+				mDialogue.text = content;
+				isSkipping = true;
+				break;
+			}
+
 			//add the content string to the dialogue text one character at a time
 			mDialogue.text += content.Substring(i, 1);
 
 			//update remaining duration
-			duration -= timeBetweenTicks;
+			duration -= Time.deltaTime;
 			yield return new WaitForSeconds(timeBetweenTicks);
 		}
 
-		//show the dialogue for the remaining duration
-		yield return new WaitForSeconds(duration);
+		if(!isSkipping)
+		{
+			yield return new WaitForSeconds(duration);
+			gameObject.SetActive(false);
+			isSkipping = false;
+		}
+
+		isSkipping = false;
+		yield break;
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	public float waitTime;
+	public IEnumerator WaitForSecondsOrSkip(float duration, Coroutine co)
+	{
+		waitTime = duration;
+		while(waitTime > 0f)
+		{
+			waitTime -= Time.deltaTime;
+			if(Input.GetKeyDown(KeyCode.Tab))
+			{
+				gameObject.SetActive(false);
+				waitTime = 0f;
+
+				StopCoroutine(co);
+			}
+
+			yield return new WaitForSeconds(Time.deltaTime);
+		}
 
 		gameObject.SetActive(false);
-
-		yield return null;
+		yield break;
 	}
 }
