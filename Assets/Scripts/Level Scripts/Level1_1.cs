@@ -8,6 +8,8 @@ public class Level1_1 : MonoBehaviour {
 	public Waves waves;
 	public ScreenFade sf;
 
+	public LevelCompleteHandler finished;
+
 	public GameObject drone;
 	public GameObject missile;
 	public GameObject turret;
@@ -15,19 +17,6 @@ public class Level1_1 : MonoBehaviour {
 	void Start () {
 		StartCoroutine ("LevelLayout");
 		sf = GameObject.Find ("ScreenFade").GetComponent<ScreenFade> ();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetKeyDown (KeyCode.Q)) {
-			waves.StartTest ();
-		}
-		if (Input.GetKeyDown (KeyCode.Y)) {
-			waves.StartTemplate ();
-		}
-		if (sf.finished) {
-			SceneManager.LoadScene ((int)SceneIndex.WORLD_MAP);
-		}
 	}
 
 	IEnumerator LevelLayout(){
@@ -113,6 +102,7 @@ public class Level1_1 : MonoBehaviour {
 		waves.StartSpawnRCornerCircle(drone,0,0,200,1,50,"d6");
 		yield return new WaitForSeconds (16f);
 		sf.Fade ();
+		finished.handleLevelCompleted((SceneIndex)SceneManager.GetActiveScene().buildIndex);
 		yield break;
 	}
 
