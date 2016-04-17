@@ -15,6 +15,8 @@ public class Cave2 : MonoBehaviour {
 	public GameObject turret;
 	public GameObject snail;
 
+	public GameObject dialog;
+
 	void Start () {
 		StartCoroutine ("LevelLayout");
 		sf = GameObject.Find ("ScreenFade").GetComponent<ScreenFade> ();
