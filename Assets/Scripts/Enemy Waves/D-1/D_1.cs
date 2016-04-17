@@ -28,6 +28,7 @@ public class D_1 : MonoBehaviour
 
 		StartCoroutine(sf.FadeFromBlack());
 		yield return new WaitForSeconds(2f);
+
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.COLONEL, "How are you adjusting to the altitude, Roger?"));
 		yield return dialog.WaitForSecondsOrSkip(3.5f, co);
 		co = StartCoroutine(dialog.handleDialogue(6f, Characters.ROGER, "It's none too different from the standard fighter jets I've flown before, sir. Bit smoother, actually."));
@@ -93,12 +94,14 @@ public class D_1 : MonoBehaviour
         yield return new WaitForSeconds(20f);
         waves.StartLR6Alternate(turret);
         waves.StartDoubleWorms();
-		StartCoroutine(sf.FadeToBlack());
-        yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(15f);
 
 		//JUSTIN
 		co = StartCoroutine(dialog.handleDialogue(5f, Characters.COLONEL, "Excellent work, Roger. You were made for this machine."));
 		yield return dialog.WaitForSecondsOrSkip(5.5f, co);
+
+		StartCoroutine(sf.FadeToBlack());
+		yield return new WaitForSeconds(2f);
 		//JUSTIN
 
         finished.handleLevelCompleted((SceneIndex)SceneManager.GetActiveScene().buildIndex);
