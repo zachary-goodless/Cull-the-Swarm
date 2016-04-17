@@ -15,7 +15,7 @@ public class Cave2 : MonoBehaviour {
 	public GameObject turret;
 	public GameObject snail;
 
-	public GameObject dialog;
+	public DialogueBox dialog;
 
 	void Start () {
 		StartCoroutine ("LevelLayout");

@@ -15,14 +15,23 @@ public class Cave1 : MonoBehaviour {
 	public GameObject turret;
 	public GameObject snail;
 
-	public GameObject dialog;
+	public DialogueBox dialog;
 
 	void Start () {
-		StartCoroutine ("LevelLayout");
 		sf = GameObject.Find ("ScreenFade").GetComponent<ScreenFade> ();
+		StartCoroutine ("LevelLayout");
 	}
 
 	IEnumerator LevelLayout(){
+
+		//JUSTIN
+		Coroutine co;
+
+		StartCoroutine(sf.FadeFromBlack());
+		yield return new WaitForSeconds(2f);
+
+		//
+		//JUSTIN
 		
 		yield return new WaitForSeconds (5f);
 		//Wave One- One worm, straight down center to bottom.
@@ -126,7 +135,13 @@ public class Cave1 : MonoBehaviour {
 
 		yield return new WaitForSeconds (16f);
 
-		sf.Fade ();
+		//JUSTIN
+		//
+
+		StartCoroutine(sf.FadeToBlack());
+		yield return new WaitForSeconds(2f);
+		//JUSTIN
+
 		finished.handleLevelCompleted((SceneIndex)SceneManager.GetActiveScene().buildIndex);
 		yield break;
 	}
