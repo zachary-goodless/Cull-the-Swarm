@@ -25,6 +25,7 @@ public class DialogueBox : MonoBehaviour
 	//PRIVATE
 	float timeBetweenTicks = 0.01f;
 
+	bool isActive = false;
 	bool isSkipping = false;
 
 	private Sprite[] speakerSprites = null;
@@ -55,6 +56,7 @@ public class DialogueBox : MonoBehaviour
 
 		mDialogue.text = "";
 		gameObject.SetActive(true);
+		isActive = true;
 
 		//for the length of the content string...
 		for(int i = 0; i < content.Length; ++i)
@@ -76,13 +78,14 @@ public class DialogueBox : MonoBehaviour
 			yield return new WaitForSeconds(timeBetweenTicks);
 		}
 
+		isActive = false;
+
 		if(!isSkipping)
 		{
 			yield return new WaitForSeconds(duration);
 			gameObject.SetActive(false);
-			isSkipping = false;
 		}
-
+			
 		isSkipping = false;
 		yield break;
 	}
@@ -92,19 +95,20 @@ public class DialogueBox : MonoBehaviour
 	public float waitTime;
 	public IEnumerator WaitForSecondsOrSkip(float duration, Coroutine co)
 	{
+		//this handles skippable waits (such as between dialogue)
 		waitTime = duration;
 		while(waitTime > 0f)
 		{
-			waitTime -= Time.deltaTime;
-			if(Input.GetKeyDown(KeyCode.Tab))
+			//if the skip button is pressed and the dialogue box is not filling in content...
+			if(Input.GetKeyDown(KeyCode.Tab) && !isActive)
 			{
-				gameObject.SetActive(false);
+				//set object to inactive, break, and stop the previous coroutine
 				waitTime = 0f;
-
 				StopCoroutine(co);
 			}
 
 			yield return new WaitForSeconds(Time.deltaTime);
+			waitTime -= Time.deltaTime;
 		}
 
 		gameObject.SetActive(false);

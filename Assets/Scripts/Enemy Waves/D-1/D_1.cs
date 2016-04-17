@@ -61,10 +61,10 @@ public class D_1 : MonoBehaviour
 		co = StartCoroutine(dialog.handleDialogue(6f, Characters.COLONEL, "That'll be enough! Say what you will, Roger, but she's damn fine at handling intel."));
 		yield return dialog.WaitForSecondsOrSkip(6.5f, co);
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.COLONEL, "Now look alive! They're headed your way!"));
+		yield return dialog.WaitForSecondsOrSkip(3.5f, co);
 		//JUSTIN
 
       // Timing and placement need adjustment, but here's an (incomplete) general outline of what was in the GDD
-        yield return new WaitForSeconds(1f);
         waves.StartSpawnLinear(drone, 5, 2, 300, 1, -1, 50, waves.leftScreen, waves.upScreen, Quaternion.identity, 200, 0,"d1");
         waves.StartSpawnLinear(drone, 2, 2, 200, -1, -1, 50, waves.rightScreen, waves.upScreen, Quaternion.identity, 200, 0,"d1");
         Debug.Log(waves.leftScreen + " " + waves.upScreen);
@@ -100,6 +100,7 @@ public class D_1 : MonoBehaviour
 		co = StartCoroutine(dialog.handleDialogue(5f, Characters.COLONEL, "Excellent work, Roger. You were made for this machine."));
 		yield return dialog.WaitForSecondsOrSkip(5.5f, co);
 		//JUSTIN
+
         finished.handleLevelCompleted((SceneIndex)SceneManager.GetActiveScene().buildIndex);
         yield break;
     }
