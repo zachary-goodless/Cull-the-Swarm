@@ -15,13 +15,49 @@ public class Level1_1 : MonoBehaviour {
 	public GameObject turret;
 	public GameObject snail;
 
+	public DialogueBox dialog;
+
 	void Start () {
-		StartCoroutine ("LevelLayout");
 		sf = GameObject.Find ("ScreenFade").GetComponent<ScreenFade> ();
+		StartCoroutine ("LevelLayout");
 	}
 
 	IEnumerator LevelLayout(){
-		yield return new WaitForSeconds (5f);
+
+		//JUSITN
+		Coroutine co;
+
+		StartCoroutine(sf.FadeFromBlack());
+		yield return new WaitForSeconds(2f);
+
+		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.STAMPER, "OK, Roger, you've entered city limits."));
+		yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+		co = StartCoroutine(dialog.handleDialogue(4.5f, Characters.MARTHA, "We've got multiple intel reports that these things have launched an attack on this area."));
+		yield return dialog.WaitForSecondsOrSkip(3.5f, co);
+		co = StartCoroutine(dialog.handleDialogue(5f, Characters.ROGER, "Intel? This invasion is probably being reported on every news station in the country!"));
+		yield return dialog.WaitForSecondsOrSkip(4f, co);
+		co = StartCoroutine(dialog.handleDialogue(4f, Characters.ROGER, "Are we really pretending that this is classified information?"));
+		yield return dialog.WaitForSecondsOrSkip(3f, co);
+		co = StartCoroutine(dialog.handleDialogue(5f, Characters.MARTHA, "Don't snap your cap with me! I'm just here to relay information."));
+		yield return dialog.WaitForSecondsOrSkip(4f, co);
+		co = StartCoroutine(dialog.handleDialogue(5f, Characters.ROGER, "Then could you explain why the military only sent one ship to combat this mess?"));
+		yield return dialog.WaitForSecondsOrSkip(4f, co);
+		co = StartCoroutine(dialog.handleDialogue(6f, Characters.STAMPER, "I'm afraid that's above my paygrade. The Colonel seemed pleased as punch with how you handled things back at base."));
+		yield return dialog.WaitForSecondsOrSkip(5f, co);
+		co = StartCoroutine(dialog.handleDialogue(4f, Characters.STAMPER, "Maybe he just has a lot of confidence in you."));
+		yield return dialog.WaitForSecondsOrSkip(4f, co);
+		co = StartCoroutine(dialog.handleDialogue(4f, Characters.ROGER, "We don't have the budget to send more ships, do we?"));
+		yield return dialog.WaitForSecondsOrSkip(3f, co);
+		co = StartCoroutine(dialog.handleDialogue(1f, Characters.STAMPER, "..."));
+		yield return dialog.WaitForSecondsOrSkip(1f, co);
+		co = StartCoroutine(dialog.handleDialogue(2f, Characters.STAMPER, "That's... classified."));
+		yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+		co = StartCoroutine(dialog.handleDialogue(1.5f, Characters.ROGER, "I'm sure."));
+		yield return dialog.WaitForSecondsOrSkip(1f, co);
+		co = StartCoroutine(dialog.handleDialogue(4.5f, Characters.MARTHA, "Hey! Focus! There's a swarm coming your way!"));
+		yield return dialog.WaitForSecondsOrSkip(4f, co);
+		//JUSTIN
+
 		//waves.StartOne ();
 		waves.StartSpawnOsc(drone,2,0,300,200,false,true,200,0,-1,50,-250,waves.upScreen,Quaternion.identity,500,0,"d1");
 		waves.StartSpawnOsc(drone,3,0,300,200,false,true,200,0,-1,50,-500,waves.upScreen+150,Quaternion.identity,500,0,"d1");
@@ -102,7 +138,17 @@ public class Level1_1 : MonoBehaviour {
 		waves.StartSpawnLCornerCircle(drone,0,0,200,1,50,"d6");
 		waves.StartSpawnRCornerCircle(drone,0,0,200,1,50,"d6");
 		yield return new WaitForSeconds (16f);
-		sf.Fade ();
+
+		//JUSITN
+		co = StartCoroutine(dialog.handleDialogue(2f, Characters.ROGER, "Now we're trucking!"));
+		yield return dialog.WaitForSecondsOrSkip(1f, co);
+		co = StartCoroutine(dialog.handleDialogue(4.5f, Characters.STAMPER, "Don't get too eager yet. There's still quite a ways to go."));
+		yield return dialog.WaitForSecondsOrSkip(3.5f, co);
+
+		StartCoroutine(sf.FadeToBlack());
+		yield return new WaitForSeconds(2f);
+		//JUSTIN
+
 		finished.handleLevelCompleted((SceneIndex)SceneManager.GetActiveScene().buildIndex);
 		yield break;
 	}

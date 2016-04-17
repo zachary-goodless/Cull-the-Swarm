@@ -13,17 +13,36 @@ public class Level1_2 : MonoBehaviour
     public GameObject missile;
     public GameObject turret;
 
+	public DialogueBox dialog;
+
     void Start()
     {
+		sf = GameObject.Find("ScreenFade").GetComponent<ScreenFade>();
         StartCoroutine("LevelLayout2");
-        sf = GameObject.Find("ScreenFade").GetComponent<ScreenFade>();
     }
 
     IEnumerator LevelLayout2()
     {
+		//JUSTIN
+		Coroutine co;
+
+		StartCoroutine(sf.FadeFromBlack());
+		yield return new WaitForSeconds(2f);
+
+		co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "You don't care much for small victories, do you Stamper?"));
+		yield return dialog.WaitForSecondsOrSkip(2f, co);
+		co = StartCoroutine(dialog.handleDialogue(5f, Characters.STAMPER, "No, no. You keep swatting flies from the sky. Stop the presses, it's D-Day all over again!"));
+		yield return dialog.WaitForSecondsOrSkip(4f, co);
+		co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "I'm sorry, do you want to get cozy in this cockpit?"));
+		yield return dialog.WaitForSecondsOrSkip(2f, co);
+		co = StartCoroutine(dialog.handleDialogue(4f, Characters.MARTHA, "Both of you cut it out! Roger, just go shoot more flies."));
+		yield return dialog.WaitForSecondsOrSkip(3f, co);
+		co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "I'd rather shoot flies than get on your bad side."));
+		yield return dialog.WaitForSecondsOrSkip(2f, co);
+		//JUSTIN
+
         // Timing and placement need adjustment, but here's an (incomplete) general outline of what was in the GDD
 
-        yield return new WaitForSeconds(5f);
         waves.StartSpawnInnerCircle(drone, 0, 0, 180, 1, 50, "d1");
        yield return new WaitForSeconds(2f);
         waves.StartSpawnLCornerCircle(turret, 0, 0, 250, 1, 50, "t3");
@@ -98,7 +117,19 @@ public class Level1_2 : MonoBehaviour
         waves.StartSpawnLinear(turret, 5, 1.5f, 160, 0, -1, 60, 300, waves.upScreen, Quaternion.identity, 0, 0, "t3");
         waves.StartSpawnFollow(drone, 5, 1.5f, -.05f, 0, 200, 1, 50, -600, waves.upScreen, Quaternion.identity, 0, 0, "d23");
         yield return new WaitForSeconds(20f);
-        sf.Fade();
+
+		//JUSTIN
+		co = StartCoroutine(dialog.handleDialogue(2f, Characters.STAMPER, "Great job, Roger. You're nearing the heart of the city."));
+		yield return dialog.WaitForSecondsOrSkip(1f, co);
+		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.ROGER, "What do I have to look forward to there?"));
+		yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+		co = StartCoroutine(dialog.handleDialogue(2f, Characters.MARTHA, "Nothing good..."));
+		yield return dialog.WaitForSecondsOrSkip(1f, co);
+
+		StartCoroutine(sf.FadeToBlack());
+		yield return new WaitForSeconds(2f);
+		//JUSTIN
+
         finished.handleLevelCompleted((SceneIndex)SceneManager.GetActiveScene().buildIndex);
         yield break;
     }

@@ -74,7 +74,7 @@ public class DialogueBox : MonoBehaviour
 			mDialogue.text += content.Substring(i, 1);
 
 			//update remaining duration
-			duration -= Time.deltaTime;
+			duration -= timeBetweenTicks;
 			yield return new WaitForSeconds(timeBetweenTicks);
 		}
 
@@ -104,13 +104,13 @@ public class DialogueBox : MonoBehaviour
 			{
 				//set object to inactive, break, and stop the previous coroutine
 				waitTime = 0f;
-				StopCoroutine(co);
 			}
 
 			yield return new WaitForSeconds(Time.deltaTime);
 			waitTime -= Time.deltaTime;
 		}
 
+		StopCoroutine(co);
 		gameObject.SetActive(false);
 		yield break;
 	}
