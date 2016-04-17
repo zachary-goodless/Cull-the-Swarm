@@ -7,7 +7,7 @@ public class FlamethrowerPrimary : MonoBehaviour {
 	float shootCool;
 	float shootTimer;
 	bool cooling;
-	public GameObject bullet;
+	public GameObject[] bullet = new GameObject[2];
 	private Player player;
 	float degrees;
 	bool rotRight;
@@ -18,7 +18,9 @@ public class FlamethrowerPrimary : MonoBehaviour {
 		shootTimer = 0;
 		cooling = false;
 		player = GetComponent<Player> ();
-		bullet = Resources.Load ("PlayerBullets/FireTestBullet") as GameObject;
+
+		bullet[0] = Resources.Load ("PlayerBullets/FireBullet") as GameObject;
+		bullet[1] = Resources.Load ("PlayerBullets/FireBullet2") as GameObject;
 		gunF = transform.Find ("GunF");
 
 		degrees = 0;
@@ -46,7 +48,7 @@ public class FlamethrowerPrimary : MonoBehaviour {
 
 	void Shoot(){
 
-		GameObject temp = Instantiate (bullet, gunF.position, Quaternion.identity) as GameObject;
+		GameObject temp = Instantiate (bullet[Random.Range(0,bullet.Length)], gunF.position, Quaternion.identity) as GameObject;
 		temp.GetComponent<FlamethrowerBullet>().degrees = degrees;
 		degrees = (degrees + 15) % 360;
 
