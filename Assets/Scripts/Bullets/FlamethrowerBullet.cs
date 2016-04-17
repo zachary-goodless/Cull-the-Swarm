@@ -9,6 +9,7 @@ public class FlamethrowerBullet : MonoBehaviour {
 	Color currentCol;
 	string color;
 	public Gradient gradient;
+	Light light;
 
 	//Keep track of sprite for color changing
 	SpriteRenderer sr;
@@ -48,6 +49,7 @@ public class FlamethrowerBullet : MonoBehaviour {
 		color = "blue";
 		lerpVal = 0;
 		dmg = 5;
+		light = GetComponentInChildren<Light> ();
 
 	}
 	
@@ -89,6 +91,7 @@ public class FlamethrowerBullet : MonoBehaviour {
 		//increase scale
 		if (transform.localScale.x < 200 || transform.localScale.y < 200) {
 			transform.localScale += new Vector3 (2f, 2f, 0f);
+			light.range += 1;
 		}
 		//sprite.transform.EulerAngles = new Vector3(0f,0f,0f);
 		//kill when off screen
