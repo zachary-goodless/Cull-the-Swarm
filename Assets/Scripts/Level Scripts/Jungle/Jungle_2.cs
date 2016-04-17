@@ -34,6 +34,8 @@ public class Jungle_2 : MonoBehaviour {
 	IEnumerator LevelLayout(){
 
 		yield return new WaitForSeconds (3f);
+		waves.StartSpawnWorms (2, 4, 1, .5f, 30, 80, 5, 50, -400, waves.upScreen, Quaternion.Euler (0, 0, 0), 0, 0, "d4")
+
 		waves.StartSpawnWorms (2, 5, 3, .5f, 30, 200, 1, 50, waves.leftScreen, 100, Quaternion.Euler (0, 0, 90), 0, -200, "d4");
 		waves.StartSpawnWorms (2, 5, 3, .5f, 30, -200, -1, 50, waves.rightScreen, 200, Quaternion.Euler (0, 0, -90), 0, -200, "d4");
 
