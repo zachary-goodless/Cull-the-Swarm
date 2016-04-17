@@ -11,8 +11,8 @@ public enum Characters
 	ROGER =		0,
 	COLONEL = 	1,
 	STAMPER = 	2,
-	MARTHA = 	4,
-	DOUCHE =	5
+	MARTHA = 	3,
+	DOUCHE =	4
 }
 
 public class DialogueBox : MonoBehaviour
@@ -37,12 +37,7 @@ public class DialogueBox : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	public void handleDialogue(float duration, Characters character, string content)
-	{
-		StartCoroutine(handleDialogueHelper(duration, character, content));
-	}
-
-	IEnumerator handleDialogueHelper(float duration, Characters character, string content)
+	public IEnumerator handleDialogue(float duration, Characters character, string content)
 	{
 		//load the speaker sprites if we haven't already
 		if(speakerSprites == null)
@@ -66,7 +61,7 @@ public class DialogueBox : MonoBehaviour
 			mDialogue.text += content.Substring(i, 1);
 
 			//update remaining duration
-			duration -= timeBetweenTicks;
+			duration -= Time.deltaTime;
 			yield return new WaitForSeconds(timeBetweenTicks);
 		}
 
@@ -75,6 +70,6 @@ public class DialogueBox : MonoBehaviour
 
 		gameObject.SetActive(false);
 
-		yield return null;
+		yield break;
 	}
 }
