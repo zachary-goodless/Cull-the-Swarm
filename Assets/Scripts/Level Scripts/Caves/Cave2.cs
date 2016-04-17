@@ -111,11 +111,11 @@ public class Cave2 : MonoBehaviour {
 		yield return new WaitForSeconds (4f);
 
 		//Wave Nineteen (4 sec after)- curve of 5  snails from the left top outside of screen that exit near the center of the right side of the screen.
-		waves.StartSpawnTopToSide(snail, 5, 1, 3,180,1,-1,120,-600,waves.upScreen,Quaternion.identity,0,0,"");
+		waves.StartSpawnTopToSide(snail, 5, 1, 5,180,1,-1,120,-600,waves.upScreen,Quaternion.identity,0,0,"");
 		yield return new WaitForSeconds (3f);
 		
 		//Wave Twenty (3 sec after)-curve of 5  snails from the right top outside of screen that exit near the center of the left side of the screen.
-		waves.StartSpawnTopToSide(snail, 5, 1, 3,180,-1,-1,120,600,waves.upScreen,Quaternion.identity,0,0,"");
+		waves.StartSpawnTopToSide(snail, 5, 1, 4,180,-1,-1,120,600,waves.upScreen,Quaternion.identity,0,0,"");
 		yield return new WaitForSeconds (8f);
 
 		//Wave Twenty-One (8 sec after)- 4 drones form background to the center top area. Move linearly to the bottom of the screen.
