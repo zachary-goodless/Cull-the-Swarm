@@ -23,9 +23,10 @@ public class Splat : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (transform.localScale.x < 1 || transform.localScale.y < 1) {
-			transform.localScale += new Vector3 (Random.Range (.04f, .05f), Random.Range (.005f, .02f), 0);
+		if (transform.localScale.x < 1 && transform.localScale.y < 1) {
+			transform.localScale += new Vector3 (Random.Range(0.04f,.05f), Random.Range(.04f,.05f), 0);
 		} else {
+			//transform.localScale = new Vector3 (Random.Range(1f,1.1f), 1, 1);
 			finished = true;
 		}
 		if (finished) {
