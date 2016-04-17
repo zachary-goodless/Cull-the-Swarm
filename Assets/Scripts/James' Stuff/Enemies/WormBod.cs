@@ -5,6 +5,7 @@ public class WormBod : MonoBehaviour {
 
 	public Movement mov;
 	public GameObject head;
+	public GameObject[] splat;
 
 	MeshRenderer[] mesh;
 
@@ -17,6 +18,7 @@ public class WormBod : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (!head) {
+			Instantiate (splat [Random.Range (0, splat.Length)], transform.position, Quaternion.identity);
 			Destroy (gameObject);
 		}
 	}

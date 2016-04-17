@@ -94,6 +94,9 @@ public class Movement : MonoBehaviour {
 	//JUSTIN
 
 	MeshRenderer[] mesh;
+
+	public GameObject[] splat;
+
 	bool blinking;
 
 	void Awake(){
@@ -223,6 +226,8 @@ public class Movement : MonoBehaviour {
 			//apply change to score
 			scoreHandle.handleEnemyDefeated(enemyType);
 			//JUSTIN
+
+			Instantiate (splat [Random.Range (0, splat.Length)], transform.position, Quaternion.identity);
 
 			//kc.score++;
 			Destroy (gameObject);
