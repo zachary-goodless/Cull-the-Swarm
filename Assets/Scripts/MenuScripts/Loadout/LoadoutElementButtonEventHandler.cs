@@ -32,13 +32,21 @@ public class LoadoutElementButtonEventHandler : MonoBehaviour
 		{
 			mParentEventHandler.handleChoiceButtonClicked(chasisIndex, primaryIndex, secondaryIndex);
 
-			//if any of the indicies are not null (not a back button)...
-			if(chasisIndex != Loadout.LoadoutChasis.NULL ||
-				primaryIndex != Loadout.LoadoutPrimary.NULL ||
-				secondaryIndex != Loadout.LoadoutSecondary.NULL)
+			//if it's a secondary button...
+			if(secondaryIndex != Loadout.LoadoutSecondary.NULL)
 			{
 				//set the button to non-interactable
 				gameObject.GetComponent<Button>().interactable = false;
+			}
+
+			//else, call on the next panel type
+			else if(chasisIndex != Loadout.LoadoutChasis.NULL)
+			{
+				mParentEventHandler.handlePrimaryButtonClicked();
+			}
+			else if(primaryIndex != Loadout.LoadoutPrimary.NULL)
+			{
+				mParentEventHandler.handleSecondaryButtonClicked();
 			}
 		}
 	}

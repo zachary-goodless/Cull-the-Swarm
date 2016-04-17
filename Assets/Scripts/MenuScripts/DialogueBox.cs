@@ -37,7 +37,12 @@ public class DialogueBox : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	public IEnumerator handleDialogue(float duration, Characters character, string content)
+	public void handleDialogue(float duration, Characters character, string content)
+	{
+		StartCoroutine(handleDialogueHelper(duration, character, content));
+	}
+
+	IEnumerator handleDialogueHelper(float duration, Characters character, string content)
 	{
 		//load the speaker sprites if we haven't already
 		if(speakerSprites == null)

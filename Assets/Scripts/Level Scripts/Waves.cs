@@ -40,6 +40,7 @@ public class Waves : MonoBehaviour{
 
 		GameObject head = Instantiate (wormHead, pos, Quaternion.Euler (new Vector3(0,0,rot))) as GameObject;
 		head.GetComponent<Movement> ().screenDeath = false;
+		head.GetComponent<Movement> ().doesTilt = false;
 		WormScript ws = head.GetComponent <WormScript>();
 		for (int i = 1; i < bods-1; i++) {
 			GameObject bod = Instantiate(wormBod, pos + backPush*i, Quaternion.Euler(new Vector3(0,0,rot-180))) as GameObject;

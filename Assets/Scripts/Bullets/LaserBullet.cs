@@ -66,9 +66,11 @@ public class LaserBullet : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D other){
 		if (other.tag == "EnemyHit" && !cool) {
 			other.gameObject.GetComponentInParent<Movement> ().health -= dmg;
+			other.gameObject.GetComponentInParent<Movement> ().Blink();
 			StartCoroutine ("Cooldown");
 		} else if (other.tag == "WormPart" && !cool) {
 			other.gameObject.GetComponent<WormBod> ().mov.health -= dmg;
+			other.gameObject.GetComponentInParent<WormBod> ().Blink();
 			Destroy (gameObject);
 		}
 	}
@@ -76,9 +78,11 @@ public class LaserBullet : MonoBehaviour {
 	void OnTriggerStay2D (Collider2D other){
 		if (other.tag == "EnemyHit" && !cool) {
 			other.gameObject.GetComponentInParent<Movement> ().health -= dmg;
+			other.gameObject.GetComponentInParent<Movement> ().Blink();
 			StartCoroutine ("Cooldown");
 		} else if (other.tag == "WormPart" && !cool) {
 			other.gameObject.GetComponent<WormBod> ().mov.health -= dmg;
+			other.gameObject.GetComponentInParent<WormBod> ().Blink();
 			Destroy (gameObject);
 		}
 	}

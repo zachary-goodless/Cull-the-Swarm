@@ -13,6 +13,7 @@ public class Level1_1 : MonoBehaviour {
 	public GameObject drone;
 	public GameObject missile;
 	public GameObject turret;
+	public GameObject snail;
 
 	void Start () {
 		StartCoroutine ("LevelLayout");
