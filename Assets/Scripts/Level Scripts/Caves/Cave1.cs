@@ -137,11 +137,11 @@ public class Cave1 : MonoBehaviour {
 		yield return new WaitForSeconds (3f);
 
 		//Wave Nineteen (3 sec after)- 4 drones from background to left top side of the screen and move to the bottom right side of the screen.
-		waves.StartSpawnFromBackground (drone, 4, 1, 2.5f, new Vector3 (-600, 400, 50), 250, 1, -1, 100, -650, -300, Quaternion.identity, 0, 0, "d1");
+		waves.StartSpawnFromBackground (drone, 4, 1, 2.5f, new Vector3 (-600, 400, 50), 250, 1, -1, 100, -650, -300, Quaternion.identity, 0, 0, "d3");
 		yield return new WaitForSeconds (3f);
 
 		//Wave Twenty (3 sec after)- 4 drones from background to right top side of the screen and move to the bottom left side of the screen.
-		waves.StartSpawnFromBackground (drone, 4, 1, 2.5f, new Vector3 (600, 400, 50), 250, -1, -1, 100, 650, -300, Quaternion.identity, 0, 0, "d1");
+		waves.StartSpawnFromBackground (drone, 4, 1, 2.5f, new Vector3 (600, 400, 50), 250, -1, -1, 100, 650, -300, Quaternion.identity, 0, 0, "d3");
 
 		yield return new WaitForSeconds (16f);
 
