@@ -425,6 +425,10 @@ public class Waves : MonoBehaviour{
 		for(int i = 0; i < numEnemies; i++){
 			GameObject temp = MakeWorm (numSegments, new Vector3 (startX + xInc*i, startY + yInc*i, 50), rotation.eulerAngles.z);
 			Movement m = temp.GetComponent<Movement> ();
+
+			Drones_1_1 bulletPat = temp.AddComponent<Drones_1_1> ();
+			bulletPat.StartWaveNum (attackPattern);
+
 			m.SetFollow (rotInc, rotRange);
 			m.SetGeneral (speed, 0, yDir, 40, health);
 
