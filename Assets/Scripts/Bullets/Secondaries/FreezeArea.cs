@@ -14,14 +14,20 @@ public class FreezeArea : MonoBehaviour
 
 	//PRIVATE
 	GameObject freezeBulletPrefab;
+
+	GameObject sprite;
 	Light spinupLight;
+	CircleCollider2D collider;
 
 //--------------------------------------------------------------------------------------------
 
 	void Start ()
 	{
 		freezeBulletPrefab = Resources.Load<GameObject>("PlayerBullets/FreezeBullet");
-		//spinupLight = GetComponentInChildren<Light>();
+
+		sprite = GetComponentInChildren<SpriteRenderer>().gameObject;
+		spinupLight = GetComponent<Light>();
+		collider = GetComponent<CircleCollider2D>();
 
 		StartCoroutine(handleSpinup());
 		StartCoroutine(handleRotate());
@@ -55,13 +61,11 @@ public class FreezeArea : MonoBehaviour
 
 	IEnumerator handleSpinup()
 	{
-		//TODO -- add light to child object
-
 		//handle glow spinup
 		float remainingTime = spinupDuration;
 		while(remainingTime > 0f)
 		{
-			//TODO -- handle light
+			spinupLight.range++;
 
 			//wait for a short time
 			yield return new WaitForSeconds(delayBetweenTicks);
@@ -75,9 +79,11 @@ public class FreezeArea : MonoBehaviour
 		while(remainingTime > 0f)
 		{
 			//grow the area's size
-			Vector3 scale = transform.localScale;
-			scale.x = scale.y += delayBetweenTicks * 1250;
-			transform.localScale = scale;
+			Vector3 scale = sprite.transform.localScale;
+			scale.x = scale.y += delayBetweenTicks * 7.5f;
+			sprite.transform.localScale = scale;
+
+			collider.radius += delayBetweenTicks * 900f;
 
 			//wait for a short time
 			yield return new WaitForSeconds(delayBetweenTicks);
