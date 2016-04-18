@@ -68,16 +68,34 @@ public class Moon1 : MonoBehaviour {
 		waves.StartSpawnFromBackground(drone,2,1.5f,2,new Vector3(-600,400,50),250,.8f,-.8f,100,-600,-300,Quaternion.identity,0,0,"");
 		yield return new WaitForSeconds (3f);
 
-		//Wave Nine (3 sec afterwards)- 2 drones from background from right top side of the screen. Move towards the bottom left side of the screen.
+		//Wave Eleven (3 sec afterwards)- 2 drones from background from right top side of the screen. Move towards the bottom left side of the screen.
 		waves.StartSpawnFromBackground(drone,2,1.5f,2,new Vector3(600,-400,50),250,-.8f,-.8f,100,600,-300,Quaternion.identity,0,0,"");
 		yield return new WaitForSeconds (3f);
 
 		//Snails rise from below, then dive at player
 		waves.StartSpawnDive(snail,5,1.5f,200,6,150,0,1,120,0,waves.downScreen,Quaternion.Euler(0,0,180),0,0,"");
+		yield return new WaitForSeconds (7f);
+
+		//Wave Twelve (7 sec afterwards)- 2 worms from bottom of screen on both left and right side of the screen move towards the top.
+		waves.StartSpawnWorms(2,7,0,.5f,25,250,1,300,-4,waves.downScreen,Quaternion.identity,0,0,"");
+		yield return new WaitForSeconds (3f);
+
+		//Wave Thirteen ( 3 sec later)- 2 turret column wide, 4 turrets tall move slowly from the center of the screen towards the bottom.
+		waves.StartSpawnLinear(turret,4,1.5f,150,0,-1,150,-150,waves.upScreen,Quaternion.identity,0,0,"");
+		waves.StartSpawnLinear(turret,4,1.5f,150,0,-1,150,150,waves.upScreen,Quaternion.identity,0,0,"");
 		yield return new WaitForSeconds (5f);
 
-		//Wave Ten (3 sec afterwards)- 2 drones from background from left top side of the screen. Move towards the bottom right side of the screen.
+		//Wave Fourteen (5 secs later)- one worm on right side of the screen moves its way down to the bottom of the screen.
+		waves.StartSpawnWorms(1,7,0,-.05f,0,250,1,200,waves.rightScreen,200,Quaternion.Euler(0,0,270),0,0,"");
+		waves.StartSpawnWorms(1,7,0,.05f,0,250,1,200,waves.leftScreen,-200,Quaternion.Euler(0,0,90),0,0,"");
+		yield return new WaitForSeconds (4f);
 
+		//Wave Seventeen (4 sec later)- 3 drones move from top of the screen towards the bottom left of the screen.
+		waves.StartSpawnLinear(drone,3,0,250,-.5f,-1,100,-300,waves.upScreen,Quaternion.identity,300,0,"");
+		yield return new WaitForSeconds (2f);
+
+		//Wave Eighteen(2 sec later)- 3 drones move from the top of the screen towards the bottom right of the screen.
+		waves.StartSpawnLinear(drone,3,0,250,.5f,-1,100,-300,waves.upScreen,Quaternion.identity,300,0,"");
 
 		yield return new WaitForSeconds (16f);
 
