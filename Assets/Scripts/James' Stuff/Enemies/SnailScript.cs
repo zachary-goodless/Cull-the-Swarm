@@ -24,6 +24,7 @@ public class SnailScript : MonoBehaviour {
 
 	void DeShell(){
 		mov.speed *= 1.8f;
+		mov.diveSpeed *= 1.8f;
 		Destroy (shell);
 		shelled = false;
 	}

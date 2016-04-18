@@ -78,6 +78,9 @@ public class FreezeBullet : MonoBehaviour
 
 	IEnumerator handleExplosion()
 	{
+		GetComponentInChildren<ParticleSystem>().Play();
+		GetComponentInChildren<SpriteRenderer>().enabled = false;
+
 		//set state, grow circle collider
 		isExploding = true;
 		GetComponent<CircleCollider2D>().radius *= 3;

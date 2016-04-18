@@ -48,7 +48,7 @@ public class Movement : MonoBehaviour {
 	float rotMin;
 
 	//Dive Stats
-	float diveSpeed;
+	public float diveSpeed;
 	float diveTime;
 
 	bool rotSet;
@@ -94,6 +94,9 @@ public class Movement : MonoBehaviour {
 	//JUSTIN
 
 	MeshRenderer[] mesh;
+
+	public GameObject[] splat;
+
 	bool blinking;
 
 	void Awake(){
@@ -108,6 +111,8 @@ public class Movement : MonoBehaviour {
 		sideToBottom = false;
 		fromBackground = false;
 		blinking = false;
+
+		diveSpeed = 0;
 
 		col = GetComponent<CircleCollider2D> ();
 
@@ -223,6 +228,8 @@ public class Movement : MonoBehaviour {
 			//apply change to score
 			scoreHandle.handleEnemyDefeated(enemyType);
 			//JUSTIN
+
+			Instantiate (splat [Random.Range (0, splat.Length)], transform.position, Quaternion.identity);
 
 			//kc.score++;
 			Destroy (gameObject);
