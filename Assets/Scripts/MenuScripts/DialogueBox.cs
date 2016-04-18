@@ -12,7 +12,9 @@ public enum Characters
 	COLONEL = 	1,
 	STAMPER = 	2,
 	MARTHA = 	3,
-	DOUCHE =	4
+	DOUCHE =	4,
+	MYSTERY = 	5,
+	STATIC = 	6
 }
 
 public class DialogueBox : MonoBehaviour
@@ -30,13 +32,15 @@ public class DialogueBox : MonoBehaviour
 	bool isActive = false;
 
 	private Sprite[] speakerSprites = null;
-	private string[] speakerNames = new string[5]
+	private string[] speakerNames = new string[7]
 	{
 		"ROGER",
 		"COLONEL CUNNINGHAM",
 		"STAMPER",
 		"MARTHA",
-		"CHAD"
+		"CHAD",
+		"????",
+		"----"
 	};
 
 //--------------------------------------------------------------------------------------------
@@ -128,12 +132,12 @@ public class DialogueBox : MonoBehaviour
 		//load the speaker sprites if we haven't already
 		if(speakerSprites == null)
 		{
-			//TODO -- init speaker sprites
+			speakerSprites = Resources.LoadAll<Sprite>("GUI_Assets/Portraits");
 		}
 
 		if(character != Characters.NULL)
 		{
-			//mSpeakerImg.sprite = speakerSprites[(int)character];		//TODO -- temp comment out
+			mSpeakerImg.sprite = speakerSprites[(int)character];
 			mSpeakerName.text = speakerNames[(int)character];
 		}
 

@@ -71,6 +71,7 @@ public class D_2 : MonoBehaviour
         yield return new WaitForSeconds(30f);
 
 		//JUSTIN
+		dialog.isSkipping = false;
 		co = StartCoroutine(dialog.handleDialogue(4.5f, Characters.ROGER, "That should be the last of them. Returning to base."));
 		yield return dialog.WaitForSecondsOrSkip(3.5f, co);
 		co = StartCoroutine(dialog.handleDialogue(4f, Characters.COLONEL, "Intel has picked up some bad news, Roger."));

@@ -140,6 +140,7 @@ public class Level1_1 : MonoBehaviour {
 		yield return new WaitForSeconds (16f);
 
 		//JUSITN
+		dialog.isSkipping = false;
 		co = StartCoroutine(dialog.handleDialogue(2f, Characters.ROGER, "Now we're trucking!"));
 		yield return dialog.WaitForSecondsOrSkip(1f, co);
 		co = StartCoroutine(dialog.handleDialogue(4.5f, Characters.STAMPER, "Don't get too eager yet. There's still quite a ways to go."));
