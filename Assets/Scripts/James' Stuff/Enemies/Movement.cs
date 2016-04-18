@@ -48,7 +48,7 @@ public class Movement : MonoBehaviour {
 	float rotMin;
 
 	//Dive Stats
-	float diveSpeed;
+	public float diveSpeed;
 	float diveTime;
 
 	bool rotSet;
@@ -111,6 +111,8 @@ public class Movement : MonoBehaviour {
 		sideToBottom = false;
 		fromBackground = false;
 		blinking = false;
+
+		diveSpeed = 0;
 
 		col = GetComponent<CircleCollider2D> ();
 
