@@ -24,7 +24,14 @@ public class Moon1 : MonoBehaviour {
 
 	IEnumerator LevelLayout(){
 
+		//JUSTIN
+		Coroutine co;
+
 		StartCoroutine(sf.FadeFromBlack());
+		yield return new WaitForSeconds(2f);
+
+		//
+		//JUSTIN
 
 		yield return new WaitForSeconds (5f);
 		//Wave One - 3 turrets evenly spaced along the top of the screen move slowly towards the bottom.
@@ -123,6 +130,9 @@ public class Moon1 : MonoBehaviour {
 		yield return new WaitForSeconds (16f);
 
 		//JUSTIN
+		dialog.isSkipping = false;
+		//
+
 		StartCoroutine(sf.FadeToBlack());
 		yield return new WaitForSeconds(2f);
 		//JUSTIN
