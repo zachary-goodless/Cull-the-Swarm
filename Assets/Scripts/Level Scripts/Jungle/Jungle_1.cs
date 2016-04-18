@@ -85,20 +85,6 @@ public class Jungle_1 : MonoBehaviour {
 		waves.StartBigW(drone);
 		//waves.StartSpawnFromBackground(drone, 3, 10f, 2f, Vector3.down, 10f, 1, 1, 200, waves.leftScreen, waves.downScreen, Quaternion.identity, 200, 0,"d23");
 
-		yield return new WaitForSeconds (10f);
-	
-		yield return new WaitForSeconds (10f);
-	
-		yield return new WaitForSeconds (2f);
-	
-		yield return new WaitForSeconds (2f);
-	
-		yield return new WaitForSeconds (4f);
-
-		yield return new WaitForSeconds (2f);
-
-		yield return new WaitForSeconds (2f);
-
 		yield return new WaitForSeconds (16f);
 		sf.Fade ();
 		finished.handleLevelCompleted((SceneIndex)SceneManager.GetActiveScene().buildIndex);
