@@ -27,7 +27,6 @@ public class EMPArea : MonoBehaviour
 		//if this hits an enemy...
 		if(other.tag == "EnemyHit")
 		{
-			//TODO -- this script is likely going to change
 			//disable enemy's ability to fire bullets
 			Drones_1_1 enemyFireScript = other.GetComponentInParent<Drones_1_1>();
 			if(enemyFireScript != null)
