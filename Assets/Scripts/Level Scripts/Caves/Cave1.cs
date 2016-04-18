@@ -30,10 +30,20 @@ public class Cave1 : MonoBehaviour {
 		StartCoroutine(sf.FadeFromBlack());
 		yield return new WaitForSeconds(2f);
 
-		//
+		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.STAMPER, "A bit dank in here, you think?"));
+		yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+		co = StartCoroutine(dialog.handleDialogue(2f, Characters.ROGER, "No kidding..."));
+		yield return dialog.WaitForSecondsOrSkip(1f, co);
+		co = StartCoroutine(dialog.handleDialogue(4f, Characters.MARTHA, "Intel reports that the invasion is trying to build a hive in these caverns. That would be problematic for us."));
+		yield return dialog.WaitForSecondsOrSkip(3f, co);
+		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.MARTHA, "You know what to do."));
+		yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+		co = StartCoroutine(dialog.handleDialogue(2f, Characters.ROGER, "Shoot bugs?"));
+		yield return dialog.WaitForSecondsOrSkip(1f, co);
+		co = StartCoroutine(dialog.handleDialogue(2f, Characters.STAMPER, "Shoot bugs."));
+		yield return dialog.WaitForSecondsOrSkip(1f, co);
 		//JUSTIN
-		
-		yield return new WaitForSeconds (5f);
+
 		//Wave One- One worm, straight down center to bottom.
 		waves.StartSpawnWorms (1, 6, 0, .5f, 40, 200, 1, 300, 0, waves.upScreen, Quaternion.Euler (0, 0, 0), 0, 0, "");
 		yield return new WaitForSeconds (3f);
@@ -136,7 +146,8 @@ public class Cave1 : MonoBehaviour {
 		yield return new WaitForSeconds (16f);
 
 		//JUSTIN
-		//
+		co = StartCoroutine(dialog.handleDialogue(4f, Characters.MARTHA, "There. That should get them off your back for a little while."));
+		yield return dialog.WaitForSecondsOrSkip(3f, co);
 
 		StartCoroutine(sf.FadeToBlack());
 		yield return new WaitForSeconds(2f);

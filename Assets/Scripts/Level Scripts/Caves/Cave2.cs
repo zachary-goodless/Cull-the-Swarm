@@ -18,12 +18,25 @@ public class Cave2 : MonoBehaviour {
 	public DialogueBox dialog;
 
 	void Start () {
-		StartCoroutine ("LevelLayout");
 		sf = GameObject.Find ("ScreenFade").GetComponent<ScreenFade> ();
+		StartCoroutine ("LevelLayout");
 	}
 
 	IEnumerator LevelLayout(){
-		yield return new WaitForSeconds (5f);
+
+		//JUSTIN
+		Coroutine co;
+
+		StartCoroutine(sf.FadeFromBlack());
+		yield return new WaitForSeconds(2f);
+
+		co = StartCoroutine(dialog.handleDialogue(3f, Characters.MARTHA, "You're nearing the heart of the cavern. How are you fairing?"));
+		yield return dialog.WaitForSecondsOrSkip(2f, co);
+		co = StartCoroutine(dialog.handleDialogue(5f, Characters.ROGER, "Honestly, I'm acclimating well. These bugs aren't for the faint of heart, though."));
+		yield return dialog.WaitForSecondsOrSkip(4f, co);
+		co = StartCoroutine(dialog.handleDialogue(5f, Characters.STAMPER, "Well, wait until the end of the mission if you're planning on fainting. We've got more monsters up ahead!"));
+		yield return dialog.WaitForSecondsOrSkip(4f, co);
+		//JUSTIN
 
 		//Wave One- 5 drones sine wave across the screen from left to right.
 		waves.StartSpawnSin (drone, 5, 1.5f, 10, 2, 250, 1, 0, 100, waves.leftScreen, -200, Quaternion.identity, 0, 0, "");
@@ -132,6 +145,16 @@ public class Cave2 : MonoBehaviour {
 		waves.StartSpawnLinear(snail,4,1.5f,150,0,-1,120,500,waves.upScreen,Quaternion.identity,0,0,"");
 
 		yield return new WaitForSeconds (16f);
+
+		//JUSTIN
+		co = StartCoroutine(dialog.handleDialogue(2f, Characters.STAMPER, "You pushed them back again!"));
+		yield return dialog.WaitForSecondsOrSkip(1f, co);
+		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.MARTHA, "The queen's just up ahead, Roger. Stay sharp!"));
+		yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+
+		StartCoroutine(sf.FadeToBlack());
+		yield return new WaitForSeconds(2f);
+		//JUSTIN
 
 		sf.Fade ();
 		finished.handleLevelCompleted((SceneIndex)SceneManager.GetActiveScene().buildIndex);
