@@ -14,6 +14,7 @@ public class Moon1 : MonoBehaviour {
 	public GameObject missile;
 	public GameObject turret;
 	public GameObject snail;
+	public DialogueBox dialog;
 
 	void Start () {
 		StartCoroutine ("LevelLayout");
@@ -61,15 +62,15 @@ public class Moon1 : MonoBehaviour {
 		yield return new WaitForSeconds (3f);
 
 		//Wave Nine (3 sec afterwards)- 2 drones from background from right top side of the screen. Move towards the bottom left side of the screen.
-		waves.StartSpawnFromBackground(drone,2,1.5f,2,new Vector3(600,-400,50),250,-.8f,-.8f,100,600,-300,Quaternion.identity,0,0,"");
+		waves.StartSpawnFromBackground(drone,2,1.5f,2,new Vector3(600,400,50),250,-.8f,-.8f,100,600,-300,Quaternion.identity,0,0,"");
 		yield return new WaitForSeconds (3f);
 
-		//Wave Ten (5 sec afterwards)- 2 drones from background from left top side of the screen. Move towards the bottom right side of the screen.
+		//Wave Ten (3 sec afterwards)- 2 drones from background from left top side of the screen. Move towards the bottom right side of the screen.
 		waves.StartSpawnFromBackground(drone,2,1.5f,2,new Vector3(-600,400,50),250,.8f,-.8f,100,-600,-300,Quaternion.identity,0,0,"");
 		yield return new WaitForSeconds (3f);
 
 		//Wave Eleven (3 sec afterwards)- 2 drones from background from right top side of the screen. Move towards the bottom left side of the screen.
-		waves.StartSpawnFromBackground(drone,2,1.5f,2,new Vector3(600,-400,50),250,-.8f,-.8f,100,600,-300,Quaternion.identity,0,0,"");
+		waves.StartSpawnFromBackground(drone,2,1.5f,2,new Vector3(600,400,50),250,-.8f,-.8f,100,600,-300,Quaternion.identity,0,0,"");
 		yield return new WaitForSeconds (3f);
 
 		//Snails rise from below, then dive at player
@@ -96,6 +97,26 @@ public class Moon1 : MonoBehaviour {
 
 		//Wave Eighteen(2 sec later)- 3 drones move from the top of the screen towards the bottom right of the screen.
 		waves.StartSpawnLinear(drone,3,0,250,.5f,-1,100,-300,waves.upScreen,Quaternion.identity,300,0,"");
+		yield return new WaitForSeconds (3f);
+
+		//Wave Nineteen (3 sec later)- 3 drones from the center of the screen and move towards the bottom of the screen.
+		waves.StartSpawnLinear(drone,3,0,250,0,-1,100,-300,waves.upScreen,Quaternion.identity,300,0,"");
+		yield return new WaitForSeconds (2f);
+
+		//Wave Twenty (2 sec later)- 1 turret from left side of the screen.
+		waves.StartSpawnLinear(turret,1,0,150,1,0,150,waves.leftScreen,150,Quaternion.identity,0,0,"");
+		yield return new WaitForSeconds (1f);
+
+		//Wave Twenty-One (1 sec later)- 3 drones from right side of the screen
+		waves.StartSpawnLinear(drone,3,1,250,-1,0,100,waves.rightScreen,300,Quaternion.identity,0,-300,"");
+		yield return new WaitForSeconds (2f);
+
+		//Wave Twenty-Two (2 sec later)- 1 turret from right side of the screen.
+		waves.StartSpawnLinear(turret,1,0,150,-1,0,150,waves.rightScreen,-150,Quaternion.identity,0,0,"");
+		yield return new WaitForSeconds (1f);
+
+		//Wave Twenty-Three (1 sec later)- 3 drones from left side of the screen. 
+		waves.StartSpawnLinear(drone,3,1,250,1,0,100,waves.leftScreen,-300,Quaternion.identity,0,300,"");
 
 		yield return new WaitForSeconds (16f);
 
