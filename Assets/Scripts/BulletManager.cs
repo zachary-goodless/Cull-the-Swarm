@@ -166,7 +166,6 @@ public class BulletManager : MonoBehaviour {
         bt.SetActive(true);
         bt.GetComponent<Bullet>().Init(position, speed, angle);
         bt.GetComponent<Bullet>().SetGraphic(propertyList[type]);
-        Debug.Log(type);
         shotID = bt;
     }
 

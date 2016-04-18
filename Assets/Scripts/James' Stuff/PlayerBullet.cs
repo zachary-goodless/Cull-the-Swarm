@@ -40,7 +40,12 @@ public class PlayerBullet : MonoBehaviour {
 			other.gameObject.GetComponent<WormBod> ().mov.health -= dmg;
 			other.gameObject.GetComponentInParent<WormBod> ().Blink();
 			Destroy (gameObject);
-		}
-		Debug.Log (other.tag);
+        }
+        else if (other.tag == "Boss")
+        {
+            other.gameObject.GetComponent<Boss>().DealDamage(dmg);
+            Destroy(gameObject);
+        }
+        Debug.Log (other.tag);
 	}
 }
