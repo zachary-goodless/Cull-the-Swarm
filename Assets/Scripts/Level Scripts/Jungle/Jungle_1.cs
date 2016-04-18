@@ -12,10 +12,12 @@ public class Jungle_1 : MonoBehaviour {
 	public GameObject missile;
 	public GameObject turret;
 
+	public DialogueBox dialog;
+
 	void Start ()
 	{
-		StartCoroutine ("LevelLayout");
 		sf = GameObject.Find ("ScreenFade").GetComponent<ScreenFade> ();
+		StartCoroutine ("LevelLayout");
 	}
 
 	// Update is called once per frame
@@ -32,7 +34,16 @@ public class Jungle_1 : MonoBehaviour {
 	}
 
 	IEnumerator LevelLayout(){
-		
+
+		//JUSTIN
+		Coroutine co;
+
+		StartCoroutine(sf.FadeFromBlack());
+		yield return new WaitForSeconds(2f);
+
+		//
+		//JUSTIN
+
 		yield return new WaitForSeconds (3f);
 		waves.StartSpawnWorms (2, 5, 3, .5f, 30, 200, 1, 50, waves.leftScreen, 100, Quaternion.Euler (0, 0, 90), 0, -200, "d4");
 		waves.StartSpawnWorms (2, 5, 3, .5f, 30, -200, -1, 50, waves.rightScreen, 200, Quaternion.Euler (0, 0, -90), 0, -200, "d4");
@@ -86,7 +97,14 @@ public class Jungle_1 : MonoBehaviour {
 		//waves.StartSpawnFromBackground(drone, 3, 10f, 2f, Vector3.down, 10f, 1, 1, 200, waves.leftScreen, waves.downScreen, Quaternion.identity, 200, 0,"d23");
 
 		yield return new WaitForSeconds (16f);
-		sf.Fade ();
+
+		//JUSTIN
+		//
+
+		StartCoroutine(sf.FadeToBlack());
+		yield return new WaitForSeconds(2f);
+		//JUSTIN
+
 		finished.handleLevelCompleted((SceneIndex)SceneManager.GetActiveScene().buildIndex);
 		yield break;
 	}

@@ -12,6 +12,8 @@ public class Jungle_2 : MonoBehaviour {
 	public GameObject missile;
 	public GameObject turret;
 
+	public DialogueBox dialog;
+
 	void Start ()
 	{
 		StartCoroutine ("LevelLayout");
