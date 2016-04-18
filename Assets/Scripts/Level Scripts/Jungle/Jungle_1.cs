@@ -20,19 +20,6 @@ public class Jungle_1 : MonoBehaviour {
 		StartCoroutine ("LevelLayout");
 	}
 
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetKeyDown (KeyCode.Q)) {
-			waves.StartTest ();
-		}
-		if (Input.GetKeyDown (KeyCode.Y)) {
-			waves.StartTemplate ();
-		}
-		if (sf.finished) {
-			SceneManager.LoadScene ((int)SceneIndex.WORLD_MAP);
-		}
-	}
-
 	IEnumerator LevelLayout(){
 
 		//JUSTIN
@@ -41,10 +28,14 @@ public class Jungle_1 : MonoBehaviour {
 		StartCoroutine(sf.FadeFromBlack());
 		yield return new WaitForSeconds(2f);
 
-		//
+		co = StartCoroutine(dialog.handleDialogue(4f, Characters.MARTHA, "Intel reports that the swarm has damaged most of our satelite equipment in this area."));
+		yield return dialog.WaitForSecondsOrSkip(3f, co);
+		co = StartCoroutine(dialog.handleDialogue(3.5f, Characters.MARTHA, "We need you to go in and stop them so we can salvage what we can."));
+		yield return dialog.WaitForSecondsOrSkip(2.5f, co);
+		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.ROGER, "Right. I'll be back by morning."));
+		yield return dialog.WaitForSecondsOrSkip(1.5f, co);
 		//JUSTIN
 
-		yield return new WaitForSeconds (3f);
 		waves.StartSpawnWorms (2, 5, 3, .5f, 30, 200, 1, 50, waves.leftScreen, 100, Quaternion.Euler (0, 0, 90), 0, -200, "d4");
 		waves.StartSpawnWorms (2, 5, 3, .5f, 30, -200, -1, 50, waves.rightScreen, 200, Quaternion.Euler (0, 0, -90), 0, -200, "d4");
 
@@ -99,7 +90,9 @@ public class Jungle_1 : MonoBehaviour {
 		yield return new WaitForSeconds (16f);
 
 		//JUSTIN
-		//
+		dialog.isSkipping = false;
+		co = StartCoroutine(dialog.handleDialogue(3f, Characters.STAMPER, "You're making steady progress out there, keep at it!"));
+		yield return dialog.WaitForSecondsOrSkip(2f, co);
 
 		StartCoroutine(sf.FadeToBlack());
 		yield return new WaitForSeconds(2f);

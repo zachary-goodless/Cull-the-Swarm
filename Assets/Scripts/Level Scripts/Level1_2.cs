@@ -119,6 +119,7 @@ public class Level1_2 : MonoBehaviour
         yield return new WaitForSeconds(20f);
 
 		//JUSTIN
+		dialog.isSkipping = false;
 		co = StartCoroutine(dialog.handleDialogue(2f, Characters.STAMPER, "Great job, Roger. You're nearing the heart of the city."));
 		yield return dialog.WaitForSecondsOrSkip(1f, co);
 		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.ROGER, "What do I have to look forward to there?"));

@@ -16,24 +16,27 @@ public class Jungle_2 : MonoBehaviour {
 
 	void Start ()
 	{
-		StartCoroutine ("LevelLayout");
 		sf = GameObject.Find ("ScreenFade").GetComponent<ScreenFade> ();
-	}
-
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetKeyDown (KeyCode.Q)) {
-			waves.StartTest ();
-		}
-		if (Input.GetKeyDown (KeyCode.Y)) {
-			waves.StartTemplate ();
-		}
-		if (sf.finished) {
-			SceneManager.LoadScene ((int)SceneIndex.WORLD_MAP);
-		}
+		StartCoroutine ("LevelLayout");
 	}
 
 	IEnumerator LevelLayout(){
+
+		//JUSTIN
+		Coroutine co;
+
+		StartCoroutine(sf.FadeFromBlack());
+		yield return new WaitForSeconds(2f);
+
+		co = StartCoroutine(dialog.handleDialogue(4f, Characters.MARTHA, "You should be nearing the satelite equipment, but I can't pinpoint y--*kzzt*--ocation."));
+		yield return dialog.WaitForSecondsOrSkip(3f, co);
+		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.ROGER, "Say again? You're breaking up."));
+		yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+		co = StartCoroutine(dialog.handleDialogue(4f, Characters.MARTHA, "Something must be interfer--*kzzt*--our equipmen--*kzzt*"));
+		yield return dialog.WaitForSecondsOrSkip(3f, co);
+		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.ROGER, "Martha? Stamper? Does anyone copy?"));
+		yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+		//JUSTIN
 		
 		yield return new WaitForSeconds (3f);
 		waves.StartSpawnWorms (2, 4, 1, .5f, 30, 80, 5, 50, -400, waves.upScreen, Quaternion.Euler (0, 0, 0), 0, 0, "d4");
@@ -117,7 +120,18 @@ public class Jungle_2 : MonoBehaviour {
 		waves.StartSpawnLinear (drone, 4, 1, 200, 0, -1, 50, -200, waves.upScreen, Quaternion.identity, 0, 0, "t3");
 
 		yield return new WaitForSeconds (14f);
-		sf.Fade ();
+
+		//JUSTIN
+		dialog.isSkipping = false;
+		co = StartCoroutine(dialog.handleDialogue(4f, Characters.ROGER, "Guys? Do you read me? Short range scanners are picking up something big ahead."));
+		yield return dialog.WaitForSecondsOrSkip(3f, co);
+		co = StartCoroutine(dialog.handleDialogue(3f, Characters.STATIC, "... *kzzzzzzt* ..."));
+		yield return dialog.WaitForSecondsOrSkip(2f, co);
+
+		StartCoroutine(sf.FadeToBlack());
+		yield return new WaitForSeconds(2f);
+		//JUSTIN
+
 		finished.handleLevelCompleted((SceneIndex)SceneManager.GetActiveScene().buildIndex);
 
 

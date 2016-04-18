@@ -146,6 +146,7 @@ public class Cave1 : MonoBehaviour {
 		yield return new WaitForSeconds (16f);
 
 		//JUSTIN
+		dialog.isSkipping = false;
 		co = StartCoroutine(dialog.handleDialogue(4f, Characters.MARTHA, "There. That should get them off your back for a little while."));
 		yield return dialog.WaitForSecondsOrSkip(3f, co);
 
