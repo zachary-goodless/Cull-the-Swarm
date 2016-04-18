@@ -5,10 +5,10 @@ using System.Collections;
 public class FreezeBullet : MonoBehaviour
 {
 	//PUBLIC
-	public float duration = 3f;
+	public float duration = 2f;
 	public float explosionDuration = 0.25f;
 
-	public float damage = 50f;
+	public float damage = float.MinValue;
 
 	//PRIVATE
 	int recursionLevel = 0;
@@ -49,18 +49,24 @@ public class FreezeBullet : MonoBehaviour
 			}
 		}
 
-		OnTriggerStay2D(other);
-	}
-
-//--------------------------------------------------------------------------------------------
-
-	void OnTriggerStay2D(Collider2D other)
-	{
+		/* 
+		//TODO -- explosion too powerful, removing for now
 		//if explosion is active and other is enemy...
 		if(isExploding && other.tag == "EnemyHit")
 		{
 			other.gameObject.GetComponentInParent<Movement>().health -= damage;
+			other.gameObject.GetComponentInParent<Movement> ().Blink();
 		}
+		else if(isExploding && other.tag == "WormPart")
+		{
+			other.gameObject.GetComponent<WormBod> ().mov.health -= damage;
+			other.gameObject.GetComponentInParent<WormBod> ().Blink();
+		}
+		else if(isExploding && other.tag == "Boss")
+		{
+			other.gameObject.GetComponent<Boss>().DealDamage(damage);
+		}
+		*/
 	}
 
 //--------------------------------------------------------------------------------------------

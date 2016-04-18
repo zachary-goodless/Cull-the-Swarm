@@ -63,13 +63,39 @@ public class SwatterPrimary : MonoBehaviour {
 	GameObject FindTarget(){
 		GameObject target = null;
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
-		foreach (GameObject enemy in enemies) {
+		foreach (GameObject enemy in enemies)
+		{
 			if (target == null) {
 				target = enemy;
 			} else if(Vector2.Distance(transform.position, enemy.transform.position) < Vector2.Distance(transform.position, target.transform.position)) {
 				target = enemy;
 			}
 		}
+
+		if(target != null) return target;
+
+		enemies = GameObject.FindGameObjectsWithTag("WormPart");
+		foreach (GameObject enemy in enemies)
+		{
+			if (target == null) {
+				target = enemy;
+			} else if(Vector2.Distance(transform.position, enemy.transform.position) < Vector2.Distance(transform.position, target.transform.position)) {
+				target = enemy;
+			}
+		}
+
+		if(target != null) return target;
+
+		enemies = GameObject.FindGameObjectsWithTag("Boss");
+		foreach (GameObject enemy in enemies)
+		{
+			if (target == null) {
+				target = enemy;
+			} else if(Vector2.Distance(transform.position, enemy.transform.position) < Vector2.Distance(transform.position, target.transform.position)) {
+				target = enemy;
+			}
+		}
+
 		return target;
 	}
 

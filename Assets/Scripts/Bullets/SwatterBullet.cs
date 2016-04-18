@@ -56,7 +56,17 @@ public class SwatterBullet : MonoBehaviour {
 			other.gameObject.GetComponentInParent<Movement> ().health -= dmg;
 			other.gameObject.GetComponentInParent<Movement> ().Blink ();
 			Destroy (gameObject);
-		} 
+		}
+		else if (other.tag == "WormPart" && timer > 0.2 && timer < 0.6) {
+			other.gameObject.GetComponent<WormBod> ().mov.health -= dmg;
+			other.gameObject.GetComponentInParent<WormBod> ().Blink();
+			StartCoroutine ("Cooldown");
+		}
+		else if (other.tag == "Boss" && timer > 0.2 && timer < 0.6)
+		{
+			other.gameObject.GetComponent<Boss>().DealDamage(dmg);
+			Destroy(gameObject);
+		}
 	}
 
 	void findTarget(){

@@ -50,6 +50,11 @@ public class BugSprayBullet : MonoBehaviour {
 			other.gameObject.GetComponentInParent<WormBod> ().Blink();
 			Destroy (gameObject);
 		}
+		else if (other.tag == "Boss")
+		{
+			other.gameObject.GetComponent<Boss>().DealDamage(dmg);
+			Destroy(gameObject);
+		}
 	}
 		
 }

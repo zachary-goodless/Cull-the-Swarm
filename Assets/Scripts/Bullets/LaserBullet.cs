@@ -73,6 +73,11 @@ public class LaserBullet : MonoBehaviour {
 			other.gameObject.GetComponentInParent<WormBod> ().Blink();
 			StartCoroutine ("Cooldown");
 		}
+		else if (other.tag == "Boss"  && !cool)
+		{
+			other.gameObject.GetComponent<Boss>().DealDamage(dmg);
+			StartCoroutine ("Cooldown");
+		}
 	}
 		
 	void OnTriggerStay2D (Collider2D other){
@@ -83,6 +88,11 @@ public class LaserBullet : MonoBehaviour {
 		} else if (other.tag == "WormPart" && !cool) {
 			other.gameObject.GetComponent<WormBod> ().mov.health -= dmg;
 			other.gameObject.GetComponentInParent<WormBod> ().Blink();
+			StartCoroutine ("Cooldown");
+		}
+		else if (other.tag == "Boss"  && !cool)
+		{
+			other.gameObject.GetComponent<Boss>().DealDamage(dmg);
 			StartCoroutine ("Cooldown");
 		}
 	}

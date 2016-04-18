@@ -58,6 +58,18 @@ public class TeslaPhase_2 : MonoBehaviour
 		if(other.tag == "EnemyHit" && !isOnCooldown && damage != 0f)
 		{
 			other.gameObject.GetComponentInParent<Movement>().health -= damage;
+			other.gameObject.GetComponentInParent<Movement> ().Blink();
+			StartCoroutine(handleCooldown());
+		}
+		else if(other.tag == "WormPart" && !isOnCooldown && damage != 0f)
+		{
+			other.gameObject.GetComponent<WormBod> ().mov.health -= damage;
+			other.gameObject.GetComponentInParent<WormBod> ().Blink();
+			StartCoroutine(handleCooldown());
+		}
+		else if (other.tag == "Boss"  && !isOnCooldown && damage != 0f)
+		{
+			other.gameObject.GetComponent<Boss>().DealDamage(damage);
 			StartCoroutine(handleCooldown());
 		}
 	}
