@@ -17,14 +17,16 @@ public class Moon1 : MonoBehaviour {
 	public DialogueBox dialog;
 
 	void Start () {
-		StartCoroutine ("LevelLayout");
 		sf = GameObject.Find ("ScreenFade").GetComponent<ScreenFade> ();
+		StartCoroutine ("LevelLayout");
+
 	}
 
 	IEnumerator LevelLayout(){
 
-		yield return new WaitForSeconds (5f);
+		StartCoroutine(sf.FadeFromBlack());
 
+		yield return new WaitForSeconds (5f);
 		//Wave One - 3 turrets evenly spaced along the top of the screen move slowly towards the bottom.
 		waves.StartSpawnLinear(turret, 3, 0, 150, 0, -1, 150, -400,waves.upScreen,Quaternion.identity,400,0,"");
 		yield return new WaitForSeconds (2f); 
@@ -77,8 +79,8 @@ public class Moon1 : MonoBehaviour {
 		waves.StartSpawnDive(snail,5,1.5f,200,6,150,0,1,120,0,waves.downScreen,Quaternion.Euler(0,0,180),0,0,"");
 		yield return new WaitForSeconds (7f);
 
-		//Wave Twelve (7 sec afterwards)- 2 worms from bottom of screen on both left and right side of the screen move towards the top.
-		waves.StartSpawnWorms(2,7,0,.5f,25,250,1,300,-4,waves.downScreen,Quaternion.identity,0,0,"");
+		//Wave Twelve (7 sec afterwards)- 1 worm down form top
+		waves.StartSpawnWorms(1,7,0,.5f,30,250,1,300,0,waves.upScreen,Quaternion.identity,0,0,"");
 		yield return new WaitForSeconds (3f);
 
 		//Wave Thirteen ( 3 sec later)- 2 turret column wide, 4 turrets tall move slowly from the center of the screen towards the bottom.
@@ -120,7 +122,11 @@ public class Moon1 : MonoBehaviour {
 
 		yield return new WaitForSeconds (16f);
 
-		sf.Fade ();
+		//JUSTIN
+		StartCoroutine(sf.FadeToBlack());
+		yield return new WaitForSeconds(2f);
+		//JUSTIN
+
 		finished.handleLevelCompleted((SceneIndex)SceneManager.GetActiveScene().buildIndex);
 		yield break;
 	}
