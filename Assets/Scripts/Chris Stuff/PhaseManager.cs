@@ -25,20 +25,24 @@ public class PhaseManager : MonoBehaviour
 	public bool isActive;
 	private bool isOnCooldown;
 	private bool isOnCooldownDelay;
+    bool blinking = false;
+    MeshRenderer[] meshList;
 
-	//--------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------
 
-	void Start ()
+    void Start ()
 	{
+
 		// get handle on player script
 		playerScript = GetComponent<Player> ();
 		//get handle on energy bar
 		energyBar = GameObject.Find("EnergyBar").GetComponent<RectTransform>();
+        meshList =  playerScript.GetComponentsInChildren<MeshRenderer>();
 
-		//init prefab
-	
+        //init prefab
 
-		currEnergy = maxEnergy;
+
+        currEnergy = maxEnergy;
 
 		isActive = false;
 		isOnCooldown = false;
@@ -72,8 +76,9 @@ public class PhaseManager : MonoBehaviour
 
 		//if the weapon is active...
 		if (isActive) {
-			
-			currEnergy -= consumptionRate * Time.deltaTime;
+            Blink();
+
+            currEnergy -= consumptionRate * Time.deltaTime;
 			//enter cooldown delay if the weapon hasn't already
 			if (currEnergy <= 0f && !isOnCooldownDelay) {
 				currEnergy = 0f;
@@ -122,15 +127,43 @@ public class PhaseManager : MonoBehaviour
 				isOnCooldown = false;
 			}
 		}
-	}
+    }
 
-	//--------------------------------------------------------------------------------------------
+    public void Blink()
+    {
+        blinking = true;
+        foreach (MeshRenderer m in meshList)
+        {
+            if (m)
+            {
+                m.material.SetColor("_Color", new Color(0.3f, 0.3f, 1f, 1f));
+            }
+        }
 
-	
+        Invoke("Reveal", .1f);
+    }
 
-	//--------------------------------------------------------------------------------------------
+    void Reveal()
+    {
+        foreach (MeshRenderer m in meshList)
+        {
+            if (m)
+            {
+                m.material.SetColor("_Color", Color.white);
+            }
+        }
 
-	IEnumerator handleCoolDownDelay()
+        blinking = false;
+
+    }
+
+    //--------------------------------------------------------------------------------------------
+
+
+
+    //--------------------------------------------------------------------------------------------
+
+    IEnumerator handleCoolDownDelay()
 	{
 		yield return new WaitForSeconds(cooldownDelay);
 

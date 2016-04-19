@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour {
 
@@ -16,6 +17,7 @@ public class Boss : MonoBehaviour {
     bool blinking = false;
     MeshRenderer[] meshList;
     int moveCounter = 0;
+    public GameObject levelEnd;
 
     // Use this for initialization
     void Start () {
@@ -44,6 +46,7 @@ public class Boss : MonoBehaviour {
             {
                 Debug.Log("New boss phase");
                 ParticleBurst();
+                GameObject.FindObjectOfType<Score>().handleEnemyDefeated(PointVals.BOSS_NEW_STAGE);
                 phase++;
             }
         }
@@ -56,12 +59,14 @@ public class Boss : MonoBehaviour {
 
     IEnumerator DeathSequence()
     {
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < 40; i++)
         {
 
             Instantiate(splat[Random.Range(0, splat.Length)], new Vector2(transform.position.x + Random.Range(-100,100),transform.position.y+Random.Range(-100,100)), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
         }
+        GameObject.FindObjectOfType<Score>().handleEnemyDefeated(PointVals.BOSS_DEFEATED);
+        levelEnd.GetComponent<LevelCompleteHandler>().handleLevelCompleted((SceneIndex)SceneManager.GetActiveScene().buildIndex);
         yield break;
     }
 
