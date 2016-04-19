@@ -13,6 +13,7 @@ public class SnailScript : MonoBehaviour {
 		mov = GetComponent<Movement> ();
 		shelled = true;
 		targetHealth = mov.health / 2;
+		mov.rotAdjust = -1;
 	}
 	
 	// Update is called once per frame

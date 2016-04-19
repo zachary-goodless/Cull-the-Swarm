@@ -61,6 +61,9 @@ public class LaserBullet : MonoBehaviour {
 		} else {
 			Destroy (gameObject);
 		}
+
+		transform.position = new Vector3 (transform.position.x, transform.position.y, 50);
+
 	}
 
 	void OnTriggerEnter2D (Collider2D other){

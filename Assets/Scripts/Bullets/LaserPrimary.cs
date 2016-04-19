@@ -26,10 +26,10 @@ public class LaserPrimary : MonoBehaviour {
 	void Update () {
 		if(Time.timeScale != 1f) return;
 
-		if (Input.GetButtonDown ("Primary") && !cooling) {
+		if ((Input.GetButtonDown ("Primary") || Input.GetButtonDown("XBOX_RB") || Input.GetButtonDown("XBOX_A")) && !cooling) {
 			Shoot ();
 		}
-		if(Input.GetButtonUp("Primary") && !cooling){
+		if((Input.GetButtonUp("Primary") || (Input.GetButtonUp("XBOX_RB") && !Input.GetButton("XBOX_A")) || (Input.GetButtonUp("XBOX_A") && !Input.GetButton("XBOX_RB"))) && !cooling){
 			cooling = true;
 		}
 		if (cooling) {
@@ -43,11 +43,11 @@ public class LaserPrimary : MonoBehaviour {
 	}
 
 	void Shoot(){
-		GameObject temp = Instantiate (bullet, gunF.position, Quaternion.identity) as GameObject;
+		GameObject temp = Instantiate (bullet, new Vector3(gunF.position.x,gunF.position.y,50), Quaternion.identity) as GameObject;
 		temp.transform.parent = gunF;
 		LaserBullet lb = temp.GetComponent<LaserBullet> ();
 		lb.front = true;
-		temp = Instantiate (bullet, gunB.position, Quaternion.identity) as GameObject;
+		temp = Instantiate (bullet, new Vector3(gunB.position.x, gunB.position.y,50), Quaternion.identity) as GameObject;
 		temp.transform.parent = gunB;
 		lb = temp.GetComponent<LaserBullet> ();
 		lb.front = false;

@@ -85,6 +85,8 @@ public class Movement : MonoBehaviour {
 	public bool beenSeen;
 	public bool screenDeath;
 
+	public float rotAdjust;
+
 	public bool doesTilt;
 
 	Vector3 nullZ;
@@ -111,6 +113,7 @@ public class Movement : MonoBehaviour {
 		sideToBottom = false;
 		fromBackground = false;
 		blinking = false;
+		rotAdjust = 1;
 
 		diveSpeed = 0;
 
@@ -447,9 +450,12 @@ public class Movement : MonoBehaviour {
 			Vector3 dir = targetPos - transform.position;
 			if (!rotSet) {
 				transform.rotation = Quaternion.LookRotation (Vector3.forward, dir);
+				if (rotAdjust < 0) {
+					transform.Rotate (0, 0, 180);
+				}
 				rotSet = true;
 			}
-			transform.position += transform.up * diveSpeed * Time.deltaTime;
+			transform.position += transform.up*rotAdjust * diveSpeed * Time.deltaTime;
 			transform.position = new Vector3(transform.position.x,transform.position.y,0);
 		} else {
 			transform.position += new Vector3 (speed * dirX * Time.deltaTime, speed * dirY * Time.deltaTime,0f);

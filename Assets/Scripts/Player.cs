@@ -104,7 +104,7 @@ public class Player : MonoBehaviour {
 	void Update()
 	{
 		//JUSTIN
-		if(Input.GetButtonDown("Pause") && pauseMenu != null)
+		if((Input.GetButtonDown("Pause") && pauseMenu != null) || Input.GetButtonDown("XBOX_Start") && pauseMenu != null)
 		{
 			pauseMenu.togglePaused();
 			return;
@@ -114,8 +114,25 @@ public class Player : MonoBehaviour {
 		//JUSTIN
 
 		// Get input from controller.
-		float hSpeed = Mathf.Round(Input.GetAxisRaw("Horizontal"));
-		float vSpeed = Mathf.Round(Input.GetAxisRaw("Vertical"));
+
+		float hSpeed = 0;
+		float vSpeed = 0;
+
+		if (Input.GetAxisRaw ("Horizontal") != 0) {
+			hSpeed = Mathf.Round (Input.GetAxisRaw ("Horizontal"));
+		} else if(Input.GetAxisRaw("XBOX_LS_X") != 0){
+			hSpeed = Mathf.Round (Input.GetAxisRaw ("XBOX_LS_X"));
+		} else if(Input.GetAxisRaw("XBOX_DP_X") != 0){
+			hSpeed = Mathf.Round (Input.GetAxisRaw ("XBOX_DP_X"));
+		}
+
+		if (Input.GetAxisRaw ("Vertical") != 0) {
+			vSpeed = Mathf.Round(Input.GetAxisRaw("Vertical"));
+		} else if(Input.GetAxisRaw("XBOX_LS_Y") != 0){
+			vSpeed = Mathf.Round(Input.GetAxisRaw("XBOX_LS_Y"));
+		} else if(Input.GetAxisRaw("XBOX_DP_Y") != 0){
+			vSpeed = Mathf.Round(Input.GetAxisRaw("XBOX_DP_Y"));
+		}
 
 		// Slightly slower when moving diagonally.
 		if (hSpeed != 0 && vSpeed != 0){
@@ -125,7 +142,7 @@ public class Player : MonoBehaviour {
 		
 
 		// Adjust for precision mode.
-		if (Input.GetButton("Precision"))
+		if (Input.GetButton("Precision") || Input.GetButton("XBOX_LB"))
 		{
 			hSpeed *= precisionSpeed;
 			vSpeed *= precisionSpeed;

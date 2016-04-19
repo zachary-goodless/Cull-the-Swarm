@@ -23,10 +23,10 @@ public class SwatterPrimary : MonoBehaviour {
 	void Update () {
 		if(Time.timeScale != 1f) return;
 
-		if (Input.GetButtonDown ("Primary") && !cooling) {
+		if ((Input.GetButtonDown ("Primary") || Input.GetButtonDown("XBOX_RB") || Input.GetButtonDown("XBOX_A")) && !cooling) {
 			StartCoroutine ("Firing");
 		}
-		if(Input.GetButtonUp("Primary") && !cooling){
+		if((Input.GetButtonUp("Primary") || (Input.GetButtonUp("XBOX_RB") && !Input.GetButton("XBOX_A")) || (Input.GetButtonUp("XBOX_A") && !Input.GetButton("XBOX_RB"))) && !cooling){
 			cooling = true;
 		}
 		if (cooling) {
@@ -53,7 +53,7 @@ public class SwatterPrimary : MonoBehaviour {
 	}
 
 	IEnumerator Firing(){
-		while(Input.GetButton("Primary") && !player.dead){
+		while((Input.GetButton("Primary") || Input.GetButton("XBOX_RB") || Input.GetButton("XBOX_A")) && !player.dead){
 			Shoot();
 			yield return new WaitForSeconds(shootCool);
 		}
@@ -65,10 +65,12 @@ public class SwatterPrimary : MonoBehaviour {
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
 		foreach (GameObject enemy in enemies)
 		{
-			if (target == null) {
-				target = enemy;
-			} else if(Vector2.Distance(transform.position, enemy.transform.position) < Vector2.Distance(transform.position, target.transform.position)) {
-				target = enemy;
+			if (enemy.GetComponent<Movement>().mr.isVisible) {
+				if (target == null) {
+					target = enemy;
+				} else if (Vector2.Distance (transform.position, enemy.transform.position) < Vector2.Distance (transform.position, target.transform.position)) {
+					target = enemy;
+				}
 			}
 		}
 

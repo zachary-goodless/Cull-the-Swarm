@@ -15,6 +15,9 @@ public class Waves : MonoBehaviour{
 	public float leftScreen;
 	public float rightScreen;
 
+	//For making things spawn off the edge of the screen
+	Camera cam;
+
 	void Start(){
 		upScreen = transform.position.y;
 		downScreen = -1 * upScreen;
