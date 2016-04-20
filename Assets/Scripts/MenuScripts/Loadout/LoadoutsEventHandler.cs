@@ -20,6 +20,10 @@ public class LoadoutsEventHandler : MonoBehaviour
 	public ScreenFade mScreenFader;
 	public GameObject gmPrefab;
 
+	public Image chassisChoiceIcon;
+	public Image primaryChoiceIcon;
+	public Image secondaryChoiceIcon;
+
 	//PRIVATE
 	public Sprite[] buttonSprites;
 	public Sprite[] iconSprites;
@@ -80,6 +84,13 @@ public class LoadoutsEventHandler : MonoBehaviour
 		mCurrentLoadout.setPrimary(Loadout.LoadoutPrimary.REPEL);
 		mCurrentLoadout.setSecondary(Loadout.LoadoutSecondary.EMP);
 
+		chassisChoiceIcon.sprite = iconSprites[0];
+		primaryChoiceIcon.sprite = iconSprites[5];
+		secondaryChoiceIcon.sprite = iconSprites[10];
+
+		//init menu as though chassis button has been clicked
+		handleChassisButtonClicked();
+
 		StartCoroutine(mScreenFader.FadeFromBlack());
 	}
 
@@ -132,7 +143,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 		//for the first 5 buttons in the choices panel...
 		Button[] buttons = mChoicePanel.GetComponentsInChildren<Button>();
-		for(int i = 0; i < buttons.Length - 1; ++i)
+		for(int i = 0; i < buttons.Length; ++i)
 		{
 			//get the button event handler
 			LoadoutElementButtonEventHandler beh = buttons[i].GetComponent<LoadoutElementButtonEventHandler>();
@@ -142,7 +153,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 			//set the button's unlock and image
 			beh.isUnlocked = mSavedGameManager.getCurrentGame().unlockedChasis[i];
-			buttons[i].interactable = beh.chasisIndex != mCurrentLoadout.getChasis() && beh.isUnlocked;
+			buttons[i].interactable = beh.isUnlocked;
 
 			if(beh.isUnlocked)
 			{
@@ -154,8 +165,6 @@ public class LoadoutsEventHandler : MonoBehaviour
 				buttons[i].transition = Button.Transition.None;
 			}
 		}
-
-		toggleMainPanelButtonsActive();
 
 		mChoicePanel.SetActive(true);
 		mDataPanel.SetActive(true);
@@ -169,7 +178,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 		//for the first 5 buttons in the choices panel...
 		Button[] buttons = mChoicePanel.GetComponentsInChildren<Button>();
-		for(int i = 0; i < buttons.Length - 1; ++i)
+		for(int i = 0; i < buttons.Length; ++i)
 		{
 			//get the button event handler
 			LoadoutElementButtonEventHandler beh = buttons[i].GetComponent<LoadoutElementButtonEventHandler>();
@@ -179,7 +188,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 			//set the button's unlock and image
 			beh.isUnlocked = mSavedGameManager.getCurrentGame().unlockedPrimary[i];
-			buttons[i].interactable = beh.primaryIndex != mCurrentLoadout.getPrimary() && beh.isUnlocked;
+			buttons[i].interactable = beh.isUnlocked;
 
 			if(beh.isUnlocked)
 			{
@@ -191,8 +200,6 @@ public class LoadoutsEventHandler : MonoBehaviour
 				buttons[i].transition = Button.Transition.None;
 			}
 		}
-
-		toggleMainPanelButtonsActive();
 
 		mChoicePanel.SetActive(true);
 		mDataPanel.SetActive(true);
@@ -206,7 +213,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 		//for the first 5 buttons in the choices panel...
 		Button[] buttons = mChoicePanel.GetComponentsInChildren<Button>();
-		for(int i = 0; i < buttons.Length - 1; ++i)
+		for(int i = 0; i < buttons.Length; ++i)
 		{
 			//get the button event handler
 			LoadoutElementButtonEventHandler beh = buttons[i].GetComponent<LoadoutElementButtonEventHandler>();
@@ -216,7 +223,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 			//set the button's unlock and image
 			beh.isUnlocked = mSavedGameManager.getCurrentGame().unlockedSecondary[i];
-			buttons[i].interactable = beh.secondaryIndex != mCurrentLoadout.getSecondary() && beh.isUnlocked;
+			buttons[i].interactable = beh.isUnlocked;
 
 			if(beh.isUnlocked)
 			{
@@ -228,8 +235,6 @@ public class LoadoutsEventHandler : MonoBehaviour
 				buttons[i].transition = Button.Transition.None;
 			}
 		}
-
-		toggleMainPanelButtonsActive();
 
 		mChoicePanel.SetActive(true);
 		mDataPanel.SetActive(true);
@@ -246,6 +251,9 @@ public class LoadoutsEventHandler : MonoBehaviour
 			Debug.Log("NEW CHASSIS SELECTED: " + ci);
 
 			setChoiceButtonsActive();
+			chassisChoiceIcon.sprite = iconSprites[(int)ci];
+
+			handlePrimaryButtonClicked();
 		}
 
 		//PRIMARY
@@ -255,6 +263,9 @@ public class LoadoutsEventHandler : MonoBehaviour
 			Debug.Log("NEW PRIMARY SELECTED: " + pi);
 
 			setChoiceButtonsActive();
+			primaryChoiceIcon.sprite = iconSprites[(int)pi + 5];
+
+			handleSecondaryButtonClicked();
 		}
 
 		//SECONDARY
@@ -264,14 +275,8 @@ public class LoadoutsEventHandler : MonoBehaviour
 			Debug.Log("NEW SECONDARY SELECTED: " + si);
 
 			setChoiceButtonsActive();
-			return;
+			secondaryChoiceIcon.sprite = iconSprites[(int)si + 10];
 		}
-
-		//BACK BUTTON -- also chassis and primary, button calls for next panel
-		toggleMainPanelButtonsActive();
-
-		mChoicePanel.SetActive(false);
-		mDataPanel.SetActive(false);
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -282,6 +287,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 		Loadout.LoadoutSecondary si,
 		bool isChoiceUnlocked)
 	{
+		//TODO -- hook up keyboard input to this
 		initDataPanel(ci, pi, si, isChoiceUnlocked);
 	}
 
@@ -289,6 +295,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 	public void handleChoiceButtonMouseExit()
 	{
+		//TODO -- hook up keyboard input to this
 		initDataPanel(Loadout.LoadoutChasis.NULL, Loadout.LoadoutPrimary.NULL, Loadout.LoadoutSecondary.NULL);
 	}
 

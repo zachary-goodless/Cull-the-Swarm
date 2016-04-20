@@ -61,6 +61,12 @@ public class WorldMapEventHandler : MonoBehaviour
 		lockLevelButtons();
 		toggleLevelButtonsActive();
 
+		//need to get a handle on the final chassis stars
+		finalChassisStars = mStagePanel.GetComponentsInChildren<FinalChassisStar>();
+
+		//tutorial always unlocked, init menu to this
+		handleLevelButtonClicked(0);
+
 		//sanity check -- null any selected level data on the current game ptr
 		mSavedGameManager.getCurrentGame().setSelectedLevel(SceneIndex.NULL);
 		mSelectedLevel = SceneIndex.NULL;
@@ -105,8 +111,6 @@ public class WorldMapEventHandler : MonoBehaviour
 	{
 		//handle final chassis stars
 		{
-			finalChassisStars = mStagePanel.GetComponentsInChildren<FinalChassisStar>();
-
 			//IF FINAL LEVELS -- DISABLE FINAL STAR
 			if(firstStageIndex == 12)
 			{
@@ -129,15 +133,12 @@ public class WorldMapEventHandler : MonoBehaviour
 
 			//for the first three buttons (stages 1, 2, and 3)...
 			StageButtonEventHandler[] behs = mStagePanel.GetComponentsInChildren<StageButtonEventHandler>();
-			for(int i = 0; i < behs.Length - 1; ++i)
+			for(int i = 0; i < behs.Length; ++i)
 			{
 				//set isUnlocked and sceneIndex for the current button
 				behs[i].isUnlocked = mSavedGameManager.getCurrentGame().unlockedLevels[firstStageIndex + i];
 				behs[i].sceneIndex = (SceneIndex)(firstStageIndex + i + 3);
 			}
-
-			//force the unlock for the back button
-			behs[behs.Length - 1].isUnlocked = true;
 				
 			//set the buttons enable
 			setStageButtonsActive();
@@ -153,8 +154,6 @@ public class WorldMapEventHandler : MonoBehaviour
 		handleLevelButtonMouseExit();
 		mStagePanel.SetActive(true);
 		mDataPanel.SetActive(true);
-
-		toggleLevelButtonsActive();
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -199,8 +198,6 @@ public class WorldMapEventHandler : MonoBehaviour
 			mStagePanel.SetActive(false);
 			mDataPanel.SetActive(false);
 
-			toggleLevelButtonsActive();
-
 			//reenable final chassis stars
 			foreach(FinalChassisStar star in finalChassisStars)
 			{
@@ -213,6 +210,7 @@ public class WorldMapEventHandler : MonoBehaviour
 
 	public void handleStageButtonMouseOver(SceneIndex si)
 	{
+		//TODO -- hook up keyboard input to this
 		Debug.Log("STAGE BUTTON MOUSE OVER: " + si);
 
 		//initialize the data panel with the current stage's data
@@ -223,6 +221,7 @@ public class WorldMapEventHandler : MonoBehaviour
 
 	public void handleStageButtonMouseExit(SceneIndex si)
 	{
+		//TODO -- hook up keyboard input to this
 		Debug.Log("STAGE BUTTON MOUSE EXIT: " + si);
 
 		//overwrite the data panel with null data
