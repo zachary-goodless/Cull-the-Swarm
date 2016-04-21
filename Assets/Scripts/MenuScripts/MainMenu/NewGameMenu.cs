@@ -23,14 +23,17 @@ public class NewGameMenu : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	void Start()
+	void OnEnable()
 	{
 		mName = "";
 
 		mNameField.onValueChanged.AddListener( delegate{ handleTextEditValueChanged(); } );
+		mNameField.onEndEdit.AddListener( delegate{ handleEditFinished(); } );
 
 		mMainMenu = GetComponentInParent<MainMenuEventHandler>();
 		mSavedGameManager = GameObject.FindGameObjectWithTag("SaveManager").GetComponent<SavedGameManager>();
+
+		mNameField.Select();
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -43,6 +46,24 @@ public class NewGameMenu : MonoBehaviour
 
 		//the create new game button is enabled if the text was nonempty
 		mCreateNewGameButton.interactable = mName != "";
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	public void handleEditFinished()
+	{
+		mName = mNameField.text;
+		mName = mName.Replace(" ", "");
+
+		//select new game button if name is valid
+		if(mName == "")
+		{
+			mNameField.Select();
+		}
+		else
+		{
+			mCreateNewGameButton.Select();
+		}
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -78,5 +99,6 @@ public class NewGameMenu : MonoBehaviour
 		gameObject.SetActive(false);
 
 		mMainMenu.toggleButtons();
+		mMainMenu.lastButtonClicked.Select();
 	}
 }

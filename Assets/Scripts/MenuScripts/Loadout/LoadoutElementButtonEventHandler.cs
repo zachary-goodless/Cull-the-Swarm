@@ -5,7 +5,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class LoadoutElementButtonEventHandler : MonoBehaviour
+public class LoadoutElementButtonEventHandler : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
 	//PUBLIC
 	public Loadout.LoadoutChasis chasisIndex;
@@ -31,10 +31,16 @@ public class LoadoutElementButtonEventHandler : MonoBehaviour
 		if(mParentEventHandler != null)
 		{
 			mParentEventHandler.handleChoiceButtonClicked(chasisIndex, primaryIndex, secondaryIndex);
+			handleButtonMouseOver();
 		}
 	}
 
 //--------------------------------------------------------------------------------------------
+
+	public void OnSelect(BaseEventData eventData)
+	{
+		handleButtonMouseOver();
+	}
 
 	public void handleButtonMouseOver()
 	{
@@ -49,6 +55,11 @@ public class LoadoutElementButtonEventHandler : MonoBehaviour
 	}
 
 //--------------------------------------------------------------------------------------------
+
+	public void OnDeselect(BaseEventData eventData)
+	{
+		handleButtonMouseExit();
+	}
 
 	public void handleButtonMouseExit()
 	{

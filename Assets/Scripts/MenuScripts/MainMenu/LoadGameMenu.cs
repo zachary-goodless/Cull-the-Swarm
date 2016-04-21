@@ -34,12 +34,12 @@ public class LoadGameMenu : MonoBehaviour
 		mMainMenu = GetComponentInParent<MainMenuEventHandler>();
 		mSavedGameManager = GameObject.FindGameObjectWithTag("SaveManager").GetComponent<SavedGameManager>();
 
-		buildList();
+		StartCoroutine(buildList());
 	}
 
 //--------------------------------------------------------------------------------------------
 
-	public void buildList()
+	public IEnumerator buildList()
 	{
 		//clear games already in the list
 		clearList();
@@ -69,6 +69,12 @@ public class LoadGameMenu : MonoBehaviour
 			newElem.name = "ListElement_" + name;
 			newElem.transform.SetParent(scrollPanel.transform, false);
 
+			//select first element
+			if(i == 0)
+			{
+				newElem.GetComponentInChildren<Button>().Select();
+			}
+
 			//set the element's name
 			newElem.GetComponent<GameListElementHandler>().setName(name);
 
@@ -84,7 +90,13 @@ public class LoadGameMenu : MonoBehaviour
 			rectTransform.offsetMax = new Vector2(x, y);
 		}
 
-		//TODO -- some way to force scrollbar to the top of the list?
+		//force scroll to top of list at start
+		yield return null;
+		GetComponentInChildren<Scrollbar>().value = 1f;
+
+
+
+		yield break;
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -113,6 +125,8 @@ public class LoadGameMenu : MonoBehaviour
 		{
 			button.interactable = true;
 		}
+
+		mLoadButton.Select();
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -147,5 +161,6 @@ public class LoadGameMenu : MonoBehaviour
 		gameObject.SetActive(false);
 
 		mMainMenu.toggleButtons();
+		mMainMenu.lastButtonClicked.Select();
 	}
 }

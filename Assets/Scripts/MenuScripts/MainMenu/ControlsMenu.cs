@@ -20,11 +20,10 @@ public class ControlsMenu : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	void Start ()
+	void OnEnable()
 	{
 		mMainMenu = GetComponentInParent<MainMenuEventHandler>();
-
-		setButtonsInteractable();
+		backButton.Select();
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -34,8 +33,6 @@ public class ControlsMenu : MonoBehaviour
 		//toggle active on controls and set buttons enable
 		controllerControls.gameObject.SetActive(false);
 		keyboardControls.gameObject.SetActive(true);
-
-		setButtonsInteractable();
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -45,8 +42,6 @@ public class ControlsMenu : MonoBehaviour
 		//toggle active on controls and set buttons enable
 		keyboardControls.gameObject.SetActive(false);
 		controllerControls.gameObject.SetActive(true);
-
-		setButtonsInteractable();
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -54,15 +49,8 @@ public class ControlsMenu : MonoBehaviour
 	public void handleBackButtonClicked()
 	{
 		gameObject.SetActive(false);
+
 		mMainMenu.toggleButtons();
-	}
-
-//--------------------------------------------------------------------------------------------
-
-	void setButtonsInteractable()
-	{
-		//choice buttons active is opposite of their respective controller panel
-		keyboardButton.interactable = !keyboardControls.gameObject.activeSelf;
-		controllerButton.interactable = !controllerControls.gameObject.activeSelf;
+		mMainMenu.lastButtonClicked.Select();
 	}
 }

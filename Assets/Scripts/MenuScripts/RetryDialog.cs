@@ -10,18 +10,20 @@ using UnityEngine.SceneManagement;
 public class RetryDialog : MonoBehaviour
 {
 	//PUBLIC
-	//
+	public Button yesButton;
 
 	//PRIVATE
 	//
 
 //--------------------------------------------------------------------------------------------
 
-	void Start ()
+	void Start()
 	{
 		//force pause
 		Time.timeScale = 0f;
 		LevelCompleteHandler.isLevelComplete = true;
+
+		yesButton.Select();
 	}
 
 //--------------------------------------------------------------------------------------------

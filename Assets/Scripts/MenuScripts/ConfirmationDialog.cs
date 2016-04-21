@@ -1,6 +1,9 @@
 ﻿
 using UnityEngine;
 
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
 using System;
 using System.Collections;
 
@@ -8,6 +11,8 @@ public class ConfirmationDialog : MonoBehaviour
 {
 	//PUBLIC
 	public PauseMenu parent;
+
+	public Button noButton;
 
 	//PRIVATE
 	private int callbackAction;
@@ -18,6 +23,8 @@ public class ConfirmationDialog : MonoBehaviour
 	{
 		gameObject.SetActive(true);
 		callbackAction = action;
+
+		noButton.Select();
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -42,6 +49,8 @@ public class ConfirmationDialog : MonoBehaviour
 			Debug.Log("UNHANDLED CALLBACK ACTION");
 			break;
 		}
+
+		parent.lastButtonClicked.Select();
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -66,5 +75,7 @@ public class ConfirmationDialog : MonoBehaviour
 			Debug.Log("UNHANDLED CALLBACK ACTION");
 			break;
 		}
+
+		parent.lastButtonClicked.Select();
 	}
 }

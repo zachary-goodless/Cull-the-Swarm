@@ -30,35 +30,8 @@ public class LevelButtonEventHandler : MonoBehaviour
 		if(mParentEventHandler != null)
 		{
 			//call to the canvas' event handler
+			mParentEventHandler.lastButtonClicked = GetComponent<Button>();
 			mParentEventHandler.handleLevelButtonClicked(firstStageIndex);
-		}
-	}
-
-//--------------------------------------------------------------------------------------------
-
-	public void handleButtonMouseOver()
-	{
-		if(gameObject.GetComponent<Button>().interactable)
-		{
-			if(mParentEventHandler != null)
-			{
-				//call to the canvas' event handler
-				mParentEventHandler.handleLevelButtonMouseOver(firstStageIndex);
-			}
-		}
-	}
-
-//--------------------------------------------------------------------------------------------
-
-	public void handleButtonMouseExit()
-	{
-		if(gameObject.GetComponent<Button>().interactable)
-		{
-			if(mParentEventHandler != null)
-			{
-				//call to the canvas' event handler
-				mParentEventHandler.handleLevelButtonMouseExit();
-			}
 		}
 	}
 }

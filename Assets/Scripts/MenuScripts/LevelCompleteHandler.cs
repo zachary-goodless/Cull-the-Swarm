@@ -25,6 +25,8 @@ public class LevelCompleteHandler : MonoBehaviour
 	public Text scoreDisplay;
 	public Score score;
 
+	public Button button;
+
 	public static bool isLevelComplete = false;
 
 	//PRIVATE
@@ -68,6 +70,9 @@ public class LevelCompleteHandler : MonoBehaviour
 		//now we can activate the panel and run its animations
 		gameObject.SetActive(true);
 		StartCoroutine(handlePanelAnimations());
+
+		//activate the button
+		button.Select();
 	}
 
 //--------------------------------------------------------------------------------------------
