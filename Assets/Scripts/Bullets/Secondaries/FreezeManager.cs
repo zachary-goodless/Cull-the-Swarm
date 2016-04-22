@@ -9,7 +9,7 @@ public class FreezeManager : MonoBehaviour
 	//PUBLIC
 	public float maxEnergy = 200f;
 	public float rechargeRate = 20f;
-	public float consumptionRate = 40f;
+	public float consumptionRate = 50f;
 
 	public float spinUpTime = 2f;
 	public float cooldownDelay = 2f;
@@ -86,8 +86,16 @@ public class FreezeManager : MonoBehaviour
 				//destroy the area obj if it hasn't already been
 				if(freezeAreaInstance != null)
 				{
-					//delete area obj
+					//remove area obj freeze ability and delete
+					freezeAreaInstance.GetComponent<FreezeArea>().canMakeMore = false;
 					Destroy(freezeAreaInstance);
+				}
+
+				//for each freeze bullet...
+				foreach(FreezeBullet fb in GameObject.FindObjectsOfType<FreezeBullet>())
+				{
+					//diable its freeze ability
+					fb.canMakeMore = false;
 				}
 			}
 		}

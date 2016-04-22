@@ -55,7 +55,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 		//init resource arrays
 		buttonSprites = Resources.LoadAll<Sprite>("GUI_Assets/Menu_Loadouts");
-		iconSprites = Resources.LoadAll<Sprite>("GUI_Assets/LoadoutIcons");
+		iconSprites = Resources.LoadAll<Sprite>("GUI_Assets/NewLoadoutIcons");
 
 		elementStrings = new string[16, 3]		//name, description, unlock
 		{
@@ -176,8 +176,6 @@ public class LoadoutsEventHandler : MonoBehaviour
 			Navigation nav = buttons[i].navigation;
 			nav.selectOnLeft = lastButtonClicked;
 			buttons[i].navigation = nav;
-
-			//TODO -- select first button?
 		}
 
 		initDataPanel(Loadout.LoadoutChasis.NULL, Loadout.LoadoutPrimary.NULL, Loadout.LoadoutSecondary.NULL);
@@ -218,8 +216,6 @@ public class LoadoutsEventHandler : MonoBehaviour
 			Navigation nav = buttons[i].navigation;
 			nav.selectOnLeft = lastButtonClicked;
 			buttons[i].navigation = nav;
-
-			//TODO -- select first button?
 		}
 
 		initDataPanel(Loadout.LoadoutChasis.NULL, Loadout.LoadoutPrimary.NULL, Loadout.LoadoutSecondary.NULL);
@@ -260,8 +256,6 @@ public class LoadoutsEventHandler : MonoBehaviour
 			Navigation nav = buttons[i].navigation;
 			nav.selectOnLeft = lastButtonClicked;
 			buttons[i].navigation = nav;
-
-			//TODO -- select first button?
 		}
 
 		initDataPanel(Loadout.LoadoutChasis.NULL, Loadout.LoadoutPrimary.NULL, Loadout.LoadoutSecondary.NULL);

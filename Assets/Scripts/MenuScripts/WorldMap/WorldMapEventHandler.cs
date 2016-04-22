@@ -149,8 +149,6 @@ public class WorldMapEventHandler : MonoBehaviour
 				Navigation nav = currButton.navigation;
 				nav.selectOnLeft = lastButtonClicked;
 				currButton.navigation = nav;
-
-				//TODO -- select first button?
 			}
 				
 			//set the buttons enable

@@ -84,9 +84,16 @@ public class Score : MonoBehaviour
 		{
 			while(displayScore < trueScore)
 			{
-				//increment display score up to true score
-				displayScore += 100;
-				if(displayScore > trueScore)
+				if(!LevelCompleteHandler.isLevelComplete)
+				{
+					//increment display score up to true score
+					displayScore += 100;
+					if(displayScore > trueScore)
+					{
+						displayScore = trueScore;
+					}
+				}
+				else
 				{
 					displayScore = trueScore;
 				}

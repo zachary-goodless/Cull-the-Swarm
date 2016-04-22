@@ -5,10 +5,14 @@ using System.Collections;
 public class FreezeBullet : MonoBehaviour
 {
 	//PUBLIC
-	public float duration = 2f;
+	public float duration = 1f;
 	public float explosionDuration = 0.25f;
 
-	public float damage = float.MinValue;
+	public float delayBetweenTicks = 0.01f;
+
+	public float damage = 0.05f;
+
+	public bool canMakeMore = true;
 
 	//PRIVATE
 	int recursionLevel = 0;
@@ -31,7 +35,7 @@ public class FreezeBullet : MonoBehaviour
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		//if other is bullet and we're not at the bottom recursion level...
-		if(other.tag == "Bullet" && recursionLevel != 0)
+		if(other.tag == "Bullet" && recursionLevel != 0 && canMakeMore)
 		{
 			//grab bullet position
 			Vector3 spawnPos = other.transform.position;
@@ -48,9 +52,12 @@ public class FreezeBullet : MonoBehaviour
 				freezeBulletScript.setRecursionLevel(recursionLevel - 1);
 			}
 		}
+	}
 
-		/* 
-		//TODO -- explosion too powerful, removing for now
+//--------------------------------------------------------------------------------------------
+
+	void OnTriggerStay2D(Collider2D other)
+	{
 		//if explosion is active and other is enemy...
 		if(isExploding && other.tag == "EnemyHit")
 		{
@@ -66,14 +73,13 @@ public class FreezeBullet : MonoBehaviour
 		{
 			other.gameObject.GetComponent<Boss>().DealDamage(damage);
 		}
-		*/
 	}
 
 //--------------------------------------------------------------------------------------------
 
 	IEnumerator handleDuration()
 	{
-		//exist for duration, then explode for damage
+		//exist for duration, then explode
 		yield return new WaitForSeconds(duration);
 
 		StartCoroutine(handleExplosion());
