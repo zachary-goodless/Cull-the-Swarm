@@ -86,9 +86,10 @@ public class WorldMapEventHandler : MonoBehaviour
 		//load the main menu scene
 		Debug.Log("LOADING MAIN MENU");
 
-		yield return mScreenFader.FadeToBlack();
-		SceneManager.LoadScene((int)SceneIndex.MAIN_MENU);
+		mScreenFader.Fade();
+		yield return new WaitForSeconds(1f);
 
+		SceneManager.LoadScene((int)SceneIndex.MAIN_MENU);
 		yield return null;
 	}
 
@@ -103,9 +104,10 @@ public class WorldMapEventHandler : MonoBehaviour
 		//load the loadouts scene
 		Debug.Log("LOADING LOADOUTS MENU");
 
-		yield return mScreenFader.FadeToBlack();
-		SceneManager.LoadScene((int)SceneIndex.LOADOUTS);
+		mScreenFader.Fade();
+		yield return new WaitForSeconds(1f);
 
+		SceneManager.LoadScene((int)SceneIndex.LOADOUTS);
 		yield return null;
 	}
 

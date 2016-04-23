@@ -40,6 +40,8 @@ public class DeleteGameMenu : MonoBehaviour
 		//clear games already in the list
 		clearList();
 
+		mDeleteButton.interactable = false;
+
 		//get a list of saved games
 		List<string> savedGames = mSavedGameManager.getSavedGameNames();
 

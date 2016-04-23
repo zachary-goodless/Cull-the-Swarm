@@ -12,6 +12,7 @@ public class LoadGameMenu : MonoBehaviour
 {
 	//PUBLIC
 	public Button mLoadButton;
+	public Button mBackButton;
 
 	public GameObject elemPrefab;	//game list element
 
@@ -46,6 +47,11 @@ public class LoadGameMenu : MonoBehaviour
 
 		//get a list of saved games
 		List<string> savedGames = mSavedGameManager.getSavedGameNames();
+		if(savedGames.Count == 0)
+		{
+			mBackButton.Select();
+			yield return null;
+		}
 
 		//get rect transforms
 		RectTransform elemRectTransform = elemPrefab.GetComponent<RectTransform>();
@@ -69,7 +75,6 @@ public class LoadGameMenu : MonoBehaviour
 			newElem.name = "ListElement_" + name;
 			newElem.transform.SetParent(scrollPanel.transform, false);
 
-			//select first element
 			if(i == 0)
 			{
 				newElem.GetComponentInChildren<Button>().Select();
@@ -93,8 +98,6 @@ public class LoadGameMenu : MonoBehaviour
 		//force scroll to top of list at start
 		yield return null;
 		GetComponentInChildren<Scrollbar>().value = 1f;
-
-
 
 		yield break;
 	}
@@ -142,7 +145,9 @@ public class LoadGameMenu : MonoBehaviour
 			{
 				Debug.Log("LOADING WORLD MAP");
 
-				yield return mScreenFader.FadeToBlack();
+				mScreenFader.Fade();
+				yield return new WaitForSeconds(1f);
+
 				SceneManager.LoadScene((int)SceneIndex.WORLD_MAP);
 				yield return null;
 			}

@@ -79,7 +79,9 @@ public class NewGameMenu : MonoBehaviour
 			{
 				Debug.Log("LOADING WORLD MAP");
 
-				yield return mScreenFader.FadeToBlack();
+				mScreenFader.Fade();
+				yield return new WaitForSeconds(1f);
+
 				SceneManager.LoadScene((int)SceneIndex.WORLD_MAP);
 				yield return null;
 			}

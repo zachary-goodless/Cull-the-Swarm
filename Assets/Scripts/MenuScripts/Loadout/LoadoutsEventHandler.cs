@@ -116,9 +116,10 @@ public class LoadoutsEventHandler : MonoBehaviour
 		//load the worldmap scene
 		Debug.Log("LOADING WORLD MAP");
 
-		yield return mScreenFader.FadeToBlack();
-		SceneManager.LoadScene((int)SceneIndex.WORLD_MAP);
+		mScreenFader.Fade();
+		yield return new WaitForSeconds(1f);
 
+		SceneManager.LoadScene((int)SceneIndex.WORLD_MAP);
 		yield return null;
 	}
 
@@ -135,9 +136,10 @@ public class LoadoutsEventHandler : MonoBehaviour
 		Debug.Log("CURRENT LOADOUT: " + mCurrentLoadout.toString());
 		Debug.Log("LOADING GAMEPLAY SCENE: " + currentGame.getSelectedLevel());
 
-		yield return mScreenFader.FadeToBlack();
-		SceneManager.LoadScene((int)currentGame.getSelectedLevel());
+		mScreenFader.Fade();
+		yield return new WaitForSeconds(1f);
 
+		SceneManager.LoadScene((int)currentGame.getSelectedLevel());
 		yield return null;
 	}
 
