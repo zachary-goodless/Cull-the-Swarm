@@ -53,6 +53,7 @@ public class BeetlePatterns : MonoBehaviour {
                 attackQueue.Add(2);
                 attackQueue.Add(3);
                 attackQueue.Add(5);
+                attackQueue.Add(6);
             } else if(currentPhase == 2) {
                 attackQueue.Add(4);
             }
@@ -93,6 +94,9 @@ public class BeetlePatterns : MonoBehaviour {
             case 5:
                 StartCoroutine(Pattern5());
                 break;
+            case 6:
+                StartCoroutine(Pattern6());
+                break;
         }
 
     }
@@ -109,12 +113,13 @@ public class BeetlePatterns : MonoBehaviour {
             BulletManager.ShootBullet(transform.position, Random.Range(minSpeed, maxSpeed), angle, BulletType.RedDot);
         }
 
+        yield return new WaitForSeconds(0.5f);
         for (int i = 0; i < 50; i++)
         {
             float angle = Random.Range(0f, 360f);
             BulletManager.ShootBullet(transform.position, Random.Range(minSpeed, maxSpeed-1f), angle, BulletType.GreenOrb);
         }
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         b.MoveRandomly();
         yield return new WaitForSeconds(2f);
         ChooseRandomPattern();
@@ -134,6 +139,7 @@ public class BeetlePatterns : MonoBehaviour {
         {
             if (phaseJustChanged)
             {
+                yield return new WaitForSeconds(1f);
                 ChooseRandomPattern();
                 yield break;
             }
@@ -163,16 +169,22 @@ public class BeetlePatterns : MonoBehaviour {
         float angle = Random.Range(0f, 360f);
         for (int i = 0; i < 18; i++)
         {
-            BulletManager.ShootBullet(transform.position, 8 + i / 10f, angle, BulletType.GreenDarkBubble);
-            for (int j = 0; j < 14; j++)
+            if (phaseJustChanged)
             {
-                BulletManager.ShootBullet(transform.position, 8 - j / 2f + i / 10f, angle+Random.Range(-j*4,j*4), BulletType.GreenDarkBlade);
+                yield return new WaitForSeconds(1.5f);
+                ChooseRandomPattern();
+                yield break;
+            }
+            BulletManager.ShootBullet(transform.position, 7 + i / 10f, angle, BulletType.GreenDarkBubble);
+            for (int j = 0; j < 12; j++)
+            {
+                BulletManager.ShootBullet(transform.position, 7 - j / 2f + i / 10f, angle+Random.Range(-j*4,j*4), BulletType.GreenDarkBlade);
 
             }
-            angle += Random.Range(30f, 60f);
-            yield return new WaitForSeconds(0.4f);
+            angle += Random.Range(40f, 70f);
+            yield return new WaitForSeconds(0.3f);
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         ChooseRandomPattern();
         yield break;
@@ -224,6 +236,49 @@ public class BeetlePatterns : MonoBehaviour {
         }
         yield return new WaitForSeconds(3f);
 
+        ChooseRandomPattern();
+        yield break;
+    }
+
+    // Yellow beam in two directions
+    IEnumerator Pattern6()
+    {
+        b.MoveRandomly();
+        yield return new WaitForSeconds(0.5f);
+        b.ParticleBurst();
+        yield return new WaitForSeconds(1f);
+
+        float r = 20;
+        for (int i = 0; i < 80; i++)
+        {
+            if (phaseJustChanged)
+            {
+                yield return new WaitForSeconds(2f);
+                ChooseRandomPattern();
+                yield break;
+            }
+            if (i > 20)
+            {
+                r += 6;
+                if(i%20 == 0)
+                {
+                    float angle = Random.Range(0f, 360f);
+                    for (int j = 0; j < 30; j++)
+                    {
+                        BulletManager.ShootBullet(transform.position, 6, angle + j * 12, BulletType.YellowArrow);
+                    }
+
+                }
+            }
+            for (int j = 0; j < 3; j++)
+            {
+                Vector2 pos = new Vector2(transform.position.x + Mathf.Cos(i + j * 120 * Mathf.Deg2Rad) * r, transform.position.y + Mathf.Sin(i + j * 120 * Mathf.Deg2Rad) * r / 3f);
+                BulletManager.ShootBullet(pos, 0, 230, 0.5f, 30, 0, BulletType.YellowBlade);
+                BulletManager.ShootBullet(pos, 0, 310, 0.5f, 30, 0, BulletType.YellowBlade);
+            }
+            yield return new WaitForSeconds(0.05f);
+        }
+        yield return new WaitForSeconds(1.5f);
         ChooseRandomPattern();
         yield break;
     }

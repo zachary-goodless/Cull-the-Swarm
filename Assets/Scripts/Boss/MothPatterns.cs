@@ -50,10 +50,9 @@ public class MothPatterns : MonoBehaviour {
                 attackQueue.Add(2);
                 attackQueue.Add(5);
             } else if (currentPhase == 1) {
-                attackQueue.Add(1);
                 attackQueue.Add(2);
                 attackQueue.Add(3);
-                attackQueue.Add(5);
+                attackQueue.Add(6);
             } else if(currentPhase == 2) {
                 attackQueue.Add(4);
             }
@@ -93,6 +92,9 @@ public class MothPatterns : MonoBehaviour {
                 break;
             case 5:
                 StartCoroutine(Pattern5());
+                break;
+            case 6:
+                StartCoroutine(Pattern6());
                 break;
         }
 
@@ -156,6 +158,7 @@ public class MothPatterns : MonoBehaviour {
             for (int j = 0; j < numShots; j++)
             {
                 BulletManager.ShootBullet(transform.position, speed+j%2, angle + j * (360/numShots), -0.02f, 3, 0, shotTypes[j%2]);
+                BulletManager.AddAction(new BulletAction(60, true, 0, 0, 0.04f, 12f, 0));
             }
             b.MoveRandomly();
             speed--;
@@ -184,7 +187,7 @@ public class MothPatterns : MonoBehaviour {
             float x = p.transform.position.x;
             float y = p.transform.position.y;
             float r = 400 + i * 80;
-            int numShots = 6 + i * 3;
+            int numShots = 5 + i * 2;
             float angle = Random.Range(0f, 360f);
 
             for(int j = 0; j < numShots; j++){
@@ -247,45 +250,46 @@ public class MothPatterns : MonoBehaviour {
             b.MoveRandomly();
             yield return new WaitForSeconds(2f);
         }
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2f);
 
         ChooseRandomPattern();
         yield break;
     }
 
-    // Shoots waving pattern of green dots from two sides
+    // Shoots waving pattern of pink dots from two sides
     IEnumerator Pattern6()
     {
 
         float angle = 90f;
         float anglechange = 13f;
-        float speed = 10f;
+        float speed = 11f;
         int delay = 60;
 
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 25; i++)
         {
             if (phaseJustChanged)
             {
+                yield return new WaitForSeconds(3f);
                 ChooseRandomPattern();
                 yield break;
             }
-            for (int j = 0; j < 3; j++)
+            for (int j = 0; j < 6; j++)
             {
-                BulletManager.ShootBullet(new Vector2(transform.position.x + 240f, transform.position.y), speed, j * 120 + angle, -0.1f, 1, 0, BulletType.GreenDot);
-                BulletManager.AddAction(new BulletAction(delay, false, 1, j * 120 + angle, 0.05f, 10f, 0));
+                BulletManager.ShootBullet(new Vector2(transform.position.x + 240f, transform.position.y), speed, j * 60 + angle, -0.12f, 1, 0, BulletType.PinkDot);
+                BulletManager.AddAction(new BulletAction(delay, false, 1, j * 60 + angle, 0.05f, 3f, 0));
 
-                BulletManager.ShootBullet(new Vector2(transform.position.x - 240f, transform.position.y), speed, j * 120 - angle + 180, -0.1f, 1, 0, BulletType.GreenDot);
-                BulletManager.AddAction(new BulletAction(delay, false, 1, j * 120 - angle + 180, 0.05f, 10f, 0));
+                BulletManager.ShootBullet(new Vector2(transform.position.x - 240f, transform.position.y), speed, j * 60 - angle + 180, -0.12f, 1, 0, BulletType.PinkDot);
+                BulletManager.AddAction(new BulletAction(delay, false, 1, j * 60 - angle + 180, 0.05f, 3f, 0));
             }
 
-            angle += anglechange;
-            anglechange -= 0.6f;
-            speed -= 0.15f;
+            angle -= anglechange;
+            anglechange -= 1.6f;
+            speed -= 0.2f;
             delay++;
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
         }
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
         ChooseRandomPattern();
         yield break;
     }

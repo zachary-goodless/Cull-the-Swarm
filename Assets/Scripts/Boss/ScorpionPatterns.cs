@@ -107,6 +107,7 @@ public class ScorpionPatterns : MonoBehaviour {
         {
             if (phaseJustChanged)
             {
+                yield return new WaitForSeconds(1f);
                 ChooseRandomPattern();
                 yield break;
             }
@@ -142,6 +143,7 @@ public class ScorpionPatterns : MonoBehaviour {
         {
             if (phaseJustChanged)
             {
+                yield return new WaitForSeconds(1f);
                 ChooseRandomPattern();
                 yield break;
             }
