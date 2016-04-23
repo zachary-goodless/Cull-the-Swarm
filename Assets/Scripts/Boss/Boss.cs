@@ -13,25 +13,29 @@ public class Boss : MonoBehaviour {
     public GameObject mesh;
     public GameObject ps;
     public GameObject[] splat;
-    ScreenFade fadeScript;
     bool blinking = false;
     MeshRenderer[] meshList;
     int moveCounter = 0;
     public GameObject levelEnd;
+    Vector3 meshStartingAngle;
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
+        ScreenFade fadeScript;
         fadeScript = GameObject.FindObjectOfType<ScreenFade>();
         fadeScript.StartCoroutine(fadeScript.FadeFromBlack());
         meshList = GetComponentsInChildren<MeshRenderer>();
         phase = 0;
         maxPhase = healthThresholds.Length;
-	}
+        meshStartingAngle = mesh.transform.eulerAngles; ;
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.position.x / 20, Mathf.Sin(Time.time*2) * 4));
+        //transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.position.x / 20, Mathf.Sin(Time.time*2) * 4));
+        mesh.transform.localRotation = Quaternion.Euler(new Vector3(meshStartingAngle.x, meshStartingAngle.y + transform.position.x / 20f, meshStartingAngle.z + Mathf.Sin(Time.time * 2) * 4));
     }
 
     public void DealDamage(float dmg)
@@ -72,7 +76,18 @@ public class Boss : MonoBehaviour {
 
     public void ParticleBurst()
     {
-        ps.GetComponent<ParticleSystem>().Emit(100);
+        StartCoroutine(ParticleBurstCo());
+    }
+
+    IEnumerator ParticleBurstCo()
+    {
+        ps.GetComponent<ParticleSystem>().Emit(60);
+        for (int i = 0; i < 60; i++)
+        {
+            ps.GetComponent<ParticleSystem>().Emit(5);
+            yield return null;
+
+        }
         ps.GetComponent<ParticleSystem>().Play();
     }
 

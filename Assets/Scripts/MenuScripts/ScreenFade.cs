@@ -14,12 +14,12 @@ public class ScreenFade : MonoBehaviour
 	
 	public void Fade()
 	{
+        gameObject.SetActive(true);
 		StartCoroutine ("FadeToBlack");
 	}
 
 	public IEnumerator FadeToBlack()
 	{
-		gameObject.SetActive(true);
 		finished = false;
 
 		Color color = fader.color;

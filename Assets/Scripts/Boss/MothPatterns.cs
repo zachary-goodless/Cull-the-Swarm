@@ -48,10 +48,12 @@ public class MothPatterns : MonoBehaviour {
             {
                 attackQueue.Add(1);
                 attackQueue.Add(2);
+                attackQueue.Add(5);
             } else if (currentPhase == 1) {
                 attackQueue.Add(1);
                 attackQueue.Add(2);
                 attackQueue.Add(3);
+                attackQueue.Add(5);
             } else if(currentPhase == 2) {
                 attackQueue.Add(4);
             }
@@ -89,11 +91,14 @@ public class MothPatterns : MonoBehaviour {
             case 4:
                 StartCoroutine(Pattern4());
                 break;
+            case 5:
+                StartCoroutine(Pattern5());
+                break;
         }
 
     }
 
-    // Shoots a horizontal spread of yellow shard walls
+    // Shoots waving pattern of green dots from two sides
     IEnumerator Pattern1()
     {
 
@@ -106,16 +111,17 @@ public class MothPatterns : MonoBehaviour {
         {
             if (phaseJustChanged)
             {
+                yield return new WaitForSeconds(1f);
                 ChooseRandomPattern();
                 yield break;
             }
             for (int j = 0; j < 3; j++)
             {
                 BulletManager.ShootBullet(new Vector2(transform.position.x + 240f, transform.position.y), speed, j * 120 + angle, -0.1f, 1, 0, BulletType.GreenDot);
-                BulletManager.AddAction(new BulletAction(delay, false, 1, j * 120 + angle, 0.05f, 10f, 0));
+                BulletManager.AddAction(new BulletAction(delay, false, 1, j * 120 + angle, 0.04f, 10f, 0));
 
                 BulletManager.ShootBullet(new Vector2(transform.position.x - 240f, transform.position.y), speed, j * 120 - angle + 180, -0.1f, 1, 0, BulletType.GreenDot);
-                BulletManager.AddAction(new BulletAction(delay, false, 1, j * 120 - angle + 180, 0.05f, 10f, 0));
+                BulletManager.AddAction(new BulletAction(delay, false, 1, j * 120 - angle + 180, 0.04f, 10f, 0));
             }
 
             angle += anglechange;
@@ -125,7 +131,7 @@ public class MothPatterns : MonoBehaviour {
 
             yield return new WaitForSeconds(0.1f);
         }
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4.5f);
         ChooseRandomPattern();
         yield break;
     }
@@ -139,6 +145,7 @@ public class MothPatterns : MonoBehaviour {
         {
             if (phaseJustChanged)
             {
+                yield return new WaitForSeconds(1f);
                 ChooseRandomPattern();
                 yield break;
             }
@@ -169,6 +176,7 @@ public class MothPatterns : MonoBehaviour {
         {
             if (phaseJustChanged)
             {
+                yield return new WaitForSeconds(2f);
                 ChooseRandomPattern();
                 yield break;
             }
@@ -211,6 +219,73 @@ public class MothPatterns : MonoBehaviour {
         }
 
         b.MoveRandomly();
+        ChooseRandomPattern();
+        yield break;
+    }
+
+    // Curving rings
+    IEnumerator Pattern5()
+    {
+        float angle = Random.Range(0f, 360f);
+        for (int i = 0; i < 3; i++)
+        {
+            if (phaseJustChanged)
+            {
+                yield return new WaitForSeconds(1f);
+                ChooseRandomPattern();
+                yield break;
+            }
+            int numShot = 12 + i * 4;
+            for (int j = 0; j < numShot; j++)
+            {
+                BulletManager.ShootBullet(transform.position, Random.Range(2f,3f), angle + j * 360/numShot, 0.02f, 20f, -0.7f, BulletType.GreenShard);
+                BulletManager.AddAction(new BulletAction(90, true, 0, 0, 0, 0, 0.7f));
+                BulletManager.ShootBullet(transform.position, Random.Range(2f, 3f), angle + (j+0.5f) * 360 / numShot, 0.02f, 20f, 0.7f, BulletType.CyanShard);
+                BulletManager.AddAction(new BulletAction(90, true, 0, 0, 0, 0, -0.7f));
+            }
+            angle += Random.Range(0f, 14f);
+            b.MoveRandomly();
+            yield return new WaitForSeconds(2f);
+        }
+        yield return new WaitForSeconds(4f);
+
+        ChooseRandomPattern();
+        yield break;
+    }
+
+    // Shoots waving pattern of green dots from two sides
+    IEnumerator Pattern6()
+    {
+
+        float angle = 90f;
+        float anglechange = 13f;
+        float speed = 10f;
+        int delay = 60;
+
+        for (int i = 0; i < 50; i++)
+        {
+            if (phaseJustChanged)
+            {
+                ChooseRandomPattern();
+                yield break;
+            }
+            for (int j = 0; j < 3; j++)
+            {
+                BulletManager.ShootBullet(new Vector2(transform.position.x + 240f, transform.position.y), speed, j * 120 + angle, -0.1f, 1, 0, BulletType.GreenDot);
+                BulletManager.AddAction(new BulletAction(delay, false, 1, j * 120 + angle, 0.05f, 10f, 0));
+
+                BulletManager.ShootBullet(new Vector2(transform.position.x - 240f, transform.position.y), speed, j * 120 - angle + 180, -0.1f, 1, 0, BulletType.GreenDot);
+                BulletManager.AddAction(new BulletAction(delay, false, 1, j * 120 - angle + 180, 0.05f, 10f, 0));
+            }
+
+            angle += anglechange;
+            anglechange -= 0.6f;
+            speed -= 0.15f;
+            delay++;
+
+            yield return new WaitForSeconds(0.1f);
+        }
+        yield return new WaitForSeconds(2f);
         ChooseRandomPattern();
         yield break;
     }
