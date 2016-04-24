@@ -60,7 +60,7 @@ public class FreezeManager : MonoBehaviour
 		energyBar.localScale = localScale;
 
 		//if button is pressed, and is at max energy, and not on spinup...
-		if(Input.GetButtonDown("Secondary") && currEnergy == maxEnergy && !isOnSpinup)
+		if((Input.GetButtonDown("Secondary") || Input.GetButtonDown("XBOX_B") || Input.GetButtonDown("XBOX_Y")) && currEnergy == maxEnergy && !isOnSpinup)
 		{
 			//start spin up
 			isOnSpinup = true;

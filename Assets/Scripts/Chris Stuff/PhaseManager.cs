@@ -61,13 +61,13 @@ public class PhaseManager : MonoBehaviour
 		energyBar.localScale = localScale;
 
 		//if button is pressed, and is at max energy, and not on spinup...
-		if(Input.GetButtonDown("Secondary") && currEnergy > 10 && !isOnCooldown)
+		if((Input.GetButtonDown("Secondary") || Input.GetButtonDown("XBOX_B") || Input.GetButtonDown("XBOX_Y")) && currEnergy > 10 && !isOnCooldown)
 		{
 			isActive = true;
 
 
 		}
-		else if(!Input.GetButton("Secondary") && !isOnCooldown)
+		else if(!(Input.GetButtonDown("Secondary") || Input.GetButtonDown("XBOX_B") || Input.GetButtonDown("XBOX_Y")) && !isOnCooldown)
 		{
 			
 			isActive = false;

@@ -60,7 +60,7 @@ public class EMPManager : MonoBehaviour
 		}
 
 		//if secondary key pressed and we're not on cooldown...
-		if(Input.GetButtonDown("Secondary") && !isOnCooldown && Time.timeScale == 1f)
+		if((Input.GetButtonDown("Secondary") || Input.GetButtonDown("XBOX_B") || Input.GetButtonDown("XBOX_Y")) && !isOnCooldown && Time.timeScale == 1f)
 		{
 			currEnergy = 0f;
 			isOnCooldown = true;
