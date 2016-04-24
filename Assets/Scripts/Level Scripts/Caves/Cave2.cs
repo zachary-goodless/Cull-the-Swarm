@@ -153,7 +153,7 @@ public class Cave2 : MonoBehaviour {
 		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.MARTHA, "The queen's just up ahead, Roger. Stay sharp!"));
 		yield return dialog.WaitForSecondsOrSkip(1.5f, co);
 
-		StartCoroutine(sf.FadeToBlack());
+		sf.Fade();
 		yield return new WaitForSeconds(2f);
 		//JUSTIN
 

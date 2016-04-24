@@ -103,7 +103,7 @@ public class D_1 : MonoBehaviour
 		co = StartCoroutine(dialog.handleDialogue(5f, Characters.COLONEL, "Excellent work, Roger. You were made for this machine."));
 		yield return dialog.WaitForSecondsOrSkip(4f, co);
 
-		StartCoroutine(sf.FadeToBlack());
+		sf.Fade();
 		yield return new WaitForSeconds(2f);
 		//JUSTIN
 

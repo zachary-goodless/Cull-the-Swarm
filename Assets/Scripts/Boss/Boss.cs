@@ -70,6 +70,12 @@ public class Boss : MonoBehaviour {
             yield return new WaitForSeconds(0.1f);
         }
         GameObject.FindObjectOfType<Score>().handleEnemyDefeated(PointVals.BOSS_DEFEATED);
+
+		ScreenFade fadeScript;
+		fadeScript = GameObject.FindObjectOfType<ScreenFade>();
+		fadeScript.Fade();
+		yield return new WaitForSeconds(2f);
+
         levelEnd.GetComponent<LevelCompleteHandler>().handleLevelCompleted((SceneIndex)SceneManager.GetActiveScene().buildIndex);
         yield break;
     }

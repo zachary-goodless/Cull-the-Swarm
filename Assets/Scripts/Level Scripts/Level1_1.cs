@@ -146,7 +146,7 @@ public class Level1_1 : MonoBehaviour {
 		co = StartCoroutine(dialog.handleDialogue(4.5f, Characters.STAMPER, "Don't get too eager yet. There's still quite a ways to go."));
 		yield return dialog.WaitForSecondsOrSkip(3.5f, co);
 
-		StartCoroutine(sf.FadeToBlack());
+		sf.Fade();
 		yield return new WaitForSeconds(2f);
 		//JUSTIN
 

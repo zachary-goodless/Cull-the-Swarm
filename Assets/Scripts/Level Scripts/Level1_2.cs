@@ -127,7 +127,7 @@ public class Level1_2 : MonoBehaviour
 		co = StartCoroutine(dialog.handleDialogue(2f, Characters.MARTHA, "Nothing good..."));
 		yield return dialog.WaitForSecondsOrSkip(1f, co);
 
-		StartCoroutine(sf.FadeToBlack());
+		sf.Fade();
 		yield return new WaitForSeconds(2f);
 		//JUSTIN
 

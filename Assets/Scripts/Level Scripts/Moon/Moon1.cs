@@ -172,7 +172,7 @@ public class Moon1 : MonoBehaviour {
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.MYSTERY, "I can't let you do that, Roger."));
 		yield return dialog.WaitForSecondsOrSkip(2f, co);
 
-		StartCoroutine(sf.FadeToBlack());
+		sf.Fade();
 		yield return new WaitForSeconds(2f);
 		//JUSTIN
 
