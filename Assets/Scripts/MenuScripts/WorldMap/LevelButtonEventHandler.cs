@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 using UnityEngine.SceneManagement;
 
-public class LevelButtonEventHandler : MonoBehaviour
+public class LevelButtonEventHandler : MonoBehaviour, ISelectHandler
 {
 	//PUBLIC
 	public int firstStageIndex;
@@ -25,13 +25,18 @@ public class LevelButtonEventHandler : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	public void handleButtonClick()
+	public void OnSelect(BaseEventData eventData)
+	{
+		handleButtonMouseOver();
+	}
+
+	public void handleButtonMouseOver()
 	{
 		if(mParentEventHandler != null)
 		{
 			//call to the canvas' event handler
 			mParentEventHandler.lastButtonClicked = GetComponent<Button>();
-			mParentEventHandler.handleLevelButtonClicked(firstStageIndex);
+			mParentEventHandler.handleLevelButtonMouseOver(firstStageIndex);
 		}
 	}
 }
