@@ -170,24 +170,24 @@ public class ScorpionPatterns : MonoBehaviour {
 
         for (int i = -10; i <= 10; i++)
         {
-            BulletManager.ShootBullet(left, 1.5f + Mathf.Abs(i / 3f), BulletManager.AngleToPlayerFrom(left) + i * 7, BulletType.RedDot);
+            BulletManager.ShootBullet(left, 3f + Mathf.Abs(i / 3f), BulletManager.AngleToPlayerFrom(left) + i * 2, BulletType.RedDot);
         }
         yield return new WaitForSeconds(1f);
 
         for (int i = -10; i <= 10; i++)
         {
-            BulletManager.ShootBullet(right, 1.5f + Mathf.Abs(i / 3f), BulletManager.AngleToPlayerFrom(right) + i * 6, BulletType.YellowDot);
+            BulletManager.ShootBullet(right, 3f + Mathf.Abs(i / 3f), BulletManager.AngleToPlayerFrom(right) + i * 2, BulletType.YellowDot);
         }
         yield return new WaitForSeconds(1f);
         for (int i = -10; i <= 10; i++)
         {
-            BulletManager.ShootBullet(left, 1.5f + Mathf.Abs(i / 3f), BulletManager.AngleToPlayerFrom(left) + i * 5, BulletType.RedDot);
+            BulletManager.ShootBullet(left, 3f + Mathf.Abs(i / 3f), BulletManager.AngleToPlayerFrom(left) + i * 2, BulletType.RedDot);
         }
         yield return new WaitForSeconds(1f);
 
         for (int i = -10; i <= 10; i++)
         {
-            BulletManager.ShootBullet(right, 1.5f + Mathf.Abs(i / 3f), BulletManager.AngleToPlayerFrom(right) + i * 4, BulletType.YellowDot);
+            BulletManager.ShootBullet(right, 3f + Mathf.Abs(i / 3f), BulletManager.AngleToPlayerFrom(right) + i * 2, BulletType.YellowDot);
         }
         yield return new WaitForSeconds(1f);
 

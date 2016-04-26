@@ -39,6 +39,7 @@ public class BulletAction {
     public BulletAction(int t, BulletType bullet)
     {
         timer = t;
+        type = 2;
         newGraphic = bullet;
     }
 

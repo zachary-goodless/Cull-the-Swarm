@@ -15,8 +15,18 @@ public class BulletManager : MonoBehaviour {
     public static GameObject shotID;
     public static BulletManager manager;
     private static float disableTime;
+    private static bool duplicateExists = false;
+    private static GameObject duplicateObj;
 
-
+    void Update()
+    {
+        if (GameObject.FindGameObjectsWithTag("Duplicate") != null)
+        {
+            duplicateObj = GameObject.FindGameObjectWithTag("Duplicate");
+            duplicateExists = true;
+        }
+        else duplicateExists = false;
+    }
 
     // Use this for initialization
     void Start ()
@@ -217,8 +227,16 @@ public class BulletManager : MonoBehaviour {
     }
 
     public static float AngleToPlayerFrom(Vector2 t) {
-        Vector2 pt = GameObject.FindGameObjectWithTag("Player").transform.position;
-        return Mathf.Rad2Deg * Mathf.Atan2(pt.y - t.y, pt.x - t.x);
+        if (duplicateExists)
+        {
+            Vector2 pt = duplicateObj.transform.position;
+            return Mathf.Rad2Deg * Mathf.Atan2(pt.y - t.y, pt.x - t.x);
+        }
+        else
+        {
+            Vector2 pt = GameObject.FindGameObjectWithTag("Player").transform.position;
+            return Mathf.Rad2Deg * Mathf.Atan2(pt.y - t.y, pt.x - t.x);
+        }
     }
 }
 

@@ -52,7 +52,7 @@ public class Bullet : MonoBehaviour {
 
         Vector3 currentEuler = transform.rotation.eulerAngles;
         transform.rotation = Quaternion.Euler(new Vector3(currentEuler.x, currentEuler.y, angle));
-        if (transform.position.x < -1000 || transform.position.x > 1000 || transform.position.y < -600 || transform.position.y > 600)
+        if (transform.position.x < -1100 || transform.position.x > 1100 || transform.position.y < -700 || transform.position.y > 700)
         {
             BulletManager.DeleteBullet(gameObject);
         }
@@ -137,7 +137,7 @@ public class Bullet : MonoBehaviour {
 
         hitbox.enabled = false;
         for(int i = 0; i < 5; i++) {
-            transform.localScale = new Vector3(1f + i / 2f, 1f + i / 2f, 1);
+            transform.localScale = new Vector3(1f + i / 5f, 1f + i / 5f, 1);
             rend.material.color = new Color(1,1,1, i / 5f);
             yield return null;
         }

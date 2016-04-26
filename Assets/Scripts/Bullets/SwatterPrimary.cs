@@ -42,7 +42,11 @@ public class SwatterPrimary : MonoBehaviour {
 	void Shoot(){
 		GameObject target = FindTarget ();
 		if (target != null) {
-			GameObject temp = Instantiate (bullet, target.transform.position, Quaternion.identity) as GameObject;
+            CircleCollider2D tempcol = target.GetComponent<CircleCollider2D>();
+            Vector3 targetpos;
+            if (tempcol == null) targetpos = target.transform.position;
+            else targetpos = target.transform.position + new Vector3(tempcol.offset.x, tempcol.offset.y, 0f);
+			GameObject temp = Instantiate (bullet, targetpos, Quaternion.identity) as GameObject;
 			temp.GetComponent<SwatterBullet> ().target = target;
 		} else {
             Vector3 shipPos = transform.position;
