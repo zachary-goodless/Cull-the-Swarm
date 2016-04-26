@@ -110,7 +110,7 @@ public class Jungle_1 : MonoBehaviour {
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.STAMPER, "You're making steady progress out there, keep at it!"));
 		yield return dialog.WaitForSecondsOrSkip(2f, co);
 
-		StartCoroutine(sf.FadeToBlack());
+		sf.Fade();
 		yield return new WaitForSeconds(2f);
 		//JUSTIN
 

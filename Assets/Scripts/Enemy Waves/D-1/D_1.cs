@@ -66,11 +66,13 @@ public class D_1 : MonoBehaviour
 		//JUSTIN
 
       // Timing and placement need adjustment, but here's an (incomplete) general outline of what was in the GDD
-        waves.StartSpawnLinear(drone, 5, 2, 300, 1, -1, 50, waves.leftScreen, waves.upScreen, Quaternion.identity, 200, 0,"d1");
-        waves.StartSpawnLinear(drone, 2, 2, 200, -1, -1, 50, waves.rightScreen, waves.upScreen, Quaternion.identity, 200, 0,"d1");
+        waves.StartSpawnLinear(drone, 5, 2, 300, 1, -1, 50, waves.leftScreen, waves.upScreen, Quaternion.identity, 200, 0,"null");
+        waves.StartSpawnLinear(drone, 2, 2, 200, -1, -1, 50, waves.rightScreen, waves.upScreen, Quaternion.identity, 200, 0,"null");
         Debug.Log(waves.leftScreen + " " + waves.upScreen);
         yield return new WaitForSeconds(10f);
-        waves.StartSpawnWorms(3, 5, 3, .5f, 30, 200, 1, 50, waves.leftScreen, 100, Quaternion.Euler(0, 0, 90), 0, -200,"d4");
+		waves.StartSpawnLinear(drone, 5, 2, 300, 1, -1, 50, waves.leftScreen, waves.upScreen, Quaternion.identity, 200, 0,"d7");
+		waves.StartSpawnLinear(drone, 2, 2, 200, -1, -1, 50, waves.rightScreen, waves.upScreen, Quaternion.identity, 200, 0,"d7");
+        //waves.StartSpawnWorms(3, 5, 3, .5f, 30, 200, 1, 50, waves.leftScreen, 100, Quaternion.Euler(0, 0, 90), 0, -200,"d4");
         yield return new WaitForSeconds(10f);
         waves.StartSpawnFollow(turret, 3, 4, .5f, 30, 150, -1, 200, 5, waves.downScreen, Quaternion.identity, 0, 0,"t3");
         yield return new WaitForSeconds(5f);
@@ -101,7 +103,7 @@ public class D_1 : MonoBehaviour
 		co = StartCoroutine(dialog.handleDialogue(5f, Characters.COLONEL, "Excellent work, Roger. You were made for this machine."));
 		yield return dialog.WaitForSecondsOrSkip(4f, co);
 
-		StartCoroutine(sf.FadeToBlack());
+		sf.Fade();
 		yield return new WaitForSeconds(2f);
 		//JUSTIN
 

@@ -12,6 +12,8 @@ public class FreezeArea : MonoBehaviour
 
 	public int maxRecursion = 5;
 
+	public bool canMakeMore = true;
+
 	//PRIVATE
 	GameObject freezeBulletPrefab;
 
@@ -38,7 +40,7 @@ public class FreezeArea : MonoBehaviour
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		//if other is bullet...
-		if(other.tag == "Bullet")
+		if(other.tag == "Bullet" && canMakeMore)
 		{
 			//grab bullet position
 			Vector3 spawnPos = other.transform.position;

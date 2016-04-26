@@ -12,6 +12,7 @@ public class LoadGameMenu : MonoBehaviour
 {
 	//PUBLIC
 	public Button mLoadButton;
+	public Button mBackButton;
 
 	public GameObject elemPrefab;	//game list element
 
@@ -34,18 +35,23 @@ public class LoadGameMenu : MonoBehaviour
 		mMainMenu = GetComponentInParent<MainMenuEventHandler>();
 		mSavedGameManager = GameObject.FindGameObjectWithTag("SaveManager").GetComponent<SavedGameManager>();
 
-		buildList();
+		StartCoroutine(buildList());
 	}
 
 //--------------------------------------------------------------------------------------------
 
-	public void buildList()
+	public IEnumerator buildList()
 	{
 		//clear games already in the list
 		clearList();
 
 		//get a list of saved games
 		List<string> savedGames = mSavedGameManager.getSavedGameNames();
+		if(savedGames.Count == 0)
+		{
+			mBackButton.Select();
+			yield return null;
+		}
 
 		//get rect transforms
 		RectTransform elemRectTransform = elemPrefab.GetComponent<RectTransform>();
@@ -69,6 +75,11 @@ public class LoadGameMenu : MonoBehaviour
 			newElem.name = "ListElement_" + name;
 			newElem.transform.SetParent(scrollPanel.transform, false);
 
+			if(i == 0)
+			{
+				newElem.GetComponentInChildren<Button>().Select();
+			}
+
 			//set the element's name
 			newElem.GetComponent<GameListElementHandler>().setName(name);
 
@@ -84,7 +95,11 @@ public class LoadGameMenu : MonoBehaviour
 			rectTransform.offsetMax = new Vector2(x, y);
 		}
 
-		//TODO -- some way to force scrollbar to the top of the list?
+		//force scroll to top of list at start
+		yield return null;
+		GetComponentInChildren<Scrollbar>().value = 1f;
+
+		yield break;
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -113,6 +128,8 @@ public class LoadGameMenu : MonoBehaviour
 		{
 			button.interactable = true;
 		}
+
+		mLoadButton.Select();
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -128,7 +145,9 @@ public class LoadGameMenu : MonoBehaviour
 			{
 				Debug.Log("LOADING WORLD MAP");
 
-				yield return mScreenFader.FadeToBlack();
+				mScreenFader.Fade();
+				yield return new WaitForSeconds(1f);
+
 				SceneManager.LoadScene((int)SceneIndex.WORLD_MAP);
 				yield return null;
 			}
@@ -147,5 +166,6 @@ public class LoadGameMenu : MonoBehaviour
 		gameObject.SetActive(false);
 
 		mMainMenu.toggleButtons();
+		mMainMenu.lastButtonClicked.Select();
 	}
 }

@@ -56,6 +56,15 @@ public class MainMenuEventHandler : MonoBehaviour
 	public ScreenFade mScreenFader;
 	public GameObject gmPrefab;
 
+	public Button newButton;
+	public Button loadButton;
+	public Button deleteButton;
+	public Button controlsButton;
+	public Button creditsButton;
+	public Button quitButton;
+
+	public Button lastButtonClicked;
+
 	//PRIVATE
 	private SavedGameManager mSavedGameManager;
 
@@ -65,12 +74,16 @@ public class MainMenuEventHandler : MonoBehaviour
 	{
 		mSavedGameManager = SavedGameManager.createOrLoadSavedGameManager(gmPrefab).GetComponent<SavedGameManager>();
 		StartCoroutine(mScreenFader.FadeFromBlack());
+
+		lastButtonClicked = null;
 	}
 
 //--------------------------------------------------------------------------------------------
 
 	public void handleNewGameButtonClicked()
 	{
+		lastButtonClicked = newButton;
+
 		toggleButtons();
 		mNewGamePanel.SetActive(true);
 	}
@@ -79,6 +92,8 @@ public class MainMenuEventHandler : MonoBehaviour
 
 	public void handleLoadGameButtonClicked()
 	{
+		lastButtonClicked = loadButton;
+
 		toggleButtons();
 		mLoadGamePanel.SetActive(true);
 	}
@@ -87,6 +102,8 @@ public class MainMenuEventHandler : MonoBehaviour
 
 	public void handleDeleteGameButtonClicked()
 	{
+		lastButtonClicked = deleteButton;
+
 		toggleButtons();
 		mDeleteGamePanel.SetActive(true);
 	}
@@ -95,6 +112,8 @@ public class MainMenuEventHandler : MonoBehaviour
 
 	public void handleControlsButtonClicked()
 	{
+		lastButtonClicked = controlsButton;
+
 		toggleButtons();
 		mControlsPanel.SetActive(true);
 	}
@@ -103,6 +122,8 @@ public class MainMenuEventHandler : MonoBehaviour
 
 	public void handleCreditsButtonClicked()
 	{
+		lastButtonClicked = creditsButton;
+
 		toggleButtons();
 		mCreditsPanel.SetActive(true);
 	}
@@ -111,6 +132,8 @@ public class MainMenuEventHandler : MonoBehaviour
 
 	public void handleQuitButtonClicked()
 	{
+		lastButtonClicked = quitButton;
+
 		toggleButtons();
 		quitConfirmation.SetActive(true);
 	}

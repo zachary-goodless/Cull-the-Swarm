@@ -15,9 +15,10 @@ public class CreditsMenu : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	void Start ()
+	void OnEnable()
 	{
 		mMainMenu = GetComponentInParent<MainMenuEventHandler>();
+		backButton.Select();
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -25,6 +26,8 @@ public class CreditsMenu : MonoBehaviour
 	public void handleBackButtonClicked()
 	{
 		gameObject.SetActive(false);
+
 		mMainMenu.toggleButtons();
+		mMainMenu.lastButtonClicked.Select();
 	}
 }

@@ -38,13 +38,14 @@ public class ScorpionPatterns : MonoBehaviour {
 
     void ChooseRandomPattern()
     {
-        if(b.health < 0) { return; }
+        if (b.health < 0) { return; }
         int chosenAttack;
 
         if (attackQueue.Count == 0 || phaseJustChanged) {
             attackQueue.Clear();
             Debug.Log("Refreshing attack queue for phase " + currentPhase);
-            if (currentPhase == 0) {
+            if (currentPhase == 0)
+            {
                 attackQueue.Add(1);
                 attackQueue.Add(2);
             } else if (currentPhase == 1) {
@@ -95,8 +96,8 @@ public class ScorpionPatterns : MonoBehaviour {
     // Shoots a horizontal spread of yellow shard walls
     IEnumerator Pattern1()
     {
-        float minSpeed = 2;
-        float maxSpeed = 6;
+        float minSpeed = 1.5f;
+        float maxSpeed = 5.5f;
 
         float leftSpeed = minSpeed;
         float rightSpeed = minSpeed;
@@ -106,6 +107,7 @@ public class ScorpionPatterns : MonoBehaviour {
         {
             if (phaseJustChanged)
             {
+                yield return new WaitForSeconds(1f);
                 ChooseRandomPattern();
                 yield break;
             }
@@ -113,7 +115,7 @@ public class ScorpionPatterns : MonoBehaviour {
             {
                 leftSpeed = Random.Range(minSpeed, maxSpeed);
                 rightSpeed = Random.Range(minSpeed, maxSpeed);
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.15f);
                 continue;
             }
             BulletManager.ShootBullet(new Vector2(startPos.x - i * 15, startPos.y), 0, 90, BulletType.YellowShard);
@@ -141,16 +143,17 @@ public class ScorpionPatterns : MonoBehaviour {
         {
             if (phaseJustChanged)
             {
+                yield return new WaitForSeconds(1f);
                 ChooseRandomPattern();
                 yield break;
             }
             for (int j = 0; j < 36; j++)
             {
-                BulletManager.ShootBullet(transform.position, 7 + Mathf.Sin(j * 50 * Mathf.Deg2Rad) * 3, angle + j * 10, -0.02f, 2, 0, BulletType.RedBlade);
+                BulletManager.ShootBullet(transform.position, 6f + Mathf.Sin(j * 50 * Mathf.Deg2Rad) * 3.5f, angle + j * 10, -0.02f, 2, 0, BulletType.RedBlade);
             }
             b.MoveRandomly();
             angle += 170;
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1.5f);
         }
         yield return new WaitForSeconds(1.5f);
         ChooseRandomPattern();
@@ -168,28 +171,28 @@ public class ScorpionPatterns : MonoBehaviour {
         Vector2 left = new Vector2(transform.position.x - 300, 100);
         Vector2 right = new Vector2(transform.position.x + 300, 100);
 
-        for (int i = -10; i <= 10; i++)
+        for (int i = -8; i <= 8; i++)
         {
-            BulletManager.ShootBullet(left, 3f + Mathf.Abs(i / 3f), BulletManager.AngleToPlayerFrom(left) + i * 2, BulletType.RedDot);
+            BulletManager.ShootBullet(left, 3f + Mathf.Abs(i / 2f), BulletManager.AngleToPlayerFrom(left) + i * (5f - Mathf.Abs(i) / 2f), BulletType.RedDot);
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
-        for (int i = -10; i <= 10; i++)
+        for (int i = -8; i <= 8; i++)
         {
-            BulletManager.ShootBullet(right, 3f + Mathf.Abs(i / 3f), BulletManager.AngleToPlayerFrom(right) + i * 2, BulletType.YellowDot);
+            BulletManager.ShootBullet(right, 3f + Mathf.Abs(i / 2f), BulletManager.AngleToPlayerFrom(right) + i * (5f - Mathf.Abs(i) / 2f), BulletType.YellowDot);
         }
-        yield return new WaitForSeconds(1f);
-        for (int i = -10; i <= 10; i++)
+        yield return new WaitForSeconds(2f);
+        for (int i = -8; i <= 8; i++)
         {
-            BulletManager.ShootBullet(left, 3f + Mathf.Abs(i / 3f), BulletManager.AngleToPlayerFrom(left) + i * 2, BulletType.RedDot);
+            BulletManager.ShootBullet(left, 3f + Mathf.Abs(i / 2f), BulletManager.AngleToPlayerFrom(left) + i * (5f - Mathf.Abs(i) / 2f), BulletType.RedDot);
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
-        for (int i = -10; i <= 10; i++)
+        for (int i = -8; i <= 8; i++)
         {
-            BulletManager.ShootBullet(right, 3f + Mathf.Abs(i / 3f), BulletManager.AngleToPlayerFrom(right) + i * 2, BulletType.YellowDot);
+            BulletManager.ShootBullet(right, 3f + Mathf.Abs(i / 2f), BulletManager.AngleToPlayerFrom(right) + i * (5f - Mathf.Abs(i) / 2f), BulletType.YellowDot);
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         ChooseRandomPattern();
         yield break;
@@ -200,7 +203,7 @@ public class ScorpionPatterns : MonoBehaviour {
     {
         for (int i = 0; i < 20; i++)
         {
-            float angle = Random.Range(240f, 300f);
+            float angle = Random.Range(250f, 290f);
             float x = Random.Range(-800f, 800f);
             BulletManager.ShootBullet(new Vector2(x, 400), 8+i/10f, angle, BulletType.YellowDarkBlade);
             yield return null;

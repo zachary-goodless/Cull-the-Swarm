@@ -79,7 +79,7 @@ public class D_2 : MonoBehaviour
 		co = StartCoroutine(dialog.handleDialogue(6f, Characters.MARTHA, "The leader of that pack's made himself known, and he's none too happy. If you don't act fast, we're all in serious trouble!"));
 		yield return dialog.WaitForSecondsOrSkip(5f, co);
 
-		StartCoroutine(sf.FadeToBlack());
+		sf.Fade();
 		yield return new WaitForSeconds(2f);
 		//JUSTIN
 

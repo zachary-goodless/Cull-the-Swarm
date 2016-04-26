@@ -150,7 +150,7 @@ public class Cave1 : MonoBehaviour {
 		co = StartCoroutine(dialog.handleDialogue(4f, Characters.MARTHA, "There. That should get them off your back for a little while."));
 		yield return dialog.WaitForSecondsOrSkip(3f, co);
 
-		StartCoroutine(sf.FadeToBlack());
+		sf.Fade();
 		yield return new WaitForSeconds(2f);
 		//JUSTIN
 

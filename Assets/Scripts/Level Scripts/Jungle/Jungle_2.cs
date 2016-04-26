@@ -128,7 +128,7 @@ public class Jungle_2 : MonoBehaviour {
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.STATIC, "... *kzzzzzzt* ..."));
 		yield return dialog.WaitForSecondsOrSkip(2f, co);
 
-		StartCoroutine(sf.FadeToBlack());
+		sf.Fade();
 		yield return new WaitForSeconds(2f);
 		//JUSTIN
 

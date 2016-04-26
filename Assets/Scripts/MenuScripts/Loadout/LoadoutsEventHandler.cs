@@ -20,6 +20,15 @@ public class LoadoutsEventHandler : MonoBehaviour
 	public ScreenFade mScreenFader;
 	public GameObject gmPrefab;
 
+	public Image chassisChoiceIcon;
+	public Image primaryChoiceIcon;
+	public Image secondaryChoiceIcon;
+
+	public Button chassisButton;
+	public Button primaryButton;
+	public Button secondaryButton;
+	public Button lastButtonClicked;
+
 	//PRIVATE
 	public Sprite[] buttonSprites;
 	public Sprite[] iconSprites;
@@ -46,7 +55,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 		//init resource arrays
 		buttonSprites = Resources.LoadAll<Sprite>("GUI_Assets/Menu_Loadouts");
-		iconSprites = Resources.LoadAll<Sprite>("GUI_Assets/LoadoutIcons");
+		iconSprites = Resources.LoadAll<Sprite>("GUI_Assets/NewLoadoutIcons");
 
 		elementStrings = new string[16, 3]		//name, description, unlock
 		{
@@ -80,6 +89,14 @@ public class LoadoutsEventHandler : MonoBehaviour
 		mCurrentLoadout.setPrimary(Loadout.LoadoutPrimary.REPEL);
 		mCurrentLoadout.setSecondary(Loadout.LoadoutSecondary.EMP);
 
+		chassisChoiceIcon.sprite = iconSprites[0];
+		primaryChoiceIcon.sprite = iconSprites[5];
+		secondaryChoiceIcon.sprite = iconSprites[10];
+
+		//init menu as though chassis button has been clicked
+		chassisButton.Select();
+		handleChassisButtonClicked();
+
 		StartCoroutine(mScreenFader.FadeFromBlack());
 	}
 
@@ -99,9 +116,10 @@ public class LoadoutsEventHandler : MonoBehaviour
 		//load the worldmap scene
 		Debug.Log("LOADING WORLD MAP");
 
-		yield return mScreenFader.FadeToBlack();
-		SceneManager.LoadScene((int)SceneIndex.WORLD_MAP);
+		mScreenFader.Fade();
+		yield return new WaitForSeconds(1f);
 
+		SceneManager.LoadScene((int)SceneIndex.WORLD_MAP);
 		yield return null;
 	}
 
@@ -118,9 +136,10 @@ public class LoadoutsEventHandler : MonoBehaviour
 		Debug.Log("CURRENT LOADOUT: " + mCurrentLoadout.toString());
 		Debug.Log("LOADING GAMEPLAY SCENE: " + currentGame.getSelectedLevel());
 
-		yield return mScreenFader.FadeToBlack();
-		SceneManager.LoadScene((int)currentGame.getSelectedLevel());
+		mScreenFader.Fade();
+		yield return new WaitForSeconds(1f);
 
+		SceneManager.LoadScene((int)currentGame.getSelectedLevel());
 		yield return null;
 	}
 
@@ -128,11 +147,12 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 	public void handleChassisButtonClicked()
 	{
+		lastButtonClicked = chassisButton;
 		mChoicePanel.GetComponentInChildren<Text>().text = "Chassis";
 
 		//for the first 5 buttons in the choices panel...
 		Button[] buttons = mChoicePanel.GetComponentsInChildren<Button>();
-		for(int i = 0; i < buttons.Length - 1; ++i)
+		for(int i = 0; i < buttons.Length; ++i)
 		{
 			//get the button event handler
 			LoadoutElementButtonEventHandler beh = buttons[i].GetComponent<LoadoutElementButtonEventHandler>();
@@ -142,7 +162,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 			//set the button's unlock and image
 			beh.isUnlocked = mSavedGameManager.getCurrentGame().unlockedChasis[i];
-			buttons[i].interactable = beh.chasisIndex != mCurrentLoadout.getChasis() && beh.isUnlocked;
+			buttons[i].interactable = beh.isUnlocked;
 
 			if(beh.isUnlocked)
 			{
@@ -153,23 +173,26 @@ public class LoadoutsEventHandler : MonoBehaviour
 				buttons[i].gameObject.GetComponent<Image>().sprite = buttonSprites[buttonSprites.Length - 1];
 				buttons[i].transition = Button.Transition.None;
 			}
+
+			//set navigation data for buttons
+			Navigation nav = buttons[i].navigation;
+			nav.selectOnLeft = lastButtonClicked;
+			buttons[i].navigation = nav;
 		}
 
-		toggleMainPanelButtonsActive();
-
-		mChoicePanel.SetActive(true);
-		mDataPanel.SetActive(true);
+		initDataPanel(Loadout.LoadoutChasis.NULL, Loadout.LoadoutPrimary.NULL, Loadout.LoadoutSecondary.NULL);
 	}
 
 //--------------------------------------------------------------------------------------------
 
 	public void handlePrimaryButtonClicked()
 	{
+		lastButtonClicked = primaryButton;
 		mChoicePanel.GetComponentInChildren<Text>().text = "Primary";
 
 		//for the first 5 buttons in the choices panel...
 		Button[] buttons = mChoicePanel.GetComponentsInChildren<Button>();
-		for(int i = 0; i < buttons.Length - 1; ++i)
+		for(int i = 0; i < buttons.Length; ++i)
 		{
 			//get the button event handler
 			LoadoutElementButtonEventHandler beh = buttons[i].GetComponent<LoadoutElementButtonEventHandler>();
@@ -179,7 +202,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 			//set the button's unlock and image
 			beh.isUnlocked = mSavedGameManager.getCurrentGame().unlockedPrimary[i];
-			buttons[i].interactable = beh.primaryIndex != mCurrentLoadout.getPrimary() && beh.isUnlocked;
+			buttons[i].interactable = beh.isUnlocked;
 
 			if(beh.isUnlocked)
 			{
@@ -190,23 +213,26 @@ public class LoadoutsEventHandler : MonoBehaviour
 				buttons[i].gameObject.GetComponent<Image>().sprite = buttonSprites[buttonSprites.Length - 1];
 				buttons[i].transition = Button.Transition.None;
 			}
+
+			//set navigation data for buttons
+			Navigation nav = buttons[i].navigation;
+			nav.selectOnLeft = lastButtonClicked;
+			buttons[i].navigation = nav;
 		}
 
-		toggleMainPanelButtonsActive();
-
-		mChoicePanel.SetActive(true);
-		mDataPanel.SetActive(true);
+		initDataPanel(Loadout.LoadoutChasis.NULL, Loadout.LoadoutPrimary.NULL, Loadout.LoadoutSecondary.NULL);
 	}
 
 //--------------------------------------------------------------------------------------------
 
 	public void handleSecondaryButtonClicked()
 	{
+		lastButtonClicked = secondaryButton;
 		mChoicePanel.GetComponentInChildren<Text>().text = "Secondary";
 
 		//for the first 5 buttons in the choices panel...
 		Button[] buttons = mChoicePanel.GetComponentsInChildren<Button>();
-		for(int i = 0; i < buttons.Length - 1; ++i)
+		for(int i = 0; i < buttons.Length; ++i)
 		{
 			//get the button event handler
 			LoadoutElementButtonEventHandler beh = buttons[i].GetComponent<LoadoutElementButtonEventHandler>();
@@ -216,7 +242,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 			//set the button's unlock and image
 			beh.isUnlocked = mSavedGameManager.getCurrentGame().unlockedSecondary[i];
-			buttons[i].interactable = beh.secondaryIndex != mCurrentLoadout.getSecondary() && beh.isUnlocked;
+			buttons[i].interactable = beh.isUnlocked;
 
 			if(beh.isUnlocked)
 			{
@@ -227,12 +253,14 @@ public class LoadoutsEventHandler : MonoBehaviour
 				buttons[i].gameObject.GetComponent<Image>().sprite = buttonSprites[buttonSprites.Length - 1];
 				buttons[i].transition = Button.Transition.None;
 			}
+
+			//set navigation data for buttons
+			Navigation nav = buttons[i].navigation;
+			nav.selectOnLeft = lastButtonClicked;
+			buttons[i].navigation = nav;
 		}
 
-		toggleMainPanelButtonsActive();
-
-		mChoicePanel.SetActive(true);
-		mDataPanel.SetActive(true);
+		initDataPanel(Loadout.LoadoutChasis.NULL, Loadout.LoadoutPrimary.NULL, Loadout.LoadoutSecondary.NULL);
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -246,6 +274,9 @@ public class LoadoutsEventHandler : MonoBehaviour
 			Debug.Log("NEW CHASSIS SELECTED: " + ci);
 
 			setChoiceButtonsActive();
+			chassisChoiceIcon.sprite = iconSprites[(int)ci];
+
+			handlePrimaryButtonClicked();
 		}
 
 		//PRIMARY
@@ -255,6 +286,9 @@ public class LoadoutsEventHandler : MonoBehaviour
 			Debug.Log("NEW PRIMARY SELECTED: " + pi);
 
 			setChoiceButtonsActive();
+			primaryChoiceIcon.sprite = iconSprites[(int)pi + 5];
+
+			handleSecondaryButtonClicked();
 		}
 
 		//SECONDARY
@@ -264,14 +298,8 @@ public class LoadoutsEventHandler : MonoBehaviour
 			Debug.Log("NEW SECONDARY SELECTED: " + si);
 
 			setChoiceButtonsActive();
-			return;
+			secondaryChoiceIcon.sprite = iconSprites[(int)si + 10];
 		}
-
-		//BACK BUTTON -- also chassis and primary, button calls for next panel
-		toggleMainPanelButtonsActive();
-
-		mChoicePanel.SetActive(false);
-		mDataPanel.SetActive(false);
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -378,15 +406,5 @@ public class LoadoutsEventHandler : MonoBehaviour
 		//apply change to the button
 		b.transition = Button.Transition.SpriteSwap;
 		b.spriteState = ss;
-	}
-
-//--------------------------------------------------------------------------------------------
-
-	public void toggleMainPanelButtonsActive()
-	{
-		foreach(Button b in mMainPanel.GetComponentsInChildren<Button>())
-		{
-			b.interactable = !b.interactable;
-		}
 	}
 }

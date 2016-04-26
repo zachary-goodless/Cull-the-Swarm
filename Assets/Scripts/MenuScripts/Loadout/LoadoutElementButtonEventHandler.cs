@@ -5,7 +5,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class LoadoutElementButtonEventHandler : MonoBehaviour
+public class LoadoutElementButtonEventHandler : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
 	//PUBLIC
 	public Loadout.LoadoutChasis chasisIndex;
@@ -31,27 +31,16 @@ public class LoadoutElementButtonEventHandler : MonoBehaviour
 		if(mParentEventHandler != null)
 		{
 			mParentEventHandler.handleChoiceButtonClicked(chasisIndex, primaryIndex, secondaryIndex);
-
-			//if it's a secondary button...
-			if(secondaryIndex != Loadout.LoadoutSecondary.NULL)
-			{
-				//set the button to non-interactable
-				gameObject.GetComponent<Button>().interactable = false;
-			}
-
-			//else, call on the next panel type
-			else if(chasisIndex != Loadout.LoadoutChasis.NULL)
-			{
-				mParentEventHandler.handlePrimaryButtonClicked();
-			}
-			else if(primaryIndex != Loadout.LoadoutPrimary.NULL)
-			{
-				mParentEventHandler.handleSecondaryButtonClicked();
-			}
+			handleButtonMouseOver();
 		}
 	}
 
 //--------------------------------------------------------------------------------------------
+
+	public void OnSelect(BaseEventData eventData)
+	{
+		handleButtonMouseOver();
+	}
 
 	public void handleButtonMouseOver()
 	{
@@ -66,6 +55,11 @@ public class LoadoutElementButtonEventHandler : MonoBehaviour
 	}
 
 //--------------------------------------------------------------------------------------------
+
+	public void OnDeselect(BaseEventData eventData)
+	{
+		handleButtonMouseExit();
+	}
 
 	public void handleButtonMouseExit()
 	{

@@ -6,14 +6,14 @@ using UnityEngine.UI;
 
 public enum PointVals
 {
-	DRONE = 		10,
-	BAGWORM = 		30,
-	OTHER = 		50,
+	DRONE = 		1000,
+	BAGWORM = 		3000,
+	OTHER = 		5000,
 
-	BOSS_NEW_STAGE = 	500,
-	BOSS_DEFEATED = 	1000,
+	BOSS_NEW_STAGE = 	50000,
+	BOSS_DEFEATED = 	100000,
 
-	NO_HITS = 		1000,
+	NO_HITS = 		100000,
 }
 
 public class Score : MonoBehaviour
@@ -35,6 +35,8 @@ public class Score : MonoBehaviour
 
 	public float multiplier = 1f;
 	public int numGrazes = 0;
+
+	public Text multiplierText;
 
 	//PRIVATE
 	Text scoreText;
@@ -70,6 +72,8 @@ public class Score : MonoBehaviour
 	{
 		numGrazes++;
 		multiplier = 1 + (numGrazes / GRAZES_PER_TICK) * GRAZE_MULTIPLIER_TICK;
+
+		multiplierText.text = numGrazes / GRAZES_PER_TICK + "%";
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -80,9 +84,16 @@ public class Score : MonoBehaviour
 		{
 			while(displayScore < trueScore)
 			{
-				//increment display score up to true score
-				displayScore += 10;
-				if(displayScore > trueScore)
+				if(!LevelCompleteHandler.isLevelComplete)
+				{
+					//increment display score up to true score
+					displayScore += 100;
+					if(displayScore > trueScore)
+					{
+						displayScore = trueScore;
+					}
+				}
+				else
 				{
 					displayScore = trueScore;
 				}

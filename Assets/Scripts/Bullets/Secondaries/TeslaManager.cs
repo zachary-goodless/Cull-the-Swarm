@@ -74,7 +74,7 @@ public class TeslaManager : MonoBehaviour
 		}
 
 		//if the secondary input has been pressed, we have energy, and it's not already charging...
-		if(Input.GetButtonDown("Secondary") && currEnergy > 0f && !isCharging)
+		if((Input.GetButtonDown("Secondary") || Input.GetButtonDown("XBOX_B") || Input.GetButtonDown("XBOX_Y")) && currEnergy > 0f && !isCharging)
 		{
 			//handle the initial charge
 			isCharging = isOnInitialActivate = true;
@@ -90,7 +90,7 @@ public class TeslaManager : MonoBehaviour
 		}
 
 		//if the secondary input is not being pressed and it's not still on the initial charge...
-		if(!Input.GetButton("Secondary") && !isOnInitialActivate)
+		if(!(Input.GetButtonDown("Secondary") || Input.GetButtonDown("XBOX_B") || Input.GetButtonDown("XBOX_Y")) && !isOnInitialActivate)
 		{
 			//stop charging
 			isCharging = false;

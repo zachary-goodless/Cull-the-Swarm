@@ -12,6 +12,13 @@ public class PauseMenu : MonoBehaviour
 	//PUBLIC
 	public ConfirmationDialog confirmationDialog;
 
+	public Button resumeButton;
+	public Button mainMenuButton;
+	public Button levelSelectButton;
+	public Button quitButton;
+
+	public Button lastButtonClicked;
+
 	//PRIVATE
 	//
 
@@ -36,8 +43,13 @@ public class PauseMenu : MonoBehaviour
 
 	void pauseGame()
 	{
-		Time.timeScale = 0f;
-		gameObject.SetActive(true);
+		if(!LevelCompleteHandler.isLevelComplete)
+		{
+			Time.timeScale = 0f;
+			gameObject.SetActive(true);
+
+			resumeButton.Select();
+		}
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -46,6 +58,8 @@ public class PauseMenu : MonoBehaviour
 	{
 		Time.timeScale = 1f;
 		gameObject.SetActive(false);
+
+		mainMenuButton.Select();
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -53,12 +67,15 @@ public class PauseMenu : MonoBehaviour
 	public void handleResumeButtonClicked()
 	{
 		unpauseGame();
+		lastButtonClicked = resumeButton;
 	}
 
 //--------------------------------------------------------------------------------------------
 
 	public void handleMainMenuButtonClicked()
 	{
+		lastButtonClicked = mainMenuButton;
+
 		toggleButtonsEnable();
 		confirmationDialog.displayDialog(0);
 	}
@@ -77,6 +94,8 @@ public class PauseMenu : MonoBehaviour
 
 	public void handleLevelSelectButtonClicked()
 	{
+		lastButtonClicked = levelSelectButton;
+
 		toggleButtonsEnable();
 		confirmationDialog.displayDialog(1);
 	}
@@ -95,6 +114,8 @@ public class PauseMenu : MonoBehaviour
 
 	public void handleQuitButtonClicked()
 	{
+		lastButtonClicked = quitButton;
+
 		toggleButtonsEnable();
 		confirmationDialog.displayDialog(2);
 	}
@@ -103,15 +124,11 @@ public class PauseMenu : MonoBehaviour
 		if(confirmation)
 		{
 			unpauseGame();
-			Application.Quit();	//TODO -- does this work?
+			Application.Quit();
 		}
 
 		toggleButtonsEnable();
 	}
-
-//--------------------------------------------------------------------------------------------
-
-	//TODO -- settings button?
 
 //--------------------------------------------------------------------------------------------
 

@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 using UnityEngine.SceneManagement;
 
-public class StageButtonEventHandler : MonoBehaviour
+public class StageButtonEventHandler : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
 	//PUBLIC
 	public SceneIndex sceneIndex;
@@ -38,6 +38,11 @@ public class StageButtonEventHandler : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
+	public void OnSelect(BaseEventData eventData)
+	{
+		handleButtonMouseOver();
+	}
+
 	public void handleButtonMouseOver()
 	{
 		if(mParentEventHandler != null)
@@ -48,6 +53,11 @@ public class StageButtonEventHandler : MonoBehaviour
 	}
 
 //--------------------------------------------------------------------------------------------
+
+	public void OnDeselect(BaseEventData eventData)
+	{
+		handleButtonMouseExit();
+	}
 
 	public void handleButtonMouseExit()
 	{

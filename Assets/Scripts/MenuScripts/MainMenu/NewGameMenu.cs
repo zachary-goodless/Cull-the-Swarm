@@ -23,14 +23,17 @@ public class NewGameMenu : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	void Start()
+	void OnEnable()
 	{
 		mName = "";
 
 		mNameField.onValueChanged.AddListener( delegate{ handleTextEditValueChanged(); } );
+		mNameField.onEndEdit.AddListener( delegate{ handleEditFinished(); } );
 
 		mMainMenu = GetComponentInParent<MainMenuEventHandler>();
 		mSavedGameManager = GameObject.FindGameObjectWithTag("SaveManager").GetComponent<SavedGameManager>();
+
+		mNameField.Select();
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -47,6 +50,24 @@ public class NewGameMenu : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
+	public void handleEditFinished()
+	{
+		mName = mNameField.text;
+		mName = mName.Replace(" ", "");
+
+		//select new game button if name is valid
+		if(mName == "")
+		{
+			mNameField.Select();
+		}
+		else
+		{
+			mCreateNewGameButton.Select();
+		}
+	}
+
+//--------------------------------------------------------------------------------------------
+
 	public void handleCreateNewGameButtonClicked(){ StartCoroutine(handleCreateNewGameButtonClickedHelper()); }
 	private IEnumerator handleCreateNewGameButtonClickedHelper()
 	{
@@ -58,7 +79,9 @@ public class NewGameMenu : MonoBehaviour
 			{
 				Debug.Log("LOADING WORLD MAP");
 
-				yield return mScreenFader.FadeToBlack();
+				mScreenFader.Fade();
+				yield return new WaitForSeconds(1f);
+
 				SceneManager.LoadScene((int)SceneIndex.WORLD_MAP);
 				yield return null;
 			}
@@ -78,5 +101,6 @@ public class NewGameMenu : MonoBehaviour
 		gameObject.SetActive(false);
 
 		mMainMenu.toggleButtons();
+		mMainMenu.lastButtonClicked.Select();
 	}
 }

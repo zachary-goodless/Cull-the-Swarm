@@ -178,6 +178,19 @@ public class Drones_1_1 : MonoBehaviour {
 
     }
 
+	public IEnumerator DroneWave7() {
+		 
+
+		yield return new WaitForSeconds (Random.Range (1f, 3f));
+		for(int i = 0; i < 6; i++) {
+			BulletManager.ShootBullet (transform.position, 1, BulletManager.AngleToPlayerFrom(transform.position)+i*60, 0.05f, 20f, 0, BulletType.RedDarkBlade);
+
+		}
+
+
+
+	}
+
     public void StartTurret2() {
         StartCoroutine(TurretWave2());
     }
@@ -222,6 +235,20 @@ public class Drones_1_1 : MonoBehaviour {
 
     }
 
+	public IEnumerator TurretWave4() {
+		int loops = 10;
+
+		yield return new WaitForSeconds (Random.Range (1f, 3f));
+		Vector2 pos = transform.position;
+		for(int i = 0; i < loops; i++) {
+			BulletManager.ShootBullet (pos, 4, 270, BulletType.WhiteDarkDot);
+			BulletManager.ShootBullet (pos, 4, 90, BulletType.WhiteDarkDot);
+			yield return new WaitForSeconds (0.1f);
+		}
+	
+	}
+		
+
 	//drones will have prefix 'd', turrets will have prefix 't'
 
 	public void StartWaveNum(string num){
@@ -238,6 +265,9 @@ public class Drones_1_1 : MonoBehaviour {
 		case "d6":
 			StartCoroutine (DroneWave6 ());
 			break;
+		case "d7":
+			StartCoroutine (DroneWave7 ());
+			break;
 		case "d23":
 			StartCoroutine (DroneWave23 ());
 			break;
@@ -249,6 +279,9 @@ public class Drones_1_1 : MonoBehaviour {
 			break;
 		case "t3":
 			StartCoroutine (TurretWave3 ());
+			break;
+		case "t4":
+			StartCoroutine (TurretWave4 ());
 			break;
 		default:
 			break;
