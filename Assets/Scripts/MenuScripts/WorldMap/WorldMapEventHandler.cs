@@ -69,7 +69,7 @@ public class WorldMapEventHandler : MonoBehaviour
 		//tutorial always unlocked, init menu to this
 		lastButtonClicked = mLevelPanel.GetComponentInChildren<Button>();
 		lastButtonClicked.Select();
-		handleLevelButtonClicked(0);
+		handleLevelButtonMouseOver(0);
 
 		//sanity check -- null any selected level data on the current game ptr
 		mSavedGameManager.getCurrentGame().setSelectedLevel(SceneIndex.NULL);
@@ -113,7 +113,7 @@ public class WorldMapEventHandler : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	public void handleLevelButtonClicked(int firstStageIndex)
+	public void handleLevelButtonMouseOver(int firstStageIndex)
 	{
 		//handle final chassis stars
 		{

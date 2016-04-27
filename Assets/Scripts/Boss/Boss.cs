@@ -19,10 +19,11 @@ public class Boss : MonoBehaviour {
     public GameObject levelEnd;
     Vector3 meshStartingAngle;
 
+	ScreenFade fadeScript;
+
     // Use this for initialization
     void Start ()
     {
-        ScreenFade fadeScript;
         fadeScript = GameObject.FindObjectOfType<ScreenFade>();
         fadeScript.StartCoroutine(fadeScript.FadeFromBlack());
         meshList = GetComponentsInChildren<MeshRenderer>();
@@ -70,9 +71,7 @@ public class Boss : MonoBehaviour {
             yield return new WaitForSeconds(0.1f);
         }
         GameObject.FindObjectOfType<Score>().handleEnemyDefeated(PointVals.BOSS_DEFEATED);
-
-		ScreenFade fadeScript;
-		fadeScript = GameObject.FindObjectOfType<ScreenFade>();
+	
 		fadeScript.Fade();
 		yield return new WaitForSeconds(2f);
 
