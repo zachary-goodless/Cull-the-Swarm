@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 17c608442e8904d55a29d51a5c49b220
-timeCreated: 1460945694
+guid: fc5d06fae3d6f4fa6a322f3e2d53a71b
+timeCreated: 1461793813
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: _PortraitsTemp_0
-    21300002: _PortraitsTemp_1
-    21300004: _PortraitsTemp_2
-    21300006: _PortraitsTemp_3
-    21300008: _PortraitsTemp_4
-    21300010: _PortraitsTemp_5
-    21300012: _PortraitsTemp_6
+    21300000: Portraits_0
+    21300002: Portraits_1
+    21300004: Portraits_2
+    21300006: Portraits_3
+    21300008: Portraits_4
+    21300010: Portraits_5
+    21300012: Portraits_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -57,7 +57,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: _PortraitsTemp_0
+    - name: Portraits_0
       rect:
         serializedVersion: 2
         x: 0
@@ -72,7 +72,7 @@ TextureImporter:
         - {x: -150, y: -150}
         - {x: 150, y: -150}
         - {x: 150, y: 150}
-    - name: _PortraitsTemp_1
+    - name: Portraits_1
       rect:
         serializedVersion: 2
         x: 337
@@ -87,7 +87,7 @@ TextureImporter:
         - {x: -150, y: -150}
         - {x: 150, y: -150}
         - {x: 150, y: 150}
-    - name: _PortraitsTemp_2
+    - name: Portraits_2
       rect:
         serializedVersion: 2
         x: 685
@@ -102,7 +102,7 @@ TextureImporter:
         - {x: -150, y: -150}
         - {x: 150, y: -150}
         - {x: 150, y: 150}
-    - name: _PortraitsTemp_3
+    - name: Portraits_3
       rect:
         serializedVersion: 2
         x: 1022
@@ -117,7 +117,7 @@ TextureImporter:
         - {x: -150, y: -150}
         - {x: 150, y: -150}
         - {x: 150, y: 150}
-    - name: _PortraitsTemp_4
+    - name: Portraits_4
       rect:
         serializedVersion: 2
         x: 0
@@ -132,7 +132,7 @@ TextureImporter:
         - {x: -150, y: -150}
         - {x: 150, y: -150}
         - {x: 150, y: 150}
-    - name: _PortraitsTemp_5
+    - name: Portraits_5
       rect:
         serializedVersion: 2
         x: 337
@@ -147,7 +147,7 @@ TextureImporter:
         - {x: -150, y: -150}
         - {x: 150, y: -150}
         - {x: 150, y: 150}
-    - name: _PortraitsTemp_6
+    - name: Portraits_6
       rect:
         serializedVersion: 2
         x: 684
