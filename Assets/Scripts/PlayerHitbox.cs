@@ -12,7 +12,7 @@ public class PlayerHitbox : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButton("Precision")) {
+		if (Input.GetButton("Precision") || Input.GetButton("XBOX_LB")) {
             if(visibleRatio < 0.98f) {
                 visibleRatio = visibleRatio * 0.8f + 0.2f;
             } else {
