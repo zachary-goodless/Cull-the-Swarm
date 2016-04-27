@@ -16,7 +16,6 @@ public class Player : MonoBehaviour {
 	public bool chassisQuick;
 	public bool chassisFinal;
 
-
 	// Make these into constants of another class later...
 	float stageWidth = 1500f;
 	float stageHeight = 950f;
@@ -28,6 +27,7 @@ public class Player : MonoBehaviour {
 
 	public ParticleSystem ps;
     public ParticleSystem ps2;
+	public ParticleSystem ps3;
 
 	private PhaseManager phaseOn;
 	bool phaseEquipped = false;
@@ -35,6 +35,7 @@ public class Player : MonoBehaviour {
 	public bool dead;
 	public int health;
 	HealthBar hb;
+	HealthBorder hBorder;
 	ScreenFade sf;
 
 	Loadout loadout;
@@ -96,8 +97,13 @@ public class Player : MonoBehaviour {
 
 
 		hb = GameObject.Find ("HealthBar").GetComponent<HealthBar> ();
+		hBorder = GameObject.FindGameObjectWithTag ("Border").GetComponent<HealthBorder> ();
 		sf = GameObject.Find ("ScreenFade").GetComponent<ScreenFade> ();
 		hb.health = health;	
+		hBorder.health = health;
+		if (health == 5) {
+			hBorder.fiveHealth = true;
+		}
 	}
 
 	// Update is called once per frame
@@ -222,6 +228,14 @@ public class Player : MonoBehaviour {
 		hitCool = true;
 		health--;
 		hb.health = health;
+		hBorder.health = health;
+		if (health == 1) {
+			ParticleSystem.EmissionModule em = ps.emission;
+			em.enabled = false;
+			em = ps3.emission;
+			em.enabled = true;
+			ps3.Play ();
+		}
         if (health <= 0) {
 			OnDeath ();
 		} else {
@@ -237,19 +251,27 @@ public class Player : MonoBehaviour {
 	}
 
 	IEnumerator Blink(){
-		ParticleSystem.EmissionModule em = ps.emission;
+		ParticleSystem.EmissionModule em;
+		if (health > 1) {
+			em = ps.emission;
+		} else {
+			em = ps3.emission;
+		}
+
 		while (hitCool) {
 			em.enabled = false;
 			mesh.SetActive (!mesh.activeSelf);
 			yield return new WaitForSeconds (.05f);
 		}
+
 		em.enabled = true;
+		
 		mesh.SetActive (true);
 		yield break;
 	}
 
 	void OnDeath(){
-		ParticleSystem.EmissionModule em = ps.emission;
+		ParticleSystem.EmissionModule em = ps3.emission;
 		em.enabled = false;
 		mesh.SetActive (false);
 		dead = true;
