@@ -83,15 +83,16 @@ public class TeslaManager : MonoBehaviour
 		//if the secondary input has been pressed, we have energy, and it's not already charging...
 		if((Input.GetButtonDown("Secondary") || Input.GetButtonDown("XBOX_B") || Input.GetButtonDown("XBOX_Y")) && currEnergy > 0f && !isCharging)
 		{
-			//handle the initial charge
-			isCharging = isOnInitialActivate = true;
-			StartCoroutine(handleInitialCharge());
-
 			//enter the weapon's first phase
 			if(teslaObjPhase_1 == null)
 			{
+				//handle the initial charge
+				isCharging = isOnInitialActivate = true;
+				StartCoroutine(handleInitialCharge());
+
 				//create phase 1 obj
-				teslaObjPhase_1 = Instantiate(teslaPrefabPhase_1, transform.position, Quaternion.identity) as GameObject;
+				Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y, -50f);
+				teslaObjPhase_1 = Instantiate(teslaPrefabPhase_1, spawnPos, Quaternion.identity) as GameObject;
 				teslaObjPhase_1.transform.parent = transform;
 			}
 		}
@@ -114,13 +115,15 @@ public class TeslaManager : MonoBehaviour
 		if(teslaObjPhase_1 != null)
 		{
 			//extract phase 1 obj stored damage, destroy it
-			storedDamage = teslaObjPhase_1.GetComponent<TeslaPhase_1>().getStoredDamage();
-			Destroy(teslaObjPhase_1);
+			TeslaPhase_1 phaseOneScript = teslaObjPhase_1.GetComponent<TeslaPhase_1>();
+			storedDamage = phaseOneScript.getStoredDamage();
+			phaseOneScript.turnOff();
 
 			//if any damage stored, enter phase 2
 			if(storedDamage > 0f)
 			{
-				GameObject objPhase_2 = Instantiate(teslaPrefabPhase_2, forwardPos.position, Quaternion.identity) as GameObject;
+				Vector3 spawnPos = new Vector3(forwardPos.position.x, forwardPos.position.y, 50f);
+				GameObject objPhase_2 = Instantiate(teslaPrefabPhase_2, spawnPos, Quaternion.identity) as GameObject;
 				objPhase_2.transform.parent = forwardPos;
 
 				objPhase_2.GetComponent<TeslaPhase_2>().setDamage(storedDamage);

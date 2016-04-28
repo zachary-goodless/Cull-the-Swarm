@@ -59,9 +59,8 @@ public class WorldMapEventHandler : MonoBehaviour
 		levelImgSprites = Resources.LoadAll<Sprite>("GUI_Assets/WorldIcons");
 		stageButtonSprites = Resources.LoadAll<Sprite>("GUI_Assets/StageButtonIcons");
 
-		//set the interactability of the main level buttons
-		lockLevelButtons();
-		toggleLevelButtonsActive();
+		//hide classified levels / worlds
+		setLevelButtonsClassified();
 
 		//need to get a handle on the final chassis stars
 		finalChassisStars = mStagePanel.GetComponentsInChildren<FinalChassisStar>();
@@ -157,7 +156,14 @@ public class WorldMapEventHandler : MonoBehaviour
 			setStageButtonsActive();
 
 			//set the stage panel's title image based on the firstStageIndex
-			mStagePanelTitle.sprite = levelTitleSprites[firstStageIndex / 3];
+			if(mSavedGameManager.getCurrentGame().unlockedLevels[firstStageIndex / 3])
+			{
+				mStagePanelTitle.sprite = levelTitleSprites[firstStageIndex / 3];
+			}
+			else
+			{
+				mStagePanelTitle.sprite = levelTitleSprites[levelTitleSprites.Length - 1];
+			}
 		}
 
 		//initialize the data panel with no data (data is set on stage button mouseover)
@@ -168,14 +174,11 @@ public class WorldMapEventHandler : MonoBehaviour
 
 	public void handleStageButtonClicked(SceneIndex si)
 	{
-		if(si != SceneIndex.NULL)
+		if(si != SceneIndex.NULL && mSavedGameManager.getCurrentGame().unlockedLevels[(int)si - 3])
 		{
 			//save the incoming scene index
 			mSelectedLevel = si;
 			Debug.Log("NEW SELECTED LEVEL: " + mSelectedLevel);
-
-			//reassert button enabled -- button just clicked is disabled in its own handler after
-			setStageButtonsActive();
 
 			//automatically start the loadouts menu
 			handleContinueButtonClicked();
@@ -232,7 +235,7 @@ public class WorldMapEventHandler : MonoBehaviour
 			{
 				if(t.gameObject.name == "HighScorePersonal")
 				{
-					t.text = isUnlocked ? (mSavedGameManager.getCurrentGame().highScores[i]).ToString() : "-";
+					t.text = isUnlocked ? mSavedGameManager.getCurrentGame().highScores[i].ToString() : "-";
 				}
 				else if(t.gameObject.name == "HighScoreGlobal")
 				{
@@ -301,10 +304,8 @@ public class WorldMapEventHandler : MonoBehaviour
 				//else the current button's level is locked...
 				if(!beh.isUnlocked)
 				{
-					//set its sprite image to CLASSIFIED and disable it
-					b.gameObject.GetComponent<Image>().sprite = stageButtonSprites[stageButtonSprites.Length - 1];
-					b.transition = Button.Transition.None;
-					b.interactable = false;
+					//set its sprite image to CLASSIFIED
+					setStageButtonSprites(b, 24);
 				}
 			}
 
@@ -330,30 +331,10 @@ public class WorldMapEventHandler : MonoBehaviour
 		b.transition = Button.Transition.SpriteSwap;
 		b.spriteState = ss;
 	}
-
-//--------------------------------------------------------------------------------------------
-
-	void toggleLevelButtonsActive()
-	{
-		bool[] unlocks = mSavedGameManager.getCurrentGame().unlockedLevels;
-		int i = 0;
-
-		//for each button in the main level panel...
-		foreach(Button b in mLevelPanel.GetComponentsInChildren<Button>())
-		{
-			//if the first stage for that level is unlocked... toggle the button
-			if(unlocks[i])
-			{
-				b.interactable = !b.interactable;
-			}
-
-			i += 3;
-		}
-	}
 		
 //--------------------------------------------------------------------------------------------
 
-	void lockLevelButtons()
+	void setLevelButtonsClassified()
 	{
 		bool[] unlocks = mSavedGameManager.getCurrentGame().unlockedLevels;
 		int i = 0;
@@ -365,11 +346,20 @@ public class WorldMapEventHandler : MonoBehaviour
 			if(!unlocks[i])
 			{
 				//set the button's sprite to CLASSIFIED
-				b.gameObject.GetComponent<Image>().sprite = levelButtonSprites[levelButtonSprites.Length - 1];
-				b.transition = Button.Transition.None;
-			}
+				SpriteState ss = new SpriteState();
 
-			b.interactable = false;
+				//set the default state
+				b.gameObject.GetComponent<Image>().sprite = levelButtonSprites[20];
+
+				//set the different sprite states
+				ss.pressedSprite = levelButtonSprites[21];
+				ss.disabledSprite = levelButtonSprites[22];
+				ss.highlightedSprite = levelButtonSprites[23];
+
+				//apply the change to the button
+				b.transition = Button.Transition.SpriteSwap;
+				b.spriteState = ss;
+			}
 
 			i += 3;
 		}

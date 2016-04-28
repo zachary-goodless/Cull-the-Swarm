@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: cc718f97a81184950947bc4a42361181
-timeCreated: 1456409847
+timeCreated: 1461883848
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -29,6 +29,9 @@ TextureImporter:
     21300044: StageButtonIcons_22
     21300046: StageButtonIcons_23
     21300048: StageButtonIcons_24
+    21300050: StageButtonIcons_25
+    21300052: StageButtonIcons_26
+    21300054: StageButtonIcons_27
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -631,6 +634,75 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
+        y: 0
+        width: 362
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 181, y: 0.5}
+        - {x: 92, y: 89.5}
+        - {x: -93, y: 89.5}
+        - {x: -97, y: 86.5}
+        - {x: -172, y: 11.5}
+        - {x: -179, y: 3.5}
+        - {x: -181, y: 1.5}
+        - {x: -181, y: -6.5}
+        - {x: -98, y: -89.5}
+        - {x: 98, y: -89.5}
+        - {x: 104, y: -84.5}
+        - {x: 181, y: -7.5}
+    - name: StageButtonIcons_25
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 0
+        width: 362
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 181, y: 0.5}
+        - {x: 92, y: 89.5}
+        - {x: -93, y: 89.5}
+        - {x: -97, y: 86.5}
+        - {x: -172, y: 11.5}
+        - {x: -179, y: 3.5}
+        - {x: -181, y: 1.5}
+        - {x: -181, y: -6.5}
+        - {x: -98, y: -89.5}
+        - {x: 98, y: -89.5}
+        - {x: 104, y: -84.5}
+        - {x: 181, y: -7.5}
+    - name: StageButtonIcons_26
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 362
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 181, y: 0.5}
+        - {x: 92, y: 89.5}
+        - {x: -93, y: 89.5}
+        - {x: -97, y: 86.5}
+        - {x: -172, y: 11.5}
+        - {x: -179, y: 3.5}
+        - {x: -181, y: 1.5}
+        - {x: -181, y: -6.5}
+        - {x: -98, y: -89.5}
+        - {x: 98, y: -89.5}
+        - {x: 104, y: -84.5}
+        - {x: 181, y: -7.5}
+    - name: StageButtonIcons_27
+      rect:
+        serializedVersion: 2
+        x: 1147
         y: 0
         width: 362
         height: 179

@@ -100,8 +100,7 @@ public class FreezeManager : MonoBehaviour
 				if(freezeAreaInstance != null)
 				{
 					//remove area obj freeze ability and delete
-					freezeAreaInstance.GetComponent<FreezeArea>().canMakeMore = false;
-					Destroy(freezeAreaInstance);
+					freezeAreaInstance.GetComponent<FreezeArea>().turnOff();
 				}
 
 				//for each freeze bullet...
@@ -171,7 +170,8 @@ public class FreezeManager : MonoBehaviour
 	IEnumerator handleSpinup()
 	{
 		//create area obj
-		freezeAreaInstance = Instantiate(freezeAreaPrefab, transform.position, Quaternion.identity) as GameObject;
+		Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y, -50f);
+		freezeAreaInstance = Instantiate(freezeAreaPrefab, spawnPos, Quaternion.identity) as GameObject;
 		freezeAreaInstance.transform.parent = transform;
 
 		yield return new WaitForSeconds(spinUpTime);
