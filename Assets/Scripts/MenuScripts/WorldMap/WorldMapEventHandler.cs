@@ -219,10 +219,12 @@ public class WorldMapEventHandler : MonoBehaviour
 		case SceneIndex.GAMEPLAY_4_1:
 		case SceneIndex.GAMEPLAY_4_2:
 		case SceneIndex.GAMEPLAY_4_3:
+			
+			int i = (int)sceneIndex - 3;
+			bool isUnlocked = mSavedGameManager.getCurrentGame().unlockedLevels[i];
 
 			//set data panel image
-			int i = ((int)sceneIndex - 3) / 3;
-			mDataPanelImg.sprite = levelImgSprites[i];	//TODO -- if level is locked, use CLASSIFIED IMAGE
+			mDataPanelImg.sprite = isUnlocked ? levelImgSprites[i] : levelImgSprites[levelImgSprites.Length - 1];
 
 			//set data panel high scores
 			i = (int)sceneIndex - 3;
@@ -230,7 +232,7 @@ public class WorldMapEventHandler : MonoBehaviour
 			{
 				if(t.gameObject.name == "HighScorePersonal")
 				{
-					t.text = (mSavedGameManager.getCurrentGame().highScores[i]).ToString();
+					t.text = isUnlocked ? (mSavedGameManager.getCurrentGame().highScores[i]).ToString() : "-";
 				}
 				else if(t.gameObject.name == "HighScoreGlobal")
 				{
@@ -241,8 +243,7 @@ public class WorldMapEventHandler : MonoBehaviour
 			break;
 
 		default:
-
-			//set the default level image (TODO -- CLASSIFIED IMAGE)
+			
 			mDataPanelImg.sprite = levelImgSprites[levelImgSprites.Length - 1];
 
 			//restore default high score text

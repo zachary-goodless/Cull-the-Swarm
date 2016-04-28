@@ -1,0 +1,825 @@
+fileFormatVersion: 2
+guid: 89b13a75716a84146be17eb59900fffc
+timeCreated: 1461809957
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: LoadoutIcons_new_0
+    21300002: LoadoutIcons_new_1
+    21300004: LoadoutIcons_new_2
+    21300006: LoadoutIcons_new_3
+    21300008: LoadoutIcons_new_4
+    21300010: LoadoutIcons_new_5
+    21300012: LoadoutIcons_new_6
+    21300014: LoadoutIcons_new_7
+    21300016: LoadoutIcons_new_8
+    21300018: LoadoutIcons_new_9
+    21300020: LoadoutIcons_new_10
+    21300022: LoadoutIcons_new_11
+    21300024: LoadoutIcons_new_12
+    21300026: LoadoutIcons_new_13
+    21300028: LoadoutIcons_new_14
+    21300030: LoadoutIcons_new_15
+    21300032: LoadoutIcons_new_16
+    21300034: LoadoutIcons_new_17
+    21300036: LoadoutIcons_new_18
+    21300038: LoadoutIcons_new_19
+    21300040: LoadoutIcons_new_20
+    21300042: LoadoutIcons_new_21
+    21300044: LoadoutIcons_new_22
+    21300046: LoadoutIcons_new_23
+    21300048: LoadoutIcons_new_24
+    21300050: LoadoutIcons_new_25
+    21300052: LoadoutIcons_new_26
+    21300054: LoadoutIcons_new_27
+    21300056: LoadoutIcons_new_28
+    21300058: LoadoutIcons_new_29
+    21300060: LoadoutIcons_new_30
+    21300062: LoadoutIcons_new_31
+    21300064: LoadoutIcons_new_32
+    21300066: LoadoutIcons_new_33
+    21300068: LoadoutIcons_new_34
+    21300070: LoadoutIcons_new_35
+    21300072: LoadoutIcons_new_36
+    21300074: LoadoutIcons_new_37
+    21300076: LoadoutIcons_new_38
+    21300078: LoadoutIcons_new_39
+    21300080: LoadoutIcons_new_40
+    21300082: LoadoutIcons_new_41
+    21300084: LoadoutIcons_new_42
+    21300086: LoadoutIcons_new_43
+    21300088: LoadoutIcons_new_44
+    21300090: LoadoutIcons_new_45
+    21300092: LoadoutIcons_new_46
+    21300094: LoadoutIcons_new_47
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: LoadoutIcons_new_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1848
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.5, y: 128}
+        - {x: -147.5, y: -128}
+        - {x: 147.5, y: -128}
+        - {x: 147.5, y: 128}
+    - name: LoadoutIcons_new_1
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 1848
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.2121, y: 128}
+        - {x: -147.2121, y: -128}
+        - {x: 148.7879, y: -128}
+        - {x: 148.7879, y: 128}
+    - name: LoadoutIcons_new_2
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 1848
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.4242, y: 128}
+        - {x: -147.4242, y: -128}
+        - {x: 148.5758, y: -128}
+        - {x: 148.5758, y: 128}
+    - name: LoadoutIcons_new_3
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 1848
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.63635, y: 128}
+        - {x: -147.63635, y: -128}
+        - {x: 148.36365, y: -128}
+        - {x: 148.36365, y: 128}
+    - name: LoadoutIcons_new_4
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 1848
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.34839, y: 128}
+        - {x: -147.34839, y: -128}
+        - {x: 147.65161, y: -128}
+        - {x: 147.65161, y: 128}
+    - name: LoadoutIcons_new_5
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 1848
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.06055, y: 128}
+        - {x: -147.06055, y: -128}
+        - {x: 148.93945, y: -128}
+        - {x: 148.93945, y: 128}
+    - name: LoadoutIcons_new_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1584
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.5, y: 128}
+        - {x: -147.5, y: -128}
+        - {x: 147.5, y: -128}
+        - {x: 147.5, y: 128}
+    - name: LoadoutIcons_new_7
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 1584
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.2121, y: 128}
+        - {x: -147.2121, y: -128}
+        - {x: 148.7879, y: -128}
+        - {x: 148.7879, y: 128}
+    - name: LoadoutIcons_new_8
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 1584
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.4242, y: 128}
+        - {x: -147.4242, y: -128}
+        - {x: 148.5758, y: -128}
+        - {x: 148.5758, y: 128}
+    - name: LoadoutIcons_new_9
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 1584
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.63635, y: 128}
+        - {x: -147.63635, y: -128}
+        - {x: 148.36365, y: -128}
+        - {x: 148.36365, y: 128}
+    - name: LoadoutIcons_new_10
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 1584
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.34839, y: 128}
+        - {x: -147.34839, y: -128}
+        - {x: 147.65161, y: -128}
+        - {x: 147.65161, y: 128}
+    - name: LoadoutIcons_new_11
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 1584
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.06055, y: 128}
+        - {x: -147.06055, y: -128}
+        - {x: 148.93945, y: -128}
+        - {x: 148.93945, y: 128}
+    - name: LoadoutIcons_new_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1320
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.5, y: 128}
+        - {x: -147.5, y: -128}
+        - {x: 147.5, y: -128}
+        - {x: 147.5, y: 128}
+    - name: LoadoutIcons_new_13
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 1320
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.2121, y: 128}
+        - {x: -147.2121, y: -128}
+        - {x: 148.7879, y: -128}
+        - {x: 148.7879, y: 128}
+    - name: LoadoutIcons_new_14
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 1320
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.4242, y: 128}
+        - {x: -147.4242, y: -128}
+        - {x: 148.5758, y: -128}
+        - {x: 148.5758, y: 128}
+    - name: LoadoutIcons_new_15
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 1320
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.63635, y: 128}
+        - {x: -147.63635, y: -128}
+        - {x: 148.36365, y: -128}
+        - {x: 148.36365, y: 128}
+    - name: LoadoutIcons_new_16
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 1320
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.34839, y: 128}
+        - {x: -147.34839, y: -128}
+        - {x: 147.65161, y: -128}
+        - {x: 147.65161, y: 128}
+    - name: LoadoutIcons_new_17
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 1320
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.06055, y: 128}
+        - {x: -147.06055, y: -128}
+        - {x: 148.93945, y: -128}
+        - {x: 148.93945, y: 128}
+    - name: LoadoutIcons_new_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1056
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.5, y: 128}
+        - {x: -147.5, y: -128}
+        - {x: 147.5, y: -128}
+        - {x: 147.5, y: 128}
+    - name: LoadoutIcons_new_19
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 1056
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.2121, y: 128}
+        - {x: -147.2121, y: -128}
+        - {x: 148.7879, y: -128}
+        - {x: 148.7879, y: 128}
+    - name: LoadoutIcons_new_20
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 1056
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.4242, y: 128}
+        - {x: -147.4242, y: -128}
+        - {x: 148.5758, y: -128}
+        - {x: 148.5758, y: 128}
+    - name: LoadoutIcons_new_21
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 1056
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.63635, y: 128}
+        - {x: -147.63635, y: -128}
+        - {x: 148.36365, y: -128}
+        - {x: 148.36365, y: 128}
+    - name: LoadoutIcons_new_22
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 1056
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.34839, y: 128}
+        - {x: -147.34839, y: -128}
+        - {x: 147.65161, y: -128}
+        - {x: 147.65161, y: 128}
+    - name: LoadoutIcons_new_23
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 1056
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.06055, y: 128}
+        - {x: -147.06055, y: -128}
+        - {x: 148.93945, y: -128}
+        - {x: 148.93945, y: 128}
+    - name: LoadoutIcons_new_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 792
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.5, y: 128}
+        - {x: -147.5, y: -128}
+        - {x: 147.5, y: -128}
+        - {x: 147.5, y: 128}
+    - name: LoadoutIcons_new_25
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 792
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.2121, y: 128}
+        - {x: -147.2121, y: -128}
+        - {x: 148.7879, y: -128}
+        - {x: 148.7879, y: 128}
+    - name: LoadoutIcons_new_26
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 792
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.4242, y: 128}
+        - {x: -147.4242, y: -128}
+        - {x: 148.5758, y: -128}
+        - {x: 148.5758, y: 128}
+    - name: LoadoutIcons_new_27
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 792
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.63635, y: 128}
+        - {x: -147.63635, y: -128}
+        - {x: 148.36365, y: -128}
+        - {x: 148.36365, y: 128}
+    - name: LoadoutIcons_new_28
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 792
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.34839, y: 128}
+        - {x: -147.34839, y: -128}
+        - {x: 147.65161, y: -128}
+        - {x: 147.65161, y: 128}
+    - name: LoadoutIcons_new_29
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 792
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.06055, y: 128}
+        - {x: -147.06055, y: -128}
+        - {x: 148.93945, y: -128}
+        - {x: 148.93945, y: 128}
+    - name: LoadoutIcons_new_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 528
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.5, y: 128}
+        - {x: -147.5, y: -128}
+        - {x: 147.5, y: -128}
+        - {x: 147.5, y: 128}
+    - name: LoadoutIcons_new_31
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 528
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.2121, y: 128}
+        - {x: -147.2121, y: -128}
+        - {x: 148.7879, y: -128}
+        - {x: 148.7879, y: 128}
+    - name: LoadoutIcons_new_32
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 528
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.4242, y: 128}
+        - {x: -147.4242, y: -128}
+        - {x: 148.5758, y: -128}
+        - {x: 148.5758, y: 128}
+    - name: LoadoutIcons_new_33
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 528
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.63635, y: 128}
+        - {x: -147.63635, y: -128}
+        - {x: 148.36365, y: -128}
+        - {x: 148.36365, y: 128}
+    - name: LoadoutIcons_new_34
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 528
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.34839, y: 128}
+        - {x: -147.34839, y: -128}
+        - {x: 147.65161, y: -128}
+        - {x: 147.65161, y: 128}
+    - name: LoadoutIcons_new_35
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 528
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.06055, y: 128}
+        - {x: -147.06055, y: -128}
+        - {x: 148.93945, y: -128}
+        - {x: 148.93945, y: 128}
+    - name: LoadoutIcons_new_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 264
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.5, y: 128}
+        - {x: -147.5, y: -128}
+        - {x: 147.5, y: -128}
+        - {x: 147.5, y: 128}
+    - name: LoadoutIcons_new_37
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 264
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.2121, y: 128}
+        - {x: -147.2121, y: -128}
+        - {x: 148.7879, y: -128}
+        - {x: 148.7879, y: 128}
+    - name: LoadoutIcons_new_38
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 264
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.4242, y: 128}
+        - {x: -147.4242, y: -128}
+        - {x: 148.5758, y: -128}
+        - {x: 148.5758, y: 128}
+    - name: LoadoutIcons_new_39
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 264
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.63635, y: 128}
+        - {x: -147.63635, y: -128}
+        - {x: 148.36365, y: -128}
+        - {x: 148.36365, y: 128}
+    - name: LoadoutIcons_new_40
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 264
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.34839, y: 128}
+        - {x: -147.34839, y: -128}
+        - {x: 147.65161, y: -128}
+        - {x: 147.65161, y: 128}
+    - name: LoadoutIcons_new_41
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 264
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.06055, y: 128}
+        - {x: -147.06055, y: -128}
+        - {x: 148.93945, y: -128}
+        - {x: 148.93945, y: 128}
+    - name: LoadoutIcons_new_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.5, y: 128}
+        - {x: -147.5, y: -128}
+        - {x: 147.5, y: -128}
+        - {x: 147.5, y: 128}
+    - name: LoadoutIcons_new_43
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 0
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.2121, y: 128}
+        - {x: -147.2121, y: -128}
+        - {x: 148.7879, y: -128}
+        - {x: 148.7879, y: 128}
+    - name: LoadoutIcons_new_44
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 0
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.4242, y: 128}
+        - {x: -147.4242, y: -128}
+        - {x: 148.5758, y: -128}
+        - {x: 148.5758, y: 128}
+    - name: LoadoutIcons_new_45
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 0
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.63635, y: 128}
+        - {x: -147.63635, y: -128}
+        - {x: 148.36365, y: -128}
+        - {x: 148.36365, y: 128}
+    - name: LoadoutIcons_new_46
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 0
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.34839, y: 128}
+        - {x: -147.34839, y: -128}
+        - {x: 147.65161, y: -128}
+        - {x: 147.65161, y: 128}
+    - name: LoadoutIcons_new_47
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 0
+        width: 304
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -147.06055, y: 128}
+        - {x: -147.06055, y: -128}
+        - {x: 148.93945, y: -128}
+        - {x: 148.93945, y: 128}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
