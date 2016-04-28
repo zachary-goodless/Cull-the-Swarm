@@ -104,14 +104,6 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	void Update()
-	{
-		//continue button is disabled when there is no currently selected level
-		mStartButton.interactable = mCurrentLoadout.isComplete();
-	}
-
-//--------------------------------------------------------------------------------------------
-
 	public void handleBackButtonClicked(){ StartCoroutine(handleBackButtonClickedHelper()); }
 	private IEnumerator handleBackButtonClickedHelper()
 	{
@@ -164,7 +156,6 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 			//set the button's unlock and image
 			beh.isUnlocked = mSavedGameManager.getCurrentGame().unlockedChasis[i];
-			buttons[i].interactable = beh.isUnlocked;
 
 			if(beh.isUnlocked)
 			{
@@ -172,8 +163,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 			}
 			else
 			{
-				buttons[i].gameObject.GetComponent<Image>().sprite = buttonSprites[buttonSprites.Length - 1];
-				buttons[i].transition = Button.Transition.None;
+				setChoiceButtonsSprites(buttons[i], 76);
 			}
 
 			//set navigation data for buttons
@@ -204,7 +194,6 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 			//set the button's unlock and image
 			beh.isUnlocked = mSavedGameManager.getCurrentGame().unlockedPrimary[i];
-			buttons[i].interactable = beh.isUnlocked;
 
 			if(beh.isUnlocked)
 			{
@@ -212,8 +201,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 			}
 			else
 			{
-				buttons[i].gameObject.GetComponent<Image>().sprite = buttonSprites[buttonSprites.Length - 1];
-				buttons[i].transition = Button.Transition.None;
+				setChoiceButtonsSprites(buttons[i], 76);
 			}
 
 			//set navigation data for buttons
@@ -244,7 +232,6 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 			//set the button's unlock and image
 			beh.isUnlocked = mSavedGameManager.getCurrentGame().unlockedSecondary[i];
-			buttons[i].interactable = beh.isUnlocked;
 
 			if(beh.isUnlocked)
 			{
@@ -252,8 +239,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 			}
 			else
 			{
-				buttons[i].gameObject.GetComponent<Image>().sprite = buttonSprites[buttonSprites.Length - 1];
-				buttons[i].transition = Button.Transition.None;
+				setChoiceButtonsSprites(buttons[i], 76);
 			}
 
 			//set navigation data for buttons
@@ -272,34 +258,35 @@ public class LoadoutsEventHandler : MonoBehaviour
 		//CHASSIS
 		if(ci != Loadout.LoadoutChasis.NULL)
 		{
+			if(!mSavedGameManager.getCurrentGame().unlockedChasis[(int)ci]) return;
+
 			mCurrentLoadout.setChasis(ci);
 			Debug.Log("NEW CHASSIS SELECTED: " + ci);
 
-			setChoiceButtonsActive();
 			chassisChoiceFirstIndex = (int)ci * 3;
-
 			handlePrimaryButtonClicked();
 		}
 
 		//PRIMARY
 		else if(pi != Loadout.LoadoutPrimary.NULL)
 		{
+			if(!mSavedGameManager.getCurrentGame().unlockedPrimary[(int)pi]) return;
+
 			mCurrentLoadout.setPrimary(pi);
 			Debug.Log("NEW PRIMARY SELECTED: " + pi);
 
-			setChoiceButtonsActive();
 			primaryChoiceFirstIndex = ((int)pi + 5) * 3;
-
 			handleSecondaryButtonClicked();
 		}
 
 		//SECONDARY
 		else if(si != Loadout.LoadoutSecondary.NULL)
 		{
+			if(!mSavedGameManager.getCurrentGame().unlockedSecondary[(int)si]) return;
+
 			mCurrentLoadout.setSecondary(si);
 			Debug.Log("NEW SECONDARY SELECTED: " + si);
 
-			setChoiceButtonsActive();
 			secondaryChoiceFirstIndex = ((int)si + 10) * 3;
 		}
 	}
@@ -330,9 +317,6 @@ public class LoadoutsEventHandler : MonoBehaviour
 		Loadout.LoadoutSecondary si,
 		bool isChoiceUnlocked = false)
 	{
-		GameObject temp = mDataPanel.transform.GetChild(4).gameObject;
-		Image icon = temp.GetComponent<Image>();
-
 		Text[] texts = mDataPanel.GetComponentsInChildren<Text>();
 		int index = 0;
 
@@ -353,8 +337,6 @@ public class LoadoutsEventHandler : MonoBehaviour
 			index = 15;
 		}
 
-		dataPanelFirstIndex = index * 3;
-
 		//if the element is unlocked...
 		if(isChoiceUnlocked)
 		{
@@ -362,6 +344,8 @@ public class LoadoutsEventHandler : MonoBehaviour
 			texts[0].text = elementStrings[index, 0];
 			texts[1].text = elementStrings[index, 1];
 			texts[2].text = "-";
+
+			dataPanelFirstIndex = index * 3;
 		}
 
 		//otherwise, if the element is locked...
@@ -371,19 +355,8 @@ public class LoadoutsEventHandler : MonoBehaviour
 			texts[0].text = "-";
 			texts[1].text = "-";
 			texts[2].text = elementStrings[index, 2];
-		}
-	}
 
-//--------------------------------------------------------------------------------------------
-
-	private void setChoiceButtonsActive()
-	{
-		//for each button on the choice panel...
-		foreach(Button b in mChoicePanel.GetComponentsInChildren<Button>())
-		{
-			//it is interactable if its choice is unlocked
-			LoadoutElementButtonEventHandler beh = b.GetComponent<LoadoutElementButtonEventHandler>();
-			b.interactable = beh.isUnlocked;
+			dataPanelFirstIndex = 45;
 		}
 	}
 
