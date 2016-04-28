@@ -14,13 +14,9 @@ public class FreezeManager : MonoBehaviour
 	public float spinUpTime = 2f;
 	public float cooldownDelay = 2f;
 
-	public RectTransform energyBar;
-
 	//PRIVATE
 	private GameObject freezeAreaPrefab;
 	private GameObject freezeAreaInstance;
-
-	private Player playerScript; 
 
 	private float currEnergy;
 
@@ -29,13 +25,33 @@ public class FreezeManager : MonoBehaviour
 	private bool isOnCooldown;
 	private bool isOnCooldownDelay;
 
+	Player playerScript; 
+
+	RectTransform energyBar;
+	Vector3 origin;
+
+	Sprite[] energySprites;
+	Image energyImg;
+	Coroutine blinkCoroutine;
+
 //--------------------------------------------------------------------------------------------
 
 	void Start ()
 	{
+		// get handle on player script
 		playerScript = GetComponent<Player> ();
+		if(playerScript.chassisQuick) 
+		{
+			rechargeRate *= playerScript.cooldownBoost;
+		}
+
 		//get handle on energy bar
 		energyBar = GameObject.Find("EnergyBar").GetComponent<RectTransform>();
+		origin = energyBar.localPosition;
+
+		energySprites = Resources.LoadAll<Sprite>("GUI_Assets/EnergyIcons");
+		energyImg = GameObject.Find("EnergyImg").GetComponent<Image>();
+		blinkCoroutine = null;
 
 		//init prefab
 		freezeAreaPrefab = Resources.Load<GameObject>("PlayerBullets/FreezeArea");
@@ -54,10 +70,7 @@ public class FreezeManager : MonoBehaviour
 	{
 		if(Time.timeScale != 1f) return;
 
-		//update energy bar fill according to max energy
-		Vector3 localScale = energyBar.localScale;
-		localScale.y = currEnergy / maxEnergy;
-		energyBar.localScale = localScale;
+		handleEnergyBar();
 
 		//if button is pressed, and is at max energy, and not on spinup...
 		if((Input.GetButtonDown("Secondary") || Input.GetButtonDown("XBOX_B") || Input.GetButtonDown("XBOX_Y")) && currEnergy == maxEnergy && !isOnSpinup)
@@ -110,6 +123,46 @@ public class FreezeManager : MonoBehaviour
 				currEnergy = maxEnergy;
 				isOnCooldown = false;
 			}
+		}
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	void handleEnergyBar()
+	{
+		//update energy bar fill according to max energy
+		Vector3 localScale = energyBar.localScale;
+		localScale.y = currEnergy / maxEnergy;
+		energyBar.localScale = localScale;
+
+		//energy bar position is an offset from its start point that is some percentage of half the height
+		energyBar.localPosition = origin + new Vector3(0f, energyBar.rect.height * 0.5f * localScale.y, 0f);
+
+		//start blink if at full energy and not already blinking
+		if(localScale.y == 1f && blinkCoroutine == null)
+		{
+			energyImg.sprite = energySprites[1];
+			blinkCoroutine = StartCoroutine(handleImgBlink());
+		}
+		else if(localScale.y < 1f && blinkCoroutine != null)
+		{
+			energyImg.sprite = energySprites[0];
+			StopCoroutine(blinkCoroutine);
+			blinkCoroutine = null;
+		}
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	public IEnumerator handleImgBlink()
+	{
+		while(true)
+		{
+			yield return new WaitForSeconds(0.7f);
+			energyImg.gameObject.SetActive(false);
+
+			yield return new WaitForSeconds(0.15f);
+			energyImg.gameObject.SetActive(true);
 		}
 	}
 
