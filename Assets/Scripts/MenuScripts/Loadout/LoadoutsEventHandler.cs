@@ -328,7 +328,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 		Loadout.LoadoutSecondary si,
 		bool isChoiceUnlocked = false)
 	{
-		GameObject temp = mDataPanel.transform.GetChild(3).gameObject;
+		GameObject temp = mDataPanel.transform.GetChild(4).gameObject;
 		Image icon = temp.GetComponent<Image>();
 
 		Text[] texts = mDataPanel.GetComponentsInChildren<Text>();
