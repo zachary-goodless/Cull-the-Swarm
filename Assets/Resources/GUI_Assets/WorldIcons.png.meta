@@ -1,17 +1,24 @@
 fileFormatVersion: 2
 guid: af0a2a1dd1dfb46c3b436a64951dab53
-timeCreated: 1456605967
+timeCreated: 1461808675
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: WorldIcons_6
-    21300002: WorldIcons_6
+    21300000: WorldIcons_0
+    21300002: WorldIcons_1
     21300004: WorldIcons_2
     21300006: WorldIcons_3
     21300008: WorldIcons_4
     21300010: WorldIcons_5
-    21300012: WorldIcons_0
-    21300014: WorldIcons_1
+    21300012: WorldIcons_6
+    21300014: WorldIcons_7
+    21300016: WorldIcons_8
+    21300018: WorldIcons_9
+    21300020: WorldIcons_10
+    21300022: WorldIcons_11
+    21300024: WorldIcons_12
+    21300026: WorldIcons_13
+    21300028: WorldIcons_14
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -62,11 +69,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 704
+        y: 1409
         width: 448
         height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -224, y: 160}
@@ -76,12 +83,12 @@ TextureImporter:
     - name: WorldIcons_1
       rect:
         serializedVersion: 2
-        x: 512
-        y: 704
+        x: 499
+        y: 1409
         width: 448
         height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -224, y: 160}
@@ -91,27 +98,27 @@ TextureImporter:
     - name: WorldIcons_2
       rect:
         serializedVersion: 2
-        x: 1
-        y: 352
-        width: 447
-        height: 320
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -223.5, y: 160}
-        - {x: -223.5, y: -160}
-        - {x: 223.5, y: -160}
-        - {x: 223.5, y: 160}
-    - name: WorldIcons_3
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 352
+        x: 1007
+        y: 1409
         width: 448
         height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -224, y: 160}
+        - {x: -224, y: -160}
+        - {x: 224, y: -160}
+        - {x: 224, y: 160}
+    - name: WorldIcons_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1065
+        width: 448
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -224, y: 160}
@@ -121,12 +128,12 @@ TextureImporter:
     - name: WorldIcons_4
       rect:
         serializedVersion: 2
-        x: 1
-        y: 0
+        x: 499
+        y: 1065
         width: 448
         height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -224, y: 160}
@@ -136,14 +143,153 @@ TextureImporter:
     - name: WorldIcons_5
       rect:
         serializedVersion: 2
-        x: 576
+        x: 1007
+        y: 1065
+        width: 448
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -224, y: 160}
+        - {x: -224, y: -160}
+        - {x: 224, y: -160}
+        - {x: 224, y: 160}
+    - name: WorldIcons_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 717
+        width: 447
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -223.5, y: 160}
+        - {x: -223.5, y: -160}
+        - {x: 223.5, y: -160}
+        - {x: 223.5, y: 160}
+    - name: WorldIcons_7
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 717
+        width: 447
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -223.5, y: 160}
+        - {x: -223.5, y: -160}
+        - {x: 223.5, y: -160}
+        - {x: 223.5, y: 160}
+    - name: WorldIcons_8
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 717
+        width: 447
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -223.5, y: 160}
+        - {x: -223.5, y: -160}
+        - {x: 223.5, y: -160}
+        - {x: 223.5, y: 160}
+    - name: WorldIcons_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 358
+        width: 448
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -224, y: 160}
+        - {x: -224, y: -160}
+        - {x: 224, y: -160}
+        - {x: 224, y: 160}
+    - name: WorldIcons_10
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 358
+        width: 448
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -224, y: 160}
+        - {x: -224, y: -160}
+        - {x: 224, y: -160}
+        - {x: 224, y: 160}
+    - name: WorldIcons_11
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 358
+        width: 448
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -224, y: 160}
+        - {x: -224, y: -160}
+        - {x: 224, y: -160}
+        - {x: 224, y: 160}
+    - name: WorldIcons_12
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
         width: 448
         height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -224, y: 160}
+        - {x: -224, y: -160}
+        - {x: 224, y: -160}
+        - {x: 224, y: 160}
+    - name: WorldIcons_13
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 0
+        width: 448
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -224, y: 160}
+        - {x: -224, y: -160}
+        - {x: 224, y: -160}
+        - {x: 224, y: 160}
+    - name: WorldIcons_14
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 0
+        width: 448
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -224, y: 160}
+        - {x: -224, y: -160}
+        - {x: 224, y: -160}
+        - {x: 224, y: 160}
     outline: []
   spritePackingTag: 
   userData: 

@@ -39,6 +39,11 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 	private Loadout mCurrentLoadout;
 
+	int dataPanelFirstIndex;
+	int chassisChoiceFirstIndex;
+	int primaryChoiceFirstIndex;
+	int secondaryChoiceFirstIndex;
+
 //--------------------------------------------------------------------------------------------
 
 	void Start()
@@ -55,7 +60,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 
 		//init resource arrays
 		buttonSprites = Resources.LoadAll<Sprite>("GUI_Assets/Menu_Loadouts");
-		iconSprites = Resources.LoadAll<Sprite>("GUI_Assets/NewLoadoutIcons");
+		iconSprites = Resources.LoadAll<Sprite>("GUI_Assets/LoadoutIcons_new");
 
 		elementStrings = new string[16, 3]		//name, description, unlock
 		{
@@ -89,15 +94,12 @@ public class LoadoutsEventHandler : MonoBehaviour
 		mCurrentLoadout.setPrimary(Loadout.LoadoutPrimary.REPEL);
 		mCurrentLoadout.setSecondary(Loadout.LoadoutSecondary.EMP);
 
-		chassisChoiceIcon.sprite = iconSprites[0];
-		primaryChoiceIcon.sprite = iconSprites[5];
-		secondaryChoiceIcon.sprite = iconSprites[10];
-
 		//init menu as though chassis button has been clicked
 		chassisButton.Select();
 		handleChassisButtonClicked();
 
 		StartCoroutine(mScreenFader.FadeFromBlack());
+		StartCoroutine(handleIconAnimation());
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -274,7 +276,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 			Debug.Log("NEW CHASSIS SELECTED: " + ci);
 
 			setChoiceButtonsActive();
-			chassisChoiceIcon.sprite = iconSprites[(int)ci];
+			chassisChoiceFirstIndex = (int)ci * 3;
 
 			handlePrimaryButtonClicked();
 		}
@@ -286,7 +288,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 			Debug.Log("NEW PRIMARY SELECTED: " + pi);
 
 			setChoiceButtonsActive();
-			primaryChoiceIcon.sprite = iconSprites[(int)pi + 5];
+			primaryChoiceFirstIndex = ((int)pi + 5) * 3;
 
 			handleSecondaryButtonClicked();
 		}
@@ -298,7 +300,7 @@ public class LoadoutsEventHandler : MonoBehaviour
 			Debug.Log("NEW SECONDARY SELECTED: " + si);
 
 			setChoiceButtonsActive();
-			secondaryChoiceIcon.sprite = iconSprites[(int)si + 10];
+			secondaryChoiceFirstIndex = ((int)si + 10) * 3;
 		}
 	}
 
@@ -351,6 +353,8 @@ public class LoadoutsEventHandler : MonoBehaviour
 			index = 15;
 		}
 
+		dataPanelFirstIndex = index * 3;
+
 		//if the element is unlocked...
 		if(isChoiceUnlocked)
 		{
@@ -358,9 +362,6 @@ public class LoadoutsEventHandler : MonoBehaviour
 			texts[0].text = elementStrings[index, 0];
 			texts[1].text = elementStrings[index, 1];
 			texts[2].text = "-";
-
-			//set element icon
-			icon.sprite = iconSprites[index];
 		}
 
 		//otherwise, if the element is locked...
@@ -370,9 +371,6 @@ public class LoadoutsEventHandler : MonoBehaviour
 			texts[0].text = "-";
 			texts[1].text = "-";
 			texts[2].text = elementStrings[index, 2];
-
-			//set classified icon
-			icon.sprite = iconSprites[15];
 		}
 	}
 
@@ -406,5 +404,36 @@ public class LoadoutsEventHandler : MonoBehaviour
 		//apply change to the button
 		b.transition = Button.Transition.SpriteSwap;
 		b.spriteState = ss;
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	IEnumerator handleIconAnimation()
+	{
+		GameObject temp = mDataPanel.transform.GetChild(4).gameObject;
+		Image dataPanelIcon = temp.GetComponent<Image>();
+
+		//start at these indicies
+		dataPanelFirstIndex = 45;
+
+		chassisChoiceFirstIndex = 0;
+		primaryChoiceFirstIndex = 15;
+		secondaryChoiceFirstIndex = 30;
+
+		//unsigned offset from first sprite index
+		uint i = 0;
+
+		while(true)
+		{
+			uint offset = ++i % 3;
+
+			dataPanelIcon.sprite = iconSprites[dataPanelFirstIndex + offset];
+
+			chassisChoiceIcon.sprite = iconSprites[chassisChoiceFirstIndex + offset];
+			primaryChoiceIcon.sprite = iconSprites[primaryChoiceFirstIndex + offset];
+			secondaryChoiceIcon.sprite = iconSprites[secondaryChoiceFirstIndex + offset];
+
+			yield return new WaitForSeconds(0.25f);
+		}
 	}
 }
