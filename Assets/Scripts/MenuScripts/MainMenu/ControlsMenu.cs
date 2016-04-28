@@ -8,8 +8,13 @@ using UnityEngine.EventSystems;
 public class ControlsMenu : MonoBehaviour
 {
 	//PUBLIC
-	public Text keyboardControls;		//TODO -- switch these to image?
-	public Text controllerControls;
+	public Text titleText;
+
+	public Text keyboardControls_1;
+	public Text keyboardControls_2;
+
+	public Text controllerControls_1;
+	public Text controllerControls_2;
 
 	public Button backButton;
 	public Button keyboardButton;
@@ -30,18 +35,28 @@ public class ControlsMenu : MonoBehaviour
 
 	public void handleKeyboardButtonClicked()
 	{
+		titleText.text = "Keyboard Controls";
+
 		//toggle active on controls and set buttons enable
-		controllerControls.gameObject.SetActive(false);
-		keyboardControls.gameObject.SetActive(true);
+		controllerControls_1.gameObject.SetActive(false);
+		controllerControls_2.gameObject.SetActive(false);
+
+		keyboardControls_1.gameObject.SetActive(true);
+		keyboardControls_2.gameObject.SetActive(true);
 	}
 
 //--------------------------------------------------------------------------------------------
 
 	public void handleControllerButtonClicked()
 	{
+		titleText.text = "Xbox 360 Controls";
+
 		//toggle active on controls and set buttons enable
-		keyboardControls.gameObject.SetActive(false);
-		controllerControls.gameObject.SetActive(true);
+		keyboardControls_1.gameObject.SetActive(false);
+		keyboardControls_2.gameObject.SetActive(false);
+
+		controllerControls_1.gameObject.SetActive(true);
+		controllerControls_2.gameObject.SetActive(true);
 	}
 
 //--------------------------------------------------------------------------------------------

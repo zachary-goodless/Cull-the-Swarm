@@ -12,8 +12,6 @@ public class TeslaManager : MonoBehaviour
 
 	public float minChargeTime = 1f;
 
-	public RectTransform energyBar;
-
 	//PRIVATE
 	private GameObject teslaPrefabPhase_1;
 	private GameObject teslaPrefabPhase_2;
@@ -28,12 +26,24 @@ public class TeslaManager : MonoBehaviour
 	private bool isCharging;
 	private bool isOnInitialActivate;
 
+	RectTransform energyBar;
+	Vector3 origin;
+
+	Sprite[] energySprites;
+	Image energyImg;
+	Coroutine blinkCoroutine;
+
 //--------------------------------------------------------------------------------------------
 
 	void Start()
 	{
 		//get handle on energy bar
 		energyBar = GameObject.Find("EnergyBar").GetComponent<RectTransform>();
+		origin = energyBar.localPosition;
+
+		energySprites = Resources.LoadAll<Sprite>("GUI_Assets/EnergyIcons");
+		energyImg = GameObject.Find("EnergyImg").GetComponent<Image>();
+		blinkCoroutine = null;
 
 		//init prefabs
 		teslaPrefabPhase_1 = Resources.Load<GameObject>("PlayerBullets/TeslaPhase_1");
@@ -54,10 +64,7 @@ public class TeslaManager : MonoBehaviour
 	{
 		if(Time.timeScale != 1f) return;
 
-		//update energy bar fill according to max energy
-		Vector3 localScale = energyBar.localScale;
-		localScale.y = currEnergy / maxEnergy;
-		energyBar.localScale = localScale;
+		handleEnergyBar();
 
 		//if the weapon is charging...
 		if(isCharging)
@@ -90,7 +97,7 @@ public class TeslaManager : MonoBehaviour
 		}
 
 		//if the secondary input is not being pressed and it's not still on the initial charge...
-		if(!(Input.GetButtonDown("Secondary") || Input.GetButtonDown("XBOX_B") || Input.GetButtonDown("XBOX_Y")) && !isOnInitialActivate)
+		if(!(Input.GetButton("Secondary") || Input.GetButton("XBOX_B") || Input.GetButton("XBOX_Y")) && !isOnInitialActivate)
 		{
 			//stop charging
 			isCharging = false;
@@ -118,6 +125,46 @@ public class TeslaManager : MonoBehaviour
 
 				objPhase_2.GetComponent<TeslaPhase_2>().setDamage(storedDamage);
 			}
+		}
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	void handleEnergyBar()
+	{
+		//update energy bar fill according to max energy
+		Vector3 localScale = energyBar.localScale;
+		localScale.y = currEnergy / maxEnergy;
+		energyBar.localScale = localScale;
+
+		//energy bar position is an offset from its start point that is some percentage of half the height
+		energyBar.localPosition = origin + new Vector3(0f, energyBar.rect.height * 0.5f * localScale.y, 0f);
+
+		//start blink if at full energy and not already blinking
+		if(localScale.y == 1f && blinkCoroutine == null)
+		{
+			energyImg.sprite = energySprites[1];
+			blinkCoroutine = StartCoroutine(handleImgBlink());
+		}
+		else if(localScale.y == 0f && blinkCoroutine != null)
+		{
+			energyImg.sprite = energySprites[0];
+			StopCoroutine(blinkCoroutine);
+			blinkCoroutine = null;
+		}
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	public IEnumerator handleImgBlink()
+	{
+		while(true)
+		{
+			yield return new WaitForSeconds(0.7f);
+			energyImg.gameObject.SetActive(false);
+
+			yield return new WaitForSeconds(0.15f);
+			energyImg.gameObject.SetActive(true);
 		}
 	}
 

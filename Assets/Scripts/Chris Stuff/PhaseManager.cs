@@ -12,10 +12,8 @@ public class PhaseManager : MonoBehaviour
 	public float rechargeRate = 20f;
 	public float consumptionRate = 50f;
 
-
+	public float minChargeTime = 1f;
 	public float cooldownDelay = 2f;
-
-	public RectTransform energyBar;
 
 	//PRIVATE
 	private Player playerScript; 
@@ -23,104 +21,92 @@ public class PhaseManager : MonoBehaviour
 	private float currEnergy;
 
 	public bool isActive;
+	private bool isOnInitialActivate;
 	private bool isOnCooldown;
 	private bool isOnCooldownDelay;
     bool blinking = false;
     MeshRenderer[] meshList;
 
-    //--------------------------------------------------------------------------------------------
+	RectTransform energyBar;
+	Vector3 origin;
+
+	Sprite[] energySprites;
+	Image energyImg;
+	Coroutine blinkCoroutine;
+
+//--------------------------------------------------------------------------------------------
 
     void Start ()
 	{
-
 		// get handle on player script
 		playerScript = GetComponent<Player> ();
+		if(playerScript.chassisQuick) 
+		{
+			rechargeRate *= playerScript.cooldownBoost;
+		}
+
 		//get handle on energy bar
 		energyBar = GameObject.Find("EnergyBar").GetComponent<RectTransform>();
+		origin = energyBar.localPosition;
+
+		energySprites = Resources.LoadAll<Sprite>("GUI_Assets/EnergyIcons");
+		energyImg = GameObject.Find("EnergyImg").GetComponent<Image>();
+		blinkCoroutine = null;
+
         meshList =  playerScript.GetComponentsInChildren<MeshRenderer>();
-
-        //init prefab
-
 
         currEnergy = maxEnergy;
 
 		isActive = false;
 		isOnCooldown = false;
 		isOnCooldownDelay = false;
+		isOnInitialActivate = false;
 	}
 
-	//--------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 	void Update ()
 	{
 		if(Time.timeScale != 1f) return;
 
-		//update energy bar fill according to max energy
-		Vector3 localScale = energyBar.localScale;
-		localScale.y = currEnergy / maxEnergy;
-		energyBar.localScale = localScale;
+		handleEnergyBar();
 
-		//if button is pressed, and is at max energy, and not on spinup...
-		if((Input.GetButtonDown("Secondary") || Input.GetButtonDown("XBOX_B") || Input.GetButtonDown("XBOX_Y")) && currEnergy > 10 && !isOnCooldown)
+		//if button pressed, has energy, and not already active...
+		if((Input.GetButtonDown("Secondary") || Input.GetButtonDown("XBOX_B") || Input.GetButtonDown("XBOX_Y")) && currEnergy > 0f && !isActive && !isOnCooldown)
 		{
-			isActive = true;
-
-
+			//handle the initial charge
+			isActive = isOnInitialActivate = true;
+			StartCoroutine(handleInitialCharge());
 		}
-		else if(!(Input.GetButtonDown("Secondary") || Input.GetButtonDown("XBOX_B") || Input.GetButtonDown("XBOX_Y")) && !isOnCooldown)
+
+		//if button not pressed and not on initial activate...
+		if(!(Input.GetButton("Secondary") || Input.GetButton("XBOX_B") || Input.GetButton("XBOX_Y")) && !isOnInitialActivate)
 		{
-			
 			isActive = false;
-
 		}
 
-		//if the weapon is active...
-		if (isActive) {
-            Blink();
+		//if active...
+		if(isActive)
+		{
+			Blink();
 
-            currEnergy -= consumptionRate * Time.deltaTime;
-			//enter cooldown delay if the weapon hasn't already
-			if (currEnergy <= 0f && !isOnCooldownDelay) {
+			//reduce energy down to min
+			currEnergy -= consumptionRate * Time.deltaTime;
+			if(currEnergy < 0f && !isOnCooldownDelay)
+			{
 				currEnergy = 0f;
 
 				isActive = false;
 				isOnCooldownDelay = true;
-
-				StartCoroutine (handleCoolDownDelay ());
-
-				//destroy the area obj if it hasn't already been
-
+				StartCoroutine(handleCoolDownDelay());
 			}
-		} 
-		else if (currEnergy < maxEnergy && !isOnCooldown)
-		{
-			if (playerScript.chassisQuick) 
-			{
-				currEnergy += rechargeRate * Time.deltaTime;
-			} 
-			else
-			{
-				currEnergy += rechargeRate * Time.deltaTime;
-			}
-		} 
-		else if (currEnergy >= maxEnergy)
-		{
-			currEnergy = maxEnergy;
-			isOnCooldown = false;
 		}
-				
-		//if the weapon is cooling down...
+
+		//if on cooldown...
 		if(isOnCooldown)
 		{
-			if (playerScript.chassisQuick) 
-			{
-				currEnergy += rechargeRate * Time.deltaTime * playerScript.cooldownBoost;
-			} 
-			else 
-			{
-				//increase energy up to max, then no longer on cooldown
-				currEnergy += rechargeRate * Time.deltaTime;
-			}
+			//increase energy up to max
+			currEnergy += rechargeRate * Time.deltaTime;
 			if(currEnergy >= maxEnergy)
 			{
 				currEnergy = maxEnergy;
@@ -128,6 +114,48 @@ public class PhaseManager : MonoBehaviour
 			}
 		}
     }
+
+//--------------------------------------------------------------------------------------------
+
+	void handleEnergyBar()
+	{
+		//update energy bar fill according to max energy
+		Vector3 localScale = energyBar.localScale;
+		localScale.y = currEnergy / maxEnergy;
+		energyBar.localScale = localScale;
+
+		//energy bar position is an offset from its start point that is some percentage of half the height
+		energyBar.localPosition = origin + new Vector3(0f, energyBar.rect.height * 0.5f * localScale.y, 0f);
+
+		//start blink if at full energy and not already blinking
+		if(localScale.y == 1f && blinkCoroutine == null)
+		{
+			energyImg.sprite = energySprites[1];
+			blinkCoroutine = StartCoroutine(handleImgBlink());
+		}
+		else if(localScale.y == 0f && blinkCoroutine != null)
+		{
+			energyImg.sprite = energySprites[0];
+			StopCoroutine(blinkCoroutine);
+			blinkCoroutine = null;
+		}
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	public IEnumerator handleImgBlink()
+	{
+		while(true)
+		{
+			yield return new WaitForSeconds(0.7f);
+			energyImg.gameObject.SetActive(false);
+
+			yield return new WaitForSeconds(0.15f);
+			energyImg.gameObject.SetActive(true);
+		}
+	}
+
+//--------------------------------------------------------------------------------------------
 
     public void Blink()
     {
@@ -157,11 +185,7 @@ public class PhaseManager : MonoBehaviour
 
     }
 
-    //--------------------------------------------------------------------------------------------
-
-
-
-    //--------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
     IEnumerator handleCoolDownDelay()
 	{
@@ -169,6 +193,16 @@ public class PhaseManager : MonoBehaviour
 
 		isOnCooldownDelay = false;
 		isOnCooldown = true;
+
+		yield break;
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	IEnumerator handleInitialCharge()
+	{
+		yield return new WaitForSeconds(minChargeTime);
+		isOnInitialActivate = false;
 
 		yield break;
 	}

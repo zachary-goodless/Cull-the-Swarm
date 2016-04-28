@@ -16,7 +16,7 @@ public class HealthBorder : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (!fiveHealth) {
+		if (!fiveHealth && health != 0) {
 			currentHealth.sprite = healthLevels [health-1];
 		} else {
 			switch (health) {
@@ -34,6 +34,8 @@ public class HealthBorder : MonoBehaviour {
 				break;
 			case 1:
 				currentHealth.sprite = healthLevels [0];
+				break;
+			default:
 				break;
 			}
 		}

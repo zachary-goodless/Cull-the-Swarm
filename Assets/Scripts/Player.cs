@@ -34,7 +34,6 @@ public class Player : MonoBehaviour {
 	bool hitCool;
 	public bool dead;
 	public int health;
-	HealthBar hb;
 	HealthBorder hBorder;
 	ScreenFade sf;
 
@@ -96,10 +95,8 @@ public class Player : MonoBehaviour {
 
 
 
-		hb = GameObject.Find ("HealthBar").GetComponent<HealthBar> ();
 		hBorder = GameObject.FindGameObjectWithTag ("Border").GetComponent<HealthBorder> ();
-		sf = GameObject.Find ("ScreenFade").GetComponent<ScreenFade> ();
-		hb.health = health;	
+		sf = GameObject.Find ("ScreenFade").GetComponent<ScreenFade> ();	
 		hBorder.health = health;
 		if (health == 5) {
 			hBorder.fiveHealth = true;
@@ -227,7 +224,6 @@ public class Player : MonoBehaviour {
 
 		hitCool = true;
 		health--;
-		hb.health = health;
 		hBorder.health = health;
 		if (health == 1) {
 			ParticleSystem.EmissionModule em = ps.emission;

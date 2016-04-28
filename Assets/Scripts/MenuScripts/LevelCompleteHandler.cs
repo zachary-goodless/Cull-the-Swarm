@@ -12,7 +12,7 @@ public class LevelCompleteHandler : MonoBehaviour
 	//PUBLIC
 	public float delayBetweenTicks = 0.01f;
 
-	public int highScoreMsgMaxFontSize = 45;
+	public int highScoreMsgMaxFontSize = 30;
 	public int noHitsMsgMaxFontSize = 20;
 
 	public Text personalHighScoreMsg;
@@ -142,8 +142,8 @@ public class LevelCompleteHandler : MonoBehaviour
 		}
 
 		//init font size
-		int currentHighScoreFontSize = personalHighScoreMsg.fontSize;
-		int currentNoHitFontSize = noHitsMsg.fontSize;
+		int currentHighScoreFontSize = personalHighScoreMsg.resizeTextMaxSize;
+		int currentNoHitFontSize = noHitsMsg.resizeTextMaxSize;
 
 		//while the current message font size is less than the max font size...
 		while(currentHighScoreFontSize < highScoreMsgMaxFontSize || currentNoHitFontSize < noHitsMsgMaxFontSize)
@@ -164,19 +164,19 @@ public class LevelCompleteHandler : MonoBehaviour
 			//grow the relevant messages
 			if(isNewPersonal)
 			{
-				personalHighScoreMsg.fontSize = currentHighScoreFontSize;
+				personalHighScoreMsg.resizeTextMaxSize = currentHighScoreFontSize;
 			}
 			if(isNewGlobal)
 			{
-				globalHighScoreMsg.fontSize = currentHighScoreFontSize;
+				globalHighScoreMsg.resizeTextMaxSize = currentHighScoreFontSize;
 			}
 			if(isNoHit)
 			{
-				noHitsMsg.fontSize = currentNoHitFontSize;
+				noHitsMsg.resizeTextMaxSize = currentNoHitFontSize;
 			}
 			if(didUseFinalChassis)
 			{
-				finalChassisMsg.fontSize = currentNoHitFontSize;
+				finalChassisMsg.resizeTextMaxSize = currentNoHitFontSize;
 			}
 		}
 
