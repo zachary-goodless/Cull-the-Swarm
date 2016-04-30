@@ -9,8 +9,10 @@ public class TeslaManager : MonoBehaviour
 	//PUBLIC
 	public float maxEnergy = 200f;
 	public float consumptionRate = 20f;
+	public float rechargeRate = 10f;
 
 	public float minChargeTime = 1f;
+	public float cooldownDelay = 2f;
 
 	//PRIVATE
 	private GameObject teslaPrefabPhase_1;
@@ -25,6 +27,8 @@ public class TeslaManager : MonoBehaviour
 
 	private bool isCharging;
 	private bool isOnInitialActivate;
+	private bool isOnCooldownDelay;
+	private bool isOnCooldown;
 
 	RectTransform energyBar;
 	Vector3 origin;
@@ -32,6 +36,9 @@ public class TeslaManager : MonoBehaviour
 	Sprite[] energySprites;
 	Image energyImg;
 	Coroutine blinkCoroutine;
+
+	bool isStart = true;
+	AudioSource readyAudio;
 
 //--------------------------------------------------------------------------------------------
 
@@ -56,6 +63,11 @@ public class TeslaManager : MonoBehaviour
 
 		isCharging = false;
 		isOnInitialActivate = false;
+		isOnCooldownDelay = false;
+		isOnCooldown = false;
+
+		//get handle on audio source for secondary ready
+		readyAudio = GetComponents<AudioSource>()[1];
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -76,12 +88,28 @@ public class TeslaManager : MonoBehaviour
 				currEnergy = 0f;
 				isCharging = false;
 
+				//start cooldown delay
+				isOnCooldownDelay = true;
+				StartCoroutine(handleCoolDownDelay());
+
 				enterWeaponPhase_2();
 			}
 		}
 
-		//if the secondary input has been pressed, we have energy, and it's not already charging...
-		if((Input.GetButtonDown("Secondary") || Input.GetButtonDown("XBOX_B") || Input.GetButtonDown("XBOX_Y")) && currEnergy > 0f && !isCharging)
+		//if on cooldown...
+		if(isOnCooldown)
+		{
+			//increase energy up to max
+			currEnergy += rechargeRate * Time.deltaTime;
+			if(currEnergy >= maxEnergy)
+			{
+				currEnergy = maxEnergy;
+				isOnCooldown = false;
+			}
+		}
+
+		//if the secondary input has been pressed, we have energy, and it's not already charging or on cooldown...
+		if((Input.GetButtonDown("Secondary") || Input.GetButtonDown("XBOX_B") || Input.GetButtonDown("XBOX_Y")) && currEnergy > 0f && !isCharging && !isOnCooldown)
 		{
 			//enter the weapon's first phase
 			if(teslaObjPhase_1 == null)
@@ -146,6 +174,9 @@ public class TeslaManager : MonoBehaviour
 		//start blink if at full energy and not already blinking
 		if(localScale.y == 1f && blinkCoroutine == null)
 		{
+			if(isStart){ isStart = false; }
+			else{ readyAudio.Play(); }
+
 			energyImg.sprite = energySprites[1];
 			blinkCoroutine = StartCoroutine(handleImgBlink());
 		}
@@ -177,6 +208,18 @@ public class TeslaManager : MonoBehaviour
 	{
 		yield return new WaitForSeconds(minChargeTime);
 		isOnInitialActivate = false;
+
+		yield break;
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	IEnumerator handleCoolDownDelay()
+	{
+		yield return new WaitForSeconds(cooldownDelay);
+
+		isOnCooldownDelay = false;
+		isOnCooldown = true;
 
 		yield break;
 	}

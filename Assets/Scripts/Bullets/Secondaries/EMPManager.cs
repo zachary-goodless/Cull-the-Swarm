@@ -5,8 +5,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class EMPManager : MonoBehaviour
-{
-	 
+{ 
 	//PUBLIC
 	public float maxEnergy = 150f;
 	public float rechargeRate = 10f;
@@ -25,6 +24,9 @@ public class EMPManager : MonoBehaviour
 	Sprite[] energySprites;
 	Image energyImg;
 	Coroutine blinkCoroutine;
+
+	bool isStart = true;
+	AudioSource readyAudio;
 
 //--------------------------------------------------------------------------------------------
 
@@ -49,6 +51,9 @@ public class EMPManager : MonoBehaviour
 
 		currEnergy = maxEnergy;
 		isOnCooldown = false;
+
+		//get handle on audio source for secondary ready
+		readyAudio = GetComponents<AudioSource>()[1];
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -98,6 +103,9 @@ public class EMPManager : MonoBehaviour
 		//start blink if at full energy and not already blinking
 		if(localScale.y == 1f && blinkCoroutine == null)
 		{
+			if(isStart){ isStart = false; }
+			else{ readyAudio.Play(); }
+
 			energyImg.sprite = energySprites[1];
 			blinkCoroutine = StartCoroutine(handleImgBlink());
 		}
