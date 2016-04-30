@@ -145,15 +145,16 @@ public class Boss : MonoBehaviour {
 		fadeScript.Fade();
 		yield return new WaitForSeconds(2f);
 
-		//handle post-fade dialog
-		dialog.isSkipping = false;
+		//if we've already beaten this level, don't show plot-advancing dialogue
 		SavedGameManager sgm = GameObject.FindObjectOfType<SavedGameManager>();
-		switch(currentLevel)
+		if(sgm.getCurrentLevelHighscore(currentLevel) == 0)
 		{
-		case SceneIndex.GAMEPLAY_TUTORIAL_3:	//if on desert 3...
-			//if we've already beaten this level, don't show plot-advancing dialogue
-			if(sgm.getCurrentLevelHighscore(currentLevel) == 0)
+			//handle post-fade dialog
+			dialog.isSkipping = false;
+			switch(currentLevel)
 			{
+			case SceneIndex.GAMEPLAY_TUTORIAL_3:	//if on desert 3...
+
 				co = StartCoroutine(dialog.handleDialogue(3f, Characters.COLONEL, "Roger, you did an excellent job defending our base from this swarm."));
 				yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 				co = StartCoroutine(dialog.handleDialogue(2f, Characters.ROGER, "Thank you, sir."));
@@ -170,16 +171,12 @@ public class Boss : MonoBehaviour {
 				yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 				co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.COLONEL, "Good luck out there."));
 				yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
-			}
-			break;
+				break;
 
-		case SceneIndex.GAMEPLAY_1_3:			//if on level 1, 2, or 3 boss...
-		case SceneIndex.GAMEPLAY_2_3:
-		case SceneIndex.GAMEPLAY_3_3:
-
-			//if we've already beaten this level, don't show plot-advancing dialogue
-			if(sgm.getCurrentLevelHighscore(currentLevel) == 0)
-			{
+			case SceneIndex.GAMEPLAY_1_3:			//if on level 1, 2, or 3 boss...
+			case SceneIndex.GAMEPLAY_2_3:
+			case SceneIndex.GAMEPLAY_3_3:
+				
 				//count middle levels that we've already cleared (if a level's highscore is nonzero, we've already cleared it)
 				int midLevelsCleared = 0;
 				midLevelsCleared += sgm.getCurrentLevelHighscore(SceneIndex.GAMEPLAY_1_3) == 0 ? 0 : 1;
@@ -257,15 +254,15 @@ public class Boss : MonoBehaviour {
 				default:	//3 or undefined levels cleared (do nothing)
 					break;
 				}
+				break;
+
+			case SceneIndex.GAMEPLAY_4_2:
+				//TODO
+				break;
+
+			default:
+				break;
 			}
-			break;
-
-		case SceneIndex.GAMEPLAY_4_2:
-			//TODO
-			break;
-
-		default:
-			break;
 		}
 
 		//handle level completion panel
