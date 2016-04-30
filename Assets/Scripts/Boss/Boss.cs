@@ -79,13 +79,10 @@ public class Boss : MonoBehaviour {
             yield return new WaitForSeconds(0.1f);
         }
         GameObject.FindObjectOfType<Score>().handleEnemyDefeated(PointVals.BOSS_DEFEATED);
-<<<<<<< HEAD
 	
 		fadeScript.Fade();
 		yield return new WaitForSeconds(2f);
 
-=======
->>>>>>> zack
         levelEnd.GetComponent<LevelCompleteHandler>().handleLevelCompleted((SceneIndex)SceneManager.GetActiveScene().buildIndex);
         yield break;
     }
