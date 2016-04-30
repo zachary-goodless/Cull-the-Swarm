@@ -27,6 +27,9 @@ public class WorldMapEventHandler : MonoBehaviour
 
 	public Button lastButtonClicked;
 
+	public AudioClip unlockedAudio;
+	public AudioClip lockedAudio;
+
 	//PRIVATE
 	private Sprite[] levelTitleSprites;		//arrays to store sprites to dynamically update gui elements
 	private Sprite[] levelButtonSprites;
@@ -144,6 +147,9 @@ public class WorldMapEventHandler : MonoBehaviour
 				behs[i].isUnlocked = mSavedGameManager.getCurrentGame().unlockedLevels[firstStageIndex + i];
 				behs[i].sceneIndex = (SceneIndex)(firstStageIndex + i + 3);
 
+				//set OnClick audio clip for stage button based on its unlock status
+				behs[i].GetComponents<AudioSource>()[1].clip = behs[i].isUnlocked ? unlockedAudio : lockedAudio;
+
 				//set navigation data for buttons
 				Button currButton = behs[i].GetComponent<Button>();
 
@@ -156,7 +162,7 @@ public class WorldMapEventHandler : MonoBehaviour
 			setStageButtonsActive();
 
 			//set the stage panel's title image based on the firstStageIndex
-			if(mSavedGameManager.getCurrentGame().unlockedLevels[firstStageIndex / 3])
+			if(mSavedGameManager.getCurrentGame().unlockedLevels[firstStageIndex])
 			{
 				mStagePanelTitle.sprite = levelTitleSprites[firstStageIndex / 3];
 			}
@@ -360,6 +366,9 @@ public class WorldMapEventHandler : MonoBehaviour
 				b.transition = Button.Transition.SpriteSwap;
 				b.spriteState = ss;
 			}
+
+			//set OnClick audio based on unlock status
+			b.GetComponents<AudioSource>()[1].clip = unlocks[i] ? unlockedAudio : lockedAudio;
 
 			i += 3;
 		}

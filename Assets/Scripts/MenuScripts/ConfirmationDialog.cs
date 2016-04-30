@@ -32,7 +32,6 @@ public class ConfirmationDialog : MonoBehaviour
 	public void handleYesButtonClicked()
 	{
 		gameObject.SetActive(false);
-
 		switch(callbackAction)
 		{
 		case 0:			//main menu load callback
@@ -58,7 +57,6 @@ public class ConfirmationDialog : MonoBehaviour
 	public void handleNoButtonClicked()
 	{
 		gameObject.SetActive(false);
-
 		switch(callbackAction)
 		{
 		case 0:			//main menu load callback

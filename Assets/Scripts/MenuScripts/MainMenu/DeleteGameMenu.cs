@@ -143,11 +143,12 @@ public class DeleteGameMenu : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
+	void deactivate(){ gameObject.SetActive(false); }
 	public void handleBackButtonClicked()
 	{
 		//disable the new game panel
 		mDeleteButton.interactable = false;
-		gameObject.SetActive(false);
+		Invoke("deactivate", 0.2f);
 
 		mMainMenu.toggleButtons();
 		mMainMenu.lastButtonClicked.Select();

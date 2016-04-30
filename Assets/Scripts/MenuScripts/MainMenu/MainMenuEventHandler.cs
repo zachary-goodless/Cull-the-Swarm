@@ -84,8 +84,11 @@ public class MainMenuEventHandler : MonoBehaviour
 	{
 		lastButtonClicked = newButton;
 
-		toggleButtons();
-		mNewGamePanel.SetActive(true);
+		if(!mNewGamePanel.activeSelf)
+		{
+			toggleButtons();
+			mNewGamePanel.SetActive(true);
+		}
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -94,8 +97,11 @@ public class MainMenuEventHandler : MonoBehaviour
 	{
 		lastButtonClicked = loadButton;
 
-		toggleButtons();
-		mLoadGamePanel.SetActive(true);
+		if(!mLoadGamePanel.activeSelf)
+		{
+			toggleButtons();
+			mLoadGamePanel.SetActive(true);
+		}
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -104,8 +110,11 @@ public class MainMenuEventHandler : MonoBehaviour
 	{
 		lastButtonClicked = deleteButton;
 
-		toggleButtons();
-		mDeleteGamePanel.SetActive(true);
+		if(!mDeleteGamePanel.activeSelf)
+		{
+			toggleButtons();
+			mDeleteGamePanel.SetActive(true);
+		}
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -114,8 +123,11 @@ public class MainMenuEventHandler : MonoBehaviour
 	{
 		lastButtonClicked = controlsButton;
 
-		toggleButtons();
-		mControlsPanel.SetActive(true);
+		if(!mControlsPanel.activeSelf)
+		{
+			toggleButtons();
+			mControlsPanel.SetActive(true);
+		}
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -124,8 +136,11 @@ public class MainMenuEventHandler : MonoBehaviour
 	{
 		lastButtonClicked = creditsButton;
 
-		toggleButtons();
-		mCreditsPanel.SetActive(true);
+		if(!mCreditsPanel.activeSelf)
+		{
+			toggleButtons();
+			mCreditsPanel.SetActive(true);
+		}
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -134,8 +149,11 @@ public class MainMenuEventHandler : MonoBehaviour
 	{
 		lastButtonClicked = quitButton;
 
-		toggleButtons();
-		quitConfirmation.SetActive(true);
+		if(!quitConfirmation.activeSelf)
+		{
+			toggleButtons();
+			quitConfirmation.SetActive(true);
+		}
 	}
 
 //--------------------------------------------------------------------------------------------

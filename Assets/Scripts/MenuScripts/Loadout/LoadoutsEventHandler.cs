@@ -29,6 +29,9 @@ public class LoadoutsEventHandler : MonoBehaviour
 	public Button secondaryButton;
 	public Button lastButtonClicked;
 
+	public AudioClip unlockedAudio;
+	public AudioClip lockedAudio;
+
 	//PRIVATE
 	public Sprite[] buttonSprites;
 	public Sprite[] iconSprites;
@@ -166,6 +169,9 @@ public class LoadoutsEventHandler : MonoBehaviour
 				setChoiceButtonsSprites(buttons[i], 76);
 			}
 
+			//set OnClick audio clip for stage button based on its unlock status
+			beh.GetComponents<AudioSource>()[1].clip = beh.isUnlocked ? unlockedAudio : lockedAudio;
+
 			//set navigation data for buttons
 			Navigation nav = buttons[i].navigation;
 			nav.selectOnLeft = lastButtonClicked;
@@ -204,6 +210,9 @@ public class LoadoutsEventHandler : MonoBehaviour
 				setChoiceButtonsSprites(buttons[i], 76);
 			}
 
+			//set OnClick audio clip for stage button based on its unlock status
+			beh.GetComponents<AudioSource>()[1].clip = beh.isUnlocked ? unlockedAudio : lockedAudio;
+
 			//set navigation data for buttons
 			Navigation nav = buttons[i].navigation;
 			nav.selectOnLeft = lastButtonClicked;
@@ -241,6 +250,9 @@ public class LoadoutsEventHandler : MonoBehaviour
 			{
 				setChoiceButtonsSprites(buttons[i], 76);
 			}
+
+			//set OnClick audio clip for stage button based on its unlock status
+			beh.GetComponents<AudioSource>()[1].clip = beh.isUnlocked ? unlockedAudio : lockedAudio;
 
 			//set navigation data for buttons
 			Navigation nav = buttons[i].navigation;
