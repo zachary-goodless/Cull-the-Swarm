@@ -23,18 +23,21 @@ public class SwatterPrimary : MonoBehaviour {
 	void Update () {
 		if(Time.timeScale != 1f) return;
 
-		if ((Input.GetButtonDown ("Primary") || Input.GetButtonDown("XBOX_RB") || Input.GetButtonDown("XBOX_A")) && !cooling) {
-			StartCoroutine ("Firing");
-		}
-		if((Input.GetButtonUp("Primary") || (Input.GetButtonUp("XBOX_RB") && !Input.GetButton("XBOX_A")) || (Input.GetButtonUp("XBOX_A") && !Input.GetButton("XBOX_RB"))) && !cooling){
-			cooling = true;
-		}
-		if (cooling) {
-			if (shootTimer < shootCool) {
-				shootTimer += Time.deltaTime;
-			} else {
-				shootTimer = 0;
-				cooling = false;
+		if(!Boss.isOnBossStart)
+		{
+			if ((Input.GetButtonDown ("Primary") || Input.GetButtonDown("XBOX_RB") || Input.GetButtonDown("XBOX_A")) && !cooling) {
+				StartCoroutine ("Firing");
+			}
+			if((Input.GetButtonUp("Primary") || (Input.GetButtonUp("XBOX_RB") && !Input.GetButton("XBOX_A")) || (Input.GetButtonUp("XBOX_A") && !Input.GetButton("XBOX_RB"))) && !cooling){
+				cooling = true;
+			}
+			if (cooling) {
+				if (shootTimer < shootCool) {
+					shootTimer += Time.deltaTime;
+				} else {
+					shootTimer = 0;
+					cooling = false;
+				}
 			}
 		}
 	}

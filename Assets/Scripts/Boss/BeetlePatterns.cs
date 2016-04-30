@@ -10,6 +10,8 @@ public class BeetlePatterns : MonoBehaviour {
     List<int> attackQueue;
     Boss b;
 
+	public DialogueBox dialog;	//JUSTIN
+
 	// Use this for initialization
 	void Start () {
         b = GetComponent<Boss>();
@@ -28,11 +30,32 @@ public class BeetlePatterns : MonoBehaviour {
 
     IEnumerator FlyIn()
     {
+		//JUSTIN
+		Boss.isOnBossStart = true;
+		Coroutine co;
+		yield return new WaitForSeconds(1.5f);
+		co = StartCoroutine(dialog.handleDialogue(2f, Characters.MARTHA, "You're nearing something massive, Roger."));
+		yield return dialog.WaitForSecondsOrSkip(1f, co);
+		//JUSTIN
+
         for(int i = 0; i < 120; i++)
         {
             transform.Translate(new Vector3(0, -700f / 120f, 0));
             yield return null;
         }
+
+		//JUSTIN
+		co = StartCoroutine(dialog.handleDialogue(2f, Characters.ROGER, "That's some sort of... beetle?"));
+		yield return dialog.WaitForSecondsOrSkip(1f, co);
+		co = StartCoroutine(dialog.handleDialogue(2f, Characters.STAMPER, "Well, beetles are usually a lot smaller."));
+		yield return dialog.WaitForSecondsOrSkip(1f, co);
+		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.STAMPER, "But it's pretty hard to miss hitting something that big."));
+		yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+		co = StartCoroutine(dialog.handleDialogue(2f, Characters.ROGER, "Right. Let's see what your ship can do!"));
+		yield return dialog.WaitForSecondsOrSkip(1f, co);
+		Boss.isOnBossStart = false;
+		//JUSTIN
+
         ChooseRandomPattern();
     }
 

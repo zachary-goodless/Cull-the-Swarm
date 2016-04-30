@@ -125,6 +125,8 @@ public class LoadoutsEventHandler : MonoBehaviour
 	public void handleStartButtonClicked(){ StartCoroutine(handleStartButtonClickedHelper()); }
 	private IEnumerator handleStartButtonClickedHelper()
 	{
+		Boss.isOnBossStart = false;
+
 		//set the current game ptr's loadout object
 		SavedGame currentGame = mSavedGameManager.getCurrentGame();
 		currentGame.setCurrentLoadout(mCurrentLoadout);
