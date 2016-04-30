@@ -146,7 +146,7 @@ public class Boss : MonoBehaviour {
         float ex;
         if (leftOrRight) { ex = Mathf.Clamp(sx + Random.Range(100, 200), -400, 400); }
         else { ex = Mathf.Clamp(sx - Random.Range(100, 200), -400, 400); }
-        float ey = Mathf.Clamp(sy + Random.Range(-50, 50), 100, 300);
+        float ey = Mathf.Clamp(sy + Random.Range(-50, 50), 80, 250);
 
         for (int i = 1; i <= 50; i++)
         {

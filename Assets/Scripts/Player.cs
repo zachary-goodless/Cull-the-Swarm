@@ -16,10 +16,10 @@ public class Player : MonoBehaviour {
 	public bool chassisQuick;
 	public bool chassisFinal;
 
-	// Make these into constants of another class later...
-	float stageWidth = 1500f;
-	float stageHeight = 950f;
-	public float moveSpeed;
+    // Make these into constants of another class later...
+    float stageWidth = 1580f;
+    float stageHeight = 830f;
+    public float moveSpeed;
 	public float precisionSpeed;
 	float shipTilt = 0f;
 
@@ -75,12 +75,12 @@ public class Player : MonoBehaviour {
 		if (chassisExterminator || chassisFinal)
 		{
 			moveSpeed = 10f;
-			precisionSpeed = 5f;
+			precisionSpeed = 6f;
 		} 
 		else if (chassisBooster)
 		{
 			moveSpeed = 8f;
-			precisionSpeed = 12f;
+			precisionSpeed = 14f;
 		} 
 		else if (chassisShrink) 
 		{
@@ -89,7 +89,7 @@ public class Player : MonoBehaviour {
 		} 
 		else if (chassisQuick)
 		{
-			moveSpeed = 14f;
+			moveSpeed = 12f;
 			precisionSpeed = 8f;
 		}
 
