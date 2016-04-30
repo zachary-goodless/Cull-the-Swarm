@@ -31,17 +31,17 @@ public class Cave1 : MonoBehaviour {
 		yield return new WaitForSeconds(2f);
 
 		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.STAMPER, "A bit dank in here, you think?"));
-		yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+		yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(2f, Characters.ROGER, "No kidding..."));
-		yield return dialog.WaitForSecondsOrSkip(1f, co);
+		yield return dialog.WaitForSecondsOrSkip(1f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(4f, Characters.MARTHA, "Intel reports that the invasion is trying to build a hive in these caverns. That would be problematic for us."));
-		yield return dialog.WaitForSecondsOrSkip(3f, co);
+		yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.MARTHA, "You know what to do."));
-		yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+		yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(2f, Characters.ROGER, "Shoot bugs?"));
-		yield return dialog.WaitForSecondsOrSkip(1f, co);
+		yield return dialog.WaitForSecondsOrSkip(1f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(2f, Characters.STAMPER, "Shoot bugs."));
-		yield return dialog.WaitForSecondsOrSkip(1f, co);
+		yield return dialog.WaitForSecondsOrSkip(1f); if(co != null) StopCoroutine(co);
 		//JUSTIN
 
 		//Wave One- One worm, straight down center to bottom.
@@ -148,7 +148,7 @@ public class Cave1 : MonoBehaviour {
 		//JUSTIN
 		dialog.isSkipping = false;
 		co = StartCoroutine(dialog.handleDialogue(4f, Characters.MARTHA, "There. That should get them off your back for a little while."));
-		yield return dialog.WaitForSecondsOrSkip(3f, co);
+		yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 
 		sf.Fade();
 		yield return new WaitForSeconds(2f);

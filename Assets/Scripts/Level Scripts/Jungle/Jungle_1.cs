@@ -29,11 +29,11 @@ public class Jungle_1 : MonoBehaviour {
 		yield return new WaitForSeconds(2f);
 
 		co = StartCoroutine(dialog.handleDialogue(4f, Characters.MARTHA, "Intel reports that the swarm has damaged most of our satelite equipment in this area."));
-		yield return dialog.WaitForSecondsOrSkip(3f, co);
+		yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(3.5f, Characters.MARTHA, "We need you to go in and stop them so we can salvage what we can."));
-		yield return dialog.WaitForSecondsOrSkip(2.5f, co);
+		yield return dialog.WaitForSecondsOrSkip(2.5f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.ROGER, "Right. I'll be back by morning."));
-		yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+		yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
 		//JUSTIN
 
 		waves.StartSpawnWorms (2, 5, 3, .5f, 30, 200, 1, 50, waves.leftScreen, 100, Quaternion.Euler (0, 0, 90), 0, -200, "d1");
@@ -108,7 +108,7 @@ public class Jungle_1 : MonoBehaviour {
 		//JUSTIN
 		dialog.isSkipping = false;
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.STAMPER, "You're making steady progress out there, keep at it!"));
-		yield return dialog.WaitForSecondsOrSkip(2f, co);
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 
 		sf.Fade();
 		yield return new WaitForSeconds(2f);

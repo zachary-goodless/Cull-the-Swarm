@@ -100,40 +100,40 @@ public class Boss : MonoBehaviour {
 		{
 		case SceneIndex.GAMEPLAY_TUTORIAL_3:	//scorption finishing dialog
 			co = StartCoroutine(dialog.handleDialogue(2f, Characters.ROGER, "I did it!"));
-			yield return dialog.WaitForSecondsOrSkip(1f, co);
+			yield return dialog.WaitForSecondsOrSkip(1f); if(co != null) StopCoroutine(co);
 			co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.COLONEL, "I knew you had it in you, Roger."));
-			yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+			yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
 			co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.COLONEL, "Now return to base for your briefing."));
-			yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+			yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
 			break;
 
 		case SceneIndex.GAMEPLAY_1_3:			//beetle finishing dialog
 			co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.STAMPER, "Nice work saving the city, Roger."));
-			yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+			yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
 			co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "I'm gonna do another sweep of the area, try to squash any stragglers."));
-			yield return dialog.WaitForSecondsOrSkip(2f, co);
+			yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 			co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.ROGER, "See you guys back at base in a bit."));
-			yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+			yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
 			break;
 
 		case SceneIndex.GAMEPLAY_2_3:			//moth finishing dialog
 			co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.MARTHA, "Roger! Finally, a good connection!"));
-			yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+			yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
 			co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.STAMPER, "What happened?"));
-			yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+			yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
 			co = StartCoroutine(dialog.handleDialogue(3.5f, Characters.ROGER, "There was a giant moth. Whatever it was doing here must have been interfering with the satellite equipment in the area."));
-			yield return dialog.WaitForSecondsOrSkip(2.5f, co);
+			yield return dialog.WaitForSecondsOrSkip(2.5f); if(co != null) StopCoroutine(co);
 			co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.ROGER, "But I took care of it."));
-			yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+			yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
 			co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.MARTHA, "Good work, Roger. Glad you're safe."));
-			yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+			yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
 			break;
 
 		case SceneIndex.GAMEPLAY_3_3:			//spider finishing dialog
 			co = StartCoroutine(dialog.handleDialogue(3f, Characters.MARTHA, "Nice work, Roger. The swarm won't be building a hive here any time soon."));
-			yield return dialog.WaitForSecondsOrSkip(2f, co);
+			yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 			co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "I'm just glad this one's dead. I can't deal with spiders this big."));
-			yield return dialog.WaitForSecondsOrSkip(2f, co);
+			yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 			break;
 
 		case SceneIndex.GAMEPLAY_4_2:			//dark ship finishing dialog
@@ -155,21 +155,21 @@ public class Boss : MonoBehaviour {
 			if(sgm.getCurrentLevelHighscore(currentLevel) == 0)
 			{
 				co = StartCoroutine(dialog.handleDialogue(3f, Characters.COLONEL, "Roger, you did an excellent job defending our base from this swarm."));
-				yield return dialog.WaitForSecondsOrSkip(2f, co);
+				yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 				co = StartCoroutine(dialog.handleDialogue(2f, Characters.ROGER, "Thank you, sir."));
-				yield return dialog.WaitForSecondsOrSkip(1f, co);
+				yield return dialog.WaitForSecondsOrSkip(1f); if(co != null) StopCoroutine(co);
 				co = StartCoroutine(dialog.handleDialogue(4f, Characters.COLONEL, "We've determined that these creatures are alien, and landed here by a meteor to the south."));
-				yield return dialog.WaitForSecondsOrSkip(3f, co);
+				yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 				co = StartCoroutine(dialog.handleDialogue(4f, Characters.COLONEL, "My supervision is needed to deal with this, so I'm taking myself off of radio support."));
-				yield return dialog.WaitForSecondsOrSkip(3f, co);
+				yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 				co = StartCoroutine(dialog.handleDialogue(4f, Characters.COLONEL, "But I will be receiving your mission reports, and you're in capable hands with Martha and Stamper."));
-				yield return dialog.WaitForSecondsOrSkip(3f, co);
+				yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 				co = StartCoroutine(dialog.handleDialogue(2f, Characters.ROGER, "Understood, sir."));
-				yield return dialog.WaitForSecondsOrSkip(1f, co);
+				yield return dialog.WaitForSecondsOrSkip(1f); if(co != null) StopCoroutine(co);
 				co = StartCoroutine(dialog.handleDialogue(4f, Characters.COLONEL, "There are three areas where an invasion is imminent. I am giving you clearance to pursue these in any order you choose."));
-				yield return dialog.WaitForSecondsOrSkip(3f, co);
+				yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 				co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.COLONEL, "Good luck out there."));
-				yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+				yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
 			}
 			break;
 
@@ -189,69 +189,69 @@ public class Boss : MonoBehaviour {
 				{
 				case 0:		//haven't cleared any mid levels yet (this is our first one)
 					co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.ROGER, "Hey, Martha. Can you do me a favor?"));
-					yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+					yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
 					co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.MARTHA, "Sure. What do you need exactly?"));
-					yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+					yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
 					co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "Something about this invasion is making my head spin."));
-					yield return dialog.WaitForSecondsOrSkip(2f, co);
+					yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 					co = StartCoroutine(dialog.handleDialogue(3.5f, Characters.ROGER, "Can you triangulate the source of the swarms based on where they're showing up?"));
-					yield return dialog.WaitForSecondsOrSkip(2.5f, co);
+					yield return dialog.WaitForSecondsOrSkip(2.5f); if(co != null) StopCoroutine(co);
 					co = StartCoroutine(dialog.handleDialogue(3f, Characters.MARTHA, "That's a little above my paygrade, but sure."));
-					yield return dialog.WaitForSecondsOrSkip(2f, co);
+					yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 					co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "Thank you. Try to keep this all under the table."));
-					yield return dialog.WaitForSecondsOrSkip(2f, co);
+					yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 					break;
 
 				case 1:		//1 level cleared (this is our second one)
 					co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "How's our little project coming along, Martha?"));
-					yield return dialog.WaitForSecondsOrSkip(2f, co);
+					yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 					co = StartCoroutine(dialog.handleDialogue(3f, Characters.MARTHA, "I'm making some headway. May I ask what this is all about?"));
-					yield return dialog.WaitForSecondsOrSkip(2f, co);
+					yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 					co = StartCoroutine(dialog.handleDialogue(3.5f, Characters.ROGER, "Honestly, there's a few things about this invasion that aren't making much sense."));
-					yield return dialog.WaitForSecondsOrSkip(2.5f, co);
+					yield return dialog.WaitForSecondsOrSkip(2.5f); if(co != null) StopCoroutine(co);
 					co = StartCoroutine(dialog.handleDialogue(4f, Characters.ROGER, "For starters, have you noticed that these 'aliens' bear an uncanny resemblance to Earth insects?"));
-					yield return dialog.WaitForSecondsOrSkip(3f, co);
+					yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 					co = StartCoroutine(dialog.handleDialogue(2f, Characters.MARTHA, "I have..."));
-					yield return dialog.WaitForSecondsOrSkip(1f, co);
+					yield return dialog.WaitForSecondsOrSkip(1f); if(co != null) StopCoroutine(co);
 					co = StartCoroutine(dialog.handleDialogue(4f, Characters.ROGER, "The Colonel may be working under bad intel. But I don't want to bring it up until we have something more to show him."));
-					yield return dialog.WaitForSecondsOrSkip(3f, co);
+					yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 					co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.ROGER, "Or even..."));
-					yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+					yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
 					co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.MARTHA, "Something to question him on?..."));
-					yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+					yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
 					co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "I didn't want to say that, but yes."));
-					yield return dialog.WaitForSecondsOrSkip(2f, co);
+					yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 					co = StartCoroutine(dialog.handleDialogue(3f, Characters.MARTHA, "I understand. If I find anything out, you'll be the first to know."));
-					yield return dialog.WaitForSecondsOrSkip(2f, co);
+					yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 					break;
 
 				case 2:		//2 levels cleared (this is our last one)
 					co = StartCoroutine(dialog.handleDialogue(3f, Characters.MARTHA, "Roger, I've finished triangulating the source of the invasion."));
-					yield return dialog.WaitForSecondsOrSkip(2f, co);
+					yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 					co = StartCoroutine(dialog.handleDialogue(2f, Characters.ROGER, "What did you find?"));
-					yield return dialog.WaitForSecondsOrSkip(1f, co);
+					yield return dialog.WaitForSecondsOrSkip(1f); if(co != null) StopCoroutine(co);
 					co = StartCoroutine(dialog.handleDialogue(4f, Characters.MARTHA, "Well, at first it checked out that the source was a moving location, but it was no meteor."));
-					yield return dialog.WaitForSecondsOrSkip(3f, co);
+					yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 					co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.MARTHA, "The invasion came from the moon."));
-					yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+					yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
 					co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "The moon? Didn't the government authorize a research base up there?"));
-					yield return dialog.WaitForSecondsOrSkip(2f, co);
+					yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 					co = StartCoroutine(dialog.handleDialogue(4f, Characters.MARTHA, "I keep trying to get the Colonel on the horn, but none of the higher ups have been returning my calls."));
-					yield return dialog.WaitForSecondsOrSkip(3f, co);
+					yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 					co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "Hmmm..."));
-					yield return dialog.WaitForSecondsOrSkip(2f, co);
+					yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 					co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "Stamper, is this thing rated for space travel?"));
-					yield return dialog.WaitForSecondsOrSkip(2f, co);
+					yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 					co = StartCoroutine(dialog.handleDialogue(4f, Characters.STAMPER, "...It has rocket capability. But the hull was never tested for those speeds and pressures."));
-					yield return dialog.WaitForSecondsOrSkip(3f, co);
+					yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 					co = StartCoroutine(dialog.handleDialogue(3.5f, Characters.ROGER, "Well in that case, now seems like a good time to start trials."));
-					yield return dialog.WaitForSecondsOrSkip(2.5f, co);
+					yield return dialog.WaitForSecondsOrSkip(2.5f); if(co != null) StopCoroutine(co);
 					co = StartCoroutine(dialog.handleDialogue(2f, Characters.MARTHA, "What?!"));
-					yield return dialog.WaitForSecondsOrSkip(1f, co);
+					yield return dialog.WaitForSecondsOrSkip(1f); if(co != null) StopCoroutine(co);
 					co = StartCoroutine(dialog.handleDialogue(2f, Characters.STAMPER, "You can't be serious."));
-					yield return dialog.WaitForSecondsOrSkip(1f, co);
+					yield return dialog.WaitForSecondsOrSkip(1f); if(co != null) StopCoroutine(co);
 					co = StartCoroutine(dialog.handleDialogue(4f, Characters.ROGER, "I'm willing to bet my career I know where the Colonel's been. And I have a few questions for him..."));
-					yield return dialog.WaitForSecondsOrSkip(3f, co);
+					yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 					break;
 
 				default:	//3 or undefined levels cleared (do nothing)

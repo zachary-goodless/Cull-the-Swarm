@@ -35,7 +35,7 @@ public class MothPatterns : MonoBehaviour {
 		Coroutine co;
 		yield return new WaitForSeconds(1.5f);
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "Whatever's causing this radio interference must be just up ahead."));
-		yield return dialog.WaitForSecondsOrSkip(2f, co);
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 		//JUSTIN
 
         for(int i = 0; i < 120; i++)
@@ -46,9 +46,9 @@ public class MothPatterns : MonoBehaviour {
 
 		//JUSTIN
 		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.STATIC, "... *kzzzzzzt* ..."));
-		yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+		yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.ROGER, "Looks like it's just you and me, moth."));
-		yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+		yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
 		Boss.isOnBossStart = false;
 		//JUSTIN
 

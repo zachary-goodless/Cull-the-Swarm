@@ -29,13 +29,13 @@ public class Jungle_2 : MonoBehaviour {
 		yield return new WaitForSeconds(2f);
 
 		co = StartCoroutine(dialog.handleDialogue(4f, Characters.MARTHA, "You should be nearing the satelite equipment, but I can't pinpoint y--*kzzt*--ocation."));
-		yield return dialog.WaitForSecondsOrSkip(3f, co);
+		yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.ROGER, "Say again? You're breaking up."));
-		yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+		yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(4f, Characters.MARTHA, "Something must be interfer--*kzzt*--our equipmen--*kzzt*"));
-		yield return dialog.WaitForSecondsOrSkip(3f, co);
+		yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.ROGER, "Martha? Stamper? Does anyone copy?"));
-		yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+		yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
 		//JUSTIN
 		
 		yield return new WaitForSeconds (3f);
@@ -124,9 +124,9 @@ public class Jungle_2 : MonoBehaviour {
 		//JUSTIN
 		dialog.isSkipping = false;
 		co = StartCoroutine(dialog.handleDialogue(4f, Characters.ROGER, "Guys? Do you read me? Short range scanners are picking up something big ahead."));
-		yield return dialog.WaitForSecondsOrSkip(3f, co);
+		yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.STATIC, "... *kzzzzzzt* ..."));
-		yield return dialog.WaitForSecondsOrSkip(2f, co);
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 
 		sf.Fade();
 		yield return new WaitForSeconds(2f);

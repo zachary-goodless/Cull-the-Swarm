@@ -30,13 +30,13 @@ public class D_2 : MonoBehaviour
 		yield return new WaitForSeconds(2f);
 
 		co = StartCoroutine(dialog.handleDialogue(4f, Characters.COLONEL, "You've made short work of them before, Roger. You'll be back at base in no time."));
-		yield return dialog.WaitForSecondsOrSkip(3f, co);
+		yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(3.5f, Characters.ROGER, "I appreciate the praise, sir."));
-		yield return dialog.WaitForSecondsOrSkip(2.5f, co);
+		yield return dialog.WaitForSecondsOrSkip(2.5f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(4f, Characters.MARTHA, "I'm picking up heavier movement ahead of you. Stay on your toes!"));
-		yield return dialog.WaitForSecondsOrSkip(3f, co);
+		yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(4f, Characters.STAMPER, "Interesting how the difficulty curve seems to apply to everything."));
-		yield return dialog.WaitForSecondsOrSkip(3f, co);
+		yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 		//JUSTIN
 
         // Timing and placement need adjustment, but here's an (incomplete) general outline of what was in the GDD
@@ -73,11 +73,11 @@ public class D_2 : MonoBehaviour
 		//JUSTIN
 		dialog.isSkipping = false;
 		co = StartCoroutine(dialog.handleDialogue(4.5f, Characters.ROGER, "That should be the last of them. Returning to base."));
-		yield return dialog.WaitForSecondsOrSkip(3.5f, co);
+		yield return dialog.WaitForSecondsOrSkip(3.5f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(4f, Characters.COLONEL, "Intel has picked up some bad news, Roger."));
-		yield return dialog.WaitForSecondsOrSkip(3f, co);
+		yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(6f, Characters.MARTHA, "The leader of that pack's made himself known, and he's none too happy. If you don't act fast, we're all in serious trouble!"));
-		yield return dialog.WaitForSecondsOrSkip(5f, co);
+		yield return dialog.WaitForSecondsOrSkip(5f); if(co != null) StopCoroutine(co);
 
 		sf.Fade();
 		yield return new WaitForSeconds(2f);

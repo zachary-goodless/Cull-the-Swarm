@@ -31,11 +31,11 @@ public class Cave2 : MonoBehaviour {
 		yield return new WaitForSeconds(2f);
 
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.MARTHA, "You're nearing the heart of the cavern. How are you fairing?"));
-		yield return dialog.WaitForSecondsOrSkip(2f, co);
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(5f, Characters.ROGER, "Honestly, I'm acclimating well. These bugs aren't for the faint of heart, though."));
-		yield return dialog.WaitForSecondsOrSkip(4f, co);
+		yield return dialog.WaitForSecondsOrSkip(4f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(5f, Characters.STAMPER, "Well, wait until the end of the mission if you're planning on fainting. We've got more monsters up ahead!"));
-		yield return dialog.WaitForSecondsOrSkip(4f, co);
+		yield return dialog.WaitForSecondsOrSkip(4f); if(co != null) StopCoroutine(co);
 		//JUSTIN
 
 		//Wave One- 5 drones sine wave across the screen from left to right.
@@ -149,9 +149,9 @@ public class Cave2 : MonoBehaviour {
 		//JUSTIN
 		dialog.isSkipping = false;
 		co = StartCoroutine(dialog.handleDialogue(2f, Characters.STAMPER, "You pushed them back again!"));
-		yield return dialog.WaitForSecondsOrSkip(1f, co);
+		yield return dialog.WaitForSecondsOrSkip(1f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.MARTHA, "The queen's just up ahead, Roger. Stay sharp!"));
-		yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+		yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
 
 		sf.Fade();
 		yield return new WaitForSeconds(2f);

@@ -182,7 +182,7 @@ public class DialogueBox : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	public IEnumerator WaitForSecondsOrSkip(float duration, Coroutine co)
+	public IEnumerator WaitForSecondsOrSkip(float duration)
 	{
 		if(!isSkipping)
 		{
@@ -200,8 +200,7 @@ public class DialogueBox : MonoBehaviour
 				yield return new WaitForSeconds(Time.deltaTime);
 				duration -= Time.deltaTime;
 			}
-
-			StopCoroutine(co);
+				
 			gameObject.SetActive(false);
 			yield break;
 		}

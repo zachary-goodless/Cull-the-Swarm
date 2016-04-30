@@ -31,43 +31,43 @@ public class Moon1 : MonoBehaviour {
 		yield return new WaitForSeconds(2f);
 
 		co = StartCoroutine(dialog.handleDialogue(4f, Characters.MARTHA, "Roger, this is crazy! There's no intel; you have no idea what you're headed into!"));
-		yield return dialog.WaitForSecondsOrSkip(3f, co);
+		yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(2f, Characters.ROGER, "Martha, I'm fine."));
-		yield return dialog.WaitForSecondsOrSkip(1f, co);
+		yield return dialog.WaitForSecondsOrSkip(1f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(4f, Characters.STAMPER, "Do you have any idea how stupid that stunt was?! That ship isn't rated for zero atmospheres!"));
-		yield return dialog.WaitForSecondsOrSkip(3f, co);
+		yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.STAMPER, "You could've destroyed the ship!"));
-		yield return dialog.WaitForSecondsOrSkip(2f, co);
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "And losing my life would have been?..."));
-		yield return dialog.WaitForSecondsOrSkip(2f, co);
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(2f, Characters.STAMPER, "Negligible!"));
-		yield return dialog.WaitForSecondsOrSkip(1f, co);
+		yield return dialog.WaitForSecondsOrSkip(1f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(5.5f, Characters.COLONEL, "Roger! You are not authorized to be here. Head back to base, or suffer a worse punishment than what you've already earned."));
-		yield return dialog.WaitForSecondsOrSkip(4.5f, co);
+		yield return dialog.WaitForSecondsOrSkip(4.5f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "Colonel, you know something that we don't."));
-		yield return dialog.WaitForSecondsOrSkip(2f, co);
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.COLONEL, "On what grounds do you make such a claim?"));
-		yield return dialog.WaitForSecondsOrSkip(2f, co);
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(5f, Characters.ROGER, "These creatures aren't alien at all, are they? They're home-grown Earth insects."));
-		yield return dialog.WaitForSecondsOrSkip(4f, co);
+		yield return dialog.WaitForSecondsOrSkip(4f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.COLONEL, "Roger, there are some things that you are NOT prepared for..."));
-		yield return dialog.WaitForSecondsOrSkip(2f, co);
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(4f, Characters.ROGER, "We know the invasion originated from the Moon. We know that we have a research base here."));
-		yield return dialog.WaitForSecondsOrSkip(3f, co);
+		yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.COLONEL, "I am not warning you again..."));
-		yield return dialog.WaitForSecondsOrSkip(2f, co);
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(4f, Characters.ROGER, "You're behind the invasion, sir. Just what kind of monster are you?"));
-		yield return dialog.WaitForSecondsOrSkip(3f, co);
+		yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(4f, Characters.COLONEL, "Roger, you are hereby dishonorably discharged, effective immediately."));
-		yield return dialog.WaitForSecondsOrSkip(3f, co);
+		yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "Sir, I'm not leaving the Moon without answers."));
-		yield return dialog.WaitForSecondsOrSkip(2f, co);
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.COLONEL, "Then I guess you're not leaving the Moon."));
-		yield return dialog.WaitForSecondsOrSkip(2f, co);
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.COLONEL, "Swarm! Take care of him."));
-		yield return dialog.WaitForSecondsOrSkip(2f, co);
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.MARTHA, "Well, I guess there's no turning back now..."));
-		yield return dialog.WaitForSecondsOrSkip(2f, co);
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 		//JUSTIN
 
 		//Wave One - 3 turrets evenly spaced along the top of the screen move slowly towards the bottom.
@@ -168,9 +168,9 @@ public class Moon1 : MonoBehaviour {
 		//JUSTIN
 		dialog.isSkipping = false;
 		co = StartCoroutine(dialog.handleDialogue(4f, Characters.ROGER, "That should be the last of them. I should be approaching the Moon-Base soon."));
-		yield return dialog.WaitForSecondsOrSkip(3f, co);
+		yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.MYSTERY, "I can't let you do that, Roger."));
-		yield return dialog.WaitForSecondsOrSkip(2f, co);
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 
 		sf.Fade();
 		yield return new WaitForSeconds(2f);
