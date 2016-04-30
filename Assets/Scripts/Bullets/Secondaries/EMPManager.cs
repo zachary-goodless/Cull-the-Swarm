@@ -123,11 +123,11 @@ public class EMPManager : MonoBehaviour
 	{
 		while(true)
 		{
+			energyImg.sprite = energySprites[1];
 			yield return new WaitForSeconds(0.7f);
-			energyImg.gameObject.SetActive(false);
 
+			energyImg.sprite = energySprites[0];
 			yield return new WaitForSeconds(0.15f);
-			energyImg.gameObject.SetActive(true);
 		}
 	}
 }
