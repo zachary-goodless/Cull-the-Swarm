@@ -18,6 +18,8 @@ public class Boss : MonoBehaviour {
     int moveCounter = 0;
     public GameObject levelEnd;
     Vector3 meshStartingAngle;
+    [HideInInspector]
+    public bool tiltEnabled;
 
 	ScreenFade fadeScript;
 
@@ -36,7 +38,13 @@ public class Boss : MonoBehaviour {
 	void Update ()
     {
         //transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.position.x / 20, Mathf.Sin(Time.time*2) * 4));
-        mesh.transform.localRotation = Quaternion.Euler(new Vector3(meshStartingAngle.x, meshStartingAngle.y + transform.position.x / 20f, meshStartingAngle.z + Mathf.Sin(Time.time * 2) * 4));
+        if (tiltEnabled)
+        {
+            mesh.transform.localRotation = Quaternion.Euler(new Vector3(meshStartingAngle.x, meshStartingAngle.y + transform.position.x / 20f, meshStartingAngle.z + Mathf.Sin(Time.time * 2) * 4));
+        } else
+        {
+            mesh.transform.localRotation = Quaternion.Euler(new Vector3(meshStartingAngle.x, meshStartingAngle.y, meshStartingAngle.z + Mathf.Sin(Time.time * 4) * 4));
+        }
     }
 
     public void DealDamage(float dmg)
@@ -71,10 +79,13 @@ public class Boss : MonoBehaviour {
             yield return new WaitForSeconds(0.1f);
         }
         GameObject.FindObjectOfType<Score>().handleEnemyDefeated(PointVals.BOSS_DEFEATED);
+<<<<<<< HEAD
 	
 		fadeScript.Fade();
 		yield return new WaitForSeconds(2f);
 
+=======
+>>>>>>> zack
         levelEnd.GetComponent<LevelCompleteHandler>().handleLevelCompleted((SceneIndex)SceneManager.GetActiveScene().buildIndex);
         yield break;
     }
@@ -144,6 +155,28 @@ public class Boss : MonoBehaviour {
         {
             if (moveCounter != currentMove) { yield break; }
             transform.position = new Vector3(Mathf.SmoothStep(sx, ex, i / 50f), Mathf.SmoothStep(sy, ey, i / 50f), 0);
+            yield return null;
+        }
+    }
+
+    public void MoveTo(Vector2 dest)
+    {
+        StartCoroutine(MoveToCo(dest));
+    }
+
+    IEnumerator MoveToCo(Vector2 dest)
+    {
+        moveCounter++;
+        int currentMove = moveCounter;
+        float sx = transform.position.x;
+        float sy = transform.position.y;
+        float ex = dest.x;
+        float ey = dest.y;
+
+        for (int i = 1; i <= 30; i++)
+        {
+            if (moveCounter != currentMove) { yield break; }
+            transform.position = new Vector3(Mathf.SmoothStep(sx, ex, i / 30f), Mathf.SmoothStep(sy, ey, i / 30f), 0);
             yield return null;
         }
     }
