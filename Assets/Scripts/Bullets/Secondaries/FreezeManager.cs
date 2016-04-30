@@ -34,6 +34,9 @@ public class FreezeManager : MonoBehaviour
 	Image energyImg;
 	Coroutine blinkCoroutine;
 
+	bool isStart = true;
+	AudioSource readyAudio;
+
 //--------------------------------------------------------------------------------------------
 
 	void Start ()
@@ -62,6 +65,9 @@ public class FreezeManager : MonoBehaviour
 		isActive = false;
 		isOnCooldown = false;
 		isOnCooldownDelay = false;
+
+		//get handle on audio source for secondary ready
+		readyAudio = GetComponents<AudioSource>()[1];
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -100,8 +106,7 @@ public class FreezeManager : MonoBehaviour
 				if(freezeAreaInstance != null)
 				{
 					//remove area obj freeze ability and delete
-					freezeAreaInstance.GetComponent<FreezeArea>().canMakeMore = false;
-					Destroy(freezeAreaInstance);
+					freezeAreaInstance.GetComponent<FreezeArea>().turnOff();
 				}
 
 				//for each freeze bullet...
@@ -141,6 +146,9 @@ public class FreezeManager : MonoBehaviour
 		//start blink if at full energy and not already blinking
 		if(localScale.y == 1f && blinkCoroutine == null)
 		{
+			if(isStart){ isStart = false; }
+			else{ readyAudio.Play(); }
+
 			energyImg.sprite = energySprites[1];
 			blinkCoroutine = StartCoroutine(handleImgBlink());
 		}
@@ -158,11 +166,11 @@ public class FreezeManager : MonoBehaviour
 	{
 		while(true)
 		{
+			energyImg.sprite = energySprites[1];
 			yield return new WaitForSeconds(0.7f);
-			energyImg.gameObject.SetActive(false);
 
+			energyImg.sprite = energySprites[0];
 			yield return new WaitForSeconds(0.15f);
-			energyImg.gameObject.SetActive(true);
 		}
 	}
 
@@ -171,7 +179,8 @@ public class FreezeManager : MonoBehaviour
 	IEnumerator handleSpinup()
 	{
 		//create area obj
-		freezeAreaInstance = Instantiate(freezeAreaPrefab, transform.position, Quaternion.identity) as GameObject;
+		Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y, -50f);
+		freezeAreaInstance = Instantiate(freezeAreaPrefab, spawnPos, Quaternion.identity) as GameObject;
 		freezeAreaInstance.transform.parent = transform;
 
 		yield return new WaitForSeconds(spinUpTime);

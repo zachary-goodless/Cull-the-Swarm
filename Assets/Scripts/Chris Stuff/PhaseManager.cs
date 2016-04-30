@@ -5,8 +5,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class PhaseManager : MonoBehaviour
-{
-	
+{	
 	//PUBLIC
 	public float maxEnergy = 100f;
 	public float rechargeRate = 20f;
@@ -33,6 +32,9 @@ public class PhaseManager : MonoBehaviour
 	Sprite[] energySprites;
 	Image energyImg;
 	Coroutine blinkCoroutine;
+
+	bool isStart = true;
+	AudioSource readyAudio;
 
 //--------------------------------------------------------------------------------------------
 
@@ -61,6 +63,9 @@ public class PhaseManager : MonoBehaviour
 		isOnCooldown = false;
 		isOnCooldownDelay = false;
 		isOnInitialActivate = false;
+
+		//get handle on audio source for secondary ready
+		readyAudio = GetComponents<AudioSource>()[1];
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -130,6 +135,9 @@ public class PhaseManager : MonoBehaviour
 		//start blink if at full energy and not already blinking
 		if(localScale.y == 1f && blinkCoroutine == null)
 		{
+			if(isStart){ isStart = false; }
+			else{ readyAudio.Play(); }
+
 			energyImg.sprite = energySprites[1];
 			blinkCoroutine = StartCoroutine(handleImgBlink());
 		}
@@ -147,11 +155,11 @@ public class PhaseManager : MonoBehaviour
 	{
 		while(true)
 		{
+			energyImg.sprite = energySprites[1];
 			yield return new WaitForSeconds(0.7f);
-			energyImg.gameObject.SetActive(false);
 
+			energyImg.sprite = energySprites[0];
 			yield return new WaitForSeconds(0.15f);
-			energyImg.gameObject.SetActive(true);
 		}
 	}
 

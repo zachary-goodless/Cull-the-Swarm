@@ -408,6 +408,13 @@ public class SavedGameManager : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
+	public int getCurrentLevelHighscore(SceneIndex level)
+	{
+		return mCurrentGame.highScores[(int)level - 3];
+	}
+
+//--------------------------------------------------------------------------------------------
+
 	private bool tokenizeInts(string line, int[] target)
 	{
 		//can't do anything if there's nothing to tokenize...

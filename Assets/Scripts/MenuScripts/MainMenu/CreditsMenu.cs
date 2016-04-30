@@ -23,9 +23,10 @@ public class CreditsMenu : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
+	void deactivate(){ gameObject.SetActive(false); }
 	public void handleBackButtonClicked()
 	{
-		gameObject.SetActive(false);
+		Invoke("deactivate", 0.2f);
 
 		mMainMenu.toggleButtons();
 		mMainMenu.lastButtonClicked.Select();

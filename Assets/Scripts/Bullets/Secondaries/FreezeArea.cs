@@ -12,7 +12,7 @@ public class FreezeArea : MonoBehaviour
 
 	public int maxRecursion = 5;
 
-	public bool canMakeMore = true;
+	public bool isActive = true;
 
 	//PRIVATE
 	GameObject freezeBulletPrefab;
@@ -40,7 +40,7 @@ public class FreezeArea : MonoBehaviour
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		//if other is bullet...
-		if(other.tag == "Bullet" && canMakeMore)
+		if(other.tag == "Bullet" && isActive)
 		{
 			//grab bullet position
 			Vector3 spawnPos = other.transform.position;
@@ -106,5 +106,37 @@ public class FreezeArea : MonoBehaviour
 			transform.RotateAround(transform.position, Vector3.forward, -5f);
 			yield return new WaitForSeconds(delayBetweenTicks);
 		}
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	public void turnOff()
+	{
+		isActive = false;
+		StartCoroutine(handleTurnOff());
+	}
+	IEnumerator handleTurnOff()
+	{
+		while(sprite.transform.localScale.x > 0f)
+		{
+			//grow the area's size
+			Vector3 scale = sprite.transform.localScale;
+			scale.x = scale.y -= delayBetweenTicks * 12.5f;
+			if(scale.x < 0f)
+			{
+				scale.x = scale.y = 0f;
+			}
+
+			sprite.transform.localScale = scale;
+
+			//reduce light
+			spinupLight.range -= spinupLight.range == 0 ? 0 : 1;
+
+			//wait for a short time
+			yield return new WaitForSeconds(delayBetweenTicks);
+		}
+
+		Destroy(gameObject);
+		yield break;
 	}
 }

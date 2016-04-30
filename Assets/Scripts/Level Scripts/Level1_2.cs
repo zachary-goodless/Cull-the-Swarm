@@ -31,15 +31,15 @@ public class Level1_2 : MonoBehaviour
 		yield return new WaitForSeconds(2f);
 
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "You don't care much for small victories, do you Stamper?"));
-		yield return dialog.WaitForSecondsOrSkip(2f, co);
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(5f, Characters.STAMPER, "No, no. You keep swatting flies from the sky. Stop the presses, it's D-Day all over again!"));
-		yield return dialog.WaitForSecondsOrSkip(4f, co);
+		yield return dialog.WaitForSecondsOrSkip(4f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "I'm sorry, do you want to get cozy in this cockpit?"));
-		yield return dialog.WaitForSecondsOrSkip(2f, co);
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(4f, Characters.MARTHA, "Both of you cut it out! Roger, just go shoot more flies."));
-		yield return dialog.WaitForSecondsOrSkip(3f, co);
+		yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "I'd rather shoot flies than get on your bad side."));
-		yield return dialog.WaitForSecondsOrSkip(2f, co);
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 		//JUSTIN
 
         // Timing and placement need adjustment, but here's an (incomplete) general outline of what was in the GDD
@@ -122,11 +122,11 @@ public class Level1_2 : MonoBehaviour
 		//JUSTIN
 		dialog.isSkipping = false;
 		co = StartCoroutine(dialog.handleDialogue(2f, Characters.STAMPER, "Great job, Roger. You're nearing the heart of the city."));
-		yield return dialog.WaitForSecondsOrSkip(1f, co);
+		yield return dialog.WaitForSecondsOrSkip(1f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.ROGER, "What do I have to look forward to there?"));
-		yield return dialog.WaitForSecondsOrSkip(1.5f, co);
+		yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(2f, Characters.MARTHA, "Nothing good..."));
-		yield return dialog.WaitForSecondsOrSkip(1f, co);
+		yield return dialog.WaitForSecondsOrSkip(1f); if(co != null) StopCoroutine(co);
 
 		sf.Fade();
 		yield return new WaitForSeconds(2f);

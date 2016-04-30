@@ -9,8 +9,10 @@ public class TeslaManager : MonoBehaviour
 	//PUBLIC
 	public float maxEnergy = 200f;
 	public float consumptionRate = 20f;
+	public float rechargeRate = 10f;
 
 	public float minChargeTime = 1f;
+	public float cooldownDelay = 2f;
 
 	//PRIVATE
 	private GameObject teslaPrefabPhase_1;
@@ -25,6 +27,8 @@ public class TeslaManager : MonoBehaviour
 
 	private bool isCharging;
 	private bool isOnInitialActivate;
+	private bool isOnCooldownDelay;
+	private bool isOnCooldown;
 
 	RectTransform energyBar;
 	Vector3 origin;
@@ -32,6 +36,9 @@ public class TeslaManager : MonoBehaviour
 	Sprite[] energySprites;
 	Image energyImg;
 	Coroutine blinkCoroutine;
+
+	bool isStart = true;
+	AudioSource readyAudio;
 
 //--------------------------------------------------------------------------------------------
 
@@ -56,6 +63,11 @@ public class TeslaManager : MonoBehaviour
 
 		isCharging = false;
 		isOnInitialActivate = false;
+		isOnCooldownDelay = false;
+		isOnCooldown = false;
+
+		//get handle on audio source for secondary ready
+		readyAudio = GetComponents<AudioSource>()[1];
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -76,22 +88,39 @@ public class TeslaManager : MonoBehaviour
 				currEnergy = 0f;
 				isCharging = false;
 
+				//start cooldown delay
+				isOnCooldownDelay = true;
+				StartCoroutine(handleCoolDownDelay());
+
 				enterWeaponPhase_2();
 			}
 		}
 
-		//if the secondary input has been pressed, we have energy, and it's not already charging...
-		if((Input.GetButtonDown("Secondary") || Input.GetButtonDown("XBOX_B") || Input.GetButtonDown("XBOX_Y")) && currEnergy > 0f && !isCharging)
+		//if on cooldown...
+		if(isOnCooldown)
 		{
-			//handle the initial charge
-			isCharging = isOnInitialActivate = true;
-			StartCoroutine(handleInitialCharge());
+			//increase energy up to max
+			currEnergy += rechargeRate * Time.deltaTime;
+			if(currEnergy >= maxEnergy)
+			{
+				currEnergy = maxEnergy;
+				isOnCooldown = false;
+			}
+		}
 
+		//if the secondary input has been pressed, we have energy, and it's not already charging or on cooldown...
+		if((Input.GetButtonDown("Secondary") || Input.GetButtonDown("XBOX_B") || Input.GetButtonDown("XBOX_Y")) && currEnergy > 0f && !isCharging && !isOnCooldown)
+		{
 			//enter the weapon's first phase
 			if(teslaObjPhase_1 == null)
 			{
+				//handle the initial charge
+				isCharging = isOnInitialActivate = true;
+				StartCoroutine(handleInitialCharge());
+
 				//create phase 1 obj
-				teslaObjPhase_1 = Instantiate(teslaPrefabPhase_1, transform.position, Quaternion.identity) as GameObject;
+				Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y, -50f);
+				teslaObjPhase_1 = Instantiate(teslaPrefabPhase_1, spawnPos, Quaternion.identity) as GameObject;
 				teslaObjPhase_1.transform.parent = transform;
 			}
 		}
@@ -114,13 +143,15 @@ public class TeslaManager : MonoBehaviour
 		if(teslaObjPhase_1 != null)
 		{
 			//extract phase 1 obj stored damage, destroy it
-			storedDamage = teslaObjPhase_1.GetComponent<TeslaPhase_1>().getStoredDamage();
-			Destroy(teslaObjPhase_1);
+			TeslaPhase_1 phaseOneScript = teslaObjPhase_1.GetComponent<TeslaPhase_1>();
+			storedDamage = phaseOneScript.getStoredDamage();
+			phaseOneScript.turnOff();
 
 			//if any damage stored, enter phase 2
 			if(storedDamage > 0f)
 			{
-				GameObject objPhase_2 = Instantiate(teslaPrefabPhase_2, forwardPos.position, Quaternion.identity) as GameObject;
+				Vector3 spawnPos = new Vector3(forwardPos.position.x, forwardPos.position.y, 50f);
+				GameObject objPhase_2 = Instantiate(teslaPrefabPhase_2, spawnPos, Quaternion.identity) as GameObject;
 				objPhase_2.transform.parent = forwardPos;
 
 				objPhase_2.GetComponent<TeslaPhase_2>().setDamage(storedDamage);
@@ -143,6 +174,9 @@ public class TeslaManager : MonoBehaviour
 		//start blink if at full energy and not already blinking
 		if(localScale.y == 1f && blinkCoroutine == null)
 		{
+			if(isStart){ isStart = false; }
+			else{ readyAudio.Play(); }
+
 			energyImg.sprite = energySprites[1];
 			blinkCoroutine = StartCoroutine(handleImgBlink());
 		}
@@ -160,11 +194,11 @@ public class TeslaManager : MonoBehaviour
 	{
 		while(true)
 		{
+			energyImg.sprite = energySprites[1];
 			yield return new WaitForSeconds(0.7f);
-			energyImg.gameObject.SetActive(false);
 
+			energyImg.sprite = energySprites[0];
 			yield return new WaitForSeconds(0.15f);
-			energyImg.gameObject.SetActive(true);
 		}
 	}
 
@@ -174,6 +208,18 @@ public class TeslaManager : MonoBehaviour
 	{
 		yield return new WaitForSeconds(minChargeTime);
 		isOnInitialActivate = false;
+
+		yield break;
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	IEnumerator handleCoolDownDelay()
+	{
+		yield return new WaitForSeconds(cooldownDelay);
+
+		isOnCooldownDelay = false;
+		isOnCooldown = true;
 
 		yield break;
 	}

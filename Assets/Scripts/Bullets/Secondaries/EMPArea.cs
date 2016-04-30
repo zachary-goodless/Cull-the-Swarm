@@ -53,7 +53,7 @@ public class EMPArea : MonoBehaviour
 		{
 			//grow the area's size
 			Vector3 scale = transform.localScale;
-			scale.x = scale.y += delayBetweenTicks * 10000;
+			scale.x = scale.y += delayBetweenTicks * 5000;
 			transform.localScale = scale;
 
 			//wait for a short time

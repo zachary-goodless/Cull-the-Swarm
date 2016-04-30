@@ -28,7 +28,7 @@ public class MainMenuQuitConfirm : MonoBehaviour
 
 	public void handleYesButtonClicked()
 	{
-		gameObject.SetActive(false);
+		Invoke("deactivate", 0.2f);
 		Application.Quit();
 	}
 
@@ -36,10 +36,14 @@ public class MainMenuQuitConfirm : MonoBehaviour
 
 	public void handleNoButtonClicked()
 	{
-		gameObject.SetActive(false);
+		Invoke("deactivate", 0.2f);
 
 		mMainMenu.toggleButtons();
 		mMainMenu.lastButtonClicked.Select();
 	}
+
+//--------------------------------------------------------------------------------------------
+
+	void deactivate(){ gameObject.SetActive(false); }
 }
 

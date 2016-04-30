@@ -182,28 +182,25 @@ public class DialogueBox : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-	public float waitTime;
-	public IEnumerator WaitForSecondsOrSkip(float duration, Coroutine co)
+	public IEnumerator WaitForSecondsOrSkip(float duration)
 	{
 		if(!isSkipping)
 		{
 			//this handles skippable waits (such as between dialogue)
-			waitTime = duration;
-			while(waitTime > 0f)
+			while(duration > 0f)
 			{
 				//if the skip button is pressed and the dialogue box is not filling in content...
-				if((Input.GetKeyDown(KeyCode.Tab) && !isActive) || isSkipping)
+				if(Input.GetKeyDown(KeyCode.Tab) || isSkipping)
 				{
 					//set object to inactive, break, and stop the previous coroutine
 					isSkipping = true;
-					waitTime = 0f;
+					duration = 0f;
 				}
 					
 				yield return new WaitForSeconds(Time.deltaTime);
-				waitTime -= Time.deltaTime;
+				duration -= Time.deltaTime;
 			}
-
-			StopCoroutine(co);
+				
 			gameObject.SetActive(false);
 			yield break;
 		}

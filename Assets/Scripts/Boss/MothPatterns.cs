@@ -10,6 +10,8 @@ public class MothPatterns : MonoBehaviour {
     List<int> attackQueue;
     Boss b;
 
+	public DialogueBox dialog;	//JUSTIN
+
 	// Use this for initialization
 	void Start () {
         b = GetComponent<Boss>();
@@ -28,11 +30,28 @@ public class MothPatterns : MonoBehaviour {
 
     IEnumerator FlyIn()
     {
+		//JUSTIN
+		Boss.isOnBossStart = true;
+		Coroutine co;
+		yield return new WaitForSeconds(1.5f);
+		co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "Whatever's causing this radio interference must be just up ahead."));
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
+		//JUSTIN
+
         for(int i = 0; i < 120; i++)
         {
             transform.Translate(new Vector3(0, -700f / 120f, 0));
             yield return null;
         }
+
+		//JUSTIN
+		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.STATIC, "... *kzzzzzzt* ..."));
+		yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
+		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.ROGER, "Looks like it's just you and me, moth."));
+		yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
+		Boss.isOnBossStart = false;
+		//JUSTIN
+
         ChooseRandomPattern();
     }
 

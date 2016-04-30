@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class ScorpionPatterns : MonoBehaviour {
 
+	public DialogueBox dialog;	//JUSTIN
+
     bool phaseJustChanged = false;
     int currentPhase = 0;
     bool bossDead = false;
@@ -14,7 +16,7 @@ public class ScorpionPatterns : MonoBehaviour {
 	void Start () {
         b = GetComponent<Boss>();
         attackQueue = new List<int>();
-        StartCoroutine(FlyIn());
+        StartCoroutine(HandleStartUp());
 	}
 	
 	// Update is called once per frame
@@ -26,13 +28,32 @@ public class ScorpionPatterns : MonoBehaviour {
         }
 	}
 
-    IEnumerator FlyIn()
+    IEnumerator HandleStartUp()
     {
+		//JUSTIN
+		Boss.isOnBossStart = true;	//prevents cheap shots to boss while dialogue is running, set to false in loadout menu before level load
+		Coroutine co;
+		yield return new WaitForSeconds(1.5f);
+		co = StartCoroutine(dialog.handleDialogue(2f, Characters.MARTHA, "You're nearing his position now."));
+		yield return dialog.WaitForSecondsOrSkip(1f); if(co != null) StopCoroutine(co);
+		//JUSTIN
+
         for(int i = 0; i < 120; i++)
         {
             transform.Translate(new Vector3(0, -700f / 120f, 0));
             yield return null;
         }
+
+		//JUSTIN
+		co = StartCoroutine(dialog.handleDialogue(4f, Characters.ROGER, "Oh God... Is that an actual f-flying scorpion? Do we not have any other pilots that can take this one?"));
+		yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
+		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.STAMPER, "I'm afraid I only make the ships. I'm no pilot."));
+		yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
+		co = StartCoroutine(dialog.handleDialogue(3f, Characters.COLONEL, "This is nothing you can't handle, Roger. Stay evasive, and watch out for changing attacks."));
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
+		Boss.isOnBossStart = false;
+		//JUSTIN
+
         ChooseRandomPattern();
     }
 
