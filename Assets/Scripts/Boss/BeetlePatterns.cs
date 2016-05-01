@@ -240,7 +240,7 @@ public class BeetlePatterns : MonoBehaviour {
     // 
     IEnumerator Pattern5()
     {
-        float angle = Random.Range(0f, 360f);
+
         for (int i = 0; i < 15; i++)
         {
 

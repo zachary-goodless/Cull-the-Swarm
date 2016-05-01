@@ -20,6 +20,8 @@ public class Boss : MonoBehaviour {
     Vector3 meshStartingAngle;
     [HideInInspector]
     public bool tiltEnabled;
+    [HideInInspector]
+    public bool isQueen = false;
 
 	//JUSTIN
 	public DialogueBox dialog;
@@ -32,22 +34,25 @@ public class Boss : MonoBehaviour {
     void Start ()
     {
         fadeScript = GameObject.FindObjectOfType<ScreenFade>();
-        fadeScript.StartCoroutine(fadeScript.FadeFromBlack());
+        if (fadeScript != null)
+        {
+            fadeScript.StartCoroutine(fadeScript.FadeFromBlack());
+        }
         meshList = GetComponentsInChildren<MeshRenderer>();
         phase = 0;
         maxPhase = healthThresholds.Length;
-        meshStartingAngle = mesh.transform.eulerAngles; ;
+        meshStartingAngle = mesh.transform.eulerAngles;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
         //transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.position.x / 20, Mathf.Sin(Time.time*2) * 4));
-        if (tiltEnabled)
-        {
+        if (isQueen) {
+            mesh.transform.localRotation = Quaternion.Euler(new Vector3(meshStartingAngle.x, meshStartingAngle.y + Mathf.Sin(Time.time) * 4 + transform.position.x / 20f, meshStartingAngle.z));
+        } else if (tiltEnabled) {
             mesh.transform.localRotation = Quaternion.Euler(new Vector3(meshStartingAngle.x, meshStartingAngle.y + transform.position.x / 20f, meshStartingAngle.z + Mathf.Sin(Time.time * 2) * 4));
-        } else
-        {
+        } else {
             mesh.transform.localRotation = Quaternion.Euler(new Vector3(meshStartingAngle.x, meshStartingAngle.y, meshStartingAngle.z + Mathf.Sin(Time.time * 4) * 4));
         }
     }
@@ -136,8 +141,23 @@ public class Boss : MonoBehaviour {
 			yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 			break;
 
-		case SceneIndex.GAMEPLAY_4_2:			//dark ship finishing dialog
-			//TODO
+		case SceneIndex.GAMEPLAY_4_2:           //dark ship finishing dialog
+                                                //TODO
+            ShipPatterns sp = GetComponent<ShipPatterns>();
+            if (sp != null)
+                {
+
+                    co = StartCoroutine(dialog.handleDialogue(3f, Characters.MARTHA, "Dialog after ship dies, but before queen flies in"));
+                    yield return dialog.WaitForSecondsOrSkip(2f); if (co != null) StopCoroutine(co);
+                    sp.TriggerNextBoss();
+                    yield break;
+
+                }
+            else
+                {
+                    co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "Dialogue after queen dies"));
+                    yield return dialog.WaitForSecondsOrSkip(2f); if (co != null) StopCoroutine(co);
+                }
 			break;
 		}
 

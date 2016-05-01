@@ -109,7 +109,6 @@ public class SpiderPatterns : MonoBehaviour {
         float angle = 0f;
         float anglechange = 0f;
         float speed = 12f;
-        int delay = 60;
 
         for(int i = 0; i < 30; i++)
         {
