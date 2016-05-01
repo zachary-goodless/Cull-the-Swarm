@@ -36,7 +36,7 @@ public class LaserBullet : MonoBehaviour {
             dmg = 20;
 		}
 
-		if (Input.GetButton ("Primary")) {
+		if (Input.GetButton ("Primary") || Input.GetButton("XBOX_A") || Input.GetButton("XBOX_RB")) {
 			if (transform.localScale.y < maxScale) {
 				if (scaleInc < 100f) {
 					scaleInc += scaleInc;
@@ -102,7 +102,7 @@ public class LaserBullet : MonoBehaviour {
 
 	IEnumerator Cooldown(){
 		cool = true;
-		yield return new WaitForSeconds (.5f);
+		yield return new WaitForSeconds (.25f);
 		cool = false;
 		yield break;
 	}

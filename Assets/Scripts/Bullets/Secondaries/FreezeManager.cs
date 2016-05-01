@@ -37,6 +37,9 @@ public class FreezeManager : MonoBehaviour
 	bool isStart = true;
 	AudioSource readyAudio;
 
+	//James
+	public GameObject iceParticle;
+
 //--------------------------------------------------------------------------------------------
 
 	void Start ()
@@ -58,6 +61,9 @@ public class FreezeManager : MonoBehaviour
 
 		//init prefab
 		freezeAreaPrefab = Resources.Load<GameObject>("PlayerBullets/FreezeArea");
+
+		//Particle system
+		iceParticle = Resources.Load<GameObject>("PlayerBullets/IcePower");
 
 		currEnergy = maxEnergy;
 
@@ -180,6 +186,7 @@ public class FreezeManager : MonoBehaviour
 	{
 		//create area obj
 		Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y, -50f);
+		Instantiate (iceParticle, transform.position, Quaternion.identity);
 		freezeAreaInstance = Instantiate(freezeAreaPrefab, spawnPos, Quaternion.identity) as GameObject;
 		freezeAreaInstance.transform.parent = transform;
 
