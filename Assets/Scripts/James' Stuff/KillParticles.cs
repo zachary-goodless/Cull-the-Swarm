@@ -1,21 +1,21 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using System.Collections;
 
-public class KillParticles : MonoBehaviour {
-
-	ParticleSystem ps;
+public class KillParticles : MonoBehaviour
+{
 
 	// Use this for initialization
-	void Start () {
-		ps = gameObject.GetComponent<ParticleSystem> ();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (!ps.IsAlive()) {
-			Destroy (gameObject);
-		}
+	void Start ()
+	{
+		StartCoroutine(handleLifetime());
 	}
 
+	IEnumerator handleLifetime()
+	{
+		yield return new WaitForSeconds(2f);
+		Destroy(gameObject);
 
+		yield break;
+	}
 }
