@@ -70,6 +70,7 @@ public class SpiderPatterns : MonoBehaviour {
             if (currentPhase == 0)
             {
                 attackQueue.Add(1);
+                attackQueue.Add(2);
             } else if (currentPhase == 1)
             {
                 attackQueue.Add(1);
@@ -102,6 +103,9 @@ public class SpiderPatterns : MonoBehaviour {
             case 1:
                 StartCoroutine(Pattern1());
                 break;
+            case 2:
+                StartCoroutine(Pattern2());
+                break;
         }
 
     }
@@ -132,7 +136,7 @@ public class SpiderPatterns : MonoBehaviour {
             }
             for (int j = 0; j < 8; j++)
             {
-                BulletManager.ShootBullet(new Vector2(transform.position.x, transform.position.y), speed, 22.5f + 45f*j + angle, -0.3f, 2f, 0, BulletType.RedDarkBlade);
+                BulletManager.ShootBullet(transform.position, speed, 22.5f + 45f*j + angle, -0.3f, 2f, 0, BulletType.RedDarkBlade);
                 BulletManager.AddAction(new BulletAction(60, true, -1f, 0, 0.6f, speed, 0));
                 BulletManager.AddAction(new BulletAction(1, BulletType.RedDarkArrow));
             }
@@ -141,6 +145,41 @@ public class SpiderPatterns : MonoBehaviour {
             yield return new WaitForSeconds(0.1f);
         }
         yield return new WaitForSeconds(1f);
+        ChooseRandomPattern();
+        yield break;
+    }
+
+    // Spiral that aims at player after delay
+    IEnumerator Pattern2()
+    {
+
+        float angle = 0f;
+        float speed = 5f;
+
+        for (int i = 0; i < 18; i++)
+        {
+            if (phaseJustChanged)
+            {
+                yield return new WaitForSeconds(3f);
+                ChooseRandomPattern();
+                yield break;
+            }
+
+            for (int j = 0; j < 3; j++)
+            {
+                Vector2 stopPos = new Vector2(transform.position.x + Mathf.Cos(angle) * speed * 60, transform.position.x + Mathf.Sin(angle) * speed * 60);
+                BulletManager.ShootBullet(transform.position, speed, angle + j * 120, BulletType.RedDot);
+                BulletManager.AddAction(new BulletAction(60, false, 0f, 0f));
+                BulletManager.AddAction(new BulletAction(60));
+                BulletManager.AddAction(new BulletAction(1, BulletType.RedCrawler));
+                BulletManager.AddAction(new BulletAction(1, true, 0f, 0f, 0.1f, 6f, 0f));
+            }
+            angle += 15f;
+            speed += 0.3f;
+
+            yield return new WaitForSeconds(0.08f);
+        }
+        yield return new WaitForSeconds(3f);
         ChooseRandomPattern();
         yield break;
     }

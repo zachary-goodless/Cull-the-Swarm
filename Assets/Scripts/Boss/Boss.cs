@@ -89,6 +89,14 @@ public class Boss : MonoBehaviour {
         {
 
             Instantiate(splat[Random.Range(0, splat.Length)], new Vector2(transform.position.x + Random.Range(-100,100),transform.position.y+Random.Range(-100,100)), Quaternion.identity);
+
+            foreach (MeshRenderer m in meshList)
+            {
+                if (m)
+                {
+                    m.material.SetColor("_Color", new Color(1f, 1f, 1f, 1f - i/40f));
+                }
+            }
             yield return new WaitForSeconds(0.1f);
         }
         GameObject.FindObjectOfType<Score>().handleEnemyDefeated(PointVals.BOSS_DEFEATED);

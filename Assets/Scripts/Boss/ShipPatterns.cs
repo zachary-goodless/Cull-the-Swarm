@@ -45,11 +45,7 @@ public class ShipPatterns : MonoBehaviour {
         StartCoroutine(FlyAway());
         // to-do: explosion effect when going offscreen
 
-        trueLastBoss.GetComponent<CircleCollider2D>().enabled = true;
-        trueLastBoss.GetComponent<Boss>().enabled = true;
-        trueLastBoss.GetComponent<QueenPatterns>().enabled = true;
-        yield return new WaitForSeconds(10f);
-        gameObject.SetActive(false);
+        trueLastBoss.SetActive(true);
         yield break;
     }
 
@@ -60,11 +56,13 @@ public class ShipPatterns : MonoBehaviour {
         for(float v = 100; v >= 0; v--)
         {
             song1.volume = v/100f;
-            yield return new WaitForSeconds(0.03f);
+            yield return new WaitForSeconds(0.05f);
         }
         song1.Stop();
+        yield return new WaitForSeconds(7.5f);
         song2.Play();
         Debug.Log("Done switching songs.");
+        gameObject.SetActive(false);
         yield break;
     }
 
@@ -173,11 +171,11 @@ public class ShipPatterns : MonoBehaviour {
             }
 
             if (i % 4 == 0 && i > 4) {
-                float x = transform.position.x + Random.Range(-120f, 120f);
+                float x = transform.position.x + Random.Range(-180f, 180f);
                 float y = transform.position.y + Random.Range(-30f, 30f);
                 Vector2 pos = new Vector2(x, y);
                 for (int j = 0; j < 4; j++){
-                    BulletManager.ShootBullet(pos, 6f + j / 2f, BulletManager.AngleToPlayerFrom(pos), BulletType.PurpleDarkArrow);
+                    BulletManager.ShootBullet(pos, 6f + j / 2f, BulletManager.AngleToPlayerFrom(pos), 0.1f, 10f, 0f, BulletType.PurpleDarkBlade);
                 }
             }
 
@@ -186,8 +184,8 @@ public class ShipPatterns : MonoBehaviour {
                 b.MoveTo(new Vector2(pt.x, Mathf.Clamp(pt.y + 100f,300f,0f)));
             }
             
-            BulletManager.ShootBullet(new Vector2(transform.position.x-96f,transform.position.y),10f + (i % 4),270f,BulletType.RedFire);
-            BulletManager.ShootBullet(new Vector2(transform.position.x+96f,transform.position.y),10f + (i % 4), 270f,BulletType.RedFire);
+            BulletManager.ShootBullet(new Vector2(transform.position.x-96f,transform.position.y),8f + (i % 4),270f,BulletType.RedFire);
+            BulletManager.ShootBullet(new Vector2(transform.position.x+96f,transform.position.y),8f + (i % 4), 270f,BulletType.RedFire);
 
             yield return new WaitForSeconds(0.2f);
         }

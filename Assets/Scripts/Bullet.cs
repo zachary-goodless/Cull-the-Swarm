@@ -5,12 +5,14 @@ using System.Collections.Generic;
 public class Bullet : MonoBehaviour {
 
     List<BulletAction> actionQueue;
+    public Sprite[] extraAnimation;
     float speed = 0;
     float angle = 0;
     float acceleration = 0;
     float maxSpeed = 0;
     float angularVelocity = 0;
     bool stillSpawning = false;
+    float aniIndex = 0;
 
     // Update is called once per frame
     void LateUpdate()
@@ -46,6 +48,10 @@ public class Bullet : MonoBehaviour {
                 speed = Mathf.Max(speed + acceleration, maxSpeed);
             }
             angle += angularVelocity;
+            if(extraAnimation != null) {
+                aniIndex += 0.125f;
+                GetComponent<SpriteRenderer>().sprite = extraAnimation[(int)Mathf.Floor(aniIndex % extraAnimation.Length)];
+            }
 
             transform.Translate(Mathf.Cos(Mathf.Deg2Rad * angle) * speed, Mathf.Sin(Mathf.Deg2Rad * angle) * speed, 0, Space.World);
         }
@@ -95,6 +101,10 @@ public class Bullet : MonoBehaviour {
         {
             SetGraphic(BulletManager.propertyList[action.newGraphic]);
         }
+        else if (action.type == 3)
+        {
+            angle = BulletManager.AngleToPlayerFrom(transform.position);
+        }
     }
 
     public void Init(Vector2 position, float spd, float ang)
@@ -122,12 +132,14 @@ public class Bullet : MonoBehaviour {
     // Resets all variables so this bullet can be reused.
     public void Reset()
     {
+        aniIndex = 0;
         speed = 0;
         angle = 0;
         acceleration = 0;
         maxSpeed = 0;
         angularVelocity = 0;
         actionQueue = null;
+        extraAnimation = null;
     }
 
     IEnumerator SpawnEffect() {
@@ -168,6 +180,7 @@ public class Bullet : MonoBehaviour {
 
         GetComponent<CircleCollider2D>().radius = t.radius;
         GetComponent<SpriteRenderer>().sprite = t.graphicIndex;
+        extraAnimation = t.extraAnimation;
         if (t.isAddBlend) {
             GetComponent<SpriteRenderer>().material = BulletManager.bulletMats[1];
         } else {
