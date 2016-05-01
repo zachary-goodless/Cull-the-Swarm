@@ -4,27 +4,26 @@ using System.Collections;
 
 using UnityEngine.UI;
 
-public class PhaseManager : MonoBehaviour
-{	
+public class HoloManager : MonoBehaviour
+{
 	//PUBLIC
-	public float maxEnergy = 100f;
-	public float rechargeRate = 20f;
-	public float consumptionRate = 50f;
+	public float maxEnergy = 200f;
+	public float rechargeRate = 10f;
+	public float consumptionRate = 40f;
 
-	public float minChargeTime = 1f;
 	public float cooldownDelay = 2f;
 
 	//PRIVATE
-	private Player playerScript; 
-
 	private float currEnergy;
 
-	public bool isActive;
-	private bool isOnInitialActivate;
-	private bool isOnCooldown;
-	private bool isOnCooldownDelay;
-    bool blinking = false;
-    MeshRenderer[] meshList;
+	bool isActive;
+	bool isOnCooldownDelay;
+	bool isOnCooldown;
+
+	GameObject holoPrefab;
+	GameObject holoObj;
+
+	Player playerScript;
 
 	RectTransform energyBar;
 	Vector3 origin;
@@ -36,13 +35,9 @@ public class PhaseManager : MonoBehaviour
 	bool isStart = true;
 	AudioSource readyAudio;
 
-	AudioSource onSound;
-	AudioSource offSound;
-	Coroutine onSoundCoroutine;
-
 //--------------------------------------------------------------------------------------------
 
-    void Start ()
+	void Start()
 	{
 		// get handle on player script
 		playerScript = GetComponent<Player> ();
@@ -59,82 +54,59 @@ public class PhaseManager : MonoBehaviour
 		energyImg = GameObject.Find("EnergyImg").GetComponent<Image>();
 		blinkCoroutine = null;
 
-        meshList =  playerScript.GetComponentsInChildren<MeshRenderer>();
-
-        currEnergy = maxEnergy;
+		currEnergy = maxEnergy;
 
 		isActive = false;
-		isOnCooldown = false;
 		isOnCooldownDelay = false;
-		isOnInitialActivate = false;
+		isOnCooldown = false;
+
+		//init prefab
+		holoPrefab = Resources.Load<GameObject>("PlayerBullets/Duplicate");
 
 		//get handle on audio source for secondary ready
-		AudioSource[] sources = GetComponents<AudioSource>();
-		readyAudio = sources[1];
-
-		//audio source for phase on and off
-		onSound = sources[2];
-		offSound = sources[3];
+		readyAudio = GetComponents<AudioSource>()[1];
 	}
 
 //--------------------------------------------------------------------------------------------
 
-	void Update ()
+	void Update()
 	{
 		if(Time.timeScale != 1f) return;
 
 		handleEnergyBar();
 
-		//if button pressed, has energy, and not already active...
-		if((Input.GetButtonDown("Secondary") || Input.GetButtonDown("XBOX_B") || Input.GetButtonDown("XBOX_Y")) && currEnergy > 0f && !isActive && !isOnCooldown)
+		//if button is pressed, and is at max energy, and not on spinup...
+		if((Input.GetButtonDown("Secondary") || Input.GetButtonDown("XBOX_B") || Input.GetButtonDown("XBOX_Y")) && currEnergy == maxEnergy)
 		{
-			//handle the initial charge
-			isActive = isOnInitialActivate = true;
-			StartCoroutine(handleInitialCharge());
-
-			//start playing sound
-			onSoundCoroutine = StartCoroutine(handleOnSound());
+			//spawn holo object
+			isActive = true;
+			holoObj = GameObject.Instantiate(holoPrefab, transform.position, Quaternion.identity) as GameObject;
 		}
 
-		//if button not pressed and not on initial activate...
-		if(!(Input.GetButton("Secondary") || Input.GetButton("XBOX_B") || Input.GetButton("XBOX_Y")) && !isOnInitialActivate)
-		{
-			isActive = false;
-		}
-
-		//if active...
+		//if currently active...
 		if(isActive)
 		{
-			Blink();
+			holoObj.transform.rotation = playerScript.mesh.transform.rotation;
 
 			//reduce energy down to min
 			currEnergy -= consumptionRate * Time.deltaTime;
+
+			//enter cooldown delay if the weapon hasn't already
 			if(currEnergy < 0f && !isOnCooldownDelay)
 			{
 				currEnergy = 0f;
-
 				isActive = false;
 				isOnCooldownDelay = true;
-				StartCoroutine(handleCoolDownDelay());
-			}
-		}
 
-		//else not active...
-		else
-		{
-			//stop on sound coroutine
-			if(onSoundCoroutine != null)
-			{
-				StopCoroutine(onSoundCoroutine);
-				onSoundCoroutine = null;
-				offSound.Play();
+				StartCoroutine(handleCoolDownDelay());
+				holoObj.GetComponent<HoloDuplicate>().turnOff();
 			}
 		}
 
 		//if on cooldown...
 		if(isOnCooldown)
 		{
-			//increase energy up to max
+			//increase energy up to max, then no longer on cooldown
 			currEnergy += rechargeRate * Time.deltaTime;
 			if(currEnergy >= maxEnergy)
 			{
@@ -142,7 +114,7 @@ public class PhaseManager : MonoBehaviour
 				isOnCooldown = false;
 			}
 		}
-    }
+	}
 
 //--------------------------------------------------------------------------------------------
 
@@ -165,7 +137,7 @@ public class PhaseManager : MonoBehaviour
 			energyImg.sprite = energySprites[1];
 			blinkCoroutine = StartCoroutine(handleImgBlink());
 		}
-		else if(localScale.y == 0f && blinkCoroutine != null)
+		else if(localScale.y < 1f && blinkCoroutine != null)
 		{
 			energyImg.sprite = energySprites[0];
 			StopCoroutine(blinkCoroutine);
@@ -189,37 +161,7 @@ public class PhaseManager : MonoBehaviour
 
 //--------------------------------------------------------------------------------------------
 
-    public void Blink()
-    {
-        blinking = true;
-        foreach (MeshRenderer m in meshList)
-        {
-            if (m)
-            {
-                m.material.SetColor("_Color", new Color(0.3f, 0.3f, 1f, 1f));
-            }
-        }
-
-        Invoke("Reveal", .1f);
-    }
-
-    void Reveal()
-    {
-        foreach (MeshRenderer m in meshList)
-        {
-            if (m)
-            {
-                m.material.SetColor("_Color", Color.white);
-            }
-        }
-
-        blinking = false;
-
-    }
-
-//--------------------------------------------------------------------------------------------
-
-    IEnumerator handleCoolDownDelay()
+	IEnumerator handleCoolDownDelay()
 	{
 		yield return new WaitForSeconds(cooldownDelay);
 
@@ -227,26 +169,5 @@ public class PhaseManager : MonoBehaviour
 		isOnCooldown = true;
 
 		yield break;
-	}
-
-//--------------------------------------------------------------------------------------------
-
-	IEnumerator handleInitialCharge()
-	{
-		yield return new WaitForSeconds(minChargeTime);
-		isOnInitialActivate = false;
-
-		yield break;
-	}
-
-//--------------------------------------------------------------------------------------------
-
-	IEnumerator handleOnSound()
-	{
-		while(true)
-		{
-			onSound.Play();
-			yield return new WaitForSeconds(0.25f);
-		}
 	}
 }

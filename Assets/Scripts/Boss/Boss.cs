@@ -28,13 +28,16 @@ public class Boss : MonoBehaviour {
 	public static bool isOnBossStart;
 	//JUSTIN
 
-	ScreenFade fadeScript;
+	public ScreenFade fadeScript;
 
     // Use this for initialization
     void Start ()
     {
-        fadeScript = GameObject.FindObjectOfType<ScreenFade>();
-        if (fadeScript != null)
+		if(fadeScript == null)
+		{
+        	fadeScript = GameObject.FindObjectOfType<ScreenFade>();
+		}
+		if (fadeScript != null && fadeScript.gameObject.activeSelf)
         {
             fadeScript.StartCoroutine(fadeScript.FadeFromBlack());
         }
@@ -86,6 +89,14 @@ public class Boss : MonoBehaviour {
         {
 
             Instantiate(splat[Random.Range(0, splat.Length)], new Vector2(transform.position.x + Random.Range(-100,100),transform.position.y+Random.Range(-100,100)), Quaternion.identity);
+
+            foreach (MeshRenderer m in meshList)
+            {
+                if (m)
+                {
+                    m.material.SetColor("_Color", new Color(1f, 1f, 1f, 1f - i/40f));
+                }
+            }
             yield return new WaitForSeconds(0.1f);
         }
         GameObject.FindObjectOfType<Score>().handleEnemyDefeated(PointVals.BOSS_DEFEATED);
@@ -142,22 +153,23 @@ public class Boss : MonoBehaviour {
 			break;
 
 		case SceneIndex.GAMEPLAY_4_2:           //dark ship finishing dialog
-                                                //TODO
             ShipPatterns sp = GetComponent<ShipPatterns>();
             if (sp != null)
-                {
-
-                    co = StartCoroutine(dialog.handleDialogue(3f, Characters.MARTHA, "Dialog after ship dies, but before queen flies in"));
-                    yield return dialog.WaitForSecondsOrSkip(2f); if (co != null) StopCoroutine(co);
-                    sp.TriggerNextBoss();
-                    yield break;
-
-                }
+			{
+				sp.TriggerNextBoss();
+				yield break;
+			}
             else
-                {
-                    co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "Dialogue after queen dies"));
-                    yield return dialog.WaitForSecondsOrSkip(2f); if (co != null) StopCoroutine(co);
-                }
+			{
+				co = StartCoroutine(dialog.handleDialogue(2f, Characters.ROGER, "It's over!"));
+				yield return dialog.WaitForSecondsOrSkip(1f); if (co != null) StopCoroutine(co);
+				co = StartCoroutine(dialog.handleDialogue(3.5f, Characters.MARTHA, "Roger, you won't believe this! Sonar shows that all the remaining bugs are dying off!"));
+				yield return dialog.WaitForSecondsOrSkip(2.5f); if (co != null) StopCoroutine(co);
+				co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.STAMPER, "Finally, this nightmare is over..."));
+				yield return dialog.WaitForSecondsOrSkip(1.5f); if (co != null) StopCoroutine(co);
+				co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "Well, I'm coming home in one piece. See you at base."));
+				yield return dialog.WaitForSecondsOrSkip(2f); if (co != null) StopCoroutine(co);
+			}
 			break;
 		}
 
@@ -277,7 +289,18 @@ public class Boss : MonoBehaviour {
 				break;
 
 			case SceneIndex.GAMEPLAY_4_2:
-				//TODO
+				co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "Any word on the Colonel? I couldn't find him in the aftermath."));
+				yield return dialog.WaitForSecondsOrSkip(2f); if (co != null) StopCoroutine(co);
+				co = StartCoroutine(dialog.handleDialogue(3f, Characters.MARTHA, "Nothing. He probably fled the moon while you were fighting the queen."));
+				yield return dialog.WaitForSecondsOrSkip(2f); if (co != null) StopCoroutine(co);
+				co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.ROGER, "I see..."));
+				yield return dialog.WaitForSecondsOrSkip(1.5f); if (co != null) StopCoroutine(co);
+				co = StartCoroutine(dialog.handleDialogue(3f, Characters.MARTHA, "He can't hide forever. He'll answer for what he did soon enough."));
+				yield return dialog.WaitForSecondsOrSkip(2f); if (co != null) StopCoroutine(co);
+				co = StartCoroutine(dialog.handleDialogue(2f, Characters.ROGER, "Agreed."));
+				yield return dialog.WaitForSecondsOrSkip(1f); if (co != null) StopCoroutine(co);
+				co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "In the meantime, I'm coming home. Mission accomplished."));
+				yield return dialog.WaitForSecondsOrSkip(2f); if (co != null) StopCoroutine(co);
 				break;
 
 			default:
@@ -378,6 +401,28 @@ public class Boss : MonoBehaviour {
         {
             if (moveCounter != currentMove) { yield break; }
             transform.position = new Vector3(Mathf.SmoothStep(sx, ex, i / 30f), Mathf.SmoothStep(sy, ey, i / 30f), 0);
+            yield return null;
+        }
+    }
+
+    public void MoveToSlow(Vector2 dest)
+    {
+        StartCoroutine(MoveToSlowCo(dest));
+    }
+
+    IEnumerator MoveToSlowCo(Vector2 dest)
+    {
+        moveCounter++;
+        int currentMove = moveCounter;
+        float sx = transform.position.x;
+        float sy = transform.position.y;
+        float ex = dest.x;
+        float ey = dest.y;
+
+        for (int i = 1; i <= 120; i++)
+        {
+            if (moveCounter != currentMove) { yield break; }
+            transform.position = new Vector3(Mathf.SmoothStep(sx, ex, i / 120f), Mathf.SmoothStep(sy, ey, i / 120f), 0);
             yield return null;
         }
     }

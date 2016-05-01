@@ -14,6 +14,8 @@ public class ShipPatterns : MonoBehaviour {
     List<int> attackQueue;
     Boss b;
 
+	public DialogueBox dialog;	//JUSTIN
+
 	// Use this for initialization
 	void Start () {
         b = GetComponent<Boss>();
@@ -43,11 +45,7 @@ public class ShipPatterns : MonoBehaviour {
         StartCoroutine(FlyAway());
         // to-do: explosion effect when going offscreen
 
-        trueLastBoss.GetComponent<CircleCollider2D>().enabled = true;
-        trueLastBoss.GetComponent<Boss>().enabled = true;
-        trueLastBoss.GetComponent<QueenPatterns>().enabled = true;
-        yield return new WaitForSeconds(10f);
-        gameObject.SetActive(false);
+        trueLastBoss.SetActive(true);
         yield break;
     }
 
@@ -58,21 +56,52 @@ public class ShipPatterns : MonoBehaviour {
         for(float v = 100; v >= 0; v--)
         {
             song1.volume = v/100f;
-            yield return new WaitForSeconds(0.03f);
+            yield return new WaitForSeconds(0.05f);
         }
         song1.Stop();
+        yield return new WaitForSeconds(7.5f);
         song2.Play();
         Debug.Log("Done switching songs.");
+        gameObject.SetActive(false);
         yield break;
     }
 
     IEnumerator FlyIn()
     {
+		//JUSTIN
+		Boss.isOnBossStart = true;
+		Coroutine co;
+		yield return new WaitForSeconds(1.5f);
+		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.ROGER, "Oh, no. Please not him..."));
+		yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
+		//JUSTIN
+
         for(int i = 0; i < 120; i++)
         {
             transform.Translate(new Vector3(0, -700f / 120f, 0));
             yield return null;
         }
+
+		//JUSTIN
+		co = StartCoroutine(dialog.handleDialogue(4f, Characters.COLONEL, "I believe you two know each other from academy. Chad Trey-Blake is the finest pilot to ever grace the skies, let alone our organization."));
+		yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
+		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.DOUCHE, "What's shakin'?"));
+		yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
+		co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "That ship of yours looks pretty familiar..."));
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
+		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.DOUCHE, "You could say that."));
+		yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
+		co = StartCoroutine(dialog.handleDialogue(3f, Characters.DOUCHE, "Except yours was a prototype for what mine is. It's like yours, but better."));
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
+		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.ROGER, "Idle talk. It's all down to who's the better pilot."));
+		yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
+		co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "And between the two of us, if I'm remembering Academy correctly, that was me!"));
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
+		co = StartCoroutine(dialog.handleDialogue(3f, Characters.DOUCHE, "We'll see about that!"));
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
+		Boss.isOnBossStart = false;
+		//JUSTIN
+
         ChooseRandomPattern();
     }
 
@@ -142,11 +171,11 @@ public class ShipPatterns : MonoBehaviour {
             }
 
             if (i % 4 == 0 && i > 4) {
-                float x = transform.position.x + Random.Range(-120f, 120f);
+                float x = transform.position.x + Random.Range(-180f, 180f);
                 float y = transform.position.y + Random.Range(-30f, 30f);
                 Vector2 pos = new Vector2(x, y);
                 for (int j = 0; j < 4; j++){
-                    BulletManager.ShootBullet(pos, 6f + j / 2f, BulletManager.AngleToPlayerFrom(pos), BulletType.PurpleDarkArrow);
+                    BulletManager.ShootBullet(pos, 6f + j / 2f, BulletManager.AngleToPlayerFrom(pos), 0.1f, 10f, 0f, BulletType.PurpleDarkBlade);
                 }
             }
 
@@ -155,8 +184,8 @@ public class ShipPatterns : MonoBehaviour {
                 b.MoveTo(new Vector2(pt.x, Mathf.Clamp(pt.y + 100f,300f,0f)));
             }
             
-            BulletManager.ShootBullet(new Vector2(transform.position.x-96f,transform.position.y),10f + (i % 4),270f,BulletType.RedFire);
-            BulletManager.ShootBullet(new Vector2(transform.position.x+96f,transform.position.y),10f + (i % 4), 270f,BulletType.RedFire);
+            BulletManager.ShootBullet(new Vector2(transform.position.x-96f,transform.position.y),8f + (i % 4),270f,BulletType.RedFire);
+            BulletManager.ShootBullet(new Vector2(transform.position.x+96f,transform.position.y),8f + (i % 4), 270f,BulletType.RedFire);
 
             yield return new WaitForSeconds(0.2f);
         }

@@ -227,7 +227,6 @@ public class WorldMapEventHandler : MonoBehaviour
 		case SceneIndex.GAMEPLAY_3_3:
 		case SceneIndex.GAMEPLAY_4_1:
 		case SceneIndex.GAMEPLAY_4_2:
-		case SceneIndex.GAMEPLAY_4_3:
 			
 			int i = (int)sceneIndex - 3;
 			bool isUnlocked = mSavedGameManager.getCurrentGame().unlockedLevels[i];

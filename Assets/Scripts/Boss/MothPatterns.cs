@@ -198,7 +198,7 @@ public class MothPatterns : MonoBehaviour {
         {
             if (phaseJustChanged)
             {
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(3f);
                 ChooseRandomPattern();
                 yield break;
             }
@@ -227,11 +227,6 @@ public class MothPatterns : MonoBehaviour {
         float angle = Random.Range(0f, 360f);
         for (int i = 0; i < 20; i++)
         {
-            if (phaseJustChanged)
-            {
-                ChooseRandomPattern();
-                yield break;
-            }
             for (int j = 0; j < 5; j++){
                 BulletManager.ShootBullet(transform.position, 2, angle+ j * 72, 0.06f, 20f, -0.7f, BulletType.GreenShard);
                 BulletManager.ShootBullet(transform.position, 4, angle + j * 72 + 12, 0.06f, 20f, -0.7f, BulletType.CyanShard);
@@ -251,10 +246,9 @@ public class MothPatterns : MonoBehaviour {
         float angle = Random.Range(0f, 360f);
         for (int i = 0; i < 3; i++)
         {
+
             if (phaseJustChanged)
             {
-                yield return new WaitForSeconds(1f);
-                ChooseRandomPattern();
                 yield break;
             }
             int numShot = 12 + i * 4;

@@ -239,7 +239,7 @@ public class SavedGame
 		case 5:
 		case 8:
 		case 11:
-		case 14:
+		case 13:
 			break;
 
 		//all other stages unlock the next stage

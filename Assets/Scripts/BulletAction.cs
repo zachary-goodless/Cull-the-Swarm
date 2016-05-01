@@ -43,4 +43,11 @@ public class BulletAction {
         newGraphic = bullet;
     }
 
+    // Aim at player
+    public BulletAction(int t)
+    {
+        timer = t;
+        type = 3;
+    }
+
 }

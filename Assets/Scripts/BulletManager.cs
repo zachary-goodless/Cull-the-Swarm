@@ -25,7 +25,11 @@ public class BulletManager : MonoBehaviour {
             duplicateObj = GameObject.FindWithTag("Duplicate");
             duplicateExists = true;
         }
-        else duplicateExists = false;
+        else
+        {
+            duplicateExists = false;
+            duplicateObj = null;
+        }
     }
 
     // Use this for initialization
@@ -234,8 +238,20 @@ public class BulletManager : MonoBehaviour {
         }
         else
         {
-            Vector2 pt = GameObject.FindGameObjectWithTag("Player").transform.position;
+            Vector2 pt = GameObject.FindWithTag("Player").transform.position;
             return Mathf.Rad2Deg * Mathf.Atan2(pt.y - t.y, pt.x - t.x);
+        }
+    }
+
+    public static Vector2 PlayerPosition()
+    {
+        if (duplicateExists)
+        {
+            return duplicateObj.transform.position;
+        }
+        else
+        {
+            return GameObject.FindWithTag("Player").transform.position;
         }
     }
 }
