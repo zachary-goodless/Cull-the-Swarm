@@ -68,7 +68,14 @@ public class Player : MonoBehaviour {
 		} 
 		else if (chassisFinal)
 		{
-			health = 1;
+			if((SceneIndex)SceneManager.GetActiveScene().buildIndex == SceneIndex.GAMEPLAY_4_2)
+			{
+				health = 5;
+			}
+			else
+			{
+				health = 1;
+			}
 		}
 
 		//determines chassis movement speed type

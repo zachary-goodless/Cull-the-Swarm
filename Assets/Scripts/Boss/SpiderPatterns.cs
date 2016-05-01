@@ -34,7 +34,7 @@ public class SpiderPatterns : MonoBehaviour {
 		Boss.isOnBossStart = true;
 		Coroutine co;
 		yield return new WaitForSeconds(1.5f);
-		co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "Whatever's causing this radio interference must be just up ahead."));
+		co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "..."));
 		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 		//JUSTIN
 
@@ -45,10 +45,14 @@ public class SpiderPatterns : MonoBehaviour {
         }
 
 		//JUSTIN
-		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.STATIC, "... *kzzzzzzt* ..."));
+		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.MARTHA, "Everything alright, Roger?"));
 		yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
-		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.ROGER, "Looks like it's just you and me, moth."));
+		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.ROGER, "Yeah, actually..."));
 		yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
+		co = StartCoroutine(dialog.handleDialogue(3.5f, Characters.MARTHA, "It's just that after your reaction to the scorpion, I took you for a bit of an aracnophobe."));
+		yield return dialog.WaitForSecondsOrSkip(2.5f); if(co != null) StopCoroutine(co);
+		co = StartCoroutine(dialog.handleDialogue(4f, Characters.ROGER, "Oh, no. I'm scared. Terrified even. I've just sort of become numb to the fear of giant insects."));
+		yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
 		Boss.isOnBossStart = false;
 		//JUSTIN
 

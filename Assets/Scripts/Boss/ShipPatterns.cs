@@ -14,6 +14,8 @@ public class ShipPatterns : MonoBehaviour {
     List<int> attackQueue;
     Boss b;
 
+	public DialogueBox dialog;	//JUSTIN
+
 	// Use this for initialization
 	void Start () {
         b = GetComponent<Boss>();
@@ -68,11 +70,40 @@ public class ShipPatterns : MonoBehaviour {
 
     IEnumerator FlyIn()
     {
+		//JUSTIN
+		Boss.isOnBossStart = true;
+		Coroutine co;
+		yield return new WaitForSeconds(1.5f);
+		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.ROGER, "Oh, no. Please not him..."));
+		yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
+		//JUSTIN
+
         for(int i = 0; i < 120; i++)
         {
             transform.Translate(new Vector3(0, -700f / 120f, 0));
             yield return null;
         }
+
+		//JUSTIN
+		co = StartCoroutine(dialog.handleDialogue(4f, Characters.COLONEL, "I believe you two know each other from academy. Chad Trey-Blake is the finest pilot to ever grace the skies, let alone our organization."));
+		yield return dialog.WaitForSecondsOrSkip(3f); if(co != null) StopCoroutine(co);
+		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.DOUCHE, "What's shakin'?"));
+		yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
+		co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "That ship of yours looks pretty familiar..."));
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
+		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.DOUCHE, "You could say that."));
+		yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
+		co = StartCoroutine(dialog.handleDialogue(3f, Characters.DOUCHE, "Except yours was a prototype for what mine is. It's like yours, but better."));
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
+		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.ROGER, "Idle talk. It's all down to who's the better pilot."));
+		yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
+		co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "And between the two of us, if I'm remembering Academy correctly, that was me!"));
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
+		co = StartCoroutine(dialog.handleDialogue(3f, Characters.DOUCHE, "We'll see about that!"));
+		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
+		Boss.isOnBossStart = false;
+		//JUSTIN
+
         ChooseRandomPattern();
     }
 
