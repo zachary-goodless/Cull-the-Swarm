@@ -190,7 +190,7 @@ public class DialogueBox : MonoBehaviour
 			while(duration > 0f)
 			{
 				//if the skip button is pressed and the dialogue box is not filling in content...
-				if(Input.GetKeyDown(KeyCode.Tab) || isSkipping)
+				if(Input.GetKeyDown(KeyCode.Tab)|| Input.GetButtonDown("XBOX_Select") || isSkipping)
 				{
 					//set object to inactive, break, and stop the previous coroutine
 					isSkipping = true;
