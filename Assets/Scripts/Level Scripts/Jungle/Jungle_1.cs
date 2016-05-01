@@ -36,8 +36,8 @@ public class Jungle_1 : MonoBehaviour {
 		yield return dialog.WaitForSecondsOrSkip(1.5f); if(co != null) StopCoroutine(co);
 		//JUSTIN
 
-		waves.StartSpawnWorms (2, 5, 3, .5f, 30, 200, 1, 50, waves.leftScreen, 100, Quaternion.Euler (0, 0, 90), 0, -200, "d1");
-		waves.StartSpawnWorms (2, 5, 3, .5f, 30, -200, -1, 50, waves.rightScreen, 200, Quaternion.Euler (0, 0, -90), 0, -200, "d1");
+		waves.StartSpawnWorms (2, 5, 3, .5f, 30, 200, 1, 150, waves.leftScreen, 100, Quaternion.Euler (0, 0, 90), 0, -200, "d1");
+		waves.StartSpawnWorms (2, 5, 3, .5f, 30, -200, -1, 150, waves.rightScreen, 200, Quaternion.Euler (0, 0, -90), 0, -200, "d1");
 
 		yield return new WaitForSeconds (3f);
 		//example waves.StartSpawnFollow (turret, 3, 4, .5f, 30, 150, -1, 200, 5, waves.downScreen, Quaternion.identity, 0, 0,"t3");
@@ -76,13 +76,13 @@ public class Jungle_1 : MonoBehaviour {
 		//
 		yield return new WaitForSeconds (8f);
 		waves.StartSpawnLinear (drone, 5, .5f, 300, 1, -1, 50, -100, waves.upScreen, Quaternion.identity, 0, 0, "d1");
-		waves.StartSpawnLinear (drone, 5, .5f, -300, 1, -1, 50, 100, waves.downScreen, Quaternion.identity, 0, 0, "d1");
+		waves.StartSpawnLinear (drone, 5, .5f, -300, 1, -1, 50, 100, waves.downScreen, Quaternion.identity, 0, 0, "d5");
 		//waves.StartSpawnOsc(drone, 2, 3, 5, 5, false, true
 		//waves.StartSpawnSin (drone, 2, 3, 10, 5, 300, 0, 0, 50, 200, 300, Quaternion.identity, 0, 0, "d4");
 		//
 		yield return new WaitForSeconds (5f);
 		waves.StartSpawnLinear (drone, 5, .5f, -300, 1, 1, 50, 100, waves.upScreen, Quaternion.identity, 0, 0, "d1");
-		waves.StartSpawnLinear (drone, 5, .5f, 300, 1, 1, 50, -100, waves.downScreen, Quaternion.identity, 0, 0, "d1");
+		waves.StartSpawnLinear (drone, 5, .5f, 300, 1, 1, 50, -100, waves.downScreen, Quaternion.identity, 0, 0, "d5");
        // 
 		yield return new WaitForSeconds(1f);
 		waves.StartSpawnWorms (2, 4, 1, .5f, 30, 80, 5, 50, -200, waves.downScreen, Quaternion.Euler (0, 0, 180), 0, 0, "d4");
@@ -100,8 +100,23 @@ public class Jungle_1 : MonoBehaviour {
 		waves.StartSpawnSideToBottom (drone, 5, 1.5f, 7, 250, -1, 1, 100, waves.rightScreen, -200, Quaternion.identity, 0, 0, "d1");
 
 		yield return new WaitForSeconds (8f);
-		waves.StartSpawnFromBackground (drone, 4, 1, 2, new Vector3 (0, waves.upScreen - 200, 50), 200, .5f, -1, 100, -600, -400, Quaternion.identity, 0, 200, "d1");
+		waves.StartSpawnFromBackground (drone, 4, 1, 2, new Vector3 (0, waves.upScreen - 200, 50), 200, .5f, -1, 100, -600, -400, Quaternion.identity, 0, 200, "d5");
 		//waves.StartSpawnFromBackground(drone, 3, 10f, 2f, Vector3.down, 10f, 1, 1, 200, waves.leftScreen, waves.downScreen, Quaternion.identity, 200, 0,"d23");
+
+		yield return new WaitForSeconds (4f);
+		waves.StartSpawnLinear (turret, 3, 2, 100, 0, -1, 100, -300, waves.upScreen, Quaternion.identity, 0, 0, "t1");
+
+		yield return new WaitForSeconds (4f);
+		waves.StartSpawnLinear (turret, 3, 2, 100, 0, -1, 100, 300, waves.upScreen, Quaternion.identity, 0, 0, "t1");
+
+		yield return new WaitForSeconds (6f);
+		waves.StartSpawnOsc(drone,2,0,300,200,false,true,200,0,-1,50,-250,waves.upScreen,Quaternion.identity,500,0,"d1");
+		waves.StartSpawnOsc(drone,3,0,300,200,false,true,200,0,-1,50,-500,waves.upScreen+150,Quaternion.identity,500,0,"d1");
+
+		yield return new WaitForSeconds (4f);
+		waves.StartSpawnWorms (2, 5, 3, .5f, 30, 250, 1, 150, waves.leftScreen, 100, Quaternion.Euler (0, 0, 90), 0, -200, "d5");
+		waves.StartSpawnWorms (2, 5, 3, .5f, 30, -250, -1, 150, waves.rightScreen, 400, Quaternion.Euler (0, 0, -90), 0, -200, "d5");
+
 
 		yield return new WaitForSeconds (16f);
 
