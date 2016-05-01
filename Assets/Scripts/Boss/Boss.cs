@@ -90,28 +90,32 @@ public class Boss : MonoBehaviour {
 
     IEnumerator DeathSequence()
     {
-        ParticleSystem[] particleList = GetComponentsInChildren<ParticleSystem>();
-        foreach(ParticleSystem part in particleList)
-        {
-            part.Stop();
-        }
-        for (int i = 0; i < 80; i++)
-        {
+		ShipPatterns sp = GetComponent<ShipPatterns>();
+		if (sp == null)
+		{
+       		ParticleSystem[] particleList = GetComponentsInChildren<ParticleSystem>();
+        	foreach(ParticleSystem part in particleList)
+        	{
+        	    part.Stop();
+        	}
+        	for (int i = 0; i < 80; i++)
+        	{
+					
+           		Instantiate(splat[Random.Range(0, splat.Length)], new Vector2(transform.position.x + Random.Range(-3f,3f)*i,transform.position.y+Random.Range(-3f, 3f) * i), Quaternion.identity);
 
-            Instantiate(splat[Random.Range(0, splat.Length)], new Vector2(transform.position.x + Random.Range(-3f,3f)*i,transform.position.y+Random.Range(-3f, 3f) * i), Quaternion.identity);
-
-            transform.localScale = new Vector3(transform.localScale.x * 0.95f, transform.localScale.y * 0.95f, transform.localScale.z * 0.95f);
-            yield return new WaitForSeconds(0.03f);
-        }
-        foreach(MeshRenderer m in meshList)
-        {
-            m.enabled = false;
-        }
-        foreach (SkinnedMeshRenderer m in skinnedMeshList)
-        {
-            m.enabled = false;
-        }
-        GameObject.FindObjectOfType<Score>().handleEnemyDefeated(PointVals.BOSS_DEFEATED);
+            	transform.localScale = new Vector3(transform.localScale.x * 0.95f, transform.localScale.y * 0.95f, transform.localScale.z * 0.95f);
+            	yield return new WaitForSeconds(0.03f);
+        	}
+        	foreach(MeshRenderer m in meshList)
+        	{
+        	    m.enabled = false;
+        	}
+        	foreach (SkinnedMeshRenderer m in skinnedMeshList)
+        	{
+        	    m.enabled = false;
+        	}
+        	GameObject.FindObjectOfType<Score>().handleEnemyDefeated(PointVals.BOSS_DEFEATED);
+		}
 
 		StartCoroutine(DeathDialog());
     }
