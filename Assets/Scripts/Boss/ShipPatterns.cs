@@ -7,6 +7,8 @@ public class ShipPatterns : MonoBehaviour {
     public GameObject trueLastBoss;
     public GameObject firstSong;
     public GameObject secondSong;
+    [HideInInspector]
+    public float songDelay = 0f;
 
     bool phaseJustChanged = false;
     int currentPhase = 0;
@@ -59,7 +61,12 @@ public class ShipPatterns : MonoBehaviour {
             yield return new WaitForSeconds(0.05f);
         }
         song1.Stop();
-        yield return new WaitForSeconds(7.5f);
+
+        while(songDelay < 7.5f)
+        {
+            songDelay += 0.1f;
+            yield return new WaitForSeconds(0.1f);
+        }
         song2.Play();
         Debug.Log("Done switching songs.");
         gameObject.SetActive(false);
@@ -180,7 +187,7 @@ public class ShipPatterns : MonoBehaviour {
             }
 
             if (i%15 == 0){
-                Vector2 pt = GameObject.FindGameObjectWithTag("Player").transform.position;
+                Vector2 pt = BulletManager.PlayerPosition();
                 b.MoveTo(new Vector2(pt.x, Mathf.Clamp(pt.y + 100f,300f,0f)));
             }
             

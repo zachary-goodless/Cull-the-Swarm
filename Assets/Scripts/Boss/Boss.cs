@@ -15,6 +15,7 @@ public class Boss : MonoBehaviour {
     public GameObject[] splat;
     bool blinking = false;
     MeshRenderer[] meshList;
+    SkinnedMeshRenderer[] skinnedMeshList;
     int moveCounter = 0;
     public GameObject levelEnd;
     Vector3 meshStartingAngle;
@@ -42,6 +43,7 @@ public class Boss : MonoBehaviour {
             fadeScript.StartCoroutine(fadeScript.FadeFromBlack());
         }
         meshList = GetComponentsInChildren<MeshRenderer>();
+        skinnedMeshList = GetComponentsInChildren<SkinnedMeshRenderer>();
         phase = 0;
         maxPhase = healthThresholds.Length;
         meshStartingAngle = mesh.transform.eulerAngles;
@@ -64,7 +66,10 @@ public class Boss : MonoBehaviour {
     {
         health -= dmg;
 
-        Blink();
+        if (!blinking)
+        {
+            Blink();
+        }
 
         if (phase != maxPhase)
         {
@@ -85,21 +90,32 @@ public class Boss : MonoBehaviour {
 
     IEnumerator DeathSequence()
     {
-        for (int i = 0; i < 40; i++)
-        {
+		ShipPatterns sp = GetComponent<ShipPatterns>();
+		if (sp == null)
+		{
+       		ParticleSystem[] particleList = GetComponentsInChildren<ParticleSystem>();
+        	foreach(ParticleSystem part in particleList)
+        	{
+        	    part.Stop();
+        	}
+        	for (int i = 0; i < 80; i++)
+        	{
+					
+           		Instantiate(splat[Random.Range(0, splat.Length)], new Vector2(transform.position.x + Random.Range(-3f,3f)*i,transform.position.y+Random.Range(-3f, 3f) * i), Quaternion.identity);
 
-            Instantiate(splat[Random.Range(0, splat.Length)], new Vector2(transform.position.x + Random.Range(-100,100),transform.position.y+Random.Range(-100,100)), Quaternion.identity);
-
-            foreach (MeshRenderer m in meshList)
-            {
-                if (m)
-                {
-                    m.material.SetColor("_Color", new Color(1f, 1f, 1f, 1f - i/40f));
-                }
-            }
-            yield return new WaitForSeconds(0.1f);
-        }
-        GameObject.FindObjectOfType<Score>().handleEnemyDefeated(PointVals.BOSS_DEFEATED);
+            	transform.localScale = new Vector3(transform.localScale.x * 0.95f, transform.localScale.y * 0.95f, transform.localScale.z * 0.95f);
+            	yield return new WaitForSeconds(0.03f);
+        	}
+        	foreach(MeshRenderer m in meshList)
+        	{
+        	    m.enabled = false;
+        	}
+        	foreach (SkinnedMeshRenderer m in skinnedMeshList)
+        	{
+        	    m.enabled = false;
+        	}
+        	GameObject.FindObjectOfType<Score>().handleEnemyDefeated(PointVals.BOSS_DEFEATED);
+		}
 
 		StartCoroutine(DeathDialog());
     }
@@ -341,6 +357,13 @@ public class Boss : MonoBehaviour {
                 m.material.SetColor("_Color", Color.red);
             }
         }
+        foreach (SkinnedMeshRenderer m in skinnedMeshList)
+        {
+            if (m)
+            {
+                m.material.SetColor("_Color", Color.red);
+            }
+        }
 
         Invoke("Reveal", .1f);
     }
@@ -353,6 +376,14 @@ public class Boss : MonoBehaviour {
                 m.material.SetColor("_Color", Color.white);
             }
         }
+        foreach (SkinnedMeshRenderer m in skinnedMeshList)
+        {
+            if (m)
+            {
+                m.material.SetColor("_Color", Color.white);
+            }
+        }
+
 
         blinking = false;
 
