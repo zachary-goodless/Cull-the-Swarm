@@ -15,6 +15,7 @@ public class Boss : MonoBehaviour {
     public GameObject[] splat;
     bool blinking = false;
     MeshRenderer[] meshList;
+    SkinnedMeshRenderer[] skinnedMeshList;
     int moveCounter = 0;
     public GameObject levelEnd;
     Vector3 meshStartingAngle;
@@ -42,6 +43,7 @@ public class Boss : MonoBehaviour {
             fadeScript.StartCoroutine(fadeScript.FadeFromBlack());
         }
         meshList = GetComponentsInChildren<MeshRenderer>();
+        skinnedMeshList = GetComponentsInChildren<SkinnedMeshRenderer>();
         phase = 0;
         maxPhase = healthThresholds.Length;
         meshStartingAngle = mesh.transform.eulerAngles;
@@ -64,7 +66,10 @@ public class Boss : MonoBehaviour {
     {
         health -= dmg;
 
-        Blink();
+        if (!blinking)
+        {
+            Blink();
+        }
 
         if (phase != maxPhase)
         {
@@ -102,7 +107,10 @@ public class Boss : MonoBehaviour {
         {
             m.enabled = false;
         }
-        mesh.SetActive(false);
+        foreach (SkinnedMeshRenderer m in skinnedMeshList)
+        {
+            m.enabled = false;
+        }
         GameObject.FindObjectOfType<Score>().handleEnemyDefeated(PointVals.BOSS_DEFEATED);
 
 		StartCoroutine(DeathDialog());
@@ -345,6 +353,13 @@ public class Boss : MonoBehaviour {
                 m.material.SetColor("_Color", Color.red);
             }
         }
+        foreach (SkinnedMeshRenderer m in skinnedMeshList)
+        {
+            if (m)
+            {
+                m.material.SetColor("_Color", Color.red);
+            }
+        }
 
         Invoke("Reveal", .1f);
     }
@@ -357,6 +372,14 @@ public class Boss : MonoBehaviour {
                 m.material.SetColor("_Color", Color.white);
             }
         }
+        foreach (SkinnedMeshRenderer m in skinnedMeshList)
+        {
+            if (m)
+            {
+                m.material.SetColor("_Color", Color.white);
+            }
+        }
+
 
         blinking = false;
 
