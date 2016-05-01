@@ -150,7 +150,7 @@ public class Bullet : MonoBehaviour {
     // Add an action to the action queue.
     public void AddAction(BulletAction action)
     {
-        if (action.timer <= 0)
+        if (action.timer <= 0 && actionQueue == null)
         {
             ExecuteAction(action);
             return;
