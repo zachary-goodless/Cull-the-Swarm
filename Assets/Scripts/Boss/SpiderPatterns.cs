@@ -71,14 +71,13 @@ public class SpiderPatterns : MonoBehaviour {
             {
                 attackQueue.Add(1);
                 attackQueue.Add(2);
-                attackQueue.Add(3);
                 attackQueue.Add(4);
             } else if (currentPhase == 1)
             {
-                attackQueue.Add(3);
                 attackQueue.Add(4);
                 attackQueue.Add(5);
                 attackQueue.Add(6);
+                attackQueue.Add(3);
             } else if(currentPhase == 2)
             {
                 attackQueue.Add(7);
@@ -353,10 +352,10 @@ public class SpiderPatterns : MonoBehaviour {
             }
             float offset = Random.Range(-30f, 30f);
 
-            BulletManager.ShootBullet(pos, speed1, 90f + offset, 0.05f, 8f, -sign, BulletType.BlueDarkBubble);
+            BulletManager.ShootBullet(pos, speed1, 90f + offset, 0.03f, 8f, -sign, BulletType.BlueDarkBubble);
             yield return new WaitForSeconds(0.03f);
 
-            BulletManager.ShootBullet(pos, speed1, 90f - offset, 0.05f, 8f, sign, BulletType.BlueDarkOrb);
+            BulletManager.ShootBullet(pos, speed1, 90f - offset, 0.03f, 8f, sign, BulletType.BlueDarkOrb);
             yield return new WaitForSeconds(0.03f);
 
             pos = new Vector2(Random.Range(-800f, 800f), 550f);
@@ -370,10 +369,10 @@ public class SpiderPatterns : MonoBehaviour {
             }
             offset = Random.Range(-30f, 30f);
 
-            BulletManager.ShootBullet(pos, speed2, 270f + offset, 0.05f, 8f, -sign, BulletType.BlueDarkBubble);
+            BulletManager.ShootBullet(pos, speed2, 270f + offset, 0.03f, 8f, -sign, BulletType.BlueDarkBubble);
             yield return new WaitForSeconds(0.03f);
 
-            BulletManager.ShootBullet(pos, speed2, 270f - offset, 0.05f, 8f, sign, BulletType.BlueDarkOrb);
+            BulletManager.ShootBullet(pos, speed2, 270f - offset, 0.03f, 8f, sign, BulletType.BlueDarkOrb);
             yield return new WaitForSeconds(0.03f);
 
             speed1 += 0.16f;
