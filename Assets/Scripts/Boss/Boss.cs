@@ -404,4 +404,26 @@ public class Boss : MonoBehaviour {
             yield return null;
         }
     }
+
+    public void MoveToSlow(Vector2 dest)
+    {
+        StartCoroutine(MoveToSlowCo(dest));
+    }
+
+    IEnumerator MoveToSlowCo(Vector2 dest)
+    {
+        moveCounter++;
+        int currentMove = moveCounter;
+        float sx = transform.position.x;
+        float sy = transform.position.y;
+        float ex = dest.x;
+        float ey = dest.y;
+
+        for (int i = 1; i <= 120; i++)
+        {
+            if (moveCounter != currentMove) { yield break; }
+            transform.position = new Vector3(Mathf.SmoothStep(sx, ex, i / 120f), Mathf.SmoothStep(sy, ey, i / 120f), 0);
+            yield return null;
+        }
+    }
 }
