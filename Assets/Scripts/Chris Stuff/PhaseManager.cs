@@ -36,6 +36,10 @@ public class PhaseManager : MonoBehaviour
 	bool isStart = true;
 	AudioSource readyAudio;
 
+	AudioSource onSound;
+	AudioSource offSound;
+	Coroutine onSoundCoroutine;
+
 //--------------------------------------------------------------------------------------------
 
     void Start ()
@@ -65,7 +69,12 @@ public class PhaseManager : MonoBehaviour
 		isOnInitialActivate = false;
 
 		//get handle on audio source for secondary ready
-		readyAudio = GetComponents<AudioSource>()[1];
+		AudioSource[] sources = GetComponents<AudioSource>();
+		readyAudio = sources[1];
+
+		//audio source for phase on and off
+		onSound = sources[2];
+		offSound = sources[3];
 	}
 
 //--------------------------------------------------------------------------------------------
@@ -82,6 +91,9 @@ public class PhaseManager : MonoBehaviour
 			//handle the initial charge
 			isActive = isOnInitialActivate = true;
 			StartCoroutine(handleInitialCharge());
+
+			//start playing sound
+			onSoundCoroutine = StartCoroutine(handleOnSound());
 		}
 
 		//if button not pressed and not on initial activate...
@@ -104,6 +116,18 @@ public class PhaseManager : MonoBehaviour
 				isActive = false;
 				isOnCooldownDelay = true;
 				StartCoroutine(handleCoolDownDelay());
+			}
+		}
+
+		//else not active...
+		else
+		{
+			//stop on sound coroutine
+			if(onSoundCoroutine != null)
+			{
+				StopCoroutine(onSoundCoroutine);
+				onSoundCoroutine = null;
+				offSound.Play();
 			}
 		}
 
@@ -213,5 +237,16 @@ public class PhaseManager : MonoBehaviour
 		isOnInitialActivate = false;
 
 		yield break;
+	}
+
+//--------------------------------------------------------------------------------------------
+
+	IEnumerator handleOnSound()
+	{
+		while(true)
+		{
+			onSound.Play();
+			yield return new WaitForSeconds(0.25f);
+		}
 	}
 }

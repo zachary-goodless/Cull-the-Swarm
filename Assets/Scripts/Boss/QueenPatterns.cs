@@ -45,8 +45,8 @@ public class QueenPatterns : MonoBehaviour {
 		}
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "Another fly swatted. I'm closing in on the facility now."));
 		yield return dialog.WaitForSecondsOrSkip(2f); if (co != null) StopCoroutine(co);
-		co = StartCoroutine(dialog.handleDialogue(3.5f, Characters.MARTHA, "I don't know that the Colonel should be your biggest concern right now..."));
-		yield return dialog.WaitForSecondsOrSkip(2.5f); if (co != null) StopCoroutine(co);
+		co = StartCoroutine(dialog.handleDialogue(3f, Characters.MARTHA, "I don't know that the Colonel should be your biggest concern right now..."));
+		yield return dialog.WaitForSecondsOrSkip(2f); if (co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.MARTHA, "Sonar is picking up activity from something BIG headed your way."));
 		yield return dialog.WaitForSecondsOrSkip(2f); if (co != null) StopCoroutine(co);
 		//JUSTIN
@@ -59,22 +59,22 @@ public class QueenPatterns : MonoBehaviour {
         }
 
 		//JUSITN
-		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.COLONEL, "The termite queen! She's escaped!"));
-		yield return dialog.WaitForSecondsOrSkip(1.5f); if (co != null) StopCoroutine(co);
-		co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "What are you talking about? What's going on?"));
-		yield return dialog.WaitForSecondsOrSkip(2f); if (co != null) StopCoroutine(co);
-		co = StartCoroutine(dialog.handleDialogue(2f, Characters.COLONEL, "*sigh*"));
+		co = StartCoroutine(dialog.handleDialogue(2f, Characters.COLONEL, "The termite queen! She's escaped!"));
 		yield return dialog.WaitForSecondsOrSkip(1f); if (co != null) StopCoroutine(co);
-		co = StartCoroutine(dialog.handleDialogue(3.5f, Characters.COLONEL, "The government paid our organization to develop bio-weapons using experiments on insects."));
-		yield return dialog.WaitForSecondsOrSkip(2.5f); if (co != null) StopCoroutine(co);
-		co = StartCoroutine(dialog.handleDialogue(4f, Characters.COLONEL, "They escaped captivity, and we painted our mistake as an alien invasion while we tried cleaning up this mess."));
+		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.ROGER, "What are you talking about? What's going on?"));
+		yield return dialog.WaitForSecondsOrSkip(1.5f); if (co != null) StopCoroutine(co);
+		co = StartCoroutine(dialog.handleDialogue(1.5f, Characters.COLONEL, "*sigh*"));
+		yield return dialog.WaitForSecondsOrSkip(0.5f); if (co != null) StopCoroutine(co);
+		co = StartCoroutine(dialog.handleDialogue(3f, Characters.COLONEL, "The government paid our organization to develop bio-weapons using experiments on insects."));
+		yield return dialog.WaitForSecondsOrSkip(2f); if (co != null) StopCoroutine(co);
+		co = StartCoroutine(dialog.handleDialogue(4f, Characters.COLONEL, "They escaped captivity, and we painted our mistake as an alien invasion while we cleaned up this mess."));
 		yield return dialog.WaitForSecondsOrSkip(3f); if (co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.ROGER, "But if we have a common foe in these bugs, why oppose me here?"));
 		yield return dialog.WaitForSecondsOrSkip(2f); if (co != null) StopCoroutine(co);
-		co = StartCoroutine(dialog.handleDialogue(4f, Characters.COLONEL, "You intended to exterminate them all. We had hoped we could salvage the program and continue our research."));
-		yield return dialog.WaitForSecondsOrSkip(3f); if (co != null) StopCoroutine(co);
-		co = StartCoroutine(dialog.handleDialogue(4f, Characters.COLONEL, "The world cannot discover what we've been doing. But with the queen's escape, the whole world is in danger."));
-		yield return dialog.WaitForSecondsOrSkip(3f); if (co != null) StopCoroutine(co);
+		co = StartCoroutine(dialog.handleDialogue(3f, Characters.COLONEL, "You intended to exterminate them all. We had hoped we could salvage the program and continue our research."));
+		yield return dialog.WaitForSecondsOrSkip(2f); if (co != null) StopCoroutine(co);
+		co = StartCoroutine(dialog.handleDialogue(3.5f, Characters.COLONEL, "The world cannot discover what we've been doing. But with the queen's escape, the whole world is in danger."));
+		yield return dialog.WaitForSecondsOrSkip(2.5f); if (co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(3.5f, Characters.COLONEL, "The other insects are controlled by a pheromone that she secretes. Kill her, and the bugs will die."));
 		yield return dialog.WaitForSecondsOrSkip(2.5f); if (co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.COLONEL, "Do it, Roger! End the queen's reign!"));
