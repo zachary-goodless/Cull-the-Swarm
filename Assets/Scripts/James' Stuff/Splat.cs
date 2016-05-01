@@ -31,6 +31,7 @@ public class Splat : MonoBehaviour {
 		}
 		if (finished) {
 			float alphaVal = sr.color.a - .01f;
+            transform.Translate(Vector3.down);
 			if (alphaVal <= 0) {
 				Destroy (gameObject);
 			} else {

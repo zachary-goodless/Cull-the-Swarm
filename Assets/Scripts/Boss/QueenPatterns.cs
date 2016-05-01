@@ -80,7 +80,12 @@ public class QueenPatterns : MonoBehaviour {
 		co = StartCoroutine(dialog.handleDialogue(2.5f, Characters.COLONEL, "Do it, Roger! End the queen's reign!"));
 		yield return dialog.WaitForSecondsOrSkip(1.5f); if (co != null) StopCoroutine(co);
 		Boss.isOnBossStart = false;
-		//JUSTIN
+        ShipPatterns sp = GameObject.FindObjectOfType<ShipPatterns>();
+        if(sp != null)
+        {
+            sp.songDelay = 7.5f;
+        }
+        //JUSTIN
 
         ChooseRandomPattern();
     }

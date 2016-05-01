@@ -85,20 +85,24 @@ public class Boss : MonoBehaviour {
 
     IEnumerator DeathSequence()
     {
-        for (int i = 0; i < 40; i++)
+        ParticleSystem[] particleList = GetComponentsInChildren<ParticleSystem>();
+        foreach(ParticleSystem part in particleList)
+        {
+            part.Stop();
+        }
+        for (int i = 0; i < 80; i++)
         {
 
-            Instantiate(splat[Random.Range(0, splat.Length)], new Vector2(transform.position.x + Random.Range(-100,100),transform.position.y+Random.Range(-100,100)), Quaternion.identity);
+            Instantiate(splat[Random.Range(0, splat.Length)], new Vector2(transform.position.x + Random.Range(-3f,3f)*i,transform.position.y+Random.Range(-3f, 3f) * i), Quaternion.identity);
 
-            foreach (MeshRenderer m in meshList)
-            {
-                if (m)
-                {
-                    m.material.SetColor("_Color", new Color(1f, 1f, 1f, 1f - i/40f));
-                }
-            }
-            yield return new WaitForSeconds(0.1f);
+            transform.localScale = new Vector3(transform.localScale.x * 0.95f, transform.localScale.y * 0.95f, transform.localScale.z * 0.95f);
+            yield return new WaitForSeconds(0.03f);
         }
+        foreach(MeshRenderer m in meshList)
+        {
+            m.enabled = false;
+        }
+        mesh.SetActive(false);
         GameObject.FindObjectOfType<Score>().handleEnemyDefeated(PointVals.BOSS_DEFEATED);
 
 		StartCoroutine(DeathDialog());

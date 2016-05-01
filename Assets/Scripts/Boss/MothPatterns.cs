@@ -249,6 +249,8 @@ public class MothPatterns : MonoBehaviour {
 
             if (phaseJustChanged)
             {
+                yield return new WaitForSeconds(2f);
+                ChooseRandomPattern();
                 yield break;
             }
             int numShot = 12 + i * 4;
