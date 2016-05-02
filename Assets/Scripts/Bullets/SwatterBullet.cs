@@ -17,7 +17,7 @@ public class SwatterBullet : MonoBehaviour {
 	void Start () {
 		speed = 400;
 		timer = 0;
-		dmg = 15;
+		dmg = 25;
         alph = 0;
 		sr = GetComponentInChildren<SpriteRenderer> ();
 		sr.color = new Color(sr.color.r,sr.color.g,sr.color.b,0);
