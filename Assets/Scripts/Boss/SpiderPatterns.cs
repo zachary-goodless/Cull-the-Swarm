@@ -192,7 +192,7 @@ public class SpiderPatterns : MonoBehaviour {
                 BulletManager.AddAction(new BulletAction(60, false, 0f, 0f));
                 BulletManager.AddAction(new BulletAction(60));
                 BulletManager.AddAction(new BulletAction(1, BulletType.PinkCrawler));
-                BulletManager.AddAction(new BulletAction(1, true, 0f, 0f, 0.1f, 6f, 0f));
+                BulletManager.AddAction(new BulletAction(1, true, 0f, 0f, 0.1f, 4f, 0f));
             }
             angle += 13.3f;
             speed += 0.4f;
@@ -276,7 +276,7 @@ public class SpiderPatterns : MonoBehaviour {
             float offset = sign * Random.Range(30f, 40f);
 
             BulletManager.ShootBullet(pos, 12f, 270f + offset, -0.1f, 4f, -sign, BulletType.BlueDarkBlade);
-            BulletManager.AddAction(new BulletAction(90, true, 0f, 0f, 0.12f, 12f, sign*1.2f));
+            BulletManager.AddAction(new BulletAction(90, true, 0f, 0f, 0.12f, 12f, sign*1.3f));
 
             yield return new WaitForSeconds(0.08f);
         }
@@ -387,7 +387,7 @@ public class SpiderPatterns : MonoBehaviour {
     // Webs
     IEnumerator Pattern7()
     {
-        float angle = Random.Range(0, 360);
+        float angle = BulletManager.AngleToPlayerFrom(transform.position) + Random.Range(-5f,5f);
         for (int j = 0; j < 40; j++)
         {
             BulletManager.ShootBullet(transform.position, 8f + Mathf.Cos(j * 360f / 40f * 8f * Mathf.Deg2Rad) * 2f, angle + j * 360f/40f, -0.1f, 3f, 0, BulletType.WhiteShard);
