@@ -26,6 +26,9 @@ public class PauseMenu : MonoBehaviour
 
 	public void togglePaused()
 	{
+		//do nothing if we're handling the level's end
+		if(LevelCompleteHandler.isLevelComplete) return;
+
 		//if time scale is 0 (paused), unpause
 		if(Time.timeScale == 0f)
 		{
