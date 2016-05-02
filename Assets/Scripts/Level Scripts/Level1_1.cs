@@ -61,7 +61,7 @@ public class Level1_1 : MonoBehaviour {
 		//waves.StartOne ();
 		waves.StartSpawnOsc(drone,2,0,300,200,false,true,200,0,-1,50,-250,waves.upScreen,Quaternion.identity,500,0,"d1");
 		waves.StartSpawnOsc(drone,3,0,300,200,false,true,200,0,-1,50,-500,waves.upScreen+150,Quaternion.identity,500,0,"d1");
-		yield return new WaitForSeconds (13f);
+		yield return new WaitForSeconds (8f);
 		//waves.StartTwo();
 		waves.StartSpawnOsc(drone,5,0,300,200,false,true,200,0,-1,50,-600,waves.upScreen+150,Quaternion.identity,150,150,"d23");
 		yield return new WaitForSeconds (5f);
@@ -93,14 +93,14 @@ public class Level1_1 : MonoBehaviour {
 		waves.StartSpawnLinear(drone,5,1f,160,-1.5f,-1,50,1000,waves.upScreen,Quaternion.identity,0,0,"d5");
 		yield return new WaitForSeconds (10f);
 		//waves.StartDronesAndTurrets ();
-		waves.StartSpawnFollow (drone, 5, 1.5f, .05f, 0, 200, 1, 50, 600, waves.upScreen, Quaternion.identity, 0, 0,"d23");
-		waves.StartSpawnLinear(turret,5,1.5f,160,0,-1,60,-300,waves.upScreen,Quaternion.identity,0,0,"t3");
-		waves.StartSpawnLinear(drone,5,1.5f,200,0,-1,60,0,waves.upScreen,Quaternion.identity,0,0,"d23");
-		waves.StartSpawnLinear(turret,5,1.5f,160,0,-1,60,300,waves.upScreen,Quaternion.identity,0,0,"t3");
-		waves.StartSpawnFollow (drone, 5, 1.5f, -.05f, 0, 200, 1, 50, -600, waves.upScreen, Quaternion.identity, 0, 0,"d23");
-		yield return new WaitForSeconds (10f);
+		waves.StartSpawnFollow (drone, 5, 1.5f, .05f, 0, 200, 1, 50, 600, waves.upScreen, Quaternion.identity, 0, 0,"d1");
+		waves.StartSpawnLinear(turret,4,1.5f,160,0,-1,60,-300,waves.upScreen,Quaternion.identity,0,0,"t3");
+		waves.StartSpawnLinear(snail,5,1.5f,200,0,-1,60,0,waves.upScreen,Quaternion.identity,0,0,"d4");
+		waves.StartSpawnLinear(turret,4,1.5f,160,0,-1,60,300,waves.upScreen,Quaternion.identity,0,0,"t3");
+		waves.StartSpawnFollow (drone, 5, 1.5f, -.05f, 0, 200, 1, 50, -600, waves.upScreen, Quaternion.identity, 0, 0,"d1");
+		yield return new WaitForSeconds (14f);
 		//waves.StartDronesInnerCircle ();
-		waves.StartSpawnInnerCircle(drone,0,0,180,1,50,"d6");
+		//waves.StartSpawnInnerCircle(drone,0,0,180,1,50,"d6"); disabled
 		//waves.StartDronesCornerCircles ();
 		waves.StartSpawnLCornerCircle(drone,0,0,200,1,50,"d6");
 		waves.StartSpawnRCornerCircle(drone,0,0,200,1,50,"d6");
@@ -108,35 +108,52 @@ public class Level1_1 : MonoBehaviour {
 		waves.StartSpawnLinear(turret,3,2,180,0,-1,60,-500,waves.upScreen,Quaternion.identity,0,0,"t2");
 		yield return new WaitForSeconds (2f);
 		//waves.StartDronesInnerCircle ();
-		waves.StartSpawnInnerCircle(drone,0,0,180,1,50,"d6");
+		//waves.StartSpawnInnerCircle(drone,0,0,180,1,50,"d6"); disabled
 		//waves.StartDronesCornerCircles ();
-		waves.StartSpawnLCornerCircle(drone,0,0,200,1,50,"d6");
-		waves.StartSpawnRCornerCircle(drone,0,0,200,1,50,"d6");
+		//waves.StartSpawnLCornerCircle(drone,0,0,200,1,50,"d6"); disabled
+		//waves.StartSpawnRCornerCircle(drone,0,0,200,1,50,"d6"); disabled
 		waves.StartSpawnLinear(turret,3,2,180,0,-1,60,500,waves.upScreen,Quaternion.identity,0,0,"t2");
-		yield return new WaitForSeconds (2f);
+		yield return new WaitForSeconds (8f);
 		//waves.StartDronesInnerCircle ();
+		waves.StartSpawnLinear(turret,3,0,160,0,-1,60,-500,waves.upScreen,Quaternion.identity,500,0,"t1");
+
+		yield return new WaitForSeconds (3f);
+		waves.StartSpawnLinear(turret,2,0,160,0,-1,60, -300,waves.upScreen,Quaternion.identity,500,0,"t1");
+
+		yield return new WaitForSeconds (5f);
 		waves.StartSpawnInnerCircle(drone,0,0,180,1,50,"d6");
 		//waves.StartDronesCornerCircles ();
 		waves.StartSpawnLCornerCircle(drone,0,0,200,1,50,"d6");
 		waves.StartSpawnRCornerCircle(drone,0,0,200,1,50,"d6");
+		yield return new WaitForSeconds (8f);
+		waves.StartSpawnLinear(turret,2,0,160,0,-1,60,-300,waves.upScreen,Quaternion.identity,500,0,"t1");
+
 		yield return new WaitForSeconds (4f);
 		//waves.StartDronesInnerCircle ();
 		waves.StartSpawnInnerCircle(drone,0,0,180,1,50,"d6");
 		//waves.StartDronesCornerCircles ();
 		waves.StartSpawnLCornerCircle(drone,0,0,200,1,50,"d6");
 		waves.StartSpawnRCornerCircle(drone,0,0,200,1,50,"d6");
-		yield return new WaitForSeconds (2f);
+
+		yield return new WaitForSeconds (4f);
+		waves.StartSpawnOsc(drone,2,0,300,200,false,true,200,0,-1,50,-250,waves.upScreen,Quaternion.identity,500,0,"d1");
+		waves.StartSpawnOsc(drone,3,0,300,200,false,true,200,0,-1,50,-500,waves.upScreen+150,Quaternion.identity,500,0,"d1");
+
+		yield return new WaitForSeconds (6f);
 		//waves.StartDronesInnerCircle ();
-		waves.StartSpawnInnerCircle(drone,0,0,180,1,50,"d6");
+		waves.StartSpawnInnerCircle(drone,0,0,180,1,50,"d4");
 		//waves.StartDronesCornerCircles ();
-		waves.StartSpawnLCornerCircle(drone,0,0,200,1,50,"d6");
-		waves.StartSpawnRCornerCircle(drone,0,0,200,1,50,"d6");
-		yield return new WaitForSeconds (2f);
+		waves.StartSpawnLCornerCircle(drone,0,0,200,1,50,"d5");
+		waves.StartSpawnRCornerCircle(drone,0,0,200,1,50,"d5");
+		yield return new WaitForSeconds (6f);
 		//waves.StartDronesInnerCircle ();
-		waves.StartSpawnInnerCircle(drone,0,0,180,1,50,"d6");
+		waves.StartSpawnOsc(drone,2,0,300,200,false,true,200,0,-1,50,-250,waves.upScreen,Quaternion.identity,500,0,"d1");
+		waves.StartSpawnOsc(drone,3,0,300,200,false,true,200,0,-1,50,-500,waves.upScreen+150,Quaternion.identity,500,0,"d1");
+
+		yield return new WaitForSeconds (3f);
 		//waves.StartDronesCornerCircles ();
-		waves.StartSpawnLCornerCircle(drone,0,0,200,1,50,"d6");
-		waves.StartSpawnRCornerCircle(drone,0,0,200,1,50,"d6");
+		waves.StartSpawnLCornerCircle(drone,0,0,200,1,50,"d4");
+		waves.StartSpawnRCornerCircle(drone,0,0,200,1,50,"d4");
 		yield return new WaitForSeconds (16f);
 
 		//JUSITN

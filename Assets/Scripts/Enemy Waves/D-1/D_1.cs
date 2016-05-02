@@ -66,35 +66,39 @@ public class D_1 : MonoBehaviour
 		//JUSTIN
 
       // Timing and placement need adjustment, but here's an (incomplete) general outline of what was in the GDD
-        waves.StartSpawnLinear(drone, 5, 2, 300, 1, -1, 50, waves.leftScreen, waves.upScreen, Quaternion.identity, 200, 0,"null");
-        waves.StartSpawnLinear(drone, 2, 2, 200, -1, -1, 50, waves.rightScreen, waves.upScreen, Quaternion.identity, 200, 0,"null");
+        waves.StartSpawnLinear(drone, 5, 2, 300, 1, -1, 50, -1000, waves.upScreen, Quaternion.identity, 200, 0,"null");
+        waves.StartSpawnLinear(drone, 4, 2, 200, -1, -1, 50, 400, waves.upScreen, Quaternion.identity, 200, 0,"null");
         Debug.Log(waves.leftScreen + " " + waves.upScreen);
         yield return new WaitForSeconds(10f);
-		waves.StartSpawnLinear(drone, 5, 2, 300, 1, -1, 50, waves.leftScreen, waves.upScreen, Quaternion.identity, 200, 0,"d7");
-		waves.StartSpawnLinear(drone, 2, 2, 200, -1, -1, 50, waves.rightScreen, waves.upScreen, Quaternion.identity, 200, 0,"d7");
+		waves.StartSpawnLinear(drone, 5, 2, 300, 1, -1, 50, -1000, waves.upScreen, Quaternion.identity, 200, 0,"d7");
+		waves.StartSpawnLinear(drone, 2, 2, 200, -1, -1, 50, 400, waves.upScreen, Quaternion.identity, 200, 0,"d7");
         //waves.StartSpawnWorms(3, 5, 3, .5f, 30, 200, 1, 50, waves.leftScreen, 100, Quaternion.Euler(0, 0, 90), 0, -200,"d4");
         yield return new WaitForSeconds(10f);
-        waves.StartSpawnFollow(turret, 3, 4, .5f, 30, 150, -1, 200, 5, waves.downScreen, Quaternion.identity, 0, 0,"t3");
+        waves.StartSpawnFollow(turret, 3, 4, .5f, 30, 150, 1, 100, 5, waves.upScreen, Quaternion.identity, 0, 0,"t3");
         yield return new WaitForSeconds(5f);
         waves.StartLR6Alternate(drone);
         yield return new WaitForSeconds(6.5f);
-        waves.StartFlanktasticFour(turret);
+        //waves.StartFlanktasticFour(turret);
         yield return new WaitForSeconds(8f);
-        waves.StartSpawnFromBackground(drone, 3, 10f, 2f, Vector3.down, 10f, 1, 1, 200, waves.leftScreen, waves.downScreen, Quaternion.identity, 200, 0,"d23");
-        waves.TwoWormsBelow();
+		waves.StartSpawnFromBackground(drone, 3, 10f, 2f, Vector3.up, 50f, 1, 1, 100, waves.leftScreen, waves.downScreen, Quaternion.identity, 200, 0,"d5");
+        //waves.TwoWormsBelow();
+
         yield return new WaitForSeconds(4f);
-        waves.StartSpawnSideToBottom(turret, 5, 2f, 2f, 4f, 100, -100, 200, waves.leftScreen, waves.upScreen, Quaternion.identity, 200, 0,"t1");
-        waves.StartSpawnSideToBottom(turret, 5, 3f, 4f, 5f, -100, -100, 200, waves.rightScreen, waves.upScreen, Quaternion.identity, 200, 0,"t1");
+		waves.StartSpawnSideToBottom(drone, 5, 2f, 2f, 4f, 100, -100, 75, waves.leftScreen, 360, Quaternion.identity, 200, 0,"d5");
+        waves.StartSpawnSideToBottom(drone, 5, 3f, 4f, 5f, -100, -100, 75, waves.rightScreen, 360, Quaternion.identity, 200, 0,"d5");
         yield return new WaitForSeconds(6f);
-        waves.StartSpawnSideToBottom(turret, 5, 2f, 3f, 5f, -100, -100, 200, waves.rightScreen, waves.upScreen, Quaternion.identity, 200, 0,"t2");
+        waves.StartSpawnSideToBottom(drone, 5, 2f, 3f, 5f, -100, -100, 75, waves.rightScreen, 360, Quaternion.identity, 200, 0,"d5");
         yield return new WaitForSeconds(10f);
-        waves.StartBigW(drone);
+        //add to wave
+		waves.StartBigW(drone);
         yield return new WaitForSeconds(9f);
-        waves.StartFlanktasticFour(turret);
+		waves.StartSpawnLinear (drone, 5, 2, 300, 0, 1, 50, -400, waves.downScreen, Quaternion.identity, 0, 0, "d1");
+		waves.StartSpawnLinear (drone, 5, 2, 300, 0, 1, 50, 400, waves.downScreen, Quaternion.identity, 0, 0, "d1");
+        //waves.StartFlanktasticFour(drone);
         yield return new WaitForSeconds(10f);
         waves.FiveWormsTop();
-        yield return new WaitForSeconds(20f);
-        waves.StartLR6Alternate(turret);
+        yield return new WaitForSeconds(6f);
+        waves.StartLR6Alternate(drone);
         waves.StartDoubleWorms();
 		yield return new WaitForSeconds(15f);
 

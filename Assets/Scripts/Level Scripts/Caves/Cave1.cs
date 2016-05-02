@@ -45,32 +45,47 @@ public class Cave1 : MonoBehaviour {
 		//JUSTIN
 
 		//Wave One- One worm, straight down center to bottom.
-		waves.StartSpawnWorms (1, 6, 0, .5f, 40, 200, 1, 300, 0, waves.upScreen, Quaternion.Euler (0, 0, 0), 0, 0, "d1");
-		yield return new WaitForSeconds (3f);
+		waves.StartSpawnWorms (1, 6, 0, .5f, 40, 200, 1, 300, 0, waves.upScreen, Quaternion.Euler (0, 0, 0), 0, 0, "d5");
 
+		yield return new WaitForSeconds (3f);
 		//Wave Two (3 sec after)- 3 snails, lined in a row, left side of the screen moving linearly towards the bottom of the screen
 		waves.StartSpawnLinear (snail, 3, 0, 200, 0, -1, 120, -700, waves.upScreen, Quaternion.identity, 200, 0, "d4");
+
 		yield return new WaitForSeconds (1f);
 
 		//Wave Three (1 sec after)- one turret, lined behind the three drone wave.
-		waves.StartSpawnLinear (turret, 1, 0, 200, 0, -1, 150, -500, waves.upScreen, Quaternion.identity, 0, 0, "t1");
-		yield return new WaitForSeconds (3f);
+		waves.StartSpawnLinear (turret, 2, 1, 200, 0, -1, 150, -500, waves.upScreen, Quaternion.identity, 0, 0, "t1");
 
+		yield return new WaitForSeconds (3f);
+		waves.StartSpawnLinear (turret, 1, 2, 200, 0, -1, 150, -500, waves.upScreen, Quaternion.identity, 0, 0, "t3");
+
+		yield return new WaitForSeconds (3f);
 		//Wave Four ( 3 sec after)- 3 snails lined in a row, right side of the screen, moving linearly towards the bottom of the screen
 		waves.StartSpawnLinear (snail, 3, 0, 200, 0, -1, 120, 700, waves.upScreen, Quaternion.identity, -200, 0, "d4");
+
 		yield return new WaitForSeconds (1f);
-
 		//Wave Five (1 sec after)- one turret, lined behind the three drone wave, linearly towards the bottom of the screen.
-		waves.StartSpawnLinear (turret, 1, 0, 200, 0, -1, 150, 500, waves.upScreen, Quaternion.identity, 0, 0, "t1");
-		yield return new WaitForSeconds (3f);
+		waves.StartSpawnLinear (turret, 2, 1, 200, 0, -1, 150, 500, waves.upScreen, Quaternion.identity, 0, 0, "t1");
 
+		yield return new WaitForSeconds (3f);
+		waves.StartSpawnLinear (turret, 1, 2, 200, 0, -1, 150, 500, waves.upScreen, Quaternion.identity, 0, 0, "t3");
+
+		yield return new WaitForSeconds (3f);
 		//Wave Six (3 sec after)- 3 snails lined in a row, middle of the screen, moving linearly towards the bottom of the screen
 		waves.StartSpawnLinear (snail, 3, 0, 200, 0, -1, 120, -200, waves.upScreen, Quaternion.identity, 200, 0, "d4");
+
 		yield return new WaitForSeconds (1f);
+		waves.StartSpawnLinear (turret, 2, 1, 200, 0, -1, 150, 0, waves.upScreen, Quaternion.identity, 0, 0, "t1");
 
+		yield return new WaitForSeconds (3f);
+		waves.StartSpawnLinear (turret, 1, 2, 200, 0, -1, 150, 0, waves.upScreen, Quaternion.identity, 0, 0, "t3");
 
-		waves.StartSpawnLinear (turret, 1, 0, 200, 0, -1, 150, 0, waves.upScreen, Quaternion.identity, 0, 0, "t1");
-		yield return new WaitForSeconds (6f);
+		yield return new WaitForSeconds (4f);
+		waves.StartSpawnLinear (snail, 3, 0, 200, 0, -1, 120, -700, waves.upScreen, Quaternion.identity, 200, 0, "d4");
+		waves.StartSpawnLinear (snail, 3, 0, 200, 0, -1, 120, 700, waves.upScreen, Quaternion.identity, -200, 0, "d4");
+		waves.StartSpawnLinear (snail, 3, 0, 200, 0, -1, 120, -200, waves.upScreen, Quaternion.identity, 200, 0, "d4");
+
+		yield return new WaitForSeconds (2f);
 
 		//Wave Seven (6 sec after)-  2 turrets, evenly spaced around the middle of the screen
 		waves.StartSpawnLinear (turret, 2, 0, 200, 0, -1, 150, -400, waves.upScreen, Quaternion.identity, 800, 0, "t1");
@@ -86,32 +101,38 @@ public class Cave1 : MonoBehaviour {
 
 		//Wave Nine (8 sec after)- 4 drones from background to left side of the screen towards upper center of the screen, exit off the right side of the screen.
 		waves.StartSpawnFromBackground (drone, 4, 1, 2, new Vector3 (0, waves.upScreen - 200, 50), 200, .5f, -1, 100, -600, -400, Quaternion.identity, 0, 200, "d1");
-		yield return new WaitForSeconds (8f);
-
+		yield return new WaitForSeconds (4f);
 		//Wave Nine (8 sec after)- 4 drones from background to right side of the screen towards upper center of the screen, exit off the left side of the screen.
 		waves.StartSpawnFromBackground (drone, 4, 1, 2, new Vector3 (0, waves.upScreen - 200, 50), 200, -.5f, -1, 100, 600, -400, Quaternion.identity, 0, 200, "d1");
-		yield return new WaitForSeconds (4f);
 
+		yield return new WaitForSeconds (4f);
 		//Wave Ten (4 sec after)- 1 worm from left side of the screen slinks linearly across to the right. Upper portion of the screen.
-		waves.StartSpawnWorms (1, 6, 0, .5f, 30, 200, 1, 200, waves.leftScreen, 200, Quaternion.Euler (0, 0, 90), 0, 0, "d4");
-		yield return new WaitForSeconds (4f);
+		waves.StartSpawnWorms (1, 6, 0, .5f, 30, 250, 1, 200, waves.leftScreen, 200, Quaternion.Euler (0, 0, 90), 0, 0, "d1");
+		waves.StartSpawnWorms (1, 6, 0, .5f, 30, 250, 1, 200, waves.rightScreen, -200, Quaternion.Euler (0, 0, -90), 0, 0, "d1");
 
+		yield return new WaitForSeconds (4f);
 		//Wave Eleven (4 sec after)- 1 worm from right side of the screen slinks linearly across to the left.
-		waves.StartSpawnWorms (1, 6, 0, .5f, 30, 200, 1, 200, waves.rightScreen, -200, Quaternion.Euler (0, 0, -90), 0, 0, "d4");
+		waves.StartSpawnWorms (1, 6, 0, .5f, 30, 250, 1, 200, waves.rightScreen, -200, Quaternion.Euler (0, 0, -90), 0, 0, "d1");
+		waves.StartSpawnWorms (1, 6, 0, .5f, 30, 250, 1, 200, waves.leftScreen, 200, Quaternion.Euler (0, 0, 90), 0, 0, "d1");
+
 		yield return new WaitForSeconds (8f);
-
 		//Wave Twelve (8 sec after)-  2 worm from top left side of the screen move linearly towards bottom of the screen.
-		waves.StartSpawnWorms (2, 6, 0, .5f, 40, 250, 1, 200, -600, waves.upScreen, Quaternion.Euler (0, 0, 0), 300, 0, "d1");
-		yield return new WaitForSeconds (4f);
+		waves.StartSpawnWorms (2, 6, 0, .5f, 40, 250, 1, 200, -600, waves.upScreen, Quaternion.Euler (0, 0, 0), 300, 0, "d5");
+		waves.StartSpawnWorms (2, 6, 0, -.5f, 40, 250, 1, 200, 600, waves.upScreen, Quaternion.Euler (0, 0, 0), -300, 0, "d5");
 
+		yield return new WaitForSeconds (4f);
 		//Wave Thirteen (4 sec after)- 2 worms from top right side of the screen move linearly towards bottom of the screen.
-		waves.StartSpawnWorms (2, 6, 0, -.5f, 40, 250, 1, 200, 600, waves.upScreen, Quaternion.Euler (0, 0, 0), -300, 0, "d1");
+		waves.StartSpawnWorms (2, 6, 0, -.5f, 40, 250, 1, 200, 600, waves.upScreen, Quaternion.Euler (0, 0, 0), -300, 0, "d5");
+		waves.StartSpawnWorms (2, 6, 0, .5f, 40, 250, 1, 200, -600, waves.upScreen, Quaternion.Euler (0, 0, 0), 300, 0, "d5");
+
 		yield return new WaitForSeconds (4f);
 
 		//Wave Fourteen (4 sec after)- 2 worms from center of screen move linearly towards bottom of screen.
-		waves.StartSpawnWorms (1, 6, 0, .5f, 40, 250, 1, 200, -150, waves.upScreen, Quaternion.Euler (0, 0, 0), 300, 0, "d1");
-		waves.StartSpawnWorms (1, 6, 0, -.5f, 40, 250, 1, 200, 150, waves.upScreen, Quaternion.Euler (0, 0, 0), 300, 0, "d1");
+		waves.StartSpawnWorms (1, 6, 0, .5f, 40, 250, 1, 200, -150, waves.upScreen, Quaternion.Euler (0, 0, 0), 300, 0, "d5");
+		waves.StartSpawnWorms (1, 6, 0, -.5f, 40, 250, 1, 200, 150, waves.upScreen, Quaternion.Euler (0, 0, 0), 300, 0, "d5");
 
+		waves.StartSpawnWorms (2, 6, 0, -.5f, 40, 250, 1, 200, 600, waves.upScreen, Quaternion.Euler (0, 0, 0), -300, 0, "d5");
+		waves.StartSpawnWorms (2, 6, 0, .5f, 40, 250, 1, 200, -600, waves.upScreen, Quaternion.Euler (0, 0, 0), 300, 0, "d5");
 
 		//Totally thought this said worms in the document; saving them since they work well for the angle they're using
 
@@ -137,11 +158,11 @@ public class Cave1 : MonoBehaviour {
 		yield return new WaitForSeconds (3f);
 
 		//Wave Nineteen (3 sec after)- 4 drones from background to left top side of the screen and move to the bottom right side of the screen.
-		waves.StartSpawnFromBackground (drone, 4, 1, 2.5f, new Vector3 (-600, 400, 50), 250, 1, -1, 100, -650, -300, Quaternion.identity, 0, 0, "d3");
+		waves.StartSpawnFromBackground (drone, 4, 1, 2.5f, new Vector3 (-600, 400, 50), 250, 1, -1, 100, -650, -300, Quaternion.identity, 0, 0, "d5");
 		yield return new WaitForSeconds (3f);
 
 		//Wave Twenty (3 sec after)- 4 drones from background to right top side of the screen and move to the bottom left side of the screen.
-		waves.StartSpawnFromBackground (drone, 4, 1, 2.5f, new Vector3 (600, 400, 50), 250, -1, -1, 100, 650, -300, Quaternion.identity, 0, 0, "d3");
+		waves.StartSpawnFromBackground (drone, 4, 1, 2.5f, new Vector3 (600, 400, 50), 250, -1, -1, 100, 650, -300, Quaternion.identity, 0, 0, "d5");
 
 		yield return new WaitForSeconds (16f);
 

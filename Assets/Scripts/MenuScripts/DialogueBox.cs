@@ -35,7 +35,7 @@ public class DialogueBox : MonoBehaviour
 	private string[] speakerNames = new string[7]
 	{
 		"ROGER",
-		"COLONEL CUNNINGHAM",
+		"COLONEL CULLINGHAM",
 		"STAMPER",
 		"MARTHA",
 		"CHAD",
