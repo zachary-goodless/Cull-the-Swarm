@@ -8,7 +8,7 @@ public class TeslaPhase_1 : MonoBehaviour
 	public float growDuration = 0.5f;
 	public float delayBetweenTicks = 0.01f;
 
-	public float damageTick = 5f;
+	public float damageTick = 1f;
 
 	public bool isActive;
 
