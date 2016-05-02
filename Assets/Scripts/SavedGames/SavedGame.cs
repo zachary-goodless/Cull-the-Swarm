@@ -255,12 +255,6 @@ public class SavedGame
 			unlockedLevels[index + 1] = true;
 			break;
 		}
-
-		//unlock moon 1 if 
-		if(unlockedLevels[5] && unlockedLevels[8] && unlockedLevels[11])
-		{
-			unlockedLevels[12] = true;
-		}
 	}
 
 //--------------------------------------------------------------------------------------------
