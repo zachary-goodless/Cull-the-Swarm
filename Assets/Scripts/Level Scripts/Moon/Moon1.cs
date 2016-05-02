@@ -64,8 +64,6 @@ public class Moon1 : MonoBehaviour {
 		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.COLONEL, "Then I guess you're not leaving the Moon."));
 		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
-		co = StartCoroutine(dialog.handleDialogue(3f, Characters.COLONEL, "Swarm! Take care of him."));
-		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 		co = StartCoroutine(dialog.handleDialogue(3f, Characters.MARTHA, "Well, I guess there's no turning back now..."));
 		yield return dialog.WaitForSecondsOrSkip(2f); if(co != null) StopCoroutine(co);
 		//JUSTIN
