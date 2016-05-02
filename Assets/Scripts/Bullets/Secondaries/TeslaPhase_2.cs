@@ -20,6 +20,7 @@ public class TeslaPhase_2 : MonoBehaviour
 
 	void Start ()
 	{
+		transform.localScale = new Vector3(2f, transform.localScale.y, transform.localScale.z);
 		StartCoroutine(handleDuration());
 	}
 
