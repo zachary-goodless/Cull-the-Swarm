@@ -394,7 +394,7 @@ public class SpiderPatterns : MonoBehaviour {
         }
         for (int j = 0; j < 8; j++)
         {
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < 10; i++)
             {
                 BulletManager.ShootBullet(transform.position, 4 + i * 1.5f, angle + j * 45, -0.1f, 3f, 0, BulletType.WhiteShard);
             }

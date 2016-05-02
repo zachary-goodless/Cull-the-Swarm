@@ -234,11 +234,14 @@ public class ShipPatterns : MonoBehaviour
         b.ParticleBurst();
         yield return new WaitForSeconds(1f);
 
-        for (int i = 0; i < 36; i++)
+        for (int i = 0; i < 30; i++)
         {
 
-            BulletManager.ShootBullet(transform.position, 9f, BulletManager.AngleToPlayerFrom(transform.position) + i * 10f + 5, -0.1f, 2f, 0f, BulletType.GreenDarkWave);
-            BulletManager.ShootBullet(transform.position, 1f, BulletManager.AngleToPlayerFrom(transform.position) + i * 10f, 0.1f, 8f, 0f, BulletType.GreenBlade);
+            BulletManager.ShootBullet(transform.position, 9f, BulletManager.AngleToPlayerFrom(transform.position) + i * 12f + 6, -0.1f, 2f, 0f, BulletType.GreenDarkWave);
+            if (i % 2 == 0)
+            {
+                BulletManager.ShootBullet(transform.position, 1f, BulletManager.AngleToPlayerFrom(transform.position) + i * 12f, 0.1f, 8f, 0f, BulletType.GreenWave);
+            }
         }
         yield return new WaitForSeconds(2f);
         ChooseRandomPattern();
@@ -329,6 +332,8 @@ public class ShipPatterns : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         float angle = 60;
+        float t = 0.1f;
+        int tTimer = 0;
 
         while(b.health > 0)
         {
@@ -338,7 +343,21 @@ public class ShipPatterns : MonoBehaviour
             BulletManager.ShootBullet(transform.position, 8, angle * 1.3f, BulletType.BlueDarkArrow);
 
             angle += 11.3f;
-            yield return new WaitForSeconds(0.05f);
+
+            if(t > 0.04f)
+            {
+                if(tTimer == 30)
+                {
+                    t -= 0.01f;
+                    tTimer = 0;
+                }
+                else
+                {
+                    tTimer++;
+                }
+            }
+
+            yield return new WaitForSeconds(t);
         }
         yield break;
     }
