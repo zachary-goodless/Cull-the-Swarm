@@ -80,7 +80,7 @@ public class Drones_1_1 : MonoBehaviour {
            		Vector2 pos = transform.position;
             	BulletManager.ShootBullet(pos, 12, Random.Range(260,280), -0.2f, 0, 0, BulletType.RedDot);
             	BulletManager.AddAction(new BulletAction(180, false, 0, 270, 0.02f, 4, 0));
-                BulletManager.AddAction(new BulletAction(0, BulletType.RedArrow));
+                BulletManager.AddAction(new BulletAction(1, BulletType.RedArrow));
             }
             yield return new WaitForSeconds(cooldown);
         }
@@ -149,7 +149,7 @@ public class Drones_1_1 : MonoBehaviour {
             Vector2 pos = transform.position;
             float ang = Random.Range(0, 360);
             for (int j = 0; j < ringnum; j++) {
-				if(canFire && pos.y > 0)
+				if(canFire && pos.y > -50)
 				{
                 	BulletManager.ShootBullet(pos, 10, ang + j * 360f / ringnum, -0.4f, 4, 0, BulletType.RedDarkDot);
                 	BulletManager.ShootBullet(pos, 14, ang + (j + 0.5f) * 360f / ringnum, -0.4f, 8, 0, BulletType.BlueDarkDot);
