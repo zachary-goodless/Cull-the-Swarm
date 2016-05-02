@@ -27,6 +27,10 @@ public class Boss : MonoBehaviour {
 	//JUSTIN
 	public DialogueBox dialog;
 	public static bool isOnBossStart;
+
+	RectTransform healthBar;
+	Vector3 healthBarOrigin;
+	float maxHealth;
 	//JUSTIN
 
 	public ScreenFade fadeScript;
@@ -34,6 +38,17 @@ public class Boss : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+		//JUSTIN
+		healthBar = GameObject.Find("BossHealthBar").GetComponent<RectTransform>();
+		healthBarOrigin = healthBar.localPosition;
+		maxHealth = health;
+		if(name == "TermiteQueenBoss")
+		{
+			health = 1;
+			StartCoroutine(handleHealthSpinup());
+		}
+		//JUSTIN
+
 		if(fadeScript == null)
 		{
         	fadeScript = GameObject.FindObjectOfType<ScreenFade>();
@@ -52,6 +67,20 @@ public class Boss : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+		//JUSTIN
+		//if health is greater than 0...
+		if(health > 0)
+		{
+			//handle health bar fill
+			Vector3 localScale = healthBar.localScale;
+			localScale.y = health / maxHealth;
+			healthBar.localScale = localScale;
+
+			//energy bar position is an offset from its start point that is some percentage of half the height
+			healthBar.localPosition = healthBarOrigin + new Vector3(0f, healthBar.rect.height * 0.5f * localScale.y, 0f);
+		}
+		//JUSTIN
+
         //transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.position.x / 20, Mathf.Sin(Time.time*2) * 4));
         if (isQueen) {
             mesh.transform.localRotation = Quaternion.Euler(new Vector3(meshStartingAngle.x, meshStartingAngle.y + Mathf.Sin(Time.time) * 4 + transform.position.x / 20f, meshStartingAngle.z));
@@ -457,4 +486,21 @@ public class Boss : MonoBehaviour {
             yield return null;
         }
     }
+
+	IEnumerator handleHealthSpinup()
+	{
+		yield return new WaitForSeconds(5f);
+		while(health < maxHealth)
+		{
+			yield return new WaitForSeconds(0.025f);
+
+			health += maxHealth * 0.01f;
+			if(health > maxHealth)
+			{
+				health = maxHealth;
+			}
+		}
+
+		yield break;
+	}
 }
