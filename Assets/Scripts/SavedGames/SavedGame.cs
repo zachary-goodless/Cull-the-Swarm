@@ -235,10 +235,17 @@ public class SavedGame
 			unlockedLevels[9] = true;
 			break;
 
-		//final non-tutorial stages, no level unlocks
+		//boss stages, unlock level if all levels beat (nonzero score)
 		case 5:
 		case 8:
 		case 11:
+			if(highScores[5] != 0 && highScores[8] != 0 && highScores[11] != 0)
+			{
+				unlockedLevels[12] = true;
+			}
+			break;
+
+		//final stage, no level unlock
 		case 13:
 			break;
 
@@ -247,6 +254,12 @@ public class SavedGame
 
 			unlockedLevels[index + 1] = true;
 			break;
+		}
+
+		//unlock moon 1 if 
+		if(unlockedLevels[5] && unlockedLevels[8] && unlockedLevels[11])
+		{
+			unlockedLevels[12] = true;
 		}
 	}
 

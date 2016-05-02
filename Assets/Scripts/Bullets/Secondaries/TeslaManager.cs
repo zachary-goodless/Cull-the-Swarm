@@ -9,7 +9,7 @@ public class TeslaManager : MonoBehaviour
 	//PUBLIC
 	public float maxEnergy = 200f;
 	public float consumptionRate = 40f;
-	public float rechargeRate = 10f;
+	public float rechargeRate = 20f;
 
 	public float minChargeTime = 1f;
 	public float cooldownDelay = 2f;
